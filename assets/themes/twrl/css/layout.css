@@ -55,6 +55,9 @@ article.layout-row header p {
 			vertical-align: top;
 		}
 		
+#l-head-nav p {
+    margin: 16px 8px;
+    }
 		
 		
 #l-advnavctl-ctrl p {
@@ -67,6 +70,10 @@ article.layout-row header p {
     }
     
     
+#l-paginator p {
+    margin: 0;
+    }
+    
 #l-colophon {
     border-top: 1px solid #c0c0c0;
     background-color: #e0e0e0;
@@ -75,6 +82,10 @@ article.layout-row header p {
     font-size: 9pt;
     }
 
+
+article .addthis_toolbox {
+    float: right;
+    }
 
 
 body {

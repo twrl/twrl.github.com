@@ -1,0 +1,16 @@
+    <div class="cf layout-row c-dark" id="l-paginator">
+        {% if paginator.next_page %}
+        <div class="cf layout-cell-l2">
+            <p><a href="/page{{paginator.next_page}}"><img src="/assets/themes/twrl/icons/28.png" class="icon"/>Older Posts</a></p>
+        </div>
+        {% endif %}
+        {% if paginator.previous_page %}
+        <div class="cf layout-cell-r2" style="text-align: right;">
+            {% if paginator.previous_page == 1 %}
+            <p><a href="/index.html"><img src="/assets/themes/twrl/icons/23.png" class="icon"/>Newer Posts</a></p>
+            {% else %}
+            <p><a href="/page{{paginator.previous_page}}"><img src="/assets/themes/twrl/icons/23.png" class="icon"/>Newer Posts</a></p>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>

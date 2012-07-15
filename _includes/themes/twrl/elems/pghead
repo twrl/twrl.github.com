@@ -10,5 +10,11 @@
         <p><a href="/index.html">Home</a></p>
         {% endif %}
     
+        {% if page.url == '/archive.html' %}
+        <p class="current"><a href="/archive.html">Archive</a></p>
+        {% else %}
+        <p><a href="/archive.html">Archive</a></p>
+        {% endif %}
+    
     </nav>
 </div>
