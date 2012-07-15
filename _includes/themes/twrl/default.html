@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>{{ site.title }} - {{ page.title }}</title>
+        
+        <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+        <link href="{{ ASSET_PATH }}/css/layout.css" rel="stylesheet" type="text/css"/>
+        <link href="{{ ASSET_PATH }}/css/colour.css" rel="stylesheet" type="text/css"/>
+        
+        <!-- typography -->
+        <style type="text/css">
+        body {
+            font-family: "Droid Sans", sans-serif;
+        }
+        pre {
+            font-family: "Droid Sans Mono", monospace;
+        }
+        </style>
+        
+        <script type="application/javascript" src="http://code.jquery.com/jquery-1.7.2.js"></script>
+        <script type="application/javascript">
+		$(function () {
+
+			$('#l-advnavctl-ctrl').click(function () {
+				$('#l-advnav').slideToggle();
+				$('#advnavctl-show, #advnavctl-hide').toggle();
+			});
+
+
+		});
+		</script>
+		
+
+		<script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "ur-7811c636-4069-cb9c-3f28-d3db66715e99"}); </script>
+        
+    </head>
+    <body>
+    
+        {% include themes/twrl/elems/pghead %}
+        
+        <div class="cf layout-row c-dark" id="l-advnav" style="display:none">
+            {% include themes/twrl/widgets/tags %}
+            {% include themes/twrl/widgets/related %}
+            {% include themes/twrl/widgets/recent %}
+        </div>
+        <div class="cf layout-row c-dark" id="l-advnavctl">
+            <div class="cf layout-cell-l3" id="l-advnavctl-ctrl">
+                <p id="advnavctl-show"><img src="{{ASSET_PATH}}/icons/24.png" class="icon"/>Show me more things...</p>
+                <p id="advnavctl-hide" style="display:none"><img src="{{ASSET_PATH}}/icons/19.png" class="icon"/>Hide this clutter</p>
+            </div>
+            <div class="cf layout-cell-l2" id="l-sharethis">
+                <span class='st_sharethis' displayText='ShareThis'></span>
+                <span class='st_googleplus' displayText='Google +'></span>
+                <span class='st_facebook' displayText='Facebook'></span>
+                <span class='st_twitter' displayText='Tweet'></span>
+                <span class='st_linkedin' displayText='LinkedIn'></span>
+                <span class='st_email' displayText='Email'></span>
+            </div>
+        </div>
+    
+        {{content}}
+        
+        {% include themes/twrl/elems/pgfoot %}
+    
+    </body>
+</html>

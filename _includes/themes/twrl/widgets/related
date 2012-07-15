@@ -1,0 +1,8 @@
+<nav class="cf layout-cell-l1">
+    <h4><img src="{{ASSET_PATH}}/icons/10.png" class="icon"/>Related Posts</h4>
+    <ul>
+    {% for rel in site.related_posts limit:8 %}
+        <li><a href="{{rel.url}}">{{rel.title}}</a></li>
+    {% endfor %}
+    </ul>
+</nav>

@@ -1,0 +1,158 @@
+.cf::before { 
+    content: ""; 
+    display: table; 
+}
+
+.cf::after { 
+    content: "";
+    display: table;
+    clear: both; 
+}
+
+.cf { 
+    zoom: 1; 
+}
+
+
+.nw {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+
+.icon {
+    width: 16px;
+    height: 16px;
+    margin: 0 1ex;
+}
+
+
+
+.content {
+    text-align: justify;
+}
+
+article.layout-row header {
+    text-align: right;
+}
+
+article.layout-row header p {
+    font-size: 10pt;
+    }
+
+
+
+#l-head-title > * {
+			display: inline-block;
+		}
+		#l-head-title h1 {
+			margin: 5px 16px;
+		}
+		#l-head-nav > p {
+			display: inline-block;
+		}
+		#l-head p {
+			vertical-align: top;
+		}
+		
+		
+		
+#l-advnavctl-ctrl p {
+    margin-top: 0;
+    margin-bottom: 0; 
+    }
+    
+#l-advnav, #l-advnavctl {
+    font-size: 10pt;
+    }
+    
+    
+#l-colophon {
+    border-top: 1px solid #c0c0c0;
+    background-color: #e0e0e0;
+    text-align: center;
+    color: #404040;
+    font-size: 9pt;
+    }
+
+
+
+body {
+    margin: 0;
+    background-color: #e0e0e0;
+}
+
+.layout-row {
+    margin: 0;
+    padding: 0 10%;
+}
+
+.layout-cell-l1 {
+    width: 18%;
+    padding: 1em 1%;
+    margin: 0;
+    float: left;
+}
+
+.layout-cell-l2 {
+    width: 38%;
+    padding: 1em 1%;
+    margin: 0;
+    float: left;
+}
+
+.layout-cell-l3 {
+    width: 58%;
+    padding: 1em 1%;
+    margin: 0;
+    float: left;
+}
+
+.layout-cell-l4 {
+    width: 78%;
+    padding: 1em 1%;
+    margin: 0;
+    float: left;
+}
+
+.layout-cell-l5 {
+    width: 98%;
+    padding: 1em 1%;
+    margin: 0;
+    float: left;
+}
+
+.layout-cell-r1 {
+    width: 18%;
+    padding: 1em 1%;
+    margin: 0;
+    float: right;
+}
+
+.layout-cell-r2 {
+    width: 38%;
+    padding: 1em 1%;
+    margin: 0;
+    float: right;
+}
+
+.layout-cell-r3 {
+    width: 58%;
+    padding: 1em 1%;
+    margin: 0;
+    float: right;
+}
+
+.layout-cell-r4 {
+    width: 78%;
+    padding: 1em 1%;
+    margin: 0;
+    float: right;
+}
+
+.layout-cell-r5 {
+    width: 98%;
+    padding: 1em 1%;
+    margin: 0;
+    float: right;
+}
