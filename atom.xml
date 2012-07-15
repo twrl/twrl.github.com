@@ -4,7 +4,7 @@
  <title>twrl</title>
  <link href="http://twrl.github.com/atom.xml" rel="self"/>
  <link href="http://twrl.github.com"/>
- <updated>2012-07-16T00:06:20+01:00</updated>
+ <updated>2012-07-16T00:17:48+01:00</updated>
  <id>http://twrl.github.com</id>
  <author>
    <name>Tom Robbins</name>
@@ -21,7 +21,39 @@
 
 &lt;p&gt;After a brief bout of insanity brought on by spending too much time with Blogger&amp;#8217;s excuse for a template system, I realised: I don&amp;#8217;t need all that complexity. Browsing around for something with which to replace Blogger, and preferably not add too much to the vast number of accounts I&amp;#8217;m dragging around with me, I stumbled onto Jekyll. And so, here we are.&lt;/p&gt;
 
-&lt;p&gt;Now, it&amp;#8217;s been some time since I last sunk my teeth into a new language, and learning Ruby has been on my to-do list for a while. So not only am I using Jekyll to maintain my blog, I&amp;#8217;m progressively tampering with it in an effort to learn Ruby.&lt;/p&gt;</content>
+&lt;p&gt;Now, it&amp;#8217;s been some time since I last sunk my teeth into a new language, and learning Ruby has been on my to-do list for a while. So not only am I using Jekyll to maintain my blog, I&amp;#8217;m progressively tampering with it in an effort to learn Ruby.&lt;/p&gt;
+
+&lt;p&gt;Oh, and thanks to &lt;a href='http://charliepark.org/jekyll-with-plugins/'&gt;Charlie Park&lt;/a&gt; for his amazingly useful article on how to cope with Github Pages not supporting Jekyll plugins.&lt;/p&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>Views, dynamic and otherwise</title>
+   <link href="http://twrl.github.com/2012/06/14/views-dynamic-and-otherwise"/>
+   <updated>2012-06-14T00:00:00+01:00</updated>
+   <id>http://twrl.github.com/2012/06/14/views-dynamic-and-otherwise</id>
+   <content type="html">&lt;p&gt;I&amp;#8217;ve changed theme on this blog. I was using Dynamic Views, and now I&amp;#8217;m using a generic Awesome Inc. theme.&lt;/p&gt;
+
+&lt;p&gt;I love the way Dynamic Views looks. It&amp;#8217;s very sleek, but it&amp;#8217;s impossible to adapt. After a dozen attempts I gave up getting &lt;a href='http://alexgorbatchev.com/SyntaxHighlighter/'&gt;Alex Gorbatchev&amp;#8217;s SyntaxHighlighter&lt;/a&gt; to work with it, and a brief experiment with altering the CSS ended very badly indeed - it looked like a clown.&lt;/p&gt;
+
+&lt;p&gt;So to solve the first of those two problems I have switched to an old-style theme temporarily, while I write my own. This is not how I&amp;#8217;d planned on spending the rest of my day, but I suppose my CSS skills could benefit from some practice. So look out for some new shiny, coming soon to a blog near you&amp;#8230;&lt;/p&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>Iconiser</title>
+   <link href="http://twrl.github.com/2012/06/14/iconiser"/>
+   <updated>2012-06-14T00:00:00+01:00</updated>
+   <id>http://twrl.github.com/2012/06/14/iconiser</id>
+   <content type="html">&lt;p&gt;This is a useful titbit for anyone who is working with blogger templates or other things that severely limit your ability to host and serve lots of little files. I just hacked it together now to implement the new theme I&amp;#8217;m writing for this blog.&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;m using quite a few icons in the new theme and I wanted to embed them as data: URIs. The trouble is, I&amp;#8217;m using the same icon in several places which means duplication, and having great blocks of base64 embedded in the code is making it all unreadable. So I&amp;#8217;ve written a tiny jQuery plugin to maintain a catalogue of named icons, and then replace the shorthand URIs that I&amp;#8217;m using with the full one.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;#8217;s the code:&lt;/p&gt;
+
+&lt;p&gt;Then to use it you need to build a database of icons. You simply call the iconise function to associate a name to a data: uri&lt;/p&gt;
+
+&lt;p&gt;And finally, you can reference your icon like this&lt;/p&gt;
+
+&lt;p&gt;This is a bit of a quick and dirty hack, and it will certainly not degrade gracefully. But it might come in handy.&lt;/p&gt;</content>
  </entry>
  
  <entry>

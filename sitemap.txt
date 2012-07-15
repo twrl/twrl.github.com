@@ -7,6 +7,7 @@ http://twrl.github.com/pages.html
 http://twrl.github.com/sitemap.txt
 http://twrl.github.com/tags.html
 http://twrl.github.com/page2/index.html
+http://twrl.github.com/page3/index.html
 http://twrl.github.com/tag/Civil Partnership.html
 http://twrl.github.com/tag/LGBT.html
 http://twrl.github.com/tag/Same-sex Marriage.html
@@ -28,10 +29,14 @@ http://twrl.github.com/tag/Facebook.html
 http://twrl.github.com/tag/Google.html
 http://twrl.github.com/tag/Semantic Web.html
 http://twrl.github.com/tag/Social Networking.html
-http://twrl.github.com/tag/Jekyll.html
 http://twrl.github.com/tag/Blog.html
+http://twrl.github.com/tag/Blogger.html
+http://twrl.github.com/tag/Dynamic Views.html
+http://twrl.github.com/tag/Jekyll.html
 
 http://twrl.github.com/2012/07/14/the-new-edition
+http://twrl.github.com/2012/06/14/views-dynamic-and-otherwise
+http://twrl.github.com/2012/06/14/iconiser
 http://twrl.github.com/2012/06/11/javascript-alternatives
 http://twrl.github.com/2012/05/18/social-networking
 http://twrl.github.com/2012/05/16/who-am-i-standing-up-to-again

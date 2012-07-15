@@ -3,18 +3,24 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" prefix="og: http://ogp.me/ns#">
     <head>
-        <title>twrl - Home</title>
+        <title>twrl - Views, dynamic and otherwise</title>
         
         <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
         <link href="/assets/themes/twrl/css/layout.css" rel="stylesheet" type="text/css"/>
         <link href="/assets/themes/twrl/css/colour.css" rel="stylesheet" type="text/css"/>
         <link href="/assets/themes/twrl/css/code.css" rel="stylesheet" type="text/css"/>
         
-            <meta property="og:title" content="Home"/>
+            <meta property="og:title" content="Views, dynamic and otherwise"/>
     <meta property="og:site_name" content="twrl"/>
     <meta property="og:type" content="article"/>
-    <meta property="og:url" content="/page2/index.html"/>
+    <meta property="og:url" content="/2012/06/14/views-dynamic-and-otherwise"/>
     <!-- og:image -->
+    
+    <meta property="og:tag" content="Blog"/>
+    
+    <meta property="og:tag" content="Blogger"/>
+    
+    <meta property="og:tag" content="Dynamic Views"/>
     
         
         <!-- typography -->
@@ -116,6 +122,29 @@
     <p><a href="/tags.html">See all tags</a></p>
 </nav>
             
+<nav class="cf layout-cell-l1">
+    <h4><img src="/assets/themes/twrl/icons/10.png" class="icon"/>Related Posts</h4>
+    <ul>
+    
+        <li><a href="/2012/05/16/who-am-i-standing-up-to-again">Who am I standing up to again?</a></li>
+    
+        <li><a href="/2012/06/11/javascript-alternatives">Javascript Alternatives</a></li>
+    
+        <li><a href="/2012/03/28/ajax-and-file-uris">Ajax and file&#58;// URIs</a></li>
+    
+        <li><a href="/2012/03/22/rehashing-xml">Rehashing Xml</a></li>
+    
+        <li><a href="/2012/05/18/social-networking">Social Networking</a></li>
+    
+        <li><a href="/2012/05/15/wheres-my-data">Where's my Data!</a></li>
+    
+        <li><a href="/2012/03/28/initialising-web-workers">Initialising Web Workers</a></li>
+    
+        <li><a href="/2012/06/14/iconiser">Iconiser</a></li>
+    
+    </ul>
+</nav>
+
             <nav class="cf layout-cell-l1">
     <h4><img src="/assets/themes/twrl/icons/12.png" class="icon"/>Recent Posts</h4>
     <ul>
@@ -155,71 +184,35 @@
         </div>
     
         
-<article class="cf layout-row odd" about="/2012/05/16/who-am-i-standing-up-to-again">
+<article class="cf layout-row odd" xmlns:dc="http://purl.org/dc/elements/1.1/">
     <header class="cf layout-cell-l2">
-        <h2>Who am I standing up to again?</h2>
-    </header>
-    <div class="cf layout-cell-l3 content">
-        <p>There was an article today on the Huffington Post by Max Wind-Cowie called &#8221;Who Will Stand Up to the Hetero-Phobes?&#8221; - and it&#8217;s really got me seething. So much that I feel I have to rebut it. Here goes: A little while ago I wrote a piece for ConservativeHome about how the attacks and smears of the pro gay marriage campaign had shaken my belief in the cause to its foundations. The impulse to cry &#8216;paedo&#8217; every time a Catholic spoke of their discomfort over same sex marriage, the howls of &#8216;bigot&#8217; accompanying even the most gentle warning about potential...</p>
-        <p><a href="/2012/05/16/who-am-i-standing-up-to-again">Read more...</a></p>
-    </div>
-</article>
-
-<article class="cf layout-row even" about="/2012/05/15/wheres-my-data">
-    <header class="cf layout-cell-l2">
-        <h2>Where's my Data!</h2>
-    </header>
-    <div class="cf layout-cell-l3 content">
-        <p>I have Facebook. I have Google+, Google Docs, Google Play, GMail, Blogger, Picasa and various other Google products. I have a Live@edu email account. I have a github account, a SourceForge account, a cloud9 account, and a Hojoki account. I have an account with Ocado and another with Tesco, and one with Amazon. I have at least two OpenIDs, and a dozen more services which I routinely use by federated logon to one of the above. I have accounts with online services that I don&#8217;t even remember exist. My online identity is no longer a discrete thing. It&#8217;s a big...</p>
-        <p><a href="/2012/05/15/wheres-my-data">Read more...</a></p>
-    </div>
-</article>
-
-<article class="cf layout-row odd" about="/2012/03/28/initialising-web-workers">
-    <header class="cf layout-cell-l2">
-        <h2>Initialising Web Workers</h2>
-    </header>
-    <div class="cf layout-cell-l3 content">
-        <p>I&#8217;ve had tonsillitis over the last 5 days or so, so I&#8217;ve spent most of the last few days in a bit of a daze, idly tinkering with random things to pass the time. As with much idle tinkering, it&#8217;s all a bit rough and ready, but here is one snippet which might prove useful. I was tinkering with Web Workers and I wanted to be able to load up Require.js in a worker and then pass it the name of a main module. So I wrote this stub, lets call it w.js, which goes in the same directory as...</p>
-        <p><a href="/2012/03/28/initialising-web-workers">Read more...</a></p>
-    </div>
-</article>
-
-<article class="cf layout-row even" about="/2012/03/28/ajax-and-file-uris">
-    <header class="cf layout-cell-l2">
-        <h2>Ajax and file&#58;// URIs</h2>
-    </header>
-    <div class="cf layout-cell-l3 content">
-        <p>Ajax is becoming the dominant method, if it isn&#8217;t already, of getting data in and out of a web application. But Ajax is built on top of XMLHttpRequest, which as the name suggests is only really well defined if the underlying protocol is HTTP. So what about local files? The new Filesystem API&#8217;s are coming, but they sandbox us heavily. At least for the time being, if we want to muck about with self-modifying code or local file-based data sources we have to hack it, which means using any one of half a dozen browser and/or os specific methods. I...</p>
-        <p><a href="/2012/03/28/ajax-and-file-uris">Read more...</a></p>
-    </div>
-</article>
-
-<article class="cf layout-row odd" about="/2012/03/22/whatever-happened-to-osid">
-    <header class="cf layout-cell-l2">
-        <h2>Whatever Happened To Osid</h2>
-    </header>
-    <div class="cf layout-cell-l3 content">
-        <p>Five years ago, or so, we had a wonderful suite of open, abstract API&#8217;s developed by a group led out of MIT and calling themselves the Open Knowledge Initiative. These API&#8217;s were the Open Service Interface Definitions, and although they had a definite flavour of Java about them, the specs were deliberately designed to be platform neutral. OKI now appears to be defunct, but a lot of what they produced is still sitting there on SourceForge. Now a lot of this was useless nonsense, at least, outside of certain specialist applications. I know there are people that do, but I...</p>
-        <p><a href="/2012/03/22/whatever-happened-to-osid">Read more...</a></p>
-    </div>
-</article>
-
-
-    <div class="cf layout-row c-dark" id="l-paginator">
+        <h1 property="dc:title">Views, dynamic and otherwise</h1>
+        <p><span property="dc:date" content="2012-06-14">Thursday 14 June, 2012</span> <img src="/assets/themes/twrl/icons/12.png" class="icon"/></p>
+        <p><a rel="dc:subject" href="/tag/Blog.html">Blog</a>, <a rel="dc:subject" href="/tag/Blogger.html">Blogger</a>, <a rel="dc:subject" href="/tag/Dynamic Views.html">Dynamic Views</a> <img src="/assets/themes/twrl/icons/20.png" class="icon"/></p>
         
-        <div class="cf layout-cell-l2">
-            <p><a href="/page3"><img src="/assets/themes/twrl/icons/28.png" class="icon"/>Older Posts</a></p>
+        <!-- AddThis Button BEGIN -->
+        <div class="addthis_toolbox addthis_default_style">
+        <a class="addthis_button_preferred_1"></a>
+        <a class="addthis_button_preferred_2"></a>
+        <a class="addthis_button_preferred_3"></a>
+        <a class="addthis_button_preferred_4"></a>
+        <a class="addthis_button_compact"></a>
+        <a class="addthis_counter addthis_bubble_style"></a>
         </div>
+        <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+        <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-5002f6cf1dbb4c0f"></script>
+        <!-- AddThis Button END -->
         
-        
-        <div class="cf layout-cell-r2" style="text-align: right;">
-            
-            <p><a href="/index.html"><img src="/assets/themes/twrl/icons/23.png" class="icon"/>Newer Posts</a></p>
-            
-        </div>
-        
+    </header>
+    <div class="cf layout-cell-l3 content">
+        <p>I&#8217;ve changed theme on this blog. I was using Dynamic Views, and now I&#8217;m using a generic Awesome Inc. theme.</p>
+
+<p>I love the way Dynamic Views looks. It&#8217;s very sleek, but it&#8217;s impossible to adapt. After a dozen attempts I gave up getting <a href='http://alexgorbatchev.com/SyntaxHighlighter/'>Alex Gorbatchev&#8217;s SyntaxHighlighter</a> to work with it, and a brief experiment with altering the CSS ended very badly indeed - it looked like a clown.</p>
+
+<p>So to solve the first of those two problems I have switched to an old-style theme temporarily, while I write my own. This is not how I&#8217;d planned on spending the rest of my day, but I suppose my CSS skills could benefit from some practice. So look out for some new shiny, coming soon to a blog near you&#8230;</p>
     </div>
+</article>
+
         
         <div id="l-colophon" class="cf layout-row">
     <footer class="cf layout-cell-l5">
