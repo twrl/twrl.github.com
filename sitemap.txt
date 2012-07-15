@@ -1,8 +1,43 @@
----
-# Remember to set production_url in your _config.yml file!
-title : Sitemap
----
-{% for page in site.pages %}
-{{site.production_url}}{{ page.url }}{% endfor %}
-{% for post in site.posts %}
-{{site.production_url}}{{ post.url }}{% endfor %}
+
+http://twrl.github.com/404.html
+http://twrl.github.com/archive.html
+http://twrl.github.com/atom.xml
+http://twrl.github.com/index.html
+http://twrl.github.com/pages.html
+http://twrl.github.com/sitemap.txt
+http://twrl.github.com/tags.html
+http://twrl.github.com/page2/index.html
+http://twrl.github.com/tag/Civil Partnership.html
+http://twrl.github.com/tag/LGBT.html
+http://twrl.github.com/tag/Same-sex Marriage.html
+http://twrl.github.com/tag/Society.html
+http://twrl.github.com/tag/Web Standards.html
+http://twrl.github.com/tag/XML.html
+http://twrl.github.com/tag/CommonJS.html
+http://twrl.github.com/tag/Javascript.html
+http://twrl.github.com/tag/OSID.html
+http://twrl.github.com/tag/Programming.html
+http://twrl.github.com/tag/Ajax.html
+http://twrl.github.com/tag/jQuery.html
+http://twrl.github.com/tag/AMD.html
+http://twrl.github.com/tag/Web Workers.html
+http://twrl.github.com/tag/The Cloud.html
+http://twrl.github.com/tag/Web Architecture.html
+http://twrl.github.com/tag/Diaspora.html
+http://twrl.github.com/tag/Facebook.html
+http://twrl.github.com/tag/Google.html
+http://twrl.github.com/tag/Semantic Web.html
+http://twrl.github.com/tag/Social Networking.html
+http://twrl.github.com/tag/Jekyll.html
+http://twrl.github.com/tag/Blog.html
+
+http://twrl.github.com/2012/07/14/the-new-edition
+http://twrl.github.com/2012/06/11/javascript-alternatives
+http://twrl.github.com/2012/05/18/social-networking
+http://twrl.github.com/2012/05/16/who-am-i-standing-up-to-again
+http://twrl.github.com/2012/05/15/wheres-my-data
+http://twrl.github.com/2012/03/28/initialising-web-workers
+http://twrl.github.com/2012/03/28/ajax-and-file-uris
+http://twrl.github.com/2012/03/22/whatever-happened-to-osid
+http://twrl.github.com/2012/03/22/rehashing-xml
+http://twrl.github.com/2012/03/21/im-fed-up-with-same--sex-marriage

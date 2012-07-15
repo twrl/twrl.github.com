@@ -1,28 +1,304 @@
----
-layout: nil
-title : Atom Feed
----
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
  
- <title>{{ site.title }}</title>
- <link href="{{ site.production_url }}/atom.xml" rel="self"/>
- <link href="{{ site.production_url }}"/>
- <updated>{{ site.time | date_to_xmlschema }}</updated>
- <id>{{ site.production_url }}</id>
+ <title>twrl</title>
+ <link href="http://twrl.github.com/atom.xml" rel="self"/>
+ <link href="http://twrl.github.com"/>
+ <updated>2012-07-15T23:56:00+01:00</updated>
+ <id>http://twrl.github.com</id>
  <author>
-   <name>{{ site.author.name }}</name>
-   <email>{{ site.author.email }}</email>
+   <name>Tom Robbins</name>
+   <email>00.twrl@gmail.com</email>
  </author>
 
- {% for post in site.posts %}
+ 
  <entry>
-   <title>{{ post.title }}</title>
-   <link href="{{ site.production_url }}{{ post.url }}"/>
-   <updated>{{ post.date | date_to_xmlschema }}</updated>
-   <id>{{ site.production_url }}{{ post.id }}</id>
-   <content type="html">{{ post.content | xml_escape }}</content>
+   <title>The New Edition</title>
+   <link href="http://twrl.github.com/2012/07/14/the-new-edition"/>
+   <updated>2012-07-14T00:00:00+01:00</updated>
+   <id>http://twrl.github.com/2012/07/14/the-new-edition</id>
+   <content type="html">&lt;p&gt;The long-awaited redo of this blog is at hand.&lt;/p&gt;
+
+&lt;p&gt;After a brief bout of insanity brought on by spending too much time with Blogger&amp;#8217;s excuse for a template system, I realised: I don&amp;#8217;t need all that complexity. Browsing around for something with which to replace Blogger, and preferably not add too much to the vast number of accounts I&amp;#8217;m dragging around with me, I stumbled onto Jekyll. And so, here we are.&lt;/p&gt;
+
+&lt;p&gt;Now, it&amp;#8217;s been some time since I last sunk my teeth into a new language, and learning Ruby has been on my to-do list for a while. So not only am I using Jekyll to maintain my blog, I&amp;#8217;m progressively tampering with it in an effort to learn Ruby.&lt;/p&gt;</content>
  </entry>
- {% endfor %}
+ 
+ <entry>
+   <title>Javascript Alternatives</title>
+   <link href="http://twrl.github.com/2012/06/11/javascript-alternatives"/>
+   <updated>2012-06-11T00:00:00+01:00</updated>
+   <id>http://twrl.github.com/2012/06/11/javascript-alternatives</id>
+   <content type="html">&lt;p&gt;Over the last four weeks I&amp;#8217;ve been rather busy with exams, but now that&amp;#8217;s over I&amp;#8217;m thinking computer again.&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;ve been looking at some of the alternatives to JavaScript. In many ways JavaScript is a lovely little language, it&amp;#8217;s incredibly flexible. But, the same dynamic type system that makes it so flexible also makes certain things very difficult (like writing or consuming modular APIs), and the prototype-based object system obscures many of the benefits of object-oriented programming. For some purposes these are strengths, because JavaScript can glue so many different things together without casting and without wrestling with common OO patterns like adapter or facade. Modularisation and componentisation are difficult, because with such weak typing it&amp;#8217;s very difficult to check that interfaces are compatible.&lt;/p&gt;
+
+&lt;p&gt;There are many alternatives out there, the big ones of the moment being Opa, Google Dart, and CoffeeScript. VBScript is also out there if you know you&amp;#8217;re dealing with purely Internet Explorer clients, but the less said about VBScript the better.&lt;/p&gt;
+
+&lt;p&gt;I do not particularly like CoffeeScript. It has some very neat design ideas, but I personally find it less readable than regular JavaScript. I&amp;#8217;m a curly bracket language boy, I like my start and end delimiters and consider indenting to be a style and readability thing. So while I can&amp;#8217;t actually find anything to complain about with CoffeeScript, it just doesn&amp;#8217;t suit my coding style.&lt;/p&gt;
+
+&lt;p&gt;On to Dart. Syntactically, it&amp;#8217;s like a hybrid of C# and JavaScript, with a pinch of PHP. Which is fine, I have no objection to any of that. However, there are several things about Dart which make me rather uncomfortable. For a start I don&amp;#8217;t agree with Google&amp;#8217;s design decisions about the Dart VM, although that&amp;#8217;s minor. Dart is designed to operate in the client, with a Dart-to-JavaScript transpiler as a transition measure, but I don&amp;#8217;t expect to see a Dart VM implemented in anything but Google Chrome any time soon. It&amp;#8217;s also far from clear how Dart interoperates with JavaScript - especially when the JavaScript comes packaged in AMD or CommonJS modules.&lt;/p&gt;
+
+&lt;p&gt;Which brings me to Opa. It&amp;#8217;s rather neat, I was impressed. There are so many clever things in Opa, not least of which is the way it hides the details of communication between client and server. However, I&amp;#8217;m not so keen on the way the markup tends to become fragments embedded in the program rather than the other way around - ASP.Net and PHP have done that pattern to death - and Opa leaves me feeling like I&amp;#8217;m not entirely in control of the code that I&amp;#8217;m writing. The point of Opa is to hide tricky details, especially of middleware, but it&amp;#8217;s actually too good at what it does for comfort.&lt;/p&gt;
+
+&lt;p&gt;Which brings me back to JavaScript, but then I&amp;#8217;m still stuck with the clunkyness of JavaScript for certain applications. Still, while it might not always be elegant, it does work. So for the time being, I&amp;#8217;ll stick with JavaScript.&lt;/p&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>Social Networking</title>
+   <link href="http://twrl.github.com/2012/05/18/social-networking"/>
+   <updated>2012-05-18T00:00:00+01:00</updated>
+   <id>http://twrl.github.com/2012/05/18/social-networking</id>
+   <content type="html">&lt;p&gt;I like Google+. There&amp;#8217;s a very good reason for this: integration.&lt;/p&gt;
+
+&lt;p&gt;I use Google Reader, Google Search, Google Drive, Google Calendar, Google Mail, Google Play, Google Chrome and Blogger. I use these things because Google is becoming the Unix of the web - a large set of simple, single-purpose tools that play nicely together.&lt;/p&gt;
+
+&lt;p&gt;So it&amp;#8217;s only natural that I also want to use Google+ too. It would be so very convenient.&lt;/p&gt;
+
+&lt;p&gt;There are two problems. First off, I&amp;#8217;ve become too used to clicking &amp;#8220;Log on with Facebook&amp;#8221;. For a lot of services that I use, I&amp;#8217;ve never actually created an account. This is not an insurmountable problem, I&amp;#8217;ll live with more passwords in my life.&lt;/p&gt;
+
+&lt;p&gt;The second is more substantial: I have around 350 Facebook friends. I have six friends who use Google+. The update streams, photos, and so on I can work around or live without - but realtime interaction? I communicate a lot through facebook messages.&lt;/p&gt;
+
+&lt;p&gt;Since Facebook exposes it&amp;#8217;s chat services through XMPP and social graph as a RESTful JSON service, you would think something could be done about this. But no, Facebook isn&amp;#8217;t willing to play this game because they don&amp;#8217;t want to loose users.&lt;/p&gt;
+
+&lt;p&gt;Which brings me back to the idea of Data Portability. Why can&amp;#8217;t I keep my own little corner of the social graph, and Facebook and Google just provide services on top of it? In spite of the technical difficulties this is not such a crazy idea - there are plenty of solutions for distributed data storage and aggregation.&lt;/p&gt;
+
+&lt;p&gt;Part of the necessary technology already exists in the Diaspora project. Diaspora is distributed, but it still requires servers. It isn&amp;#8217;t peer-to-peer in the way that we more usually associate with file sharing. You don&amp;#8217;t run a Diaspora application on your PC when you want to access it - you have to run a well-connected server all the time.&lt;/p&gt;
+
+&lt;p&gt;There are schemes which could overcome the always-connected architecture for distributing social graph data, but doing the same thing for realtime interaction is more difficult. Keeping track of my chat and realtime messaging activities when I have hundreds of friends is much easier when there is a single, co-ordinating hub. It becomes next to impossible when there is no server and I&amp;#8217;m using multiple clients on multiple devices.&lt;/p&gt;
+
+&lt;p&gt;So that&amp;#8217;s the challenge - can you keep distributed, continuously updated realtime data without some form of server infrastructure?&lt;/p&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>Who am I standing up to again?</title>
+   <link href="http://twrl.github.com/2012/05/16/who-am-i-standing-up-to-again"/>
+   <updated>2012-05-16T00:00:00+01:00</updated>
+   <id>http://twrl.github.com/2012/05/16/who-am-i-standing-up-to-again</id>
+   <content type="html">&lt;p&gt;There was an article today on the Huffington Post by Max Wind-Cowie called &amp;#8221;&lt;a href='http://www.huffingtonpost.co.uk/max-windcowie/gay-marriage-who-will-stand-up-to-the-hetero-phobes_b_1514024.html?ref=uk-politics'&gt;Who Will Stand Up to the Hetero-Phobes?&lt;/a&gt;&amp;#8221; - and it&amp;#8217;s really got me seething. So much that I feel I have to rebut it. Here goes:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;A little while ago I wrote a piece for ConservativeHome about how the attacks and smears of the pro gay marriage campaign had shaken my belief in the cause to its foundations. The impulse to cry &amp;#8216;paedo&amp;#8217; every time a Catholic spoke of their discomfort over same sex marriage, the howls of &amp;#8216;bigot&amp;#8217; accompanying even the most gentle warning about potential implications - these are the characteristics of a movement that no longer believes it can win an argument and has instead decided to rely on ad hominem and vitriol. It is intolerant and it is ugly.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;There are three things here - first of all if your belief in a cause is so shaken by the actions of said cause&amp;#8217;s supporters, that&amp;#8217;s deeply concerning. Your belief was presumably not terribly strong, or &lt;em&gt;tu quoque&lt;/em&gt; would not be an issue. I don&amp;#8217;t have to like what Israel gets up to in the middle east to oppose anti-semitism.&lt;/p&gt;
+
+&lt;p&gt;I haven&amp;#8217;t actually seen cries of &amp;#8216;paedo&amp;#8217; every time a Catholic speaks of sex, same-sex marriage, or the Roman church&amp;#8217;s dogma regarding the subject - perhaps I&amp;#8217;m looking in the wrong places. I have seen the pedophile priest debacle used to put pay to Catholic figures attempting to take the moral high ground on sexual ethics, especially when making &amp;#8220;won&amp;#8217;t somebody please think of the children&amp;#8221; style arguments. While I&amp;#8217;ll grant this is a rather crude tactic, it&amp;#8217;s not a wholly inappropriate response to Catholic bishops claiming to be in a position of inviolable moral authority, in contrast to the evil homosexual agenda to turn everyone&amp;#8217;s children.&lt;/p&gt;
+
+&lt;p&gt;And then there is the term bigot. I&amp;#8217;m surprised that this needs explaining, but a bigot is by definition a prejudiced and intolerant person. So when somebody provides an objection to same-sex marriage which is not born of prejudice and intolerance, but instead comes from a balanced and rational appreciation of the relevant facts, then I shall refrain from calling them a bigot. When somebody provides an objection which is born of ignorance, stupidity, or centuries of institutionalised hatred and scapegoating, then I shall call them a bigot with impunity.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Over the last week we have seen further examples of the extent to which the gay rights militia has abandoned any moral authority and now seeks, apparently unashamedly, not to win through debate but to rob others of their right to speak.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This is clearly misleading. To start with, the validity of the argument for same-sex marriage is not challenged by what Wind-Cowie perceives as heterophobia. I don&amp;#8217;t feel I have some great &amp;#8216;moral authority&amp;#8217; to abandon - the LGBT movement is fighting for it&amp;#8217;s rights, not for some moral ideal - we&amp;#8217;re more like Mandelas than Ghandis. Neither is what follows a detriment to others&amp;#8217; right to free speec, or it wouldn&amp;#8217;t be if it had been reported accurately:&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;First came the Advertising Standards Authority&amp;#8217;s demand that the blogger &amp;#8216;Archbishop Cranmer&amp;#8217; answer for the adverts he had run on behalf of the Coalition for Marriage campaign. These ads - which showed heterosexual couples celebrating their nuptials and implored viewers to sign the coalition&amp;#8217;s petition - apparently caused &amp;#8216;hurt and offence&amp;#8217; to some gay people. The only way in which one could possibly be &amp;#8216;hurt&amp;#8217; by the ad would be if one were somehow offended by the image of straight couples doing what straight couples have done for thousands of years - marrying one another. This isn&amp;#8217;t a reaction against &amp;#8216;hate speech&amp;#8217; folks, it&amp;#8217;s outright hetero-phobia.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;These readers responded to their &amp;#8216;hurt&amp;#8217; not by engaging in debate or navigating away from the page but by submitting complaints to the ASA - who have followed up in aggressive style and have frightened the man behind the avatar into hiring in the lawyers.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;According to the ASA, &lt;a href='http://www.pinknews.co.uk/2012/05/16/asa-responds-to-claim-it-persecuted-religious-blog-in-investigating-anti-gay-marriage-ad/'&gt;the relevant complaints refer to the advert itself&lt;/a&gt; and in particular the (potentially) misleading 70% statistic from the ComRes/Catholic Voices poll. It is the advert which is under investigation, not the blogger who was contacted as part of said investigation. This appears to be the witness/suspect distinction gone awry.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Next came the extraordinary decision by the Law Society to withdraw permission for an event on the role of heterosexual marriage in a good and just society. Cristina Odone (who was due to speak at the event alongside my friend Phillip Blond) has written for the Telegraph that the decision was taken on the basis that a discussion of heterosexual marriage contravened the esteemed society&amp;#8217;s &amp;#8216;diversity policy&amp;#8217;. Apparently diversity - for the Law Society at least - stretches only one way in the discussion of public policy.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The event in question was a colloquium held by the &lt;a href='http://www.worldcongress.org/'&gt;World Congress of Families&lt;/a&gt;, a religiously motivated, US-led, conservative organisation whose stated principles include such gems as &amp;#8220;Marriage between a man and a woman forms the sole moral context for natural sexual union. Whether through pornography, promiscuity, incest or homosexuality, deviations from these created sexual norms cannot truly satisfy the human spirit.&amp;#8221;&lt;/p&gt;
+
+&lt;p&gt;I sincerely doubt that what they had in mind was a balanced debate - apparently the Law Society agrees, although they have not to my knowledge publicly commented. Would it be appropriate for the Law Society to host a well-rounded debate on a contentious issue of public policy: eminently. Would it be appropriate for the Law Society to host a group of people, most if not all of whom are already in broad agreement, ranting at each other about how LGBT people are seeking to undermine society: absolutely not.&lt;/p&gt;
+
+&lt;p&gt;The rights of Christina Odone and others to free expression are not compromised by the Law Society refusing to be their soapbox. One person&amp;#8217;s right to free speech does not give somebody else an obligation to be their platform.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;And this is the problem. I too believe in diversity. I&amp;#8217;m a gay man (who, as it happens, believes that gay marriage is the right way forward for our society) who has benefited from our tradition of allowing a plurality of views and for the open discussion of what is good and right and what is bad and wrong. Were it not for Britain&amp;#8217;s tolerance of dissent who would have been brave, or foolish, enough to argue that people like me ought not be imprisoned for our sexual desires?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;On this at least we are in agreement. However, I see the matter of diversity, equality and fairness rather differently - perhaps more pessimistically.&lt;/p&gt;
+
+&lt;p&gt;It is a sad truth that in our society people can&amp;#8217;t simply expect to be treated fairly, instead we must have and use the law to enforce &amp;#8216;fairness&amp;#8217;. As a society we have determined that who you love is a characteristic that leads to people being treated unfairly, and is worthy of being so protected. We have not determined that who you hate is a characteristic worthy of the same consideration.&lt;/p&gt;
+
+&lt;p&gt;But people&amp;#8217;s fundamental rights continue unabridged. Refusing to indulge anti-gay groups publicity stunts, or asking awkward questions of fundamentalist bloggers, is not comparable with the criminalisation of homosexuality. Sixty years ago both Wind-Cowie and myself would either have been imprisoned or chemically castrated - that Christina Odone had to air her views on the website of the Telegraph instead of the floor of the Law Society is minutiae by comparison. Last week, as happens alarmingly often the world over, &lt;a href='http://www.huffingtonpost.com/2012/05/11/jay-corey-jones-gay-minnesota-teen-suicide_n_1510001.html'&gt;it was widely reported that a teenager committed suicide after a campaign of homophobic bullying&lt;/a&gt; - not an event which is analogous to a badly worded letter from the ASA bruising somebody&amp;#8217;s feelings.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Yet that very word, &amp;#8216;diversity&amp;#8217;, has now come to represent not plurality but homogeneity, not dissent but repression. Hiding behind it, secularists and the ayatollahs of social liberalism are able to strip public discourse of the bits they don&amp;#8217;t like - faith, orthodoxy, skepticism about change. They have been able to use the frame of diversity as a weapon against its very purpose; to shut out and shut up those with whom they disagree.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;It&amp;#8217;s time for those gay men and women who genuinely prize freedom to take a stand against those who act against it in our name. It is up to us to continue winning the argument for the freedoms our society permits us - not to preserve those freedoms at the expense of others&amp;#8217; consciences or right to speak.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Faith has no place in the machinery of state. If the law must reflect the Catholic religious view that I should not marry, why should it not reflect the hardline Islamic view that I deserve to be stoned to death? Or the pastafarian view that everybody eat spaghetti and meatballs once a week? Regardless of my personal views on religion, it has no place in the state - otherwise where do you draw the line. The price of religious freedom is freedom from religion.&lt;/p&gt;
+
+&lt;p&gt;The argument for same-sex marriage is already won.&lt;/p&gt;
+
+&lt;p&gt;The fight now is social - it&amp;#8217;s holding teachers accountable for the fact that homophobia is not just &amp;#8216;playground banter&amp;#8217;, it pointing out the demeaning and devaluing implications of &amp;#8220;love the sinner, hate the sin&amp;#8221;, and so on. If that&amp;#8217;s what people wish to believe or profess then so be it, but their right to believe these things and profess these things does not prevent me from arguing with them, nor from shaming them.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;If my society gives me the right to marry I want that right to have sprung from a collective judgment, not from the authoritarian zeal of those acting, supposedly, on my behalf. Let&amp;#8217;s leave the hetero-phobia at the door and get on with the business of political and moral debate. For goodness sake gays, stop whinging about people who disagree with you - argue with them.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The collective judgement seems to agree with us right now, but anyone foolish enough to believe that the will of the majority can guarantee peoples rights has an alarmingly short memory. If collective judgement were the only force for change, maybe we would be imprisoned after all.&lt;/p&gt;
+
+&lt;p&gt;This whole style of thought, putting principle before practice; think tanks, rhetorical style and Westminster politics before suicide rates, homophobic crime and homelessness; this moral high ground, the concept that we must protect the freedom of the people who hate us; this is the biggest challenge which we now face in advancing the cause of LGBT equality - it&amp;#8217;s within ourselves.&lt;/p&gt;
+
+&lt;p&gt;It&amp;#8217;s our instinct: be normal, take the moral high ground, articulate your complaints, reason with the unreasonable, conform, integrate, assimilate, play the game. This is how we earn our place at the table: &amp;#8220;He&amp;#8217;s gay but he&amp;#8217;s a nice chap,&amp;#8221; and &amp;#8220;Isn&amp;#8217;t she pretty, she used to be a man don&amp;#8217;tchaknow.&amp;#8221; That&amp;#8217;s not a table I want to sit at - we can carve out other places in society.&lt;/p&gt;
+
+&lt;p&gt;Equality before the law is but a stones throw away - an equal place in society is shaping up to be a much longer and more bitter fight, and greatest opponents may yet prove to be each other.&lt;/p&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>Where's my Data!</title>
+   <link href="http://twrl.github.com/2012/05/15/wheres-my-data"/>
+   <updated>2012-05-15T00:00:00+01:00</updated>
+   <id>http://twrl.github.com/2012/05/15/wheres-my-data</id>
+   <content type="html">&lt;p&gt;I have Facebook. I have Google+, Google Docs, Google Play, GMail, Blogger, Picasa and various other Google products. I have a Live@edu email account. I have a github account, a SourceForge account, a cloud9 account, and a Hojoki account. I have an account with Ocado and another with Tesco, and one with Amazon. I have at least two OpenIDs, and a dozen more services which I routinely use by federated logon to one of the above.&lt;/p&gt;
+
+&lt;p&gt;I have accounts with online services that I don&amp;#8217;t even remember exist.&lt;/p&gt;
+
+&lt;p&gt;My online identity is no longer a discrete thing. It&amp;#8217;s a big ball of fuzz, at best. And because of the overload of accounts none of them use any sort of particularly strong credentials. I choose decent passwords, but that&amp;#8217;s a good as it gets.&lt;/p&gt;
+
+&lt;p&gt;The problem is data. I&amp;#8217;ve recently become acutely aware of how spread out my data is across so many different services. My contacts experience five-way synchronisation between Google, Live, Facebook, my Laptop and my Phone - and I have this sneaking suspicion that I&amp;#8217;ve missed some. I don&amp;#8217;t even know where my data is any more, I can&amp;#8217;t use half of it when I want it because even if I do remember where it is, access is only ensured by the stored passwords and cookies in my web browser.&lt;/p&gt;
+
+&lt;p&gt;We have an architectural problem. I want my data! It&amp;#8217;s mine! I want to use your services to work with my data - I don&amp;#8217;t want to use your services to work with your copy of a subset of my data.&lt;/p&gt;
+
+&lt;p&gt;Oh, and it would be nice if it were all transparent. If I could chop and change services, just like I can now but without the hassle of exporting and re-importing all my data.&lt;/p&gt;
+
+&lt;p&gt;Technologically speaking this is pretty easy. A triplestore in the cloud, augmented by some sort of bulk storage. OAuth to control access by different service providers, data synchronisation so that I can keep my data (or subsets of it) available offline. OpenID to federate your login to everything, and X.509 certificates, or even a hardware token, to authenticate to your identity provider.&lt;/p&gt;
+
+&lt;p&gt;None of this actually requires any new breakthrough - but &amp;#8216;the cloud&amp;#8217; is primarily an infrastructure for service providers, rather than one for users. The money is in selling multiply-redundant block storage by the trillions of bytes, or processor-hours by the hundred thousand a month. It&amp;#8217;s not in providing semi-structured storage (with the overheads that entails) for a steady 300-500GB of my accumulated junk.&lt;/p&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>Initialising Web Workers</title>
+   <link href="http://twrl.github.com/2012/03/28/initialising-web-workers"/>
+   <updated>2012-03-28T00:00:00+01:00</updated>
+   <id>http://twrl.github.com/2012/03/28/initialising-web-workers</id>
+   <content type="html">&lt;p&gt;I&amp;#8217;ve had tonsillitis over the last 5 days or so, so I&amp;#8217;ve spent most of the last few days in a bit of a daze, idly tinkering with random things to pass the time. As with much idle tinkering, it&amp;#8217;s all a bit rough and ready, but here is one snippet which might prove useful.&lt;/p&gt;
+
+&lt;p&gt;I was tinkering with Web Workers and I wanted to be able to load up Require.js in a worker and then pass it the name of a main module. So I wrote this stub, lets call it w.js, which goes in the same directory as require.js (which will be Require&amp;#8217;s baseDir - told you it was a bit rough). You can then create your worker by doing&lt;/p&gt;
+
+&lt;p&gt;and Require.js will be loaded into your module, which will in turn load your main. As a fringe benefit you get a nice global object called query which contains all parameters passed in the query string.&lt;/p&gt;
+
+&lt;p&gt;Now I know this is not terribly exciting - parsing a query string is pretty basic stuff in Javascript - but when I first tried this I was looking at a one-off message handler to initialise the global context in the worker. Because workers share so few API&amp;#8217;s with an ordinary web page, it&amp;#8217;s easy to forget the few that they have in common, and one of them is location.&lt;/p&gt;
+
+&lt;p&gt;For some more advanced cases the message handler might still be the best way forward, but to get a few name-value pairs in this is a lovely little trick.&lt;/p&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>Ajax and file&#58;// URIs</title>
+   <link href="http://twrl.github.com/2012/03/28/ajax-and-file-uris"/>
+   <updated>2012-03-28T00:00:00+01:00</updated>
+   <id>http://twrl.github.com/2012/03/28/ajax-and-file-uris</id>
+   <content type="html">&lt;p&gt;Ajax is becoming the dominant method, if it isn&amp;#8217;t already, of getting data in and out of a web application. But Ajax is built on top of XMLHttpRequest, which as the name suggests is only really well defined if the underlying protocol is HTTP.&lt;/p&gt;
+
+&lt;p&gt;So what about local files? The new Filesystem API&amp;#8217;s are coming, but they sandbox us heavily. At least for the time being, if we want to muck about with self-modifying code or local file-based data sources we have to hack it, which means using any one of half a dozen browser and/or os specific methods.&lt;/p&gt;
+
+&lt;p&gt;I quite like having a consistent API to work with, which you can&amp;#8217;t easily have under these circumstances. Fortunately, the lovely folks at TiddlyWiki have provided &lt;a href='http://jquery.tiddlywiki.org/twFile.html'&gt;a jQuery plugin&lt;/a&gt; which abstracts their general purpose file load and save functionality, so you have a load and a save function exposed and how those are best implemented is determined for you automatically.&lt;/p&gt;
+
+&lt;p&gt;However, it&amp;#8217;s still not a single consistent API for getting data in and out. Having load and save methods for the local filesystem is lovely if all I want to do is load and save from the local filesystem, but what if I want to use a resource which may or may not be local. I would like to treat a directory full of JSON files on the local system the same as a REST interface on a remote server, and the only thing I want to change is the base URI.&lt;/p&gt;
+
+&lt;p&gt;jQuery now supports the &lt;code&gt;$.ajaxTransport&lt;/code&gt; method, which allows us to define custom ways in which jQuery&amp;#8217;s &lt;code&gt;$.ajax&lt;/code&gt; method is implemented for different circumstances. It&amp;#8217;s relatively easy to use this to intercept Ajax queries to file:// URIs, and translate them into load and save calls based on whether they&amp;#8217;re GET or PUT. I&amp;#8217;ve hacked together a &lt;a href='https://github.com/twrl/tinker/blob/master/js/jquery/localJax.js'&gt;jQuery plugin&lt;/a&gt; to do just that, remapping Ajax queries on local files to the equivalent calls on TiddlyWiki&amp;#8217;s twFile plugin.&lt;/p&gt;
+
+&lt;p&gt;As cool as this is, it&amp;#8217;s only half the story. We don&amp;#8217;t just use Ajax to GET and PUT to RESTful data, we use it for all sorts of other things. It makes no sense to define a behaviour for a POST to local files in general. However, Web Workers potentially change that. An Ajax post to a local javascript could be interpreted as a command to load that javascript as a web worker, and then pass the query data into the worker as a message and wait for a response. Or it could not. The scenario is rather complicated, but certainly worth thinking about.&lt;/p&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>Whatever Happened To Osid</title>
+   <link href="http://twrl.github.com/2012/03/22/whatever-happened-to-osid"/>
+   <updated>2012-03-22T00:00:00+00:00</updated>
+   <id>http://twrl.github.com/2012/03/22/whatever-happened-to-osid</id>
+   <content type="html">&lt;p&gt;Five years ago, or so, we had a wonderful suite of open, abstract API&amp;#8217;s developed by a group led out of MIT and calling themselves the Open Knowledge Initiative. These API&amp;#8217;s were the Open Service Interface Definitions, and although they had a definite flavour of Java about them, the specs were deliberately designed to be platform neutral.&lt;/p&gt;
+
+&lt;p&gt;OKI now appears to be defunct, but a lot of what they produced is still &lt;a href='http://sourceforge.net/projects/okiproject'&gt;sitting there on SourceForge&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Now a lot of this was useless nonsense, at least, outside of certain specialist applications. I know there are people that do, but I personally have no wish to keep track of who is enrolled on which course. Application specific is not general purpose. However, there are some very good general purpose abstractions in there.&lt;/p&gt;
+
+&lt;p&gt;Filing, for example, provides a highly abstracted representation of any filing system (which is anything which consists of trees of containers and byte-streams). Hierarchy is not dissimilar, abstracting anything which is hierarchical.&lt;/p&gt;
+
+&lt;h3 id='and_your_point_is'&gt;And your point is&amp;#8230;&lt;/h3&gt;
+
+&lt;p&gt;Javascript. My point is Javascript.&lt;/p&gt;
+
+&lt;p&gt;Until relatively recently, Javascript was a domain specific language. It was used for scripting, in particular in the context of web browsers. Suddenly, Javascript is seeing general purpose use - largely due to the introduction of Node and Rhino. Equally, we&amp;#8217;re seeing the boundary between web and desktop applications blurring, courtesy of HTML5 amongst others. The use cases for Javascript have exploded, they&amp;#8217;re vast, they&amp;#8217;re everywhere.&lt;/p&gt;
+
+&lt;p&gt;And the only fully standardised API we have is DOM, and nobody fully complies with that.&lt;/p&gt;
+
+&lt;p&gt;I have a soft spot for OSID, because it was in vogue a the time when I was teaching myself concepts like middleware and n-tier architecture. However, clean, pure and platform neutral abstractions like those which make up a large part of the OSID specs are a perfect starting point if we&amp;#8217;re going to build up standard APIs for Javascript. CommonJS is achieving great things, but CommonJS is more concerned with the concept of a module than the content of a module.&lt;/p&gt;
+
+&lt;p&gt;The hint of Java in OSID only adds to the attraction, because Javascript is so frequently sandboxed. A Java-like API has an advantage getting around this, because most sandboxing environments support some kind of Java liveconnect or equivalent, allowing us to use Java to implement any privileged elements (with associated benefits of code signing and code security policies being built into the JVM). As TiddlyWiki was forced to do, we can implement things like low-level filesystem access as a Java applet.&lt;/p&gt;
+
+&lt;h3 id='but'&gt;But&amp;#8230;&lt;/h3&gt;
+
+&lt;p&gt;Javascript&amp;#8217;s type system is prototype-based, not class-based. This means that there is no native concept of an interface, nor can types be attributed in a standard way like they can in environments such as CLI. So defining a load of interfaces and implementations of those interfaces is not something which makes sense in the context of Javascript.&lt;/p&gt;
+
+&lt;p&gt;Alas, there is no standard API in Javascript for emulating these things either. Various projects like Joose provide a metaobject framework, but there isn&amp;#8217;t a common (or even a bunch of broadly similar) API for it in Javascript. So our interfaces are effectively just exercises in duck-typing.&lt;/p&gt;
+
+&lt;p&gt;So that&amp;#8217;s where we start. In the first instance, our interfaces aren&amp;#8217;t interfaces at all but a set of functions which test that an object conforms to the specification we&amp;#8217;ve given.&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;ve begun sketching this out as &lt;a href='http://github.com/twrl/osid.js'&gt;a set of AMD modules on Github&lt;/a&gt;, but for the time being it&amp;#8217;s all very basic.&lt;/p&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>Rehashing Xml</title>
+   <link href="http://twrl.github.com/2012/03/22/rehashing-xml"/>
+   <updated>2012-03-22T00:00:00+00:00</updated>
+   <id>http://twrl.github.com/2012/03/22/rehashing-xml</id>
+   <content type="html">&lt;p&gt;I find it interesting sometimes to consider, if I were starting over and designing &lt;em&gt;xyz-thing&lt;/em&gt; from scratch, what would I do differently to what we already have. Recently I&amp;#8217;ve been considering this with XML.&lt;/p&gt;
+
+&lt;p&gt;The trouble with XML is that it&amp;#8217;s a vast stack of standards. In some ways this is a good thing, because at least in theory it adds a lot of flexibility for different use cases. But it does result in duplication and redundancy, because document authors never know exactly which editions of which specs are being used by which processors and vice versa. How often do we see patterns like the common one for the language attribute on the HTML tag:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;&amp;lt;html xmlns=&amp;quot;http://www.w3.org/1999/xhtml&amp;quot; lang=&amp;quot;en&amp;quot; xml:lang=&amp;quot;en&amp;quot;&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The common &lt;code&gt;id&lt;/code&gt; attribute is the same. It sounds like a trivial niggle, but actually it&amp;#8217;s a design flaw in how these applications (XHTML and XML in this case) are layered one on top of the other.&lt;/p&gt;
+
+&lt;p&gt;Then we have the DOM, the XML Infoset, EXI, Canonical XML, XML Namespaces, XML Schema and so on. It&amp;#8217;s a dizzying array of specs, each with complex demands, which is partly why WHATWG have moved away from the idea of XHTML and put their efforts into HTML5&amp;#8217;s SGML derived syntax instead. Complying with the existing stack of XML specifications is too onerous, and the specs themselves are not always neatly joined up.&lt;/p&gt;
+
+&lt;p&gt;Throw in stuff from the edges of the XML world - the development of IRIs, XRIs and CURIEs, the semantic models of RDF, the multipart MIME types and the data: URI scheme, and so on - and it&amp;#8217;s a recipe for migraines and sleepless nights.&lt;/p&gt;
+
+&lt;p&gt;For all it&amp;#8217;s flaws however, XML has a whole host of benefits too. There is a very good reason why it&amp;#8217;s so widely adopted, it&amp;#8217;s is very flexible and it is human readable, it is (relatively) easy to parse, validate and transform. There various stable and well understood means to map programmatic objects into XML serialisations and back, enabling everything from RPC to Active Record to be done using it.&lt;/p&gt;
+
+&lt;p&gt;So if I was going to redesign XML from scratch, what would I do? Well, here are my main thoughts:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Scrap DTDs, completely. I&amp;#8217;m sure there&amp;#8217;s been other occasions, but the last time that I can think of when I saw a DTD used seriously was when XHTML 1.1 was published, and XML Schema wasn&amp;#8217;t considered &amp;#8216;mature&amp;#8217; at the point.&lt;/li&gt;
+
+&lt;li&gt;Design the Infoset first. Infoset is supposed to represent the logical model of a document, which XML serialises and DOM provides programmatic access to. Standard XML syntax need not be the only serialisation of an XML Infoset, and the DOM can be made to converge more closely with the underlying model.&lt;/li&gt;
+
+&lt;li&gt;Take a cue from Architecture of the World Wide Web, and consider information items in your infoset as akin to resources. That means that an element might be considered to have a set of zero or more Descriptions, Identifiers, and Representations. Identifiers can be XPath expressions, IDs or any other unique reference to an element. Descriptions are any old metadata, and Representations correspond to different serialisations.&lt;/li&gt;
+
+&lt;li&gt;Design a processing model to go with the infoset. XML Schema defines the PSVI, XSLT defines the post transformation infoset, XML Encryption defines post encryption/decryption infosets. A general model for the transformation of one infoset into the next, and pipelining those transformations, would be very useful.&lt;/li&gt;
+
+&lt;li&gt;Consider all element and attribute names as URIs. Instead of QName we can use URIorCURIE as the type of all namespace qualified names.&lt;/li&gt;
+
+&lt;li&gt;Use processing instructions for instructions to the processor. That means rather than xmlns:foo=&amp;#8221;&amp;#8230;&amp;#8221; on an element we insert a processing instruction &lt;?namespace foo=&quot;...&quot;?&gt;. If qualified names are now URIs, then we are telling the processor how to expand any CURIEs that we are using. We might also have processing instructions for associating schemas, transforms, even linkbases. Processing instructions can be used to set up the document-specific processing pipeline described above, linking together various flavours of infoset transformation as well as controlling how the infoset is generated from the serialised document. Anything which alters the processing of the document when viewed as a series of parser events. Using attributes for this sort of thing should be limited strictly to when we are giving an element specific instruction.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;One day I might do a skunk works and draft something along these lines, until then I can but rant.&lt;/p&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>I'm Fed Up With Same-sex Marriage</title>
+   <link href="http://twrl.github.com/2012/03/21/im-fed-up-with-same--sex-marriage"/>
+   <updated>2012-03-21T00:00:00+00:00</updated>
+   <id>http://twrl.github.com/2012/03/21/im-fed-up-with-same--sex-marriage</id>
+   <content type="html">&lt;p&gt;It&amp;#8217;s been a week and a half since the government launched the Equal Marriage Consultation, which means it&amp;#8217;s been about twelve hours less than that since I responded and about a decade longer than that since it became a pressing social question.&lt;/p&gt;
+
+&lt;p&gt;I&amp;#8217;m bored with it already. The consultation period goes on until some time in mid June. Why do we need a twelve week consultation for something which the government has (a) already asked every official body which has an opinion about, and (b) the government has already decided to do and told everybody as much repeatedly?&lt;/p&gt;
+
+&lt;p&gt;I suspect it&amp;#8217;s a diversionary tactic. It keeps people like the bishops from looking too closely at the budget, and even if they do any unfortunate revelations about how it will have adverse effects on charities or people on lower incomes won&amp;#8217;t be reported because some &lt;del&gt;old fool&lt;/del&gt; bishop or &lt;del&gt;drooling troglodyte&lt;/del&gt; tabloid journalist is far to busy getting over excited about &amp;#8220;the gays want to marry, next thing they&amp;#8217;ll want us to decriminalise sex!&amp;#8221; or some such nonsense. It&amp;#8217;s like fox hunting all over again - Tony Blair managed to drag that out for years, and whenever it looked like a political crisis was looming there&amp;#8217;d be another debate on the Hunting Act.&lt;/p&gt;
+
+&lt;p&gt;However, in the spirit of the debate, here are the key points for me: in our culture, marriage is considered to be a recognition of a long term romantic relationship, and it has specific cultural connotations about fidelity, interdependence and so on. Religious, as opposed to civil, marriage has further religious connotations. Civil partnerships, being a relatively new innovation, have much the same practical legal effect but much less of the cultural baggage.&lt;/p&gt;
+
+&lt;p&gt;Now since we&amp;#8217;re recognising that there are a wide range of possible relationship styles and structures, none of which are intrinsically more or less valid than any other, it follows that there needs to be different styles of recognition to match. In addition to the legalisation of same-sex civil marriage, it&amp;#8217;s therefore necessary to legalise mixed-sex civil partnerships and same-sex religious marriage.&lt;/p&gt;
+
+&lt;p&gt;As far as religious marriage goes, I think it&amp;#8217;s important not to confuse legalising something with mandating it - a distinction which many religious leaders, along with totalitarian dictators, seem not to grasp. Requiring religious groups to do something would have unpleasant religious freedom implications, but equally prohibiting them from doing something has many of the same problems.&lt;/p&gt;
+
+&lt;p&gt;Anyway, by giving all couples all three options, we give them the freedom to have their relationship recognised in the most appropriate way to them. Unrealistic expectations are a killer for relationships, even expectations of third parties, and branding a relationship as a &amp;#8220;marriage&amp;#8221; when those involved are much more comfortable with the label and connotation of a civil partnership is not going to help matters.&lt;/p&gt;</content>
+ </entry>
+ 
  
 </feed>

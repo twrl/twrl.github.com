@@ -1,8 +1,0 @@
-    <meta property="og:title" content="{{page.title}}"/>
-    <meta property="og:site_name" content="{{site.title}}"/>
-    <meta property="og:type" content="article"/>
-    <meta property="og:url" content="{{page.url}}"/>
-    <!-- og:image -->
-    {% for tag in page.tags %}
-    <meta property="og:tag" content="{{tag}}"/>
-    {% endfor %}

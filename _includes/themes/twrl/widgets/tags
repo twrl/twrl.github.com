@@ -1,9 +1,0 @@
-<nav class="cf layout-cell-l1">
-    <h4><img src="{{ ASSET_PATH }}/icons/20.png" class="icon"/> Tags</h4>
-    <p>
-        {% for tag in site.tags limit:16 %}
-        <span class="nw"><a href="{{ BASE_PATH }}/tag/{{tag[0]}}.html">{{ tag[0] }}</a></span>
-        {% endfor %}
-    </p>
-    <p><a href="/tags.html">See all tags</a></p>
-</nav>

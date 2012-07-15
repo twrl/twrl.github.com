@@ -1,9 +1,0 @@
-<div class="cf layout-cell-r2">
-    <h4><img src="{{ASSET_PATH}}/icons/46.png" class="icon"/>About me</h4>
-    <img src="//lh4.googleusercontent.com/-sThPEpky3Eg/AAAAAAAAAAI/AAAAAAAAACg/Ncrk_nbS_5k/s512-c/photo.jpg" style="float: left; max-width: 80px; max-height: 80px; margin: 4px;"/>
-    <p style="float:right;"><!-- Place this code where you want the badge to render. -->
-<a href="//plus.google.com/114540468191182808437?prsrc=3" rel="publisher" style="text-decoration:none;">
-<img src="//ssl.gstatic.com/images/icons/gplus-32.png" alt="Google+" style="border:0;width:32px;height:32px;"/></a></p>
-    <p>Used to write code for a living, but since discovered that being a full time student is much more fun. Occasional cook, and not so occasional social commentator.</p>
-    
-</div>

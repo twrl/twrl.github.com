@@ -1,7 +1,0 @@
-<nav class="cf layout-cell-l1">
-    <h4><img src="{{ASSET_PATH}}/icons/12.png" class="icon"/>Recent Posts</h4>
-    <ul>
-    {% for rec in site.posts limit:8 %}
-        <li><a href="{{rec.url}}">{{rec.title}}</a></li>
-    {% endfor %}
-</nav>
