@@ -12,12 +12,12 @@ http://twrl.github.com/tag/Civil Partnership.html
 http://twrl.github.com/tag/LGBT.html
 http://twrl.github.com/tag/Same-sex Marriage.html
 http://twrl.github.com/tag/Society.html
-http://twrl.github.com/tag/Web Standards.html
-http://twrl.github.com/tag/XML.html
 http://twrl.github.com/tag/CommonJS.html
 http://twrl.github.com/tag/Javascript.html
 http://twrl.github.com/tag/OSID.html
 http://twrl.github.com/tag/Programming.html
+http://twrl.github.com/tag/Web Standards.html
+http://twrl.github.com/tag/XML.html
 http://twrl.github.com/tag/Ajax.html
 http://twrl.github.com/tag/jQuery.html
 http://twrl.github.com/tag/AMD.html
@@ -35,14 +35,14 @@ http://twrl.github.com/tag/Dynamic Views.html
 http://twrl.github.com/tag/Jekyll.html
 
 http://twrl.github.com/2012/07/14/the-new-edition
+http://twrl.github.com/2012/06/16/iconiser
 http://twrl.github.com/2012/06/14/views-dynamic-and-otherwise
-http://twrl.github.com/2012/06/14/iconiser
 http://twrl.github.com/2012/06/11/javascript-alternatives
 http://twrl.github.com/2012/05/18/social-networking
 http://twrl.github.com/2012/05/16/who-am-i-standing-up-to-again
 http://twrl.github.com/2012/05/15/wheres-my-data
 http://twrl.github.com/2012/03/28/initialising-web-workers
 http://twrl.github.com/2012/03/28/ajax-and-file-uris
+http://twrl.github.com/2012/03/23/rehashing-xml
 http://twrl.github.com/2012/03/22/whatever-happened-to-osid
-http://twrl.github.com/2012/03/22/rehashing-xml
 http://twrl.github.com/2012/03/21/im-fed-up-with-same--sex-marriage

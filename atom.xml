@@ -4,7 +4,7 @@
  <title>twrl</title>
  <link href="http://twrl.github.com/atom.xml" rel="self"/>
  <link href="http://twrl.github.com"/>
- <updated>2012-07-16T00:17:48+01:00</updated>
+ <updated>2012-07-16T00:20:06+01:00</updated>
  <id>http://twrl.github.com</id>
  <author>
    <name>Tom Robbins</name>
@@ -27,22 +27,10 @@
  </entry>
  
  <entry>
-   <title>Views, dynamic and otherwise</title>
-   <link href="http://twrl.github.com/2012/06/14/views-dynamic-and-otherwise"/>
-   <updated>2012-06-14T00:00:00+01:00</updated>
-   <id>http://twrl.github.com/2012/06/14/views-dynamic-and-otherwise</id>
-   <content type="html">&lt;p&gt;I&amp;#8217;ve changed theme on this blog. I was using Dynamic Views, and now I&amp;#8217;m using a generic Awesome Inc. theme.&lt;/p&gt;
-
-&lt;p&gt;I love the way Dynamic Views looks. It&amp;#8217;s very sleek, but it&amp;#8217;s impossible to adapt. After a dozen attempts I gave up getting &lt;a href='http://alexgorbatchev.com/SyntaxHighlighter/'&gt;Alex Gorbatchev&amp;#8217;s SyntaxHighlighter&lt;/a&gt; to work with it, and a brief experiment with altering the CSS ended very badly indeed - it looked like a clown.&lt;/p&gt;
-
-&lt;p&gt;So to solve the first of those two problems I have switched to an old-style theme temporarily, while I write my own. This is not how I&amp;#8217;d planned on spending the rest of my day, but I suppose my CSS skills could benefit from some practice. So look out for some new shiny, coming soon to a blog near you&amp;#8230;&lt;/p&gt;</content>
- </entry>
- 
- <entry>
    <title>Iconiser</title>
-   <link href="http://twrl.github.com/2012/06/14/iconiser"/>
-   <updated>2012-06-14T00:00:00+01:00</updated>
-   <id>http://twrl.github.com/2012/06/14/iconiser</id>
+   <link href="http://twrl.github.com/2012/06/16/iconiser"/>
+   <updated>2012-06-16T00:00:00+01:00</updated>
+   <id>http://twrl.github.com/2012/06/16/iconiser</id>
    <content type="html">&lt;p&gt;This is a useful titbit for anyone who is working with blogger templates or other things that severely limit your ability to host and serve lots of little files. I just hacked it together now to implement the new theme I&amp;#8217;m writing for this blog.&lt;/p&gt;
 
 &lt;p&gt;I&amp;#8217;m using quite a few icons in the new theme and I wanted to embed them as data: URIs. The trouble is, I&amp;#8217;m using the same icon in several places which means duplication, and having great blocks of base64 embedded in the code is making it all unreadable. So I&amp;#8217;ve written a tiny jQuery plugin to maintain a catalogue of named icons, and then replace the shorthand URIs that I&amp;#8217;m using with the full one.&lt;/p&gt;
@@ -54,6 +42,18 @@
 &lt;p&gt;And finally, you can reference your icon like this&lt;/p&gt;
 
 &lt;p&gt;This is a bit of a quick and dirty hack, and it will certainly not degrade gracefully. But it might come in handy.&lt;/p&gt;</content>
+ </entry>
+ 
+ <entry>
+   <title>Views, dynamic and otherwise</title>
+   <link href="http://twrl.github.com/2012/06/14/views-dynamic-and-otherwise"/>
+   <updated>2012-06-14T00:00:00+01:00</updated>
+   <id>http://twrl.github.com/2012/06/14/views-dynamic-and-otherwise</id>
+   <content type="html">&lt;p&gt;I&amp;#8217;ve changed theme on this blog. I was using Dynamic Views, and now I&amp;#8217;m using a generic Awesome Inc. theme.&lt;/p&gt;
+
+&lt;p&gt;I love the way Dynamic Views looks. It&amp;#8217;s very sleek, but it&amp;#8217;s impossible to adapt. After a dozen attempts I gave up getting &lt;a href='http://alexgorbatchev.com/SyntaxHighlighter/'&gt;Alex Gorbatchev&amp;#8217;s SyntaxHighlighter&lt;/a&gt; to work with it, and a brief experiment with altering the CSS ended very badly indeed - it looked like a clown.&lt;/p&gt;
+
+&lt;p&gt;So to solve the first of those two problems I have switched to an old-style theme temporarily, while I write my own. This is not how I&amp;#8217;d planned on spending the rest of my day, but I suppose my CSS skills could benefit from some practice. So look out for some new shiny, coming soon to a blog near you&amp;#8230;&lt;/p&gt;</content>
  </entry>
  
  <entry>
@@ -239,6 +239,44 @@
  </entry>
  
  <entry>
+   <title>Rehashing Xml</title>
+   <link href="http://twrl.github.com/2012/03/23/rehashing-xml"/>
+   <updated>2012-03-23T00:00:00+00:00</updated>
+   <id>http://twrl.github.com/2012/03/23/rehashing-xml</id>
+   <content type="html">&lt;p&gt;I find it interesting sometimes to consider, if I were starting over and designing &lt;em&gt;xyz-thing&lt;/em&gt; from scratch, what would I do differently to what we already have. Recently I&amp;#8217;ve been considering this with XML.&lt;/p&gt;
+
+&lt;p&gt;The trouble with XML is that it&amp;#8217;s a vast stack of standards. In some ways this is a good thing, because at least in theory it adds a lot of flexibility for different use cases. But it does result in duplication and redundancy, because document authors never know exactly which editions of which specs are being used by which processors and vice versa. How often do we see patterns like the common one for the language attribute on the HTML tag:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;&amp;lt;html xmlns=&amp;quot;http://www.w3.org/1999/xhtml&amp;quot; lang=&amp;quot;en&amp;quot; xml:lang=&amp;quot;en&amp;quot;&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The common &lt;code&gt;id&lt;/code&gt; attribute is the same. It sounds like a trivial niggle, but actually it&amp;#8217;s a design flaw in how these applications (XHTML and XML in this case) are layered one on top of the other.&lt;/p&gt;
+
+&lt;p&gt;Then we have the DOM, the XML Infoset, EXI, Canonical XML, XML Namespaces, XML Schema and so on. It&amp;#8217;s a dizzying array of specs, each with complex demands, which is partly why WHATWG have moved away from the idea of XHTML and put their efforts into HTML5&amp;#8217;s SGML derived syntax instead. Complying with the existing stack of XML specifications is too onerous, and the specs themselves are not always neatly joined up.&lt;/p&gt;
+
+&lt;p&gt;Throw in stuff from the edges of the XML world - the development of IRIs, XRIs and CURIEs, the semantic models of RDF, the multipart MIME types and the data: URI scheme, and so on - and it&amp;#8217;s a recipe for migraines and sleepless nights.&lt;/p&gt;
+
+&lt;p&gt;For all it&amp;#8217;s flaws however, XML has a whole host of benefits too. There is a very good reason why it&amp;#8217;s so widely adopted, it&amp;#8217;s is very flexible and it is human readable, it is (relatively) easy to parse, validate and transform. There various stable and well understood means to map programmatic objects into XML serialisations and back, enabling everything from RPC to Active Record to be done using it.&lt;/p&gt;
+
+&lt;p&gt;So if I was going to redesign XML from scratch, what would I do? Well, here are my main thoughts:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Scrap DTDs, completely. I&amp;#8217;m sure there&amp;#8217;s been other occasions, but the last time that I can think of when I saw a DTD used seriously was when XHTML 1.1 was published, and XML Schema wasn&amp;#8217;t considered &amp;#8216;mature&amp;#8217; at the point.&lt;/li&gt;
+
+&lt;li&gt;Design the Infoset first. Infoset is supposed to represent the logical model of a document, which XML serialises and DOM provides programmatic access to. Standard XML syntax need not be the only serialisation of an XML Infoset, and the DOM can be made to converge more closely with the underlying model.&lt;/li&gt;
+
+&lt;li&gt;Take a cue from Architecture of the World Wide Web, and consider information items in your infoset as akin to resources. That means that an element might be considered to have a set of zero or more Descriptions, Identifiers, and Representations. Identifiers can be XPath expressions, IDs or any other unique reference to an element. Descriptions are any old metadata, and Representations correspond to different serialisations.&lt;/li&gt;
+
+&lt;li&gt;Design a processing model to go with the infoset. XML Schema defines the PSVI, XSLT defines the post transformation infoset, XML Encryption defines post encryption/decryption infosets. A general model for the transformation of one infoset into the next, and pipelining those transformations, would be very useful.&lt;/li&gt;
+
+&lt;li&gt;Consider all element and attribute names as URIs. Instead of QName we can use URIorCURIE as the type of all namespace qualified names.&lt;/li&gt;
+
+&lt;li&gt;Use processing instructions for instructions to the processor. That means rather than xmlns:foo=&amp;#8221;&amp;#8230;&amp;#8221; on an element we insert a processing instruction &lt;?namespace foo=&quot;...&quot;?&gt;. If qualified names are now URIs, then we are telling the processor how to expand any CURIEs that we are using. We might also have processing instructions for associating schemas, transforms, even linkbases. Processing instructions can be used to set up the document-specific processing pipeline described above, linking together various flavours of infoset transformation as well as controlling how the infoset is generated from the serialised document. Anything which alters the processing of the document when viewed as a series of parser events. Using attributes for this sort of thing should be limited strictly to when we are giving an element specific instruction.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;One day I might do a skunk works and draft something along these lines, until then I can but rant.&lt;/p&gt;</content>
+ </entry>
+ 
+ <entry>
    <title>Whatever Happened To Osid</title>
    <link href="http://twrl.github.com/2012/03/22/whatever-happened-to-osid"/>
    <updated>2012-03-22T00:00:00+00:00</updated>
@@ -272,44 +310,6 @@
 &lt;p&gt;So that&amp;#8217;s where we start. In the first instance, our interfaces aren&amp;#8217;t interfaces at all but a set of functions which test that an object conforms to the specification we&amp;#8217;ve given.&lt;/p&gt;
 
 &lt;p&gt;I&amp;#8217;ve begun sketching this out as &lt;a href='http://github.com/twrl/osid.js'&gt;a set of AMD modules on Github&lt;/a&gt;, but for the time being it&amp;#8217;s all very basic.&lt;/p&gt;</content>
- </entry>
- 
- <entry>
-   <title>Rehashing Xml</title>
-   <link href="http://twrl.github.com/2012/03/22/rehashing-xml"/>
-   <updated>2012-03-22T00:00:00+00:00</updated>
-   <id>http://twrl.github.com/2012/03/22/rehashing-xml</id>
-   <content type="html">&lt;p&gt;I find it interesting sometimes to consider, if I were starting over and designing &lt;em&gt;xyz-thing&lt;/em&gt; from scratch, what would I do differently to what we already have. Recently I&amp;#8217;ve been considering this with XML.&lt;/p&gt;
-
-&lt;p&gt;The trouble with XML is that it&amp;#8217;s a vast stack of standards. In some ways this is a good thing, because at least in theory it adds a lot of flexibility for different use cases. But it does result in duplication and redundancy, because document authors never know exactly which editions of which specs are being used by which processors and vice versa. How often do we see patterns like the common one for the language attribute on the HTML tag:&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;&amp;lt;html xmlns=&amp;quot;http://www.w3.org/1999/xhtml&amp;quot; lang=&amp;quot;en&amp;quot; xml:lang=&amp;quot;en&amp;quot;&amp;gt;&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;The common &lt;code&gt;id&lt;/code&gt; attribute is the same. It sounds like a trivial niggle, but actually it&amp;#8217;s a design flaw in how these applications (XHTML and XML in this case) are layered one on top of the other.&lt;/p&gt;
-
-&lt;p&gt;Then we have the DOM, the XML Infoset, EXI, Canonical XML, XML Namespaces, XML Schema and so on. It&amp;#8217;s a dizzying array of specs, each with complex demands, which is partly why WHATWG have moved away from the idea of XHTML and put their efforts into HTML5&amp;#8217;s SGML derived syntax instead. Complying with the existing stack of XML specifications is too onerous, and the specs themselves are not always neatly joined up.&lt;/p&gt;
-
-&lt;p&gt;Throw in stuff from the edges of the XML world - the development of IRIs, XRIs and CURIEs, the semantic models of RDF, the multipart MIME types and the data: URI scheme, and so on - and it&amp;#8217;s a recipe for migraines and sleepless nights.&lt;/p&gt;
-
-&lt;p&gt;For all it&amp;#8217;s flaws however, XML has a whole host of benefits too. There is a very good reason why it&amp;#8217;s so widely adopted, it&amp;#8217;s is very flexible and it is human readable, it is (relatively) easy to parse, validate and transform. There various stable and well understood means to map programmatic objects into XML serialisations and back, enabling everything from RPC to Active Record to be done using it.&lt;/p&gt;
-
-&lt;p&gt;So if I was going to redesign XML from scratch, what would I do? Well, here are my main thoughts:&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Scrap DTDs, completely. I&amp;#8217;m sure there&amp;#8217;s been other occasions, but the last time that I can think of when I saw a DTD used seriously was when XHTML 1.1 was published, and XML Schema wasn&amp;#8217;t considered &amp;#8216;mature&amp;#8217; at the point.&lt;/li&gt;
-
-&lt;li&gt;Design the Infoset first. Infoset is supposed to represent the logical model of a document, which XML serialises and DOM provides programmatic access to. Standard XML syntax need not be the only serialisation of an XML Infoset, and the DOM can be made to converge more closely with the underlying model.&lt;/li&gt;
-
-&lt;li&gt;Take a cue from Architecture of the World Wide Web, and consider information items in your infoset as akin to resources. That means that an element might be considered to have a set of zero or more Descriptions, Identifiers, and Representations. Identifiers can be XPath expressions, IDs or any other unique reference to an element. Descriptions are any old metadata, and Representations correspond to different serialisations.&lt;/li&gt;
-
-&lt;li&gt;Design a processing model to go with the infoset. XML Schema defines the PSVI, XSLT defines the post transformation infoset, XML Encryption defines post encryption/decryption infosets. A general model for the transformation of one infoset into the next, and pipelining those transformations, would be very useful.&lt;/li&gt;
-
-&lt;li&gt;Consider all element and attribute names as URIs. Instead of QName we can use URIorCURIE as the type of all namespace qualified names.&lt;/li&gt;
-
-&lt;li&gt;Use processing instructions for instructions to the processor. That means rather than xmlns:foo=&amp;#8221;&amp;#8230;&amp;#8221; on an element we insert a processing instruction &lt;?namespace foo=&quot;...&quot;?&gt;. If qualified names are now URIs, then we are telling the processor how to expand any CURIEs that we are using. We might also have processing instructions for associating schemas, transforms, even linkbases. Processing instructions can be used to set up the document-specific processing pipeline described above, linking together various flavours of infoset transformation as well as controlling how the infoset is generated from the serialised document. Anything which alters the processing of the document when viewed as a series of parser events. Using attributes for this sort of thing should be limited strictly to when we are giving an element specific instruction.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;One day I might do a skunk works and draft something along these lines, until then I can but rant.&lt;/p&gt;</content>
  </entry>
  
  <entry>
