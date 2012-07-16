@@ -33,9 +33,7 @@ http://twrl.github.com/tag/Blog.html
 http://twrl.github.com/tag/Blogger.html
 http://twrl.github.com/tag/Dynamic Views.html
 http://twrl.github.com/tag/Jekyll.html
-http://twrl.github.com/tag/Mathematics.html
 
-http://twrl.github.com/2012/07/16/introducing-groups
 http://twrl.github.com/2012/07/14/the-new-edition
 http://twrl.github.com/2012/06/16/iconiser
 http://twrl.github.com/2012/06/14/views-dynamic-and-otherwise

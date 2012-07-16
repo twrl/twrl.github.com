@@ -4,35 +4,13 @@
  <title>twrl</title>
  <link href="http://twrl.github.com/atom.xml" rel="self"/>
  <link href="http://twrl.github.com"/>
- <updated>2012-07-16T12:16:10+01:00</updated>
+ <updated>2012-07-16T12:18:16+01:00</updated>
  <id>http://twrl.github.com</id>
  <author>
    <name>Tom Robbins</name>
    <email>00.twrl@gmail.com</email>
  </author>
 
- 
- <entry>
-   <title>Introducing Groups</title>
-   <link href="http://twrl.github.com/2012/07/16/introducing-groups"/>
-   <updated>2012-07-16T00:00:00+01:00</updated>
-   <id>http://twrl.github.com/2012/07/16/introducing-groups</id>
-   <content type="html">&lt;p&gt;For something a little different, I thought I&amp;#8217;d write a little article on something from mathematics. This is partly just to test out the MathJax support on the new setup, but I am a maths student after all. My boyfriend - and my mum, and my housemates, and in fact most of the people in my life - don&amp;#8217;t have a clue what I&amp;#8217;m going on about half the time, so here&amp;#8217;s an attempt at an explanation of one of my favourite mathematical concepts: Groups.&lt;/p&gt;
-
-&lt;h1 id='what_is_a_group'&gt;What is a Group?&lt;/h1&gt;
-
-&lt;p&gt;A group is a set with an operation, which satisfies certain special properties.&lt;/p&gt;
-
-&lt;p&gt;So the first thing is to know what a set is. Well duh you say, a set is a collection of objects. This is true, but a set is a collection of &lt;em&gt;objects without regard to duplicates&lt;/em&gt;. What that means is that a specific object can only be counted once. So if I have a set like this &lt;script type='math/tex; mode=display'&gt;\{ a, b, c \}&lt;/script&gt; and one like this &lt;script type='math/tex; mode=display'&gt;\{ a, b, b, c, c, c \}&lt;/script&gt; they are in fact the same set.&lt;/p&gt;
-
-&lt;p&gt;But what is an operation? Well, in this context an operation is a way of combining two elements of our group to get a third element. That&amp;#8217;s not the proper definition, but it will do for now. To be the operation for a group, it must be associative. That means that if our operation is *, for example, then &lt;script type='math/tex; mode=display'&gt;a * (b * c) = (a * b) * c&lt;/script&gt; Normally, we don&amp;#8217;t bother writing a symbol for the operation. We just write the elements out in order, so &lt;script type='math/tex; mode=display'&gt;a * b = ab&lt;/script&gt; and so on. This mostly saves ink.&lt;/p&gt;
-
-&lt;p&gt;But what about these special properties. Well, the set has to have an element which we&amp;#8217;ll write e, so that for every possible element x in the set &lt;script type='math/tex; mode=display'&gt;ex = x = xe&lt;/script&gt; We call e the &lt;em&gt;identity element&lt;/em&gt;. It also has to be the case that every possible combination of two elements in the group is also an element in the group.&lt;/p&gt;
-
-&lt;h2 id='lagranges_theorem'&gt;Lagrange&amp;#8217;s Theorem&lt;/h2&gt;
-
-&lt;p&gt;Once you start to study groups, the first major theorem you&amp;#8217;ll learn is Lagrange&amp;#8217;s theorem. It&amp;#8217;s possibly the most important theorem about groups, but very simple.&lt;/p&gt;</content>
- </entry>
  
  <entry>
    <title>The New Edition</title>
