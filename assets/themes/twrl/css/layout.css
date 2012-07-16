@@ -32,11 +32,11 @@
     text-align: justify;
 }
 
-article.layout-row header {
+.layout-row header {
     text-align: right;
 }
 
-article.layout-row header p {
+.layout-row header p {
     font-size: 10pt;
     }
 
@@ -60,6 +60,19 @@ article.layout-row header p {
     }
 		
 		
+#l-advnav-tags .set-2 {
+    font-size: 110%;
+    }
+#l-advnav-tags .set-3 {
+    font-size: 120%;
+    }
+#l-advnav-tags .set-4 {
+    font-size: 130%;
+    }
+#l-advnav-tags .set-5 {
+    font-size: 140%;
+    }
+		
 #l-advnavctl-ctrl p {
     margin-top: 0;
     margin-bottom: 0; 
@@ -67,6 +80,14 @@ article.layout-row header p {
     
 #l-advnav, #l-advnavctl {
     font-size: 10pt;
+    }
+    
+#l-pagesub header {
+    text-align: left;
+    padding: 0 1%;
+    }
+#l-pagesub h1 {
+    font-size: 14pt;
     }
     
     
@@ -85,6 +106,7 @@ article.layout-row header p {
 
 article .addthis_toolbox {
     float: right;
+    min-width: 156px;
     }
 
 
