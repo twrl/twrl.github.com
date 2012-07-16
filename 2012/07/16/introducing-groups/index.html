@@ -3,26 +3,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" prefix="og: http://ogp.me/ns#">
     <head>
-        <title>twrl - Whatever Happened To Osid</title>
+        <title>twrl - Introducing Groups</title>
         
         <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
         <link href="/assets/themes/twrl/css/layout.css" rel="stylesheet" type="text/css"/>
         <link href="/assets/themes/twrl/css/colour.css" rel="stylesheet" type="text/css"/>
         <link href="/assets/themes/twrl/css/code.css" rel="stylesheet" type="text/css"/>
         
-            <meta property="og:title" content="Whatever Happened To Osid"/>
+            <meta property="og:title" content="Introducing Groups"/>
     <meta property="og:site_name" content="twrl"/>
     <meta property="og:type" content="article"/>
-    <meta property="og:url" content="/2012/03/22/whatever-happened-to-osid"/>
+    <meta property="og:url" content="/2012/07/16/introducing-groups"/>
     <!-- og:image -->
     
-    <meta property="og:tag" content="CommonJS"/>
-    
-    <meta property="og:tag" content="Javascript"/>
-    
-    <meta property="og:tag" content="OSID"/>
-    
-    <meta property="og:tag" content="Programming"/>
+    <meta property="og:tag" content="Mathematics"/>
     
         
         <!-- typography -->
@@ -131,19 +125,19 @@
     
         <li><a href="%2F2012%2F05%2F16%2Fwho-am-i-standing-up-to-again">Who am I standing up to again?</a></li>
     
-        <li><a href="%2F2012%2F03%2F28%2Fajax-and-file-uris">Ajax and file&#58;// URIs</a></li>
+        <li><a href="%2F2012%2F03%2F22%2Fwhatever-happened-to-osid">Whatever Happened To Osid</a></li>
     
         <li><a href="%2F2012%2F03%2F23%2Frehashing-xml">Rehashing Xml</a></li>
     
         <li><a href="%2F2012%2F06%2F11%2Fjavascript-alternatives">Javascript Alternatives</a></li>
     
-        <li><a href="%2F2012%2F05%2F18%2Fsocial-networking">Social Networking</a></li>
-    
-        <li><a href="%2F2012%2F07%2F16%2Fintroducing-groups">Introducing Groups</a></li>
-    
-        <li><a href="%2F2012%2F03%2F28%2Finitialising-web-workers">Initialising Web Workers</a></li>
+        <li><a href="%2F2012%2F03%2F28%2Fajax-and-file-uris">Ajax and file&#58;// URIs</a></li>
     
         <li><a href="%2F2012%2F03%2F21%2Fim-fed-up-with-same--sex-marriage">I'm Fed Up With Same-sex Marriage</a></li>
+    
+        <li><a href="%2F2012%2F05%2F18%2Fsocial-networking">Social Networking</a></li>
+    
+        <li><a href="%2F2012%2F07%2F14%2Fthe-new-edition">The New Edition</a></li>
     
     </ul>
 </nav>
@@ -190,9 +184,9 @@
         
 <article class="cf layout-row odd" xmlns:dc="http://purl.org/dc/elements/1.1/">
     <header class="cf layout-cell-l2">
-        <h1 property="dc:title">Whatever Happened To Osid</h1>
-        <p><span property="dc:date" content="2012-03-22">Thursday 22 March, 2012</span> <img src="/assets/themes/twrl/icons/12.png" class="icon"/></p>
-        <p><a rel="dc:subject" href="/tag/CommonJS.html">CommonJS</a>, <a rel="dc:subject" href="/tag/Javascript.html">Javascript</a>, <a rel="dc:subject" href="/tag/OSID.html">OSID</a>, <a rel="dc:subject" href="/tag/Programming.html">Programming</a> <img src="/assets/themes/twrl/icons/20.png" class="icon"/></p>
+        <h1 property="dc:title">Introducing Groups</h1>
+        <p><span property="dc:date" content="2012-07-16">Monday 16 July, 2012</span> <img src="/assets/themes/twrl/icons/12.png" class="icon"/></p>
+        <p><a rel="dc:subject" href="/tag/Mathematics.html">Mathematics</a> <img src="/assets/themes/twrl/icons/20.png" class="icon"/></p>
         
         <!-- AddThis Button BEGIN -->
         <div class="addthis_toolbox addthis_default_style">
@@ -209,35 +203,21 @@
         
     </header>
     <div class="cf layout-cell-l3 content">
-        <p>Five years ago, or so, we had a wonderful suite of open, abstract API&#8217;s developed by a group led out of MIT and calling themselves the Open Knowledge Initiative. These API&#8217;s were the Open Service Interface Definitions, and although they had a definite flavour of Java about them, the specs were deliberately designed to be platform neutral.</p>
+        <p>For something a little different, I thought I&#8217;d write a little article on something from mathematics. This is partly just to test out the MathJax support on the new setup, but I am a maths student after all. My boyfriend - and my mum, and my housemates, and in fact most of the people in my life - don&#8217;t have a clue what I&#8217;m going on about half the time, so here&#8217;s an attempt at an explanation of one of my favourite mathematical concepts: Groups.</p>
 
-<p>OKI now appears to be defunct, but a lot of what they produced is still <a href='http://sourceforge.net/projects/okiproject'>sitting there on SourceForge</a>.</p>
+<h1 id='what_is_a_group'>What is a Group?</h1>
 
-<p>Now a lot of this was useless nonsense, at least, outside of certain specialist applications. I know there are people that do, but I personally have no wish to keep track of who is enrolled on which course. Application specific is not general purpose. However, there are some very good general purpose abstractions in there.</p>
+<p>A group is a set with an operation, which satisfies certain special properties.</p>
 
-<p>Filing, for example, provides a highly abstracted representation of any filing system (which is anything which consists of trees of containers and byte-streams). Hierarchy is not dissimilar, abstracting anything which is hierarchical.</p>
+<p>So the first thing is to know what a set is. Well duh you say, a set is a collection of objects. This is true, but a set is a collection of <em>objects without regard to duplicates</em>. What that means is that a specific object can only be counted once. So if I have a set like this <script type='math/tex; mode=display'>\{ a, b, c \}</script> and one like this <script type='math/tex; mode=display'>\{ a, b, b, c, c, c \}</script> they are in fact the same set.</p>
 
-<h3 id='and_your_point_is'>And your point is&#8230;</h3>
+<p>But what is an operation? Well, in this context an operation is a way of combining two elements of our group to get a third element. That&#8217;s not the proper definition, but it will do for now. To be the operation for a group, it must be associative. That means that if our operation is *, for example, then <script type='math/tex; mode=display'>a * (b * c) = (a * b) * c</script> Normally, we don&#8217;t bother writing a symbol for the operation. We just write the elements out in order, so <script type='math/tex; mode=display'>a * b = ab</script> and so on. This mostly saves ink.</p>
 
-<p>Javascript. My point is Javascript.</p>
+<p>But what about these special properties. Well, the set has to have an element which we&#8217;ll write e, so that for every possible element x in the set <script type='math/tex; mode=display'>ex = x = xe</script> We call e the <em>identity element</em>. It also has to be the case that every possible combination of two elements in the group is also an element in the group.</p>
 
-<p>Until relatively recently, Javascript was a domain specific language. It was used for scripting, in particular in the context of web browsers. Suddenly, Javascript is seeing general purpose use - largely due to the introduction of Node and Rhino. Equally, we&#8217;re seeing the boundary between web and desktop applications blurring, courtesy of HTML5 amongst others. The use cases for Javascript have exploded, they&#8217;re vast, they&#8217;re everywhere.</p>
+<h2 id='lagranges_theorem'>Lagrange&#8217;s Theorem</h2>
 
-<p>And the only fully standardised API we have is DOM, and nobody fully complies with that.</p>
-
-<p>I have a soft spot for OSID, because it was in vogue a the time when I was teaching myself concepts like middleware and n-tier architecture. However, clean, pure and platform neutral abstractions like those which make up a large part of the OSID specs are a perfect starting point if we&#8217;re going to build up standard APIs for Javascript. CommonJS is achieving great things, but CommonJS is more concerned with the concept of a module than the content of a module.</p>
-
-<p>The hint of Java in OSID only adds to the attraction, because Javascript is so frequently sandboxed. A Java-like API has an advantage getting around this, because most sandboxing environments support some kind of Java liveconnect or equivalent, allowing us to use Java to implement any privileged elements (with associated benefits of code signing and code security policies being built into the JVM). As TiddlyWiki was forced to do, we can implement things like low-level filesystem access as a Java applet.</p>
-
-<h3 id='but'>But&#8230;</h3>
-
-<p>Javascript&#8217;s type system is prototype-based, not class-based. This means that there is no native concept of an interface, nor can types be attributed in a standard way like they can in environments such as CLI. So defining a load of interfaces and implementations of those interfaces is not something which makes sense in the context of Javascript.</p>
-
-<p>Alas, there is no standard API in Javascript for emulating these things either. Various projects like Joose provide a metaobject framework, but there isn&#8217;t a common (or even a bunch of broadly similar) API for it in Javascript. So our interfaces are effectively just exercises in duck-typing.</p>
-
-<p>So that&#8217;s where we start. In the first instance, our interfaces aren&#8217;t interfaces at all but a set of functions which test that an object conforms to the specification we&#8217;ve given.</p>
-
-<p>I&#8217;ve begun sketching this out as <a href='http://github.com/twrl/osid.js'>a set of AMD modules on Github</a>, but for the time being it&#8217;s all very basic.</p>
+<p>Once you start to study groups, the first major theorem you&#8217;ll learn is Lagrange&#8217;s theorem. It&#8217;s possibly the most important theorem about groups, but very simple.</p>
     </div>
 </article>
 
