@@ -35,8 +35,8 @@ http://twrl.github.com/tag/Dynamic Views.html
 http://twrl.github.com/tag/Jekyll.html
 
 http://twrl.github.com/2012/07/14/the-new-edition
-http://twrl.github.com/2012/06/16/iconiser
 http://twrl.github.com/2012/06/14/views-dynamic-and-otherwise
+http://twrl.github.com/2012/06/14/iconiser
 http://twrl.github.com/2012/06/11/javascript-alternatives
 http://twrl.github.com/2012/05/18/social-networking
 http://twrl.github.com/2012/05/16/who-am-i-standing-up-to-again
