@@ -95,9 +95,9 @@
     <h4><img src="/assets/themes/twrl/icons/10.png" class="icon"/>Related Posts</h4>
     <ul>
     
-        <li><a href="/2012/06/14/iconiser">Iconiser</a></li>
-    
         <li><a href="/2012/05/16/who-am-i-standing-up-to-again">Who am I standing up to again?</a></li>
+    
+        <li><a href="/2012/06/14/iconiser">Iconiser</a></li>
     
         <li><a href="/2012/03/22/whatever-happened-to-osid">Whatever Happened To Osid</a></li>
     
@@ -185,15 +185,41 @@
         
     </header>
     <div class="cf layout-cell-l3 content">
-        <p>I&#8217;ve had tonsillitis over the last 5 days or so, so I&#8217;ve spent most of the last few days in a bit of a daze, idly tinkering with random things to pass the time. As with much idle tinkering, it&#8217;s all a bit rough and ready, but here is one snippet which might prove useful.</p>
+        <p>I&apos;ve had tonsillitis over the last 5 days or so, so I&apos;ve spent most of the last few days in a bit of a daze, idly tinkering with random things to pass the time. As with much idle tinkering, it&apos;s all a bit rough and ready, but here is one snippet which might prove useful.</p>
 
-<p>I was tinkering with Web Workers and I wanted to be able to load up Require.js in a worker and then pass it the name of a main module. So I wrote this stub, lets call it w.js, which goes in the same directory as require.js (which will be Require&#8217;s baseDir - told you it was a bit rough). You can then create your worker by doing</p>
+<p>I was tinkering with Web Workers and I wanted to be able to load up Require.js in a worker and then pass it the name of a main module. So I wrote this stub, lets call it w.js, which goes in the same directory as require.js (which will be Require&rsquo;s baseDir - told you it was a bit rough). You can then create your worker by doing</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span class="keyword">var</span> worker = <span class="keyword">new</span> Worker(<span class="string"><span class="delimiter">'</span><span class="content">scripts/w.js?main=myapp/main</span><span class="delimiter">'</span></span>);
+</pre></div>
+</div>
+</div>
 
 <p>and Require.js will be loaded into your module, which will in turn load your main. As a fringe benefit you get a nice global object called query which contains all parameters passed in the query string.</p>
 
-<p>Now I know this is not terribly exciting - parsing a query string is pretty basic stuff in Javascript - but when I first tried this I was looking at a one-off message handler to initialise the global context in the worker. Because workers share so few API&#8217;s with an ordinary web page, it&#8217;s easy to forget the few that they have in common, and one of them is location.</p>
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span class="keyword">var</span> params = self.location.search.substring(<span class="integer">1</span>).split(<span class="string"><span class="delimiter">'</span><span class="content">&amp;</span><span class="delimiter">'</span></span>), query = {};
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span> 
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span><span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> params) {
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>    <span class="keyword">var</span> sp = params[i].split(<span class="string"><span class="delimiter">'</span><span class="content">=</span><span class="delimiter">'</span></span>),
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>        n = sp[<span class="integer">0</span>],
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>        v = unescape(sp[<span class="integer">1</span>]);
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>    query[n] = v;
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>}
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span> 
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span><span class="keyword">delete</span> params;
+<span class="line-numbers"><a href="#n11" name="n11">11</a></span> 
+<span class="line-numbers"><a href="#n12" name="n12">12</a></span><span class="keyword">var</span> require = { <span class="key">deps</span> : [ query.main ] };
+<span class="line-numbers"><a href="#n13" name="n13">13</a></span> 
+<span class="line-numbers"><a href="#n14" name="n14">14</a></span>importScripts(<span class="string"><span class="delimiter">'</span><span class="content">require.js</span><span class="delimiter">'</span></span>);
+</pre></div>
+</div>
+</div>
+
+<p>Now I know this is not terribly exciting - parsing a query string is pretty basic stuff in Javascript - but when I first tried this I was looking at a one-off message handler to initialise the global context in the worker. Because workers share so few API&rsquo;s with an ordinary web page, it&rsquo;s easy to forget the few that they have in common, and one of them is location.</p>
 
 <p>For some more advanced cases the message handler might still be the best way forward, but to get a few name-value pairs in this is a lovely little trick.</p>
+
     </div>
 </article>
 

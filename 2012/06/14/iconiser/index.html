@@ -185,17 +185,56 @@
         
     </header>
     <div class="cf layout-cell-l3 content">
-        <p>This is a useful titbit for anyone who is working with blogger templates or other things that severely limit your ability to host and serve lots of little files. I just hacked it together now to implement the new theme I&#8217;m writing for this blog.</p>
+        <p>This is a useful titbit for anyone who is working with blogger templates or other things that severely limit your ability to host and serve lots of little files. I just hacked it together now to implement the new theme I&rsquo;m writing for this blog.</p>
 
-<p>I&#8217;m using quite a few icons in the new theme and I wanted to embed them as data: URIs. The trouble is, I&#8217;m using the same icon in several places which means duplication, and having great blocks of base64 embedded in the code is making it all unreadable. So I&#8217;ve written a tiny jQuery plugin to maintain a catalogue of named icons, and then replace the shorthand URIs that I&#8217;m using with the full one.</p>
+<p>I&rsquo;m using quite a few icons in the new theme and I wanted to embed them as data: URIs. The trouble is, I&rsquo;m using the same icon in several places which means duplication, and having great blocks of base64 embedded in the code is making it all unreadable. So I&rsquo;ve written a tiny jQuery plugin to maintain a catalogue of named icons, and then replace the shorthand URIs that I&rsquo;m using with the full one.</p>
 
-<p>Here&#8217;s the code:</p>
+<p>Here&rsquo;s the code:</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span>(<span class="keyword">function</span> (<span class="predefined">$</span>) {
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span>    <span class="predefined">$</span>.<span class="function">iconise</span> = <span class="keyword">function</span> (name, data) {
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span>        <span class="predefined">$</span>.iconise.data[name] = data;
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>    }
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span>
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>    <span class="predefined">$</span>.iconise.data = {};
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>    <span class="predefined">$</span>.fn.<span class="function">iconise</span> = <span class="keyword">function</span> () {
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span>        <span class="predefined">$</span>(<span class="string"><span class="delimiter">'</span><span class="content">img</span><span class="delimiter">'</span></span>, <span class="local-variable">this</span>).each(<span class="keyword">function</span> () {
+<span class="line-numbers"><a href="#n11" name="n11">11</a></span>            <span class="keyword">var</span> src = <span class="predefined">$</span>(<span class="local-variable">this</span>).attr(src);
+<span class="line-numbers"><a href="#n12" name="n12">12</a></span>            <span class="keyword">if</span> (src.indexOf(<span class="string"><span class="delimiter">'</span><span class="content">iconise:</span><span class="delimiter">'</span></span>) == <span class="integer">0</span>) {
+<span class="line-numbers"><a href="#n13" name="n13">13</a></span>                <span class="keyword">var</span> icon = src.substring(<span class="integer">8</span>);
+<span class="line-numbers"><a href="#n14" name="n14">14</a></span>                <span class="keyword">if</span> (<span class="predefined">$</span>.iconise.data[icon] !== <span class="predefined-constant">undefined</span>) {
+<span class="line-numbers"><a href="#n15" name="n15">15</a></span>                    <span class="predefined">$</span>(<span class="local-variable">this</span>).attr(<span class="string"><span class="delimiter">'</span><span class="content">src</span><span class="delimiter">'</span></span>, <span class="predefined">$</span>.iconise.data[icon]);
+<span class="line-numbers"><a href="#n16" name="n16">16</a></span>                }
+<span class="line-numbers"><a href="#n17" name="n17">17</a></span>            }
+<span class="line-numbers"><a href="#n18" name="n18">18</a></span>        })
+<span class="line-numbers"><a href="#n19" name="n19">19</a></span>    };
+<span class="line-numbers"><strong><a href="#n20" name="n20">20</a></strong></span>
+<span class="line-numbers"><a href="#n21" name="n21">21</a></span>})(jQuery);
+</pre></div>
+</div>
+</div>
 
 <p>Then to use it you need to build a database of icons. You simply call the iconise function to associate a name to a data: uri</p>
 
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span class="predefined">$</span>.iconise(<span class="string"><span class="delimiter">'</span><span class="content">myIcon</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">data:image/png;base64,/*...base64 encoded image...*/</span><span class="delimiter">'</span></span>);
+</pre></div>
+</div>
+</div>
+
 <p>And finally, you can reference your icon like this</p>
 
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"><a href="#n1" name="n1">1</a></span><span class="tag">&lt;img</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">'</span><span class="content">iconise:myIcon</span><span class="delimiter">'</span></span> <span class="tag">/&gt;</span>
+</pre></div>
+</div>
+</div>
+
 <p>This is a bit of a quick and dirty hack, and it will certainly not degrade gracefully. But it might come in handy.</p>
+
     </div>
 </article>
 

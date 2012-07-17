@@ -97,9 +97,9 @@
     
         <li><a href="/2012/03/22/whatever-happened-to-osid">Whatever Happened To Osid</a></li>
     
-        <li><a href="/2012/05/16/who-am-i-standing-up-to-again">Who am I standing up to again?</a></li>
-    
         <li><a href="/2012/06/14/iconiser">Iconiser</a></li>
+    
+        <li><a href="/2012/05/16/who-am-i-standing-up-to-again">Who am I standing up to again?</a></li>
     
         <li><a href="/2012/03/23/rehashing-xml">Rehashing Xml</a></li>
     
@@ -185,17 +185,18 @@
         
     </header>
     <div class="cf layout-cell-l3 content">
-        <p>Ajax is becoming the dominant method, if it isn&#8217;t already, of getting data in and out of a web application. But Ajax is built on top of XMLHttpRequest, which as the name suggests is only really well defined if the underlying protocol is HTTP.</p>
+        <p>Ajax is becoming the dominant method, if it isn&rsquo;t already, of getting data in and out of a web application. But Ajax is built on top of XMLHttpRequest, which as the name suggests is only really well defined if the underlying protocol is HTTP.</p>
 
-<p>So what about local files? The new Filesystem API&#8217;s are coming, but they sandbox us heavily. At least for the time being, if we want to muck about with self-modifying code or local file-based data sources we have to hack it, which means using any one of half a dozen browser and/or os specific methods.</p>
+<p>So what about local files? The new Filesystem API&rsquo;s are coming, but they sandbox us heavily. At least for the time being, if we want to muck about with self-modifying code or local file-based data sources we have to hack it, which means using any one of half a dozen browser and/or os specific methods.</p>
 
-<p>I quite like having a consistent API to work with, which you can&#8217;t easily have under these circumstances. Fortunately, the lovely folks at TiddlyWiki have provided <a href='http://jquery.tiddlywiki.org/twFile.html'>a jQuery plugin</a> which abstracts their general purpose file load and save functionality, so you have a load and a save function exposed and how those are best implemented is determined for you automatically.</p>
+<p>I quite like having a consistent API to work with, which you can&rsquo;t easily have under these circumstances. Fortunately, the lovely folks at TiddlyWiki have provided <a href="http://jquery.tiddlywiki.org/twFile.html">a jQuery plugin</a> which abstracts their general purpose file load and save functionality, so you have a load and a save function exposed and how those are best implemented is determined for you automatically.</p>
 
-<p>However, it&#8217;s still not a single consistent API for getting data in and out. Having load and save methods for the local filesystem is lovely if all I want to do is load and save from the local filesystem, but what if I want to use a resource which may or may not be local. I would like to treat a directory full of JSON files on the local system the same as a REST interface on a remote server, and the only thing I want to change is the base URI.</p>
+<p>However, it&rsquo;s still not a single consistent API for getting data in and out. Having load and save methods for the local filesystem is lovely if all I want to do is load and save from the local filesystem, but what if I want to use a resource which may or may not be local. I would like to treat a directory full of JSON files on the local system the same as a REST interface on a remote server, and the only thing I want to change is the base URI.</p>
 
-<p>jQuery now supports the <code>$.ajaxTransport</code> method, which allows us to define custom ways in which jQuery&#8217;s <code>$.ajax</code> method is implemented for different circumstances. It&#8217;s relatively easy to use this to intercept Ajax queries to file:// URIs, and translate them into load and save calls based on whether they&#8217;re GET or PUT. I&#8217;ve hacked together a <a href='https://github.com/twrl/tinker/blob/master/js/jquery/localJax.js'>jQuery plugin</a> to do just that, remapping Ajax queries on local files to the equivalent calls on TiddlyWiki&#8217;s twFile plugin.</p>
+<p>jQuery now supports the <code>$.ajaxTransport</code> method, which allows us to define custom ways in which jQuery&rsquo;s <code>$.ajax</code> method is implemented for different circumstances. It&rsquo;s relatively easy to use this to intercept Ajax queries to file:// URIs, and translate them into load and save calls based on whether they&rsquo;re GET or PUT. I&rsquo;ve hacked together a <a href="https://github.com/twrl/tinker/blob/master/js/jquery/localJax.js">jQuery plugin</a> to do just that, remapping Ajax queries on local files to the equivalent calls on TiddlyWiki&rsquo;s twFile plugin.</p>
 
-<p>As cool as this is, it&#8217;s only half the story. We don&#8217;t just use Ajax to GET and PUT to RESTful data, we use it for all sorts of other things. It makes no sense to define a behaviour for a POST to local files in general. However, Web Workers potentially change that. An Ajax post to a local javascript could be interpreted as a command to load that javascript as a web worker, and then pass the query data into the worker as a message and wait for a response. Or it could not. The scenario is rather complicated, but certainly worth thinking about.</p>
+<p>As cool as this is, it&rsquo;s only half the story. We don&rsquo;t just use Ajax to GET and PUT to RESTful data, we use it for all sorts of other things. It makes no sense to define a behaviour for a POST to local files in general. However, Web Workers potentially change that. An Ajax post to a local javascript could be interpreted as a command to load that javascript as a web worker, and then pass the query data into the worker as a message and wait for a response. Or it could not. The scenario is rather complicated, but certainly worth thinking about.</p>
+
     </div>
 </article>
 
