@@ -6,6 +6,7 @@ http://twrl.github.com/atom.xml
 http://twrl.github.com/index.html
 http://twrl.github.com/pages.html
 http://twrl.github.com/sitemap.txt
+http://twrl.github.com/sitemap.xml
 http://twrl.github.com/tags.html
 http://twrl.github.com/page2/index.html
 http://twrl.github.com/page3/index.html
