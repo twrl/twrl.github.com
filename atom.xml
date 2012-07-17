@@ -4,13 +4,49 @@
  <title>twrl</title>
  <link href="http://twrl.github.com/atom.xml" rel="self"/>
  <link href="http://twrl.github.com"/>
- <updated>2012-07-17T12:32:44+01:00</updated>
+ <updated>2012-07-17T13:49:49+01:00</updated>
  <id>http://twrl.github.com</id>
  <author>
    <name>Tom Robbins</name>
    <email>00.twrl@gmail.com</email>
  </author>
 
+ 
+ <entry>
+   <title>The new setup</title>
+   <link href="http://twrl.github.com/2012/07/16/the-new-setup"/>
+   <updated>2012-07-16T00:00:00+01:00</updated>
+   <id>http://twrl.github.com/2012/07/16/the-new-setup</id>
+   <content type="html">&lt;p&gt;So, this new setup is more or less as I want it. I somewhat prematurely put it live on 
+Github pages on Saturday, even though I&amp;rsquo;m continuing to tinker with it.&lt;/p&gt;
+
+&lt;p&gt;I started off using &lt;a href=&quot;http://jekyllbootstrap.com/&quot;&gt;Jekyll-Bootstrap&lt;/a&gt;. This was a massive
+timesaver. I&amp;rsquo;ve used Liquid before, so the Jekyll learning curve was very easy for me, but 
+if you haven&amp;rsquo;t then I recommend Jekyll-Bootstrap as a way of easing the transition. The 
+templates and includes that Jade has in there are fairly adaptable, and you can learn 
+quite a bit just from examining them.&lt;/p&gt;
+
+&lt;p&gt;Following the advice in &lt;a href=&quot;http://charliepark.org/jekyll-with-plugins/&quot;&gt;Charlie Park&amp;rsquo;s blog&lt;/a&gt;
+I&amp;rsquo;ve got Jekyll running locally, and I&amp;rsquo;m pushing the compiled static site onto Github.
+This gives me a free hand to have plugins, non-Github-supported configuration options,
+and otherwise be tampering with Jekyll. &lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m using &lt;a href=&quot;http://kramdown.rubyforge.org/&quot;&gt;Kramdown&lt;/a&gt; and 
+&lt;a href=&quot;http://coderay.rubychan.de/&quot;&gt;Coderay&lt;/a&gt; for rendering. Getting Pygments to work reliably on 
+my Mac was just too much of a headache, plus I like Kramdown&amp;rsquo;s language extensions anyway. 
+At least on my Mac, I had to set Kramdown&amp;rsquo;s entity_output to symbolic, otherwise it was 
+garbling apostrophes and other entities. No other problems there though.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m using Jekyll&amp;rsquo;s latent semantic indexing to generate the related posts list, but I&amp;rsquo;m 
+not convinced about it. I really don&amp;rsquo;t want to maintain the list manually if I can avoid 
+it, so next on the agenda is to investigate other options for that. I also plan to 
+refactor the templates to improve the quality of the RDFa in them, and because I&amp;rsquo;ve ended 
+up with a small mess of css files.&lt;/p&gt;
+
+&lt;p&gt;My only grumble is Liquid&amp;rsquo;s inability to sort an array before iterating over it. So far 
+I&amp;rsquo;ve managed to work around it, but it is a nuisance. &lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>The New Edition</title>

@@ -35,6 +35,7 @@ http://twrl.github.com/tag/Blogger.html
 http://twrl.github.com/tag/Dynamic Views.html
 http://twrl.github.com/tag/Jekyll.html
 
+http://twrl.github.com/2012/07/16/the-new-setup
 http://twrl.github.com/2012/07/14/the-new-edition
 http://twrl.github.com/2012/06/14/views-dynamic-and-otherwise
 http://twrl.github.com/2012/06/14/iconiser
