@@ -187,7 +187,23 @@
         <dct:language>en-GB</dct:language>
     </foaf:Document>
     
+    <foaf:Document rdf:about="http://twrl.github.com/tag/Security.html">
+        <dct:title></dct:title>
+        <dct:language>en-GB</dct:language>
+    </foaf:Document>
     
+    <foaf:Document rdf:about="http://twrl.github.com/tag/PKI.html">
+        <dct:title></dct:title>
+        <dct:language>en-GB</dct:language>
+    </foaf:Document>
+    
+    
+    
+    <foaf:Document rdf:about="http://twrl.github.com/2012/07/17/is-the-public-key-infrastructure-collapsing">
+        <dct:title>Is the Public Key Infrastructure Collapsing?</dct:title>
+        <dct:language>en-GB</dct:language>
+        <dct:issued>2012-07-17</dct:issued>
+    </foaf:Document>
     
     <foaf:Document rdf:about="http://twrl.github.com/2012/07/16/the-new-setup">
         <dct:title>About This New Setup</dct:title>

@@ -260,6 +260,25 @@
         <priority>0.8</priority>
     </url>
     
+    <url>
+        <loc>http://twrl.github.com/tag/Security.html</loc>
+        
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>http://twrl.github.com/tag/PKI.html</loc>
+        
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    
+    <url>
+        <loc>http://twrl.github.com/2012/07/17/is-the-public-key-infrastructure-collapsing</loc>
+        <lastmod>2012-07-17</lastmod>
+    </url>
     
     <url>
         <loc>http://twrl.github.com/2012/07/16/the-new-setup</loc>
