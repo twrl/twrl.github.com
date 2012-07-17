@@ -4,7 +4,7 @@
  <title>twrl</title>
  <link href="http://twrl.github.com/atom.xml" rel="self"/>
  <link href="http://twrl.github.com"/>
- <updated>2012-07-17T15:03:01+01:00</updated>
+ <updated>2012-07-17T16:35:00+01:00</updated>
  <id>http://twrl.github.com</id>
  <author>
    <name>Tom Robbins</name>
@@ -13,7 +13,7 @@
 
  
  <entry>
-   <title>This New Setup</title>
+   <title>About This New Setup</title>
    <link href="http://twrl.github.com/2012/07/16/the-new-setup"/>
    <updated>2012-07-16T00:00:00+01:00</updated>
    <id>http://twrl.github.com/2012/07/16/the-new-setup</id>
@@ -40,7 +40,7 @@ garbling apostrophes and other entities. No other problems there though.&lt;/p&g
 &lt;p&gt;I&amp;rsquo;m using Jekyll&amp;rsquo;s latent semantic indexing to generate the related posts list, but I&amp;rsquo;m 
 not convinced about it. I really don&amp;rsquo;t want to maintain the list manually if I can avoid 
 it, so next on the agenda is to investigate other options for that. I also plan to 
-refactor the templates to improve the quality of the RDFa in them, and because I&amp;rsquo;ve ended 
+refactor the templates to improve the quality of the semantics in them, and because I&amp;rsquo;ve ended 
 up with a small mess of css files.&lt;/p&gt;
 
 &lt;p&gt;My only grumble is Liquid&amp;rsquo;s inability to sort an array before iterating over it. So far 

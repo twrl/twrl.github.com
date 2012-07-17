@@ -4,6 +4,7 @@ http://twrl.github.com/about-me.html
 http://twrl.github.com/archive.html
 http://twrl.github.com/atom.xml
 http://twrl.github.com/index.html
+http://twrl.github.com/index.rdf
 http://twrl.github.com/pages.html
 http://twrl.github.com/sitemap.txt
 http://twrl.github.com/sitemap.xml
