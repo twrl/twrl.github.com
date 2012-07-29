@@ -3,7 +3,7 @@
 
     
     <foaf:Document rdf:about="http://twrl.github.com/404.html">
-        <dct:title>404 Not Found</dct:title>
+        <dct:title>HTTP 404 Not Found</dct:title>
         <dct:language>en-GB</dct:language>
     </foaf:Document>
     
@@ -44,6 +44,11 @@
     
     <foaf:Document rdf:about="http://twrl.github.com/sitemap.xml">
         <dct:title>Sitemap</dct:title>
+        <dct:language>en-GB</dct:language>
+    </foaf:Document>
+    
+    <foaf:Document rdf:about="http://twrl.github.com/skunk/xml-sw.html">
+        <dct:title>XML Skunkworks</dct:title>
         <dct:language>en-GB</dct:language>
     </foaf:Document>
     

@@ -1,0 +1,482 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:og="http://ogp.me/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <head>
+        <title>twrl - XML Skunkworks</title>
+        
+        <meta charset="UTF-8"/>
+        
+        <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+        <link href="/assets/themes/twrl/css/layout.css" rel="stylesheet" type="text/css"/>
+        <link href="/assets/themes/twrl/css/colour.css" rel="stylesheet" type="text/css"/>
+        <link href="/assets/themes/twrl/css/code.css" rel="stylesheet" type="text/css"/>
+        
+            <meta property="og:title" content="XML Skunkworks"/>
+    <meta property="og:site_name" content="twrl"/>
+    <meta property="og:type" content="article"/>
+    <meta property="og:url" content="/skunk/xml-sw.html"/>
+    <!-- og:image -->
+    
+        
+        <!-- typography -->
+        <style type="text/css">
+        body {
+            font-family: "Droid Sans", sans-serif;
+        }
+        pre {
+            font-family: "Droid Sans Mono", monospace;
+        }
+        </style>
+        
+        <script type="application/javascript" src="http://code.jquery.com/jquery-1.7.2.js"></script>
+        <script type="application/javascript">
+		$(function () {
+
+			$('#l-advnavctl-ctrl').click(function () {
+				$('#l-advnav').slideToggle();
+				$('#advnavctl-show, #advnavctl-hide').toggle();
+			});
+
+
+		});
+		</script>
+		
+		<script type="text/javascript" src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+		
+		<script type="text/javascript">
+
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-33400896-1']);
+          _gaq.push(['_trackPageview']);
+        
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+        
+        </script>
+        
+    </head>
+    <body>
+    
+        <div id="l-head" class="cf layout-row c-dark">
+    <header id="l-head-title" class="cf layout-cell-l2">
+        <h1>twrl</h1>
+    </header>
+    <nav id="l-head-nav" class="cf layout-cell-l3">
+    
+        
+        <p><a href="/index.html">Home</a></p>
+        
+    
+        
+        <p><a href="/archive.html">Archive</a></p>
+        
+    
+    </nav>
+</div>
+        
+        <div class="cf layout-row c-dark" id="l-advnav" style="display:none">
+            <nav id="l-advnav-tags" class="cf layout-cell-l1">
+    <h4><img src="/assets/themes/twrl/icons/20.png" class="icon"/> Tags</h4>
+    <a href="/tag/AMD.html" class="set-1">AMD</a> <a href="/tag/Ajax.html" class="set-1">Ajax</a> <a href="/tag/Blog.html" class="set-3">Blog</a> <a href="/tag/Blogger.html" class="set-1">Blogger</a> <a href="/tag/Civil%20Partnership.html" class="set-1">Civil Partnership</a> <a href="/tag/CommonJS.html" class="set-1">CommonJS</a> <a href="/tag/Diaspora.html" class="set-1">Diaspora</a> <a href="/tag/Dynamic%20Views.html" class="set-1">Dynamic Views</a> <a href="/tag/Facebook.html" class="set-1">Facebook</a> <a href="/tag/Google.html" class="set-1">Google</a> <a href="/tag/Javascript.html" class="set-5">Javascript</a> <a href="/tag/Jekyll.html" class="set-2">Jekyll</a> <a href="/tag/LGBT.html" class="set-1">LGBT</a> <a href="/tag/OSID.html" class="set-1">OSID</a> <a href="/tag/PKI.html" class="set-1">PKI</a> <a href="/tag/Programming.html" class="set-3">Programming</a> <a href="/tag/Same-sex%20Marriage.html" class="set-2">Same-sex Marriage</a> <a href="/tag/Security.html" class="set-1">Security</a> <a href="/tag/Semantic%20Web.html" class="set-1">Semantic Web</a> <a href="/tag/Social%20Networking.html" class="set-1">Social Networking</a> <a href="/tag/Society.html" class="set-2">Society</a> <a href="/tag/The%20Cloud.html" class="set-2">The Cloud</a> <a href="/tag/Web%20Architecture.html" class="set-3">Web Architecture</a> <a href="/tag/Web%20Standards.html" class="set-2">Web Standards</a> <a href="/tag/Web%20Workers.html" class="set-1">Web Workers</a> <a href="/tag/XML.html" class="set-1">XML</a> <a href="/tag/jQuery.html" class="set-2">jQuery</a>
+    <p><a href="/tags.html">See all tags</a></p>
+</nav>
+            
+            <nav class="cf layout-cell-l1">
+    <h4><img src="/assets/themes/twrl/icons/12.png" class="icon"/>Recent Posts</h4>
+    <ul>
+    
+        <li><a href="/2012/07/17/is-the-public-key-infrastructure-collapsing">Is the Public Key Infrastructure Collapsing?</a></li>
+    
+        <li><a href="/2012/07/16/the-new-setup">About This New Setup</a></li>
+    
+        <li><a href="/2012/07/14/the-new-edition">The New Edition</a></li>
+    
+        <li><a href="/2012/06/14/views-dynamic-and-otherwise">Views, dynamic and otherwise</a></li>
+    
+        <li><a href="/2012/06/14/iconiser">Iconiser</a></li>
+    
+        <li><a href="/2012/06/11/javascript-alternatives">Javascript Alternatives</a></li>
+    
+        <li><a href="/2012/05/18/social-networking">Social Networking</a></li>
+    
+        <li><a href="/2012/05/16/who-am-i-standing-up-to-again">Who am I standing up to again?</a></li>
+    
+        <li><a href="/2012/05/15/wheres-my-data">Where's my Data!</a></li>
+    
+        <li><a href="/2012/03/28/initialising-web-workers">Initialising Web Workers</a></li>
+    
+    </ul>
+</nav>
+            <div class="cf layout-cell-r2">
+    <h4><img src="/assets/themes/twrl/icons/46.png" class="icon"/>About me</h4>
+    <img src="//lh4.googleusercontent.com/-sThPEpky3Eg/AAAAAAAAAAI/AAAAAAAAACg/Ncrk_nbS_5k/s512-c/photo.jpg" style="float: left; max-width: 80px; max-height: 80px; margin: 4px;"/>
+    <p style="float:right;"><a href="//plus.google.com/114540468191182808437?prsrc=3" rel="publisher" style="text-decoration:none;">
+<img src="//ssl.gstatic.com/images/icons/gplus-32.png" alt="Google+" style="border:0;width:32px;height:32px;"/></a></p>
+    <p>I used to write code for a living, but since discovered that being a full time student is much more fun. Now studying for a masters in Mathematics, I fill my spare time with tinkering with computers and occasionally getting angry at the news - and write about both of those things here.</p>
+    
+</div>
+        </div>
+        <div class="cf layout-row c-dark" id="l-advnavctl">
+            <div class="cf layout-cell-l5" id="l-advnavctl-ctrl">
+                <p id="advnavctl-show"><img src="/assets/themes/twrl/icons/24.png" class="icon"/>Show me more things...</p>
+                <p id="advnavctl-hide" style="display:none"><img src="/assets/themes/twrl/icons/19.png" class="icon"/>Hide this clutter</p>
+            </div>
+        </div>
+    
+        
+
+    <div id="l-pagesub" class="cf layout-row c-mid">
+        <header class="cf layout-cell-l5">
+            <h1>XML Skunkworks</h1>
+        </header>
+    </div>
+    <div id="l-content" class="cf layout-row odd">
+        <div class="cf layout-cell-l5">
+            <h2 id="status-of-this-document">Status of this Document</h2>
+
+<p>This document constitutes private speculation on the future development of XML. It has not 
+been submitted to any standardising body, not even in jest, and the author has no 
+intention of ever doing so. <strong>This is not a standard</strong>.</p>
+
+<p>This document was written from scratch, and except where noted usual copyright and license
+considerations apply. The author is not aware of any relevant patents, copyrights, or 
+other intellectual property encumbrances - but is not in a position to make any guarantees
+to anyone.</p>
+
+<p>Comments are welcome.</p>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ul id="markdown-toc">
+  <li><a href="#status-of-this-document">Status of this Document</a></li>
+  <li><a href="#table-of-contents">Table of Contents</a></li>
+  <li><a href="#introduction">Introduction</a>    <ul>
+      <li><a href="#origin-and-goals">Origin and Goals</a></li>
+      <li><a href="#terminology">Terminology</a></li>
+    </ul>
+  </li>
+  <li><a href="#architecture">Architecture</a>    <ul>
+      <li><a href="#information-set">Information Set</a></li>
+      <li><a href="#primitive-types">Primitive Types</a></li>
+      <li><a href="#document">Document</a></li>
+      <li><a href="#pipeline">Pipeline</a>        <ul>
+          <li><a href="#characteristics">Characteristics</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#document-information-set">Document Information Set</a>    <ul>
+      <li><a href="#document-item">Document Item</a></li>
+      <li><a href="#element-item">Element Item</a></li>
+      <li><a href="#attribute-item">Attribute Item</a></li>
+      <li><a href="#content-item">Content Item</a></li>
+      <li><a href="#annotation-item">Annotation Item</a></li>
+      <li><a href="#prefix-item">Prefix Item</a></li>
+    </ul>
+  </li>
+  <li><a href="#pipeline-information-set">Pipeline Information Set</a></li>
+  <li><a href="#internal-pointers-and-identifiers">Internal Pointers and Identifiers</a>    <ul>
+      <li><a href="#element-ids">Element IDs</a></li>
+      <li><a href="#xpointer">XPointer</a></li>
+    </ul>
+  </li>
+  <li><a href="#validation">Validation</a></li>
+  <li><a href="#event-stream">Event Stream</a></li>
+  <li><a href="#tagged-unicode-serialisation">Tagged Unicode Serialisation</a></li>
+  <li><a href="#binary-serialisation">Binary Serialisation</a></li>
+  <li><a href="#document-object-model">Document Object Model</a></li>
+  <li><a href="#references">References</a></li>
+</ul>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>This specification describes a version of XML. In previous versions [<a href="#cite-xml10" title="[XML10]">XML10</a>, <a href="#cite-xml11" title="[XML11]">XML11</a>], 
+XML is characterised principally as a markup language - a loose subset of SGML [<a href="#cite-iso8879" title="[ISO 8879]">ISO 8879</a>]. 
+Subsequent standards relating to the XML Infoset [<a href="#cite-infoset" title="[INFOSET]">INFOSET</a>], Namespaces [<a href="#cite-xmlns" title="[XMLNS]">XMLNS</a>], and others 
+address different issues.</p>
+
+<p>This specification defines XML in terms of the Information Set, and describes a framework 
+within which an Information Set may be serialised or deseralised, or manipulated 
+programmatically. We define two classes of Information Set, representing an XML Document 
+and an XML Pipeline. Other specifications may define further classes of Information Set.</p>
+
+<h3 id="origin-and-goals">Origin and Goals</h3>
+
+<h3 id="terminology">Terminology</h3>
+
+<p>The key words MUST, MOST NOT, REQUIRED, SHALL, SHALL NOT, SHOULD, SHOULD NOT, RECOMMENDED,
+MAY, and OPTIONAL, where emphasised, are to be interpreted as described in [<a href="#cite-rfc2119" title="[RFC 2119]">RFC 2119</a>]</p>
+
+<h2 id="architecture">Architecture</h2>
+
+<h3 id="information-set">Information Set</h3>
+
+<p>An Information Set is a hierarchical collection of Information Items. Information Sets are
+abstract logical structures, and it is not intended that they be realised directly.</p>
+
+<h3 id="primitive-types">Primitive Types</h3>
+
+<h3 id="document">Document</h3>
+
+<h3 id="pipeline">Pipeline</h3>
+
+<p>An XML Processor takes an XML Information Set as input and produces an XML Information Set
+as output. The XML Pipeline is an ordered sequence of such Processors, beginning with an
+XML Source and ending with an XML Sink.</p>
+
+<p>For example, in an XML viewer, the XML Source would be a deserializer, and XML Sink would
+be a layout engine. Pipeline stages might include the resolution of XML Includes,
+application of XSLT transformations, or any number of other processing stages.</p>
+
+<h4 id="characteristics">Characteristics</h4>
+
+<p>An XML Pipeline may be reversible.</p>
+
+<h2 id="document-information-set">Document Information Set</h2>
+
+<p>The Document Information Set is the abstract data model behind XML. An Information Set is 
+a hierarchical collection of Information Items.</p>
+
+<h3 id="document-item">Document Item</h3>
+
+<p>The Document Item is the root of the Information Set, and encapsulates the information
+necessary to enable Information Set processing. </p>
+
+<p>A Document Item has the properties</p>
+
+<dl>
+  <dt><em>Document Element</em></dt>
+  <dd>One Element Item representing the root element of the document</dd>
+  <dt><em>Document Type</em></dt>
+  <dd>An IRI-reference indicating the type of the document. </dd>
+  <dt><em>Version</em></dt>
+  <dd>CDATA representing the version of XML in which the document it formatted</dd>
+  <dt><em>Document IRI</em></dt>
+  <dd>An IRI used for generating Element IDs and resolving other IRIs relative to this
+document.</dd>
+  <dt><em>Base IRI</em></dt>
+  <dd>An IRI against which relative IRI-references should be resolved</dd>
+  <dt><em>Annotations</em></dt>
+  <dd>Zero or more Annotation Items</dd>
+  <dt><em>References</em></dt>
+  <dd>Zero or more IRI-references specifying resources required to process or render this 
+document</dd>
+</dl>
+
+<h3 id="element-item">Element Item</h3>
+
+<p>The Element Item is the primary building block of the Information Set. An Element Item 
+corresponds exactly to an element in an XML Document. Elements from a tree, the root of 
+which is the <em>Document Element</em> of the Document Item. Elements also serve as the scope
+for Prefix Items. </p>
+
+<p>An Element Item has the properties</p>
+
+<dl>
+  <dt><em>Element Type</em> </dt>
+  <dd>An IRI-reference representing the type of the element</dd>
+  <dt><em>Element Id</em> </dt>
+  <dd>An IRI representing the unique ID of the element. See 
+<a href="#internal-pointers-and-identifiers">Internal Pointers and Identifiers</a></dd>
+  <dt><em>Attributes</em> </dt>
+  <dd>Zero or more Attribute Items</dd>
+  <dt><em>Children</em> </dt>
+  <dd>An ordered list of zero or more Element or Content Items</dd>
+  <dt><em>Parent</em> </dt>
+  <dd>One Element Item</dd>
+  <dt><em>Annotations</em> </dt>
+  <dd>Zero or more Annotation Items</dd>
+  <dt><em>Prefixes</em> </dt>
+  <dd>Zero or more Prefix Items</dd>
+</dl>
+
+<h3 id="attribute-item">Attribute Item</h3>
+
+<p>Zero or more Attribute Items may be attached to each Element Item. Each Attribute Item
+encodes a name-value pair on it&rsquo;s parent Element.</p>
+
+<p>An Attribute Item has the properties</p>
+
+<dl>
+  <dt><em>Attribute Type</em> </dt>
+  <dd>An IRI-reference representing the type of the attribute</dd>
+  <dt><em>Element</em> </dt>
+  <dd>One Element Item</dd>
+  <dt><em>Annotations</em></dt>
+  <dd>Zero or more Annotation Items</dd>
+  <dt><em>Value</em> </dt>
+  <dd>One Content Item</dd>
+</dl>
+
+<h3 id="content-item">Content Item</h3>
+
+<p>A Content Item consists of arbitrary data, with optional type and culture information
+attached.</p>
+
+<p>A Content Item has the properties</p>
+
+<dl>
+  <dt><em>Content Type</em> </dt>
+  <dd>Zero or One Media Type representing the type of the content</dd>
+  <dt><em>Content Language</em> </dt>
+  <dd>Zero or one language code</dd>
+  <dt><em>Data Type</em> </dt>
+  <dd>Zero or one IRI-reference.</dd>
+  <dt><em>Value</em> </dt>
+  <dd>Arbitrary CDATA</dd>
+</dl>
+
+<h3 id="annotation-item">Annotation Item</h3>
+
+<p>An Annotation Item is an attachment of arbitrary data to an Element, Attribute or Document
+Item. Annotation Items facilitate passing information along the <a href="#xml-pipeline">XML Pipeline</a>.
+Annotation Items differ from Attribute Items in that they may not be serialised directly, 
+and may be attached to Attribute or Document Items as well as Element Items.</p>
+
+<p>An Annotation Item has the properties</p>
+
+<dl>
+  <dt><em>Kind</em> </dt>
+  <dd>An IRI-reference denoting the kind of annotation</dd>
+  <dt><em>Type</em> </dt>
+  <dd>CDATA representing the type of annotation, interpretation specified by kind</dd>
+  <dt><em>Value</em> </dt>
+  <dd>Zero or more Content Items</dd>
+</dl>
+
+<h3 id="prefix-item">Prefix Item</h3>
+
+<p>A Prefix Item represents a mapping between a CURIE prefix and it&rsquo;s IRI namespace.</p>
+
+<p>A Prefix Item has the properties</p>
+
+<dl>
+  <dt><em>Prefix</em> </dt>
+  <dd>CDATA representing the prefix</dd>
+  <dt><em>Namespace</em> </dt>
+  <dd>An IRI representing the namespace associated with the prefix</dd>
+</dl>
+
+<h2 id="pipeline-information-set">Pipeline Information Set</h2>
+
+<p>An XML Pipeline may be described by an Information Set. This Pipeline Information Set 
+should not be confused with the Document Information Set.</p>
+
+<h2 id="internal-pointers-and-identifiers">Internal Pointers and Identifiers</h2>
+
+<p>Paths, queries and identifiers allow navigation within an XML Information set. </p>
+
+<h3 id="element-ids">Element IDs</h3>
+
+<p>Every element is uniquely identified by the <em>Element ID</em> property of the Element Item.
+The Element ID is generated by the following algorithm</p>
+
+<ol>
+  <li>If the element has the attribute <code>xml:id</code>, then the Element ID is the <em>Document IRI</em> 
+with the fragment identifier set to the value of <code>xml:id</code></li>
+  <li>If the element has some other attribute of type <code>xsd:ID</code>, then the Element ID is the
+<em>Document IRI</em> with the fragment identifier set to the value of that attribute</li>
+  <li>Otherwise, the Element ID is the <em>Document IRI</em> with the fragment identifier set to
+an XPointer expression uniquely identifying the element.</li>
+</ol>
+
+<p>Note that multiple IDs may identify a unique element. However, one ID may not be assigned
+to more than one element. </p>
+
+<h3 id="xpointer">XPointer</h3>
+
+<h2 id="validation">Validation</h2>
+
+<p>A Validator is an XML Processor. In the broadest sense a Validator processes an 
+information set by</p>
+
+<ul>
+  <li>Adding any Attribute, Element or Content Items which are implied by the relevant schema</li>
+  <li>Adding Annotation Items appropriate to the relevant schema</li>
+  <li>Testing the Information Set against the relevant schema, returning warnings or errors if
+appropriate.</li>
+</ul>
+
+<p>The validator may infer the relevant schema from the <em>Document Type</em> property of the 
+Document Item, and <em>Element Type</em> properties of Element Items.</p>
+
+<h2 id="event-stream">Event Stream</h2>
+
+<p>The Efficient XML Interchange [<a href="#cite-exi" title="[EXI]">EXI</a>] standard specifies &hellip;</p>
+
+<p>An XML Document Information Set can be emitted as a sequence of events. This event sequence
+permits efficient transfer of the Information Set from one processor to another without an
+intervening serialisation stage. Alt</p>
+
+<h2 id="tagged-unicode-serialisation">Tagged Unicode Serialisation</h2>
+
+<pre><code>STag ::= '&lt;' CURIEorSafeIRI Attr* '&gt;'
+ETag ::= '&lt;' '/' CURIEorSafeIRI '&gt;'
+NTag ::= '&lt;' CURIEorSafeIRI Attr* '/' '&gt;'
+
+Element ::= STag Content ETag | NTag
+</code></pre>
+
+<h2 id="binary-serialisation">Binary Serialisation</h2>
+
+<h2 id="document-object-model">Document Object Model</h2>
+
+<h2 id="references">References</h2>
+
+<dl>
+  <dt><a id="cite-xmlns"></a><strong>XMLNS</strong></dt>
+  <dd>W3C (World Wide Web Consortium) <em><a href="http://www.w3.org/TR/xml-names/">Namespaces in XML 1.0 (Third Edition)</a></em> ed. Bray, et al. December 2009.</dd>
+</dl>
+
+<dl>
+  <dt><a id="cite-exi"></a><strong>EXI</strong></dt>
+  <dd>W3C (World Wide Web Consortium) <em><a href="http://www.w3.org/TR/exi">Efficient XML Interchange (EXI) Format 1.0</a></em> ed. Schneider, Kamiya, March 2011</dd>
+</dl>
+
+<dl>
+  <dt><a id="cite-curie"></a><strong>CURIE</strong></dt>
+  <dd>W3C (World Wide Web Consortium) <em><a href="http://www.w3.org/TR/curie/">CURIE Syntax 1.0</a></em> ed. Birbeck, McCarron, December 2010</dd>
+</dl>
+
+<dl>
+  <dt><a id="cite-xml10"></a><strong>XML10</strong></dt>
+  <dd>W3C (World Wide Web Consortium) <em><a href="http://www.w3.org/TR/xml">Extensible Markup Language (XML) 1.0 (Fifth Edition)</a></em> ed. Bray, et al. November 2008</dd>
+</dl>
+
+<dl>
+  <dt><a id="cite-xml11"></a><strong>XML11</strong></dt>
+  <dd>W3C (World Wide Web Consortium) <em><a href="http://www.w3.org/TR/xml11">Extensible Markup Language (XML) 1.1 (Second Edition)</a></em> ed. Bray, et al. September 2006</dd>
+</dl>
+
+<dl>
+  <dt><a id="cite-infoset"></a><strong>INFOSET</strong></dt>
+  <dd>W3C (World Wide Web Consortium) <em><a href="http://www.w3.org/TR/xml-infoset">XML Information Set (Second Edition)</a></em> ed. Cowan, Tobin. February 2004</dd>
+</dl>
+
+<dl>
+  <dt><a id="cite-iso8879"></a><strong>ISO 8879</strong></dt>
+  <dd>ISO (International Organisation for Standardisation) <em>ISO 8879:1986 Information Processing &ndash; Text and Office Systems &ndash; Standard Generalized Markup Language (SGML), First Edition</em> October 1986</dd>
+</dl>
+
+<dl>
+  <dt><a id="cite-rfc2119"></a><strong>RFC 2119</strong></dt>
+  <dd>IETF (Internet Engineering Taskforce) <em><a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119: Key words for use in RFCs to Indicate Requirement Levels</a></em> Scott Bradner, 1997.</dd>
+</dl>
+
+        </div>
+    </div>
+
+        
+        <div id="l-colophon" class="cf layout-row">
+    <footer class="cf layout-cell-l5">
+        <p><a rel="license" href="http://creativecommons.org/licenses/by/2.0/uk/deed.en_GB"><img alt="Creative Commons Licence" style="border-width:0" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" /></a></p>
+        <p>Theme and content by <a xmlns:cc="http://creativecommons.org/ns#" href="http://twrl.github.com" property="cc:attributionName" rel="cc:attributionURL">Tom Robbins</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/2.0/uk/deed.en_GB">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a>.</p>
+		<p>Icons are <a href="http://min.frexy.com/articles/category/milky/">Milky Icons by Frexy</a></p>
+	</footer>
+</div>
+    
+    </body>
+</html>
