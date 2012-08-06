@@ -1,0 +1,202 @@
+.cf::before { 
+    content: ""; 
+    display: table; 
+}
+
+.cf::after { 
+    content: "";
+    display: table;
+    clear: both; 
+}
+
+.cf { 
+    zoom: 1; 
+}
+
+
+.nw {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+
+.icon {
+    width: 16px;
+    height: 16px;
+    margin: 0 1ex;
+}
+
+
+h3 {
+    font-size: 120%;
+    }
+h2 {
+    font-size: 140%;
+    }
+h1 {
+    font-size: 160%;
+    }
+
+
+.content {
+    text-align: justify;
+}
+
+.layout-row header {
+    text-align: right;
+}
+
+.layout-row header p {
+    font-size: 10pt;
+    }
+
+
+
+#l-head-title > * {
+			display: inline-block;
+		}
+		#l-head-title h1 {
+			margin: 5px 16px;
+		}
+		#l-head-nav > p {
+			display: inline-block;
+		}
+		#l-head p {
+			vertical-align: top;
+		}
+		
+#l-head-nav p {
+    margin: 16px 8px;
+    }
+		
+		
+#l-advnav-tags .set-2 {
+    font-size: 110%;
+    }
+#l-advnav-tags .set-3 {
+    font-size: 120%;
+    }
+#l-advnav-tags .set-4 {
+    font-size: 130%;
+    }
+#l-advnav-tags .set-5 {
+    font-size: 140%;
+    }
+		
+#l-advnavctl p {
+    margin-top: 0;
+    margin-bottom: 0; 
+    }
+
+    
+#l-advnav, #l-advnavctl {
+    font-size: 10pt;
+    }
+    
+#l-pagesub header {
+    text-align: left;
+    padding: 0 1%;
+    }
+#l-pagesub h1 {
+    font-size: 14pt;
+    }
+    
+    
+#l-paginator p {
+    margin: 0;
+    }
+    
+#l-colophon {
+    border-top: 1px solid #c0c0c0;
+    background-color: #e0e0e0;
+    text-align: center;
+    color: #404040;
+    font-size: 9pt;
+    }
+
+
+article .addthis_toolbox {
+    float: right;
+    min-width: 156px;
+    }
+
+
+body {
+    margin: 0;
+    background-color: #e0e0e0;
+}
+
+.layout-row {
+    margin: 0;
+    padding: 0 10%;
+}
+
+.layout-cell-l1 {
+    width: 18%;
+    padding: 1em 1%;
+    margin: 0;
+    float: left;
+}
+
+.layout-cell-l2 {
+    width: 38%;
+    padding: 1em 1%;
+    margin: 0;
+    float: left;
+}
+
+.layout-cell-l3 {
+    width: 58%;
+    padding: 1em 1%;
+    margin: 0;
+    float: left;
+}
+
+.layout-cell-l4 {
+    width: 78%;
+    padding: 1em 1%;
+    margin: 0;
+    float: left;
+}
+
+.layout-cell-l5 {
+    width: 98%;
+    padding: 1em 1%;
+    margin: 0;
+    float: left;
+}
+
+.layout-cell-r1 {
+    width: 18%;
+    padding: 1em 1%;
+    margin: 0;
+    float: right;
+}
+
+.layout-cell-r2 {
+    width: 38%;
+    padding: 1em 1%;
+    margin: 0;
+    float: right;
+}
+
+.layout-cell-r3 {
+    width: 58%;
+    padding: 1em 1%;
+    margin: 0;
+    float: right;
+}
+
+.layout-cell-r4 {
+    width: 78%;
+    padding: 1em 1%;
+    margin: 0;
+    float: right;
+}
+
+.layout-cell-r5 {
+    width: 98%;
+    padding: 1em 1%;
+    margin: 0;
+    float: right;
+}

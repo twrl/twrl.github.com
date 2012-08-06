@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>twrl - Rehashing Xml</title>
+        
+        <meta charset="UTF-8"/>
+        
+        <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+        <link href="/css/layout.css" rel="stylesheet" type="text/css"/>
+        <link href="/css/colour.css" rel="stylesheet" type="text/css"/>
+        <link href="/css/code.css" rel="stylesheet" type="text/css"/>
+        
+        <link href="/css/typecue.css" rel="stylesheet" type="text/css"/>
+        <link href="/css/colorbox.css" rel="stylesheet" type="text/css"/>
+        
+        <!-- typography -->
+        <style type="text/css">
+        body {
+            font-family: "Droid Sans", sans-serif;
+        }
+        pre {
+            font-family: "Droid Sans Mono", monospace;
+        }
+        </style>
+        
+        
+        <script type="application/javascript" src="/js/require.js" data-main="/js/main"></script>
+        
+    </head>
+    <body>
+    
+        <div id="l-head" class="cf layout-row c-dark">
+            <header id="l-head-title" class="cf layout-cell-l2">
+                <h1>twrl</h1>
+            </header>
+            <nav id="l-head-nav" class="cf layout-cell-l3">
+            
+                
+                <p><a href="/">Home</a></p>
+                
+                
+                
+            
+                
+                <p><a href="/archive/">Archive</a></p>
+                
+                
+                
+            
+            </nav>
+        </div>
+        
+        <div class="cf layout-row c-dark" id="l-advnav" style="display:none">
+                        <nav id="l-advnav-tags" class="cf layout-cell-l1" data-widget="site/tags">
+                <h4><img src="/images/icons/20.png" class="icon"/> Tags</h4>
+                <p><span class="tag" data-tagcount="1"><a href="/tags/amd">AMD</a></span> <span class="tag" data-tagcount="1"><a href="/tags/ajax">Ajax</a></span> <span class="tag" data-tagcount="3"><a href="/tags/blog">Blog</a></span> <span class="tag" data-tagcount="1"><a href="/tags/blogger">Blogger</a></span> <span class="tag" data-tagcount="1"><a href="/tags/civil-partnership">Civil&nbsp;Partnership</a></span> <span class="tag" data-tagcount="1"><a href="/tags/commonjs">CommonJS</a></span> <span class="tag" data-tagcount="1"><a href="/tags/diaspora">Diaspora</a></span> <span class="tag" data-tagcount="1"><a href="/tags/dynamic-views">Dynamic&nbsp;Views</a></span> <span class="tag" data-tagcount="1"><a href="/tags/facebook">Facebook</a></span> <span class="tag" data-tagcount="1"><a href="/tags/google">Google</a></span> <span class="tag" data-tagcount="5"><a href="/tags/javascript">Javascript</a></span> <span class="tag" data-tagcount="2"><a href="/tags/jekyll">Jekyll</a></span> <span class="tag" data-tagcount="1"><a href="/tags/lgbt">LGBT</a></span> <span class="tag" data-tagcount="1"><a href="/tags/osid">OSID</a></span> <span class="tag" data-tagcount="1"><a href="/tags/pki">PKI</a></span> <span class="tag" data-tagcount="3"><a href="/tags/programming">Programming</a></span> <span class="tag" data-tagcount="2"><a href="/tags/same-sex-marriage">Same-sex&nbsp;Marriage</a></span> <span class="tag" data-tagcount="1"><a href="/tags/security">Security</a></span> <span class="tag" data-tagcount="1"><a href="/tags/semantic-web">Semantic&nbsp;Web</a></span> <span class="tag" data-tagcount="1"><a href="/tags/social-networking">Social&nbsp;Networking</a></span> <span class="tag" data-tagcount="2"><a href="/tags/society">Society</a></span> <span class="tag" data-tagcount="2"><a href="/tags/the-cloud">The&nbsp;Cloud</a></span> <span class="tag" data-tagcount="3"><a href="/tags/web-architecture">Web&nbsp;Architecture</a></span> <span class="tag" data-tagcount="2"><a href="/tags/web-standards">Web&nbsp;Standards</a></span> <span class="tag" data-tagcount="1"><a href="/tags/web-workers">Web&nbsp;Workers</a></span> <span class="tag" data-tagcount="1"><a href="/tags/xml">XML</a></span> <span class="tag" data-tagcount="2"><a href="/tags/jquery">jQuery</a></span> 
+                <p><a href="/tags">See all tags</a></p>
+            </nav>
+            
+            <nav class="cf layout-cell-l1">
+                <h4><img src="/images/icons/10.png" class="icon"/>Related Posts</h4>
+                <ul>
+                
+                    <li><a href="/2012/05/who-am-i-standing-up-to-again/">Who am I standing up to again?</a></li>
+                
+                    <li><a href="/2012/03/whatever-happened-to-osid/">Whatever Happened To Osid</a></li>
+                
+                    <li><a href="/2012/06/javascript-alternatives/">Javascript Alternatives</a></li>
+                
+                    <li><a href="/2012/03/ajax-and-file-uris/">Ajax and file&#58;// URIs</a></li>
+                
+                    <li><a href="/2012/07/is-the-public-key-infrastructure-collapsing/">Is the Public Key Infrastructure Collapsing?</a></li>
+                
+                    <li><a href="/2012/05/social-networking/">Social Networking</a></li>
+                
+                    <li><a href="/2012/03/im-fed-up-with-same--sex-marriage/">I'm Fed Up With Same-sex Marriage</a></li>
+                
+                    <li><a href="/2012/05/wheres-my-data/">Where's my Data!</a></li>
+                
+                    <li><a href="/2012/06/iconiser/">Iconiser</a></li>
+                
+                    <li><a href="/2012/03/initialising-web-workers/">Initialising Web Workers</a></li>
+                
+                </ul>
+            </nav>
+            
+            <nav class="cf layout-cell-l1">
+                <h4><img src="/images/icons/12.png" class="icon"/>Recent Posts</h4>
+                <ul>
+                
+                    <li><a href="/2012/07/is-the-public-key-infrastructure-collapsing/">Is the Public Key Infrastructure Collapsing?</a></li>
+                
+                    <li><a href="/2012/07/the-new-setup/">About This New Setup</a></li>
+                
+                    <li><a href="/2012/07/the-new-edition/">The New Edition</a></li>
+                
+                    <li><a href="/2012/06/views-dynamic-and-otherwise/">Views, dynamic and otherwise</a></li>
+                
+                    <li><a href="/2012/06/iconiser/">Iconiser</a></li>
+                
+                    <li><a href="/2012/06/javascript-alternatives/">Javascript Alternatives</a></li>
+                
+                    <li><a href="/2012/05/social-networking/">Social Networking</a></li>
+                
+                    <li><a href="/2012/05/who-am-i-standing-up-to-again/">Who am I standing up to again?</a></li>
+                
+                    <li><a href="/2012/05/wheres-my-data/">Where's my Data!</a></li>
+                
+                    <li><a href="/2012/03/initialising-web-workers/">Initialising Web Workers</a></li>
+                
+                </ul>
+            </nav>
+            <div class="cf layout-cell-r2">
+                <h4><img src="/images/icons/46.png" class="icon"/>About me</h4>
+                <img src="//lh4.googleusercontent.com/-sThPEpky3Eg/AAAAAAAAAAI/AAAAAAAAACg/Ncrk_nbS_5k/s512-c/photo.jpg" style="float: left; max-width: 80px; max-height: 80px; margin: 4px;"/>
+                <p style="float:right;"><a href="//plus.google.com/114540468191182808437?prsrc=3" rel="publisher" style="text-decoration:none;">
+            <img src="//ssl.gstatic.com/images/icons/gplus-32.png" alt="Google+" style="border:0;width:32px;height:32px;"/></a></p>
+                <p>I used to write code for a living, but since discovered that being a full time student is much more fun. Now studying for a masters in Mathematics, I fill my spare time with tinkering with computers and occasionally getting angry at the news - and write about both of those things here.</p>
+                
+            </div>
+
+        </div>
+        <div class="cf layout-row c-dark" id="l-advnavctl" data-widget="site/advnav">
+            <div class="cf layout-cell-l5" id="l-advnavctl-ctrl">
+                <p id="advnavctl-show"><img src="/images/icons/24.png" class="icon"/> Show me more things...</p>
+                <p id="advnavctl-hide" style="display:none"><img src="/images/icons/19.png" class="icon"/> Hide this clutter</p>
+            </div>
+        </div>
+        
+    
+                <article itemscope itemtype="http://schema.org/BlogPosting" class="cf layout-row odd">
+            <header class="cf layout-cell-l2">
+                <h1 itemprop="headline">Rehashing Xml</h1>
+                <p><time datetime="2012-03-23" itemprop="datePublished">Friday 23 March, 2012</time> <img src="/images/icons/12.png" class="icon" alt="Publication date - Friday 23 March, 2012"/></p>
+                
+                <p><span itemprop="keywords"><a href="/tags/web-standards">Web Standards</a>, <a href="/tags/xml">XML</a></span> <img src="/images/icons/20.png" class="icon" alt="Tags - Web Standards, XML"/></p>
+                
+                
+                <!-- AddThis Button BEGIN
+                <div class="addthis_toolbox addthis_default_style">
+                <a class="addthis_button_preferred_1"></a>
+                <a class="addthis_button_preferred_2"></a>
+                <a class="addthis_button_preferred_3"></a>
+                <a class="addthis_button_preferred_4"></a>
+                <a class="addthis_button_compact"></a>
+                <a class="addthis_counter addthis_bubble_style"></a>
+                </div>
+                <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+                <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-5002f6cf1dbb4c0f"></script>
+                AddThis Button END -->
+                
+                <div id="share-widget">
+
+    <!-- AddThis Button BEGIN -->
+        <div class="addthis_toolbox addthis_default_style">
+        <a class="addthis_button_google_plusone_share"><img src="/images/icons/social/google_plus.png"/></a>
+        <a class="addthis_button_facebook"><img src="/images/icons/social/facebook.png"/></a>
+        <a class="addthis_button_linkedin"><img src="/images/icons/social/linkedin.png"/></a>
+        <a class="addthis_button_twitter"><img src="/images/icons/social/twitter.png"/></a>
+        <a class="addthis_button_email"><img src="/images/icons/social/email.png"/></a>
+        <a class="addthis_button"><img src="/images/icons/112.png" style="width: 32px; height: 32px;"/></a>
+        <!--a class="addthis_counter addthis_bubble_style"></a-->
+        </div>
+        <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+        <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-5002f6cf1dbb4c0f"></script>
+        <!-- AddThis Button END -->
+
+</div>
+                
+            </header>
+            <div itemprop="articleBody" class="cf layout-cell-l3 content">
+                <p>I find it interesting sometimes to consider, if I were starting over and designing <em>xyz-thing</em> from scratch, what would I do differently to what we already have. Recently I&rsquo;ve been considering this with XML.</p>
+
+<p>The trouble with XML is that it&rsquo;s a vast stack of standards. In some ways this is a good thing, because at least in theory it adds a lot of flexibility for different use cases. But it does result in duplication and redundancy, because document authors never know exactly which editions of which specs are being used by which processors and vice versa. How often do we see patterns like the common one for the language attribute on the HTML tag:</p>
+
+<p><code>&lt;html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"&gt;</code></p>
+
+<p>The common <code>id</code> attribute is the same. It sounds like a trivial niggle, but actually it&rsquo;s a design flaw in how these applications (XHTML and XML in this case) are layered one on top of the other.</p>
+
+<p>Then we have the DOM, the XML Infoset, EXI, Canonical XML, XML Namespaces, XML Schema and so on. It&rsquo;s a dizzying array of specs, each with complex demands, which is partly why WHATWG have moved away from the idea of XHTML and put their efforts into HTML5&rsquo;s SGML derived syntax instead. Complying with the existing stack of XML specifications is too onerous, and the specs themselves are not always neatly joined up.</p>
+
+<p>Throw in stuff from the edges of the XML world - the development of IRIs, XRIs and CURIEs, the semantic models of RDF, the multipart MIME types and the data: URI scheme, and so on - and it&rsquo;s a recipe for migraines and sleepless nights.</p>
+
+<p>For all it&rsquo;s flaws however, XML has a whole host of benefits too. There is a very good reason why it&rsquo;s so widely adopted, it&rsquo;s is very flexible and it is human readable, it is (relatively) easy to parse, validate and transform. There various stable and well understood means to map programmatic objects into XML serialisations and back, enabling everything from RPC to Active Record to be done using it.</p>
+
+<p>So if I was going to redesign XML from scratch, what would I do? Well, here are my main thoughts:</p>
+
+<ul>
+  <li>Scrap DTDs, completely. I&rsquo;m sure there&rsquo;s been other occasions, but the last time that I can think of when I saw a DTD used seriously was when XHTML 1.1 was published, and XML Schema wasn&rsquo;t considered &lsquo;mature&rsquo; at the point.</li>
+  <li>Design the Infoset first. Infoset is supposed to represent the logical model of a document, which XML serialises and DOM provides programmatic access to. Standard XML syntax need not be the only serialisation of an XML Infoset, and the DOM can be made to converge more closely with the underlying model.</li>
+  <li>Take a cue from Architecture of the World Wide Web, and consider information items in your infoset as akin to resources. That means that an element might be considered to have a set of zero or more Descriptions, Identifiers, and Representations. Identifiers can be XPath expressions, IDs or any other unique reference to an element. Descriptions are any old metadata, and Representations correspond to different serialisations.</li>
+  <li>Design a processing model to go with the infoset. XML Schema defines the PSVI, XSLT defines the post transformation infoset, XML Encryption defines post encryption/decryption infosets. A general model for the transformation of one infoset into the next, and pipelining those transformations, would be very useful.</li>
+  <li>Consider all element and attribute names as URIs. Instead of QName we can use URIorCURIE as the type of all namespace qualified names.</li>
+  <li>Use processing instructions for instructions to the processor. That means rather than xmlns:foo=&rdquo;&hellip;&rdquo; on an element we insert a processing instruction <?namespace foo="..."?>. If qualified names are now URIs, then we are telling the processor how to expand any CURIEs that we are using. We might also have processing instructions for associating schemas, transforms, even linkbases. Processing instructions can be used to set up the document-specific processing pipeline described above, linking together various flavours of infoset transformation as well as controlling how the infoset is generated from the serialised document. Anything which alters the processing of the document when viewed as a series of parser events. Using attributes for this sort of thing should be limited strictly to when we are giving an element specific instruction.</li>
+</ul>
+
+<p>One day I might do a skunk works and draft something along these lines, until then I can but rant.</p>
+
+            </div>
+        </article>
+        
+        <div id="l-colophon" class="cf layout-row">
+            <footer class="cf layout-cell-l5">
+                <p><a rel="license" href="http://creativecommons.org/licenses/by/2.0/uk/deed.en_GB"><img alt="Creative Commons Licence" style="border-width:0" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" /></a></p>
+                <p>Theme and content by <a xmlns:cc="http://creativecommons.org/ns#" href="http://twrl.github.com" property="cc:attributionName" rel="cc:attributionURL">Tom Robbins</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/2.0/uk/deed.en_GB">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a>.</p>
+        		<p>Icons are <a href="http://min.frexy.com/articles/category/milky/">Milky Icons by Frexy</a></p>
+        	</footer>
+        </div>
+    
+    </body>
+</html>
