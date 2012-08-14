@@ -131,30 +131,17 @@
         </div>
         
     
-                <article itemscope itemtype="http://schema.org/BlogPosting" class="cf layout-row odd">
+                <article vocab="http://schema.org/" typeof="http://schema.org/BlogPosting" about="" class="cf layout-row odd">
             <header class="cf layout-cell-l2">
-                <h1 itemprop="headline">Iconiser</h1>
-                <p><time datetime="2012-06-14" itemprop="datePublished">Thursday 14 June, 2012</time> <img src="/images/icons/12.png" class="icon" alt="Publication date - Thursday 14 June, 2012"/></p>
+                <h1 property="headline">Iconiser</h1>
+                <p><time datetime="2012-06-14" property="datePublished">Thursday 14 June, 2012</time> <img src="/images/icons/12.png" class="icon" alt="Publication date - Thursday 14 June, 2012"/></p>
                 
-                <p><span itemprop="keywords"><a href="/tags/javascript">Javascript</a>, <a href="/tags/jquery">jQuery</a></span> <img src="/images/icons/20.png" class="icon" alt="Tags - Javascript, jQuery"/></p>
+                <p><span property="keywords"><a href="/tags/javascript">Javascript</a>, <a href="/tags/jquery">jQuery</a></span> <img src="/images/icons/20.png" class="icon" alt="Tags - Javascript, jQuery"/></p>
                 
                 
                 <p><a href="/assets/attachments/iconiser.js">iconiser.js</a> <img src="/images/icons/131.png" class="icon" alt="Attachment - iconiser.js"/></p>
                 
                 
-                
-                <!-- AddThis Button BEGIN
-                <div class="addthis_toolbox addthis_default_style">
-                <a class="addthis_button_preferred_1"></a>
-                <a class="addthis_button_preferred_2"></a>
-                <a class="addthis_button_preferred_3"></a>
-                <a class="addthis_button_preferred_4"></a>
-                <a class="addthis_button_compact"></a>
-                <a class="addthis_counter addthis_bubble_style"></a>
-                </div>
-                <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
-                <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-5002f6cf1dbb4c0f"></script>
-                AddThis Button END -->
                 
                 <div id="share-widget">
 
@@ -175,7 +162,7 @@
 </div>
                 
             </header>
-            <div itemprop="articleBody" class="cf layout-cell-l3 content">
+            <div property="articleBody" class="cf layout-cell-l3 content">
                 <p>This is a useful titbit for anyone who is working with blogger templates or other things that severely limit your ability to host and serve lots of little files. I just hacked it together now to implement the new theme I&rsquo;m writing for this blog.</p>
 
 <p>I&rsquo;m using quite a few icons in the new theme and I wanted to embed them as data: URIs. The trouble is, I&rsquo;m using the same icon in several places which means duplication, and having great blocks of base64 embedded in the code is making it all unreadable. So I&rsquo;ve written a tiny jQuery plugin to maintain a catalogue of named icons, and then replace the shorthand URIs that I&rsquo;m using with the full one.</p>

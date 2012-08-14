@@ -131,26 +131,13 @@
         </div>
         
     
-                <article itemscope itemtype="http://schema.org/BlogPosting" class="cf layout-row odd">
+                <article vocab="http://schema.org/" typeof="http://schema.org/BlogPosting" about="" class="cf layout-row odd">
             <header class="cf layout-cell-l2">
-                <h1 itemprop="headline">Rehashing Xml</h1>
-                <p><time datetime="2012-03-23" itemprop="datePublished">Friday 23 March, 2012</time> <img src="/images/icons/12.png" class="icon" alt="Publication date - Friday 23 March, 2012"/></p>
+                <h1 property="headline">Rehashing Xml</h1>
+                <p><time datetime="2012-03-23" property="datePublished">Friday 23 March, 2012</time> <img src="/images/icons/12.png" class="icon" alt="Publication date - Friday 23 March, 2012"/></p>
                 
-                <p><span itemprop="keywords"><a href="/tags/web-standards">Web Standards</a>, <a href="/tags/xml">XML</a></span> <img src="/images/icons/20.png" class="icon" alt="Tags - Web Standards, XML"/></p>
+                <p><span property="keywords"><a href="/tags/web-standards">Web Standards</a>, <a href="/tags/xml">XML</a></span> <img src="/images/icons/20.png" class="icon" alt="Tags - Web Standards, XML"/></p>
                 
-                
-                <!-- AddThis Button BEGIN
-                <div class="addthis_toolbox addthis_default_style">
-                <a class="addthis_button_preferred_1"></a>
-                <a class="addthis_button_preferred_2"></a>
-                <a class="addthis_button_preferred_3"></a>
-                <a class="addthis_button_preferred_4"></a>
-                <a class="addthis_button_compact"></a>
-                <a class="addthis_counter addthis_bubble_style"></a>
-                </div>
-                <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
-                <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-5002f6cf1dbb4c0f"></script>
-                AddThis Button END -->
                 
                 <div id="share-widget">
 
@@ -171,7 +158,7 @@
 </div>
                 
             </header>
-            <div itemprop="articleBody" class="cf layout-cell-l3 content">
+            <div property="articleBody" class="cf layout-cell-l3 content">
                 <p>I find it interesting sometimes to consider, if I were starting over and designing <em>xyz-thing</em> from scratch, what would I do differently to what we already have. Recently I&rsquo;ve been considering this with XML.</p>
 
 <p>The trouble with XML is that it&rsquo;s a vast stack of standards. In some ways this is a good thing, because at least in theory it adds a lot of flexibility for different use cases. But it does result in duplication and redundancy, because document authors never know exactly which editions of which specs are being used by which processors and vice versa. How often do we see patterns like the common one for the language attribute on the HTML tag:</p>

@@ -131,26 +131,13 @@
         </div>
         
     
-                <article itemscope itemtype="http://schema.org/BlogPosting" class="cf layout-row odd">
+                <article vocab="http://schema.org/" typeof="http://schema.org/BlogPosting" about="" class="cf layout-row odd">
             <header class="cf layout-cell-l2">
-                <h1 itemprop="headline">Ajax and file&#58;// URIs</h1>
-                <p><time datetime="2012-03-28" itemprop="datePublished">Wednesday 28 March, 2012</time> <img src="/images/icons/12.png" class="icon" alt="Publication date - Wednesday 28 March, 2012"/></p>
+                <h1 property="headline">Ajax and file&#58;// URIs</h1>
+                <p><time datetime="2012-03-28" property="datePublished">Wednesday 28 March, 2012</time> <img src="/images/icons/12.png" class="icon" alt="Publication date - Wednesday 28 March, 2012"/></p>
                 
-                <p><span itemprop="keywords"><a href="/tags/ajax">Ajax</a>, <a href="/tags/javascript">Javascript</a>, <a href="/tags/jquery">jQuery</a>, <a href="/tags/programming">Programming</a></span> <img src="/images/icons/20.png" class="icon" alt="Tags - Ajax, Javascript, jQuery, Programming"/></p>
+                <p><span property="keywords"><a href="/tags/ajax">Ajax</a>, <a href="/tags/javascript">Javascript</a>, <a href="/tags/jquery">jQuery</a>, <a href="/tags/programming">Programming</a></span> <img src="/images/icons/20.png" class="icon" alt="Tags - Ajax, Javascript, jQuery, Programming"/></p>
                 
-                
-                <!-- AddThis Button BEGIN
-                <div class="addthis_toolbox addthis_default_style">
-                <a class="addthis_button_preferred_1"></a>
-                <a class="addthis_button_preferred_2"></a>
-                <a class="addthis_button_preferred_3"></a>
-                <a class="addthis_button_preferred_4"></a>
-                <a class="addthis_button_compact"></a>
-                <a class="addthis_counter addthis_bubble_style"></a>
-                </div>
-                <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
-                <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-5002f6cf1dbb4c0f"></script>
-                AddThis Button END -->
                 
                 <div id="share-widget">
 
@@ -171,7 +158,7 @@
 </div>
                 
             </header>
-            <div itemprop="articleBody" class="cf layout-cell-l3 content">
+            <div property="articleBody" class="cf layout-cell-l3 content">
                 <p>Ajax is becoming the dominant method, if it isn&rsquo;t already, of getting data in and out of a web application. But Ajax is built on top of XMLHttpRequest, which as the name suggests is only really well defined if the underlying protocol is HTTP.</p>
 
 <p>So what about local files? The new Filesystem API&rsquo;s are coming, but they sandbox us heavily. At least for the time being, if we want to muck about with self-modifying code or local file-based data sources we have to hack it, which means using any one of half a dozen browser and/or os specific methods.</p>
