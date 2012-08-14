@@ -1,4 +1,4 @@
-define(['module', 'cache!http://www.google-analytics.com/ga.js'], function (module, ga) {
+define(['module', 'http://www.google-analytics.com/ga.js'], function (module, ga) {
     
     var goog = {
         setAccount:     function (accountId) {

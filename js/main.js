@@ -22,7 +22,7 @@ require(['site/ga'], function (ga) {
     
 });
 
-require(['jquery', 'site/advnav', 'site/px', 'domReady!'], function ($) {
+require(['jquery', 'site/advnav', 'domReady!'], function ($) {
 
     
     $('[data-widget]').each(function () {
