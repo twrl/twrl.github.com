@@ -29,6 +29,21 @@
         
         <script type="application/javascript" src="/js/require.js" data-main="/js/main"></script>
         
+        
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'twrl'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script'); s.async = true;
+            s.type = 'text/javascript';
+            s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+        </script>
+        
+        
     </head>
     <body>
     
@@ -131,12 +146,14 @@
         </div>
         
     
-                <article vocab="http://schema.org/" typeof="http://schema.org/BlogPosting" about="" class="cf layout-row odd">
+                <article vocab="http://schema.org/" typeof="http://schema.org/BlogPosting" about="">
+        <section class="cf layout-row odd">
             <header class="cf layout-cell-l2">
                 <h1 property="headline">Javascript Alternatives</h1>
                 <p><time datetime="2012-06-11" property="datePublished">Monday 11 June, 2012</time> <img src="/images/icons/12.png" class="icon" alt="Publication date - Monday 11 June, 2012"/></p>
                 
                 <p><span property="keywords"><a href="/tags/javascript">Javascript</a>, <a href="/tags/programming">Programming</a></span> <img src="/images/icons/20.png" class="icon" alt="Tags - Javascript, Programming"/></p>
+                <p><a href="http://twrl.github.com#disqus_thread">Comments</a> <img src="/images/icons/46.png" class="icon"/></p>
                 
                 
                 <div id="share-widget">
@@ -174,6 +191,28 @@
 <p>Which brings me back to JavaScript, but then I&rsquo;m still stuck with the clunkyness of JavaScript for certain applications. Still, while it might not always be elegant, it does work. So for the time being, I&rsquo;ll stick with JavaScript.</p>
 
             </div>
+        </section>
+        <section class="cf layout-row even">
+            <header class="cf layout-cell-l2">
+                <h2>Comments</h2>
+            </header>
+            <div class="cf layout-cell-l3">
+                        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'twrl'; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+            </div>
+        </section>
         </article>
         
         <div id="l-colophon" class="cf layout-row">
