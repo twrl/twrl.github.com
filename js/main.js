@@ -22,14 +22,14 @@ require(['site/ga'], function (ga) {
     
 });
 
-require(['jquery', 'site/advnav', 'domReady!'], function ($) {
+require(['jquery', 'site/advnav', 'site/px', 'domReady!'], function ($) {
 
     
     $('[data-widget]').each(function () {
         
         var widgetModule = $(this).attr('data-widget');
         
-        require([widgetModule]);
+        require(['cache!' + widgetModule]);
         
     });
     

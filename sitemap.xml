@@ -2,6 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
+      <loc>http://twrl.github.com/2012/08/XBMC/</loc>
+      <lastmod>2012-08-14</lastmod>
+  </url>
+
+  <url>
+      <loc>http://twrl.github.com/2012/08/microdata-vs-rdfa/</loc>
+      <lastmod>2012-08-13</lastmod>
+  </url>
+
+  <url>
       <loc>http://twrl.github.com/2012/08/copyright/</loc>
       <lastmod>2012-08-05</lastmod>
   </url>

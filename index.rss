@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+	<channel>
+		<title>twrl</title>
+		<description>Writing about technology, food, LGB topics, and whatever else comes to mind</description>
+		<link>http://twrl.github.com</link>
+		
+			<item>
+				<title>Media Centre</title>
+				<description>&lt;p&gt;I had an entertaining time at the weekend setting up &lt;a href=&quot;http://xbmc.org&quot;&gt;XBMC&lt;/a&gt; on my laptop.
+It runs well enough on Ubuntu, and compiling the latest source was pretty easy (the 
+instructions are pretty good).&lt;/p&gt;
+
+&lt;p&gt;I ran into a few problems. My CPU usage is a little on the high side. My laptop 
+being an ageing MacBook, so it&amp;rsquo;s prone to run hot, and unnecessary CPU usage = unnecessary 
+fan noise. Getting Suspend and Wake-on-Lan to work reliably was also tricky.&lt;/p&gt;
+
+&lt;h2 id=&quot;cpu-usage&quot;&gt;CPU Usage&lt;/h2&gt;
+
+&lt;p&gt;The first thing to do is enable 
+&lt;a href=&quot;http://wiki.xbmc.org/index.php?title=Dirty_regions&quot;&gt;Dirty Regions&lt;/a&gt;. Trial and error will 
+tell you which of the available algorithms gives you the best results on you hardware. For
+my Macbook (which has an Intel GMA 950 graphics chipset) I found mode 2 worked best, but
+YMMV.&lt;/p&gt;
+
+&lt;p&gt;I also recommend disabling RSS feeds on the home screen, and trying a few different skins.
+Aeon skins tend to be heavy CPU eaters, although I found Aeon Nox to be better than the
+default Confluence skin.&lt;/p&gt;
+
+&lt;h2 id=&quot;suspend-and-wol&quot;&gt;Suspend and WoL&lt;/h2&gt;
+
+&lt;p&gt;I was having an issue with suspend, whether I triggered it from within XBMC or from the 
+Unity panel: the computer would enter suspend and then immediately wake itself. 
+It never did this if I just closed the lid and left it.&lt;/p&gt;
+
+&lt;p&gt;The solution was to tweak a setting in grub.cfg. Find the line which sets &lt;code&gt;GRUB_CMDLINE_LINUX_DEFAULT&lt;/code&gt;
+and add &lt;code&gt;usbcore.autosuspend=-1&lt;/code&gt; to it. So it might read&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet splash usbcore.autosuspend=-1&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;or something similar.&lt;/p&gt;
+
+&lt;p&gt;To enable Wake-on-LAN you need to first enable it in the BIOS, if applicable. I didn&amp;rsquo;t have
+to - by some quirk of Apple&amp;rsquo;s EFI implementation it seems to be supported anyway.&lt;/p&gt;
+
+&lt;p&gt;I installed ethtool, and enabled WoL on the NIC using the command&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo ethtool -s et0 wol g
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This is all documented on the (Ubuntu Community Docs)[https://help.ubuntu.com/community/WakeOnLan].
+The only trouble is, you have to do this every time the network interface comes up.&lt;/p&gt;
+
+&lt;p&gt;Now, there are all sorts of issues around integration of ethtool and NetworkManager, which
+Ubuntu uses by default. I found that the best thing to do was to create a script in 
+&lt;code&gt;/etc/NetworkManager/dispatcher.d&lt;/code&gt; to trigger ethtool. &lt;/p&gt;
+
+&lt;p&gt;The dispatcher.d directory contains scripts which are executed every time an interface 
+changes state in NetworkManager. I simply created a file called &lt;code&gt;99wol&lt;/code&gt; and put this in it.&lt;/p&gt;
+
+&lt;div&gt;&lt;div class=&quot;CodeRay&quot;&gt;
+  &lt;div class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n1&quot; name=&quot;n1&quot;&gt;1&lt;/a&gt;&lt;/span&gt;&lt;span class=&quot;directive&quot;&gt;#!/bin/sh&lt;/span&gt;
+&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n2&quot; name=&quot;n2&quot;&gt;2&lt;/a&gt;&lt;/span&gt;
+&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n3&quot; name=&quot;n3&quot;&gt;3&lt;/a&gt;&lt;/span&gt;&lt;span class=&quot;instance-variable&quot;&gt;IF&lt;/span&gt;=&lt;span class=&quot;predefined-constant&quot;&gt;$1&lt;/span&gt;
+&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n4&quot; name=&quot;n4&quot;&gt;4&lt;/a&gt;&lt;/span&gt;&lt;span class=&quot;instance-variable&quot;&gt;STATUS&lt;/span&gt;=&lt;span class=&quot;predefined-constant&quot;&gt;$2&lt;/span&gt;
+&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n5&quot; name=&quot;n5&quot;&gt;5&lt;/a&gt;&lt;/span&gt;
+&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n6&quot; name=&quot;n6&quot;&gt;6&lt;/a&gt;&lt;/span&gt;&lt;span class=&quot;reserved&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;reserved&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;instance-variable&quot;&gt;$IF&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;eth0&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;reserved&quot;&gt;]&lt;/span&gt; &amp;amp;&amp;amp; &lt;span class=&quot;reserved&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;instance-variable&quot;&gt;$STATUS&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;up&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;reserved&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;reserved&quot;&gt;then&lt;/span&gt;
+&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n7&quot; name=&quot;n7&quot;&gt;7&lt;/a&gt;&lt;/span&gt;
+&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n8&quot; name=&quot;n8&quot;&gt;8&lt;/a&gt;&lt;/span&gt;    ethtool -s eth0 wol g
+&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n9&quot; name=&quot;n9&quot;&gt;9&lt;/a&gt;&lt;/span&gt;
+&lt;span class=&quot;line-numbers&quot;&gt;&lt;strong&gt;&lt;a href=&quot;#n10&quot; name=&quot;n10&quot;&gt;10&lt;/a&gt;&lt;/strong&gt;&lt;/span&gt;&lt;span class=&quot;reserved&quot;&gt;fi&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;There is almost certainly some more sophisticated logic one could employ, but it does the
+job I need.&lt;/p&gt;
+</description>
+				<published>2012-08-14 00:00:00 +0100</published>
+				<link>http://twrl.github.com/2012/08/XBMC/</link>
+			</item>
+		
+			<item>
+				<title>Microdata vs RDFa</title>
+				<description>&lt;p&gt;To my shame, I&amp;rsquo;ve largely ignored the development of microdata until very recently. I&amp;rsquo;ve 
+been aware of it going on in the background, but I&amp;rsquo;ve been far more concerned with RDFa
+and JSON-LD when it comes to semantics.&lt;/p&gt;
+
+&lt;p&gt;Google told me that they were favouring microdata for semantic markup, so I looked
+into it. At first, I was rather taken by it&amp;rsquo;s simplicity. There is much less mucking about
+with CURIEs and namespaces than in RDFa.&lt;/p&gt;
+
+&lt;p&gt;Once the novelty wore off however, I started to see the cracks. Microdata is designed very
+much to be accessible to designers. RDFa is a more complicated embedding of RDF into HTML,
+which means it can encode more complex parts of the graph more succinctly. It also 
+lacks many of the ambiguities that microdata can introduce around dereferencing terms.&lt;/p&gt;
+
+&lt;p&gt;Which is not to say that microdata is without it&amp;rsquo;s merits - far from it. Microdata is
+a simpler embedding of RDF into HTML, which means it can encode simpler parts of the RDF
+graph more succinctly than RDFa can. It&amp;rsquo;s more human-writable, and somewhat simpler to 
+parse. &lt;/p&gt;
+
+&lt;p&gt;Both are equally as expressive.&lt;/p&gt;
+
+&lt;p&gt;The new RDFa 1.1 recommendation has absorbed a lot of lessons both from it&amp;rsquo;s predecessor,
+and from the development of microdata. RDFa began life as one module in the XHTML2 
+development effort, and now stands apart from the development of HTML and XHTML as a 
+separate-but-related entity. So there is plenty of room to revise and update RDFa as
+technologies and practices change.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m going to stick with RDFa. The reason is simple - I don&amp;rsquo;t want to simply annotate a
+few properties here and there, I want to converge semantic, structural and presentational
+data. RDFa, which more closely reflects the underlying RDF graph, meshes more easily for
+me with other ways of expressing RDF - like RDF/XML and JSON-LD.&lt;/p&gt;
+</description>
+				<published>2012-08-13 00:00:00 +0100</published>
+				<link>http://twrl.github.com/2012/08/microdata-vs-rdfa/</link>
+			</item>
+		
+			<item>
+				<title>Copyright</title>
+				<description>&lt;p&gt;For the last several months I&amp;rsquo;ve been trying to move away from iTunes as my media library.
+Alas, this is a pipe dream, because I have made the mistake in the past of buying movies 
+and TV shows through the iTunes store.&lt;/p&gt;
+
+&lt;p&gt;Several years ago, Apple abandoned their ironically named FairPlay DRM software for music
+and music videos, however it it still used for movies and TV shows bought through the 
+iTunes store. This presents a quandary, because from Apple&amp;rsquo;s point of view they have sold 
+me a copyright license to this content, and by doing so through the iTunes store have 
+taken steps to ensure I can benefit from this license. However, from my point of view I 
+have been sold a good, or at a pinch a service, which has not been consistently rendered -
+I am unable to consume media which I have legitimately paid for in the manner that I would
+wish.&lt;/p&gt;
+
+&lt;p&gt;Now, I&amp;rsquo;m sure that somewhere in the terms of use of the iTunes store that I clicked
+through without reading, I agreed to use iTunes in perpetuity for all my media viewing 
+needs, and thus it&amp;rsquo;s my own fault. There is probably some clever legalese in there which
+gets around this kind of vendor lock-in being illegal in most jurisdictions of the world
+too.&lt;/p&gt;
+
+&lt;p&gt;The fact is that Apple have taken my money and failed to provide in exchange the media for
+which it was given in a format acceptable to me. I&amp;rsquo;m sure no actual liability would attach
+to Apple for this; legally they should be able to afford to cover their own backsides 
+adequately, and anyway they are beholden to the studios and others who license this 
+content to them for distribution.&lt;/p&gt;
+
+&lt;p&gt;The immediate lesson for people is: &lt;strong&gt;DO NOT BUY STUFF FROM THE iTunes STORE&lt;/strong&gt;, but I&amp;rsquo;m
+sure that&amp;rsquo;s obvious. It does however point to a whole slew of issues to do with the
+inadequacies of how we deal with digital content.&lt;/p&gt;
+
+&lt;p&gt;The trouble is that when we purchase some digital content, whether it&amp;rsquo;s music or a video 
+or a game or anything else, it exists in a sort of limbo. From the point of view of the 
+vendor, it&amp;rsquo;s inevitably seen as a copyright license to be defended. From the point of 
+view of the consumer, it&amp;rsquo;s seen as a good to be used.&lt;/p&gt;
+
+&lt;p&gt;If I were a corporation, I could license come intellectual property under contract and be 
+held to that contract. However, in the normal course of things I would not expect hourly 
+audits, monitoring of my day to day activities, cryptographic measures to prevent me 
+viewing the licensed property, or punitive enforcement measures. That we do expect these 
+things suggests that we are far outside the scope of normal copyright license agreements. &lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s stop pretending that digital goods are the same as copyright licenses, and equally
+let&amp;rsquo;s not pretend that they&amp;rsquo;re the same as something you might pick off a shelf. We have
+to admit that digital artefacts are a unique species of thing, and that attempts to 
+control them under the old systems are failing. As it stands, there is a strengthening
+argument for the total abolition of copyright, and that argument is predicated on the 
+excesses of copyright law used to protect digital property. &lt;/p&gt;
+
+&lt;p&gt;There are four major forms of intellectual property rights: copyright, patents, trade
+marks, and trade secrets. Each of these, in principle, serves a purpose as sound now as
+when Queen Anne enacted the very first copyright statute 300 years ago. When somebody
+creates something of worth, in exchange for sharing it with society they gain a temporary
+monopoly on making any profit from it.&lt;/p&gt;
+
+&lt;p&gt;And in exchange for buying something, a consumer should gain the right to enjoy it at
+their leisure.&lt;/p&gt;
+
+&lt;p&gt;Now, one can argue that copyrights on the order of a century or more are not what anyone
+originally had in mind. Perhaps more importantly, one can argue that nobody intended for 
+it to become illegal to know &lt;a href=&quot;http://en.wikipedia.org/wiki/Illegal_prime&quot;&gt;certain integers&lt;/a&gt;.
+But it&amp;rsquo;s difficult to believe that licensees were supposed to be limited in their
+enjoyment of the content that they license. Gutenberg could have made a fortune if he 
+had been able to charge extra for the right to read his bibles on Tuesday, or with brown
+eyes instead of blue.&lt;/p&gt;
+
+&lt;p&gt;Equally, ownership of a good does not limit what you do with it because you cannot 
+duplicate it at negligible cost like you can with computer data. I can&amp;rsquo;t press a button 
+and turn one hammer into two, and my friends can&amp;rsquo;t take a look at my hammer and 
+automatically gain one of their own. There is a reason why the sale of goods is an 
+inadequate model for the sale of digital artefacts, just as copyright licensing is.&lt;/p&gt;
+
+&lt;p&gt;For digital goods copyright laws are not equitable to consumers, and sale of goods laws
+are not equitable to vendors. But for too long now copyright vendors have been benefiting
+from the excesses that the prevailing copyright model allows them, and it&amp;rsquo;s beginning to
+crumble. Unless a new model can be found for digital content, then we can expect copyright
+to become hateful and worthless in spite of it&amp;rsquo;s merits.&lt;/p&gt;
+</description>
+				<published>2012-08-05 00:00:00 +0100</published>
+				<link>http://twrl.github.com/2012/08/copyright/</link>
+			</item>
+		
+			<item>
+				<title>Is the Public Key Infrastructure Collapsing?</title>
+				<description>&lt;p&gt;Back in February, TrustWave hit the news with tales of selling intermediate CA certificates
+for use in Man-in-the-Middle traffic interception. TrustWave were redeemed somewhat by
+having already revoked the offending certificate before voluntarily disclosing what they
+had done.&lt;/p&gt;
+
+&lt;p&gt;For most users, security hinges on SSL/TLS to provide an encrypted connection, and X.509
+PKI to provide certificates all the way up to a small number of trusted roots. A large
+number will be aware of the terms SSL and certificate from their web browser, but may
+not understand what they mean or how they work.&lt;/p&gt;
+
+&lt;p&gt;The TrustWave incident has been a reminder of just how much trust we place in the root CAs.
+In theory we have assurances in the form of CSPs and independent audits against those
+policies. But it seems that WebTrust, who audit for TrustWave, were not aware of the 
+offending intermediate CA certificate. TrustWave have implied strongly that they are not
+the only ones to have sold intermediate certificates either. It&amp;rsquo;s difficult to have faith
+in the public key infrastructure under such circumstances.&lt;/p&gt;
+
+&lt;p&gt;But add to that, we have the looming 
+&lt;a href=&quot;http://wiki.openrightsgroup.org/wiki/Communications_Data_Bill&quot;&gt;Communications Data Bill&lt;/a&gt;
+which, amongst other unsavoury things, can be used to mandate Man-in-the-Middle attacks on
+TLS sessions - and presumably similar interception of VPN, Tor and other encrypted traffic.
+This brings the whole concept of centralised hierarchical trust, which underlies PKI, into 
+question. We have no assurance that the entities at the top of the hierarchy are 
+trustworthy - in fact, we have good reason to suspect that they may not be.&lt;/p&gt;
+
+&lt;p&gt;The alternative model to PKI is the Web of Trust. This is best known for it&amp;rsquo;s use in PGP.
+The main problem with the web of trust is accumulating sufficient endorsement for one&amp;rsquo;s 
+certificate to be trusted everywhere. This makes it very difficult to use web of trust for
+infrastructure applications. &lt;/p&gt;
+
+&lt;p&gt;In 1992, when Phil Zimmermann first put forward the web of trust as the central concept for
+PGP&amp;rsquo;s key management, we didn&amp;rsquo;t have social networks like we do now. The concept of a 
+Friend-to-Friend network was very much a niche one. Average Joe user would not be carrying
+around the necessary data, and would not know or have remote access to it, to create the
+necessary links. Now however, in the day of home servers, smartphones, and web interfaces,
+there is no reason why the web of trust should not be reinvigorated as part of the 
+distributed social graph. &lt;/p&gt;
+
+&lt;p&gt;Another advantage of this is that it moves the trust policy decision back to the user. As
+it stands, the majority of Firefox users trust whomever Mozilla have decided to trust, the
+majority of IE users trust whomever Microsoft have decided to trust, and so on. 
+Decentralising trust will allow users to make their own decisions about trust metrics,
+transitivity, and so on. This entails some user education, but user interaction has come on
+a long way in recent years and the concept of implicit and explicit trust shouldn&amp;rsquo;t be too
+difficult to grasp, even if the technical details are more tricky.&lt;/p&gt;
+
+&lt;p&gt;Like IPv6 migration, we will likely remain with the existing infrastructure until it 
+becomes untenable. Personally, I am no longer comfortable with the centralised nature of 
+it, but keeping PKI is better than giving up TLS. &lt;/p&gt;
+</description>
+				<published>2012-07-17 00:00:00 +0100</published>
+				<link>http://twrl.github.com/2012/07/is-the-public-key-infrastructure-collapsing/</link>
+			</item>
+		
+			<item>
+				<title>About This New Setup</title>
+				<description>&lt;p&gt;So, this new setup is more or less as I want it. I somewhat prematurely put it live on 
+Github pages on Saturday, even though I&amp;rsquo;m continuing to tinker with it.&lt;/p&gt;
+
+&lt;p&gt;I started off using &lt;a href=&quot;http://jekyllbootstrap.com/&quot;&gt;Jekyll-Bootstrap&lt;/a&gt;. This was a massive
+timesaver. I&amp;rsquo;ve used Liquid before, so the Jekyll learning curve was very easy for me, but 
+if you haven&amp;rsquo;t then I recommend Jekyll-Bootstrap as a way of easing the transition. The 
+templates and includes that Jade has in there are fairly adaptable, and you can learn 
+quite a bit just from examining them.&lt;/p&gt;
+
+&lt;p&gt;Following the advice in &lt;a href=&quot;http://charliepark.org/jekyll-with-plugins/&quot;&gt;Charlie Park&amp;rsquo;s blog&lt;/a&gt;
+I&amp;rsquo;ve got Jekyll running locally, and I&amp;rsquo;m pushing the compiled static site onto Github.
+This gives me a free hand to have plugins, non-Github-supported configuration options,
+and otherwise be tampering with Jekyll. &lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m using &lt;a href=&quot;http://kramdown.rubyforge.org/&quot;&gt;Kramdown&lt;/a&gt; and 
+&lt;a href=&quot;http://coderay.rubychan.de/&quot;&gt;Coderay&lt;/a&gt; for rendering. Getting Pygments to work reliably on 
+my Mac was just too much of a headache, plus I like Kramdown&amp;rsquo;s language extensions anyway. 
+At least on my Mac, I had to set Kramdown&amp;rsquo;s entity_output to symbolic, otherwise it was 
+garbling apostrophes and other entities. No other problems there though.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m using Jekyll&amp;rsquo;s latent semantic indexing to generate the related posts list, but I&amp;rsquo;m 
+not convinced about it. I really don&amp;rsquo;t want to maintain the list manually if I can avoid 
+it, so next on the agenda is to investigate other options for that. I also plan to 
+refactor the templates to improve the quality of the semantics in them, and because I&amp;rsquo;ve ended 
+up with a small mess of css files.&lt;/p&gt;
+
+&lt;p&gt;My only grumble is Liquid&amp;rsquo;s inability to sort an array before iterating over it. So far 
+I&amp;rsquo;ve managed to work around it, but it is a nuisance. &lt;/p&gt;
+</description>
+				<published>2012-07-16 00:00:00 +0100</published>
+				<link>http://twrl.github.com/2012/07/the-new-setup/</link>
+			</item>
+		
+			<item>
+				<title>The New Edition</title>
+				<description>&lt;p&gt;The long-awaited redo of this blog is at hand.&lt;/p&gt;
+
+&lt;p&gt;After a brief bout of insanity brought on by spending too much time with Blogger&amp;rsquo;s excuse 
+for a template system, I realised: I don&amp;rsquo;t need all that complexity. Browsing around for 
+something with which to replace Blogger, and preferably not add too much to the vast
+number of accounts I&amp;rsquo;m dragging around with me, I stumbled onto Jekyll. And so, here we
+are.&lt;/p&gt;
+
+&lt;p&gt;Now, it&amp;rsquo;s been some time since I last sunk my teeth into a new language, and learning Ruby
+has been on my to-do list for a while. So not only am I using Jekyll to maintain my blog, 
+I&amp;rsquo;m progressively tampering with it in an effort to learn Ruby. &lt;/p&gt;
+
+&lt;p&gt;Oh, and thanks to &lt;a href=&quot;http://charliepark.org/jekyll-with-plugins/&quot;&gt;Charlie Park&lt;/a&gt; for his
+amazingly useful article on how to cope with Github Pages not supporting Jekyll plugins.&lt;/p&gt;
+</description>
+				<published>2012-07-14 00:00:00 +0100</published>
+				<link>http://twrl.github.com/2012/07/the-new-edition/</link>
+			</item>
+		
+			<item>
+				<title>Views, dynamic and otherwise</title>
+				<description>&lt;p&gt;I&amp;rsquo;ve changed theme on this blog. I was using Dynamic Views, and now I&amp;rsquo;m using a generic Awesome Inc. theme.&lt;/p&gt;
+
+&lt;p&gt;I love the way Dynamic Views looks. It&amp;rsquo;s very sleek, but it&amp;rsquo;s impossible to adapt. After a dozen attempts I gave up getting &lt;a href=&quot;http://alexgorbatchev.com/SyntaxHighlighter/&quot;&gt;Alex Gorbatchev&amp;rsquo;s SyntaxHighlighter&lt;/a&gt; to work with it, and a brief experiment with altering the CSS ended very badly indeed - it looked like a clown.&lt;/p&gt;
+
+&lt;p&gt;So to solve the first of those two problems I have switched to an old-style theme temporarily, while I write my own. This is not how I&amp;rsquo;d planned on spending the rest of my day, but I suppose my CSS skills could benefit from some practice. So look out for some new shiny, coming soon to a blog near you&amp;hellip;&lt;/p&gt;
+</description>
+				<published>2012-06-14 00:00:00 +0100</published>
+				<link>http://twrl.github.com/2012/06/views-dynamic-and-otherwise/</link>
+			</item>
+		
+			<item>
+				<title>Iconiser</title>
+				<description>&lt;p&gt;This is a useful titbit for anyone who is working with blogger templates or other things that severely limit your ability to host and serve lots of little files. I just hacked it together now to implement the new theme I&amp;rsquo;m writing for this blog.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m using quite a few icons in the new theme and I wanted to embed them as data: URIs. The trouble is, I&amp;rsquo;m using the same icon in several places which means duplication, and having great blocks of base64 embedded in the code is making it all unreadable. So I&amp;rsquo;ve written a tiny jQuery plugin to maintain a catalogue of named icons, and then replace the shorthand URIs that I&amp;rsquo;m using with the full one.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s the code:&lt;/p&gt;
+
+&lt;div&gt;&lt;div class=&quot;CodeRay&quot;&gt;
+  &lt;div class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n1&quot; name=&quot;n1&quot;&gt;1&lt;/a&gt;&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; (&lt;span class=&quot;predefined&quot;&gt;$&lt;/span&gt;) {
+&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n2&quot; name=&quot;n2&quot;&gt;2&lt;/a&gt;&lt;/span&gt;
+&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n3&quot; name=&quot;n3&quot;&gt;3&lt;/a&gt;&lt;/span&gt;    &lt;span class=&quot;predefined&quot;&gt;$&lt;/span&gt;.&lt;span class=&quot;function&quot;&gt;iconise&lt;/span&gt; = &lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; (name, data) {
+&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n4&quot; name=&quot;n4&quot;&gt;4&lt;/a&gt;&lt;/span&gt;        &lt;span class=&quot;predefined&quot;&gt;$&lt;/span&gt;.iconise.data[name] = data;
+&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n5&quot; name=&quot;n5&quot;&gt;5&lt;/a&gt;&lt;/span&gt;    }
+&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n6&quot; name=&quot;n6&quot;&gt;6&lt;/a&gt;&lt;/span&gt;
+&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n7&quot; name=&quot;n7&quot;&gt;7&lt;/a&gt;&lt;/span&gt;    &lt;span class=&quot;predefined&quot;&gt;$&lt;/span&gt;.iconise.data = {};
+&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n8&quot; name=&quot;n8&quot;&gt;8&lt;/a&gt;&lt;/span&gt;
+&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n9&quot; name=&quot;n9&quot;&gt;9&lt;/a&gt;&lt;/span&gt;    &lt;span class=&quot;predefined&quot;&gt;$&lt;/span&gt;.fn.&lt;span class=&quot;function&quot;&gt;iconise&lt;/span&gt; = &lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; () {
+&lt;span class=&quot;line-numbers&quot;&gt;&lt;strong&gt;&lt;a href=&quot;#n10&quot; name=&quot;n10&quot;&gt;10&lt;/a&gt;&lt;/strong&gt;&lt;/span&gt;        &lt;span class=&quot;predefined&quot;&gt;$&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;local-variable&quot;&gt;this&lt;/span&gt;).each(&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; () {
+&lt;span class=&quot;line-numbers&quot;&gt;&lt;a href=&quot;#n11&quot; name=&quot;n11&quot;&gt;11&lt;/a&gt;&lt;/span&gt;            &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; src = &lt;span class=&quot;predefined&quot;&gt;$&lt;/span&gt;(&lt;span class=&quot;local-variable&quot;&gt;this&lt;/span&gt;).attr(src);
+&lt;span class=&quot;line-numbers&quot;&gt;&lt;a href=&quot;#n12&quot; name=&quot;n12&quot;&gt;12&lt;/a&gt;&lt;/span&gt;            &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (src.indexOf(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;iconise:&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;) == &lt;span class=&quot;integer&quot;&gt;0&lt;/span&gt;) {
+&lt;span class=&quot;line-numbers&quot;&gt;&lt;a href=&quot;#n13&quot; name=&quot;n13&quot;&gt;13&lt;/a&gt;&lt;/span&gt;                &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; icon = src.substring(&lt;span class=&quot;integer&quot;&gt;8&lt;/span&gt;);
+&lt;span class=&quot;line-numbers&quot;&gt;&lt;a href=&quot;#n14&quot; name=&quot;n14&quot;&gt;14&lt;/a&gt;&lt;/span&gt;                &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (&lt;span class=&quot;predefined&quot;&gt;$&lt;/span&gt;.iconise.data[icon] !== &lt;span class=&quot;predefined-constant&quot;&gt;undefined&lt;/span&gt;) {
+&lt;span class=&quot;line-numbers&quot;&gt;&lt;a href=&quot;#n15&quot; name=&quot;n15&quot;&gt;15&lt;/a&gt;&lt;/span&gt;                    &lt;span class=&quot;predefined&quot;&gt;$&lt;/span&gt;(&lt;span class=&quot;local-variable&quot;&gt;this&lt;/span&gt;).attr(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;predefined&quot;&gt;$&lt;/span&gt;.iconise.data[icon]);
+&lt;span class=&quot;line-numbers&quot;&gt;&lt;a href=&quot;#n16&quot; name=&quot;n16&quot;&gt;16&lt;/a&gt;&lt;/span&gt;                }
+&lt;span class=&quot;line-numbers&quot;&gt;&lt;a href=&quot;#n17&quot; name=&quot;n17&quot;&gt;17&lt;/a&gt;&lt;/span&gt;            }
+&lt;span class=&quot;line-numbers&quot;&gt;&lt;a href=&quot;#n18&quot; name=&quot;n18&quot;&gt;18&lt;/a&gt;&lt;/span&gt;        })
+&lt;span class=&quot;line-numbers&quot;&gt;&lt;a href=&quot;#n19&quot; name=&quot;n19&quot;&gt;19&lt;/a&gt;&lt;/span&gt;    };
+&lt;span class=&quot;line-numbers&quot;&gt;&lt;strong&gt;&lt;a href=&quot;#n20&quot; name=&quot;n20&quot;&gt;20&lt;/a&gt;&lt;/strong&gt;&lt;/span&gt;
+&lt;span class=&quot;line-numbers&quot;&gt;&lt;a href=&quot;#n21&quot; name=&quot;n21&quot;&gt;21&lt;/a&gt;&lt;/span&gt;})(jQuery);
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Then to use it you need to build a database of icons. You simply call the iconise function to associate a name to a data: uri&lt;/p&gt;
+
+&lt;div&gt;&lt;div class=&quot;CodeRay&quot;&gt;
+  &lt;div class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line-numbers&quot;&gt;&lt;a href=&quot;#n1&quot; name=&quot;n1&quot;&gt;1&lt;/a&gt;&lt;/span&gt;&lt;span class=&quot;predefined&quot;&gt;$&lt;/span&gt;.iconise(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;myIcon&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;data:image/png;base64,/*...base64 encoded image...*/&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;);
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;And finally, you can reference your icon like this&lt;/p&gt;
+
+&lt;div&gt;&lt;div class=&quot;CodeRay&quot;&gt;
+  &lt;div class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line-numbers&quot;&gt;&lt;a href=&quot;#n1&quot; name=&quot;n1&quot;&gt;1&lt;/a&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;iconise:myIcon&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;tag&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This is a bit of a quick and dirty hack, and it will certainly not degrade gracefully. But it might come in handy.&lt;/p&gt;
+</description>
+				<published>2012-06-14 00:00:00 +0100</published>
+				<link>http://twrl.github.com/2012/06/iconiser/</link>
+			</item>
+		
+			<item>
+				<title>Javascript Alternatives</title>
+				<description>&lt;p&gt;Over the last four weeks I&amp;rsquo;ve been rather busy with exams, but now that&amp;rsquo;s over I&amp;rsquo;m thinking computer again.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve been looking at some of the alternatives to JavaScript. In many ways JavaScript is a lovely little language, it&amp;rsquo;s incredibly flexible. But, the same dynamic type system that makes it so flexible also makes certain things very difficult (like writing or consuming modular APIs), and the prototype-based object system obscures many of the benefits of object-oriented programming. For some purposes these are strengths, because JavaScript can glue so many different things together without casting and without wrestling with common OO patterns like adapter or facade. Modularisation and componentisation are difficult, because with such weak typing it&amp;rsquo;s very difficult to check that interfaces are compatible.&lt;/p&gt;
+
+&lt;p&gt;There are many alternatives out there, the big ones of the moment being Opa, Google Dart, and CoffeeScript. VBScript is also out there if you know you&amp;rsquo;re dealing with purely Internet Explorer clients, but the less said about VBScript the better.&lt;/p&gt;
+
+&lt;p&gt;I do not particularly like CoffeeScript. It has some very neat design ideas, but I personally find it less readable than regular JavaScript. I&amp;rsquo;m a curly bracket language boy, I like my start and end delimiters and consider indenting to be a style and readability thing. So while I can&amp;rsquo;t actually find anything to complain about with CoffeeScript, it just doesn&amp;rsquo;t suit my coding style.&lt;/p&gt;
+
+&lt;p&gt;On to Dart. Syntactically, it&amp;rsquo;s like a hybrid of C# and JavaScript, with a pinch of PHP. Which is fine, I have no objection to any of that. However, there are several things about Dart which make me rather uncomfortable. For a start I don&amp;rsquo;t agree with Google&amp;rsquo;s design decisions about the Dart VM, although that&amp;rsquo;s minor. Dart is designed to operate in the client, with a Dart-to-JavaScript transpiler as a transition measure, but I don&amp;rsquo;t expect to see a Dart VM implemented in anything but Google Chrome any time soon. It&amp;rsquo;s also far from clear how Dart interoperates with JavaScript - especially when the JavaScript comes packaged in AMD or CommonJS modules.&lt;/p&gt;
+
+&lt;p&gt;Which brings me to Opa. It&amp;rsquo;s rather neat, I was impressed. There are so many clever things in Opa, not least of which is the way it hides the details of communication between client and server. However, I&amp;rsquo;m not so keen on the way the markup tends to become fragments embedded in the program rather than the other way around - ASP.Net and PHP have done that pattern to death - and Opa leaves me feeling like I&amp;rsquo;m not entirely in control of the code that I&amp;rsquo;m writing. The point of Opa is to hide tricky details, especially of middleware, but it&amp;rsquo;s actually too good at what it does for comfort.&lt;/p&gt;
+
+&lt;p&gt;Which brings me back to JavaScript, but then I&amp;rsquo;m still stuck with the clunkyness of JavaScript for certain applications. Still, while it might not always be elegant, it does work. So for the time being, I&amp;rsquo;ll stick with JavaScript.&lt;/p&gt;
+</description>
+				<published>2012-06-11 00:00:00 +0100</published>
+				<link>http://twrl.github.com/2012/06/javascript-alternatives/</link>
+			</item>
+		
+			<item>
+				<title>Social Networking</title>
+				<description>&lt;p&gt;I like Google+. There&amp;rsquo;s a very good reason for this: integration.&lt;/p&gt;
+
+&lt;p&gt;I use Google Reader, Google Search, Google Drive, Google Calendar, Google Mail, Google Play, Google Chrome and Blogger. I use these things because Google is becoming the Unix of the web - a large set of simple, single-purpose tools that play nicely together.&lt;/p&gt;
+
+&lt;p&gt;So it&amp;rsquo;s only natural that I also want to use Google+ too. It would be so very convenient.&lt;/p&gt;
+
+&lt;p&gt;There are two problems. First off, I&amp;rsquo;ve become too used to clicking &amp;ldquo;Log on with Facebook&amp;rdquo;. For a lot of services that I use, I&amp;rsquo;ve never actually created an account. This is not an insurmountable problem, I&amp;rsquo;ll live with more passwords in my life.&lt;/p&gt;
+
+&lt;p&gt;The second is more substantial: I have around 350 Facebook friends. I have six friends who use Google+.   The update streams, photos, and so on I can work around or live without - but realtime interaction? I communicate a lot through facebook messages.&lt;/p&gt;
+
+&lt;p&gt;Since Facebook exposes it&amp;rsquo;s chat services through XMPP and social graph as a RESTful JSON service, you would think something could be done about this. But no, Facebook isn&amp;rsquo;t willing to play this game because they don&amp;rsquo;t want to lose users.&lt;/p&gt;
+
+&lt;p&gt;Which brings me back to the idea of Data Portability. Why can&amp;rsquo;t I keep my own little corner of the social graph, and Facebook and Google just provide services on top of it? In spite of the technical difficulties this is not such a crazy idea - there are plenty of solutions for distributed data storage and aggregation.&lt;/p&gt;
+
+&lt;p&gt;Part of the necessary technology already exists in the Diaspora project. Diaspora is distributed, but it still requires servers. It isn&amp;rsquo;t peer-to-peer in the way that we more usually associate with file sharing. You don&amp;rsquo;t run a Diaspora application on your PC when you want to access it - you have to run a well-connected server all the time.&lt;/p&gt;
+
+&lt;p&gt;There are schemes which could overcome the always-connected architecture for distributing social graph data, but doing the same thing for realtime interaction is more difficult. Keeping track of my chat and realtime messaging activities when I have hundreds of friends is much easier when there is a single, co-ordinating hub. It becomes next to impossible when there is no server and I&amp;rsquo;m using multiple clients on multiple devices.&lt;/p&gt;
+
+&lt;p&gt;So that&amp;rsquo;s the challenge - can you keep distributed, continuously updated realtime data without some form of server infrastructure?&lt;/p&gt;
+</description>
+				<published>2012-05-18 00:00:00 +0100</published>
+				<link>http://twrl.github.com/2012/05/social-networking/</link>
+			</item>
+		
+	</channel>
+</rss>
