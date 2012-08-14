@@ -1,0 +1,771 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ 
+  <title>twrl</title>
+  <link href="http://twrl.github.com"/>
+  <link type="application/atom+xml" rel="self" href="http://twrl.github.com/atom.xml"/>
+  <updated>2012-08-14T17:53:36+01:00</updated>
+  <id>http://twrl.github.com</id>
+  <author>
+    <name>Tom Robbins</name>
+  </author>
+
+  
+  <entry>
+    <id>http://twrl.github.com/2012/08/XBMC/</id>
+    <link type="text/html" rel="alternate" href="http://twrl.github.com/2012/08/XBMC/"/>
+    <title>Media Centre</title>
+    <published>2012-08-14T00:00:00+01:00</published>
+    <updated>2012-08-14T00:00:00+01:00</updated>
+    <author>
+      <name>Tom Robbins</name>
+    </author>
+    <content type="html">&lt;p&gt;I had an entertaining time at the weekend setting up &lt;a href=&quot;http://xbmc.org&quot;&gt;XBMC&lt;/a&gt; on my laptop.
+It runs well enough on Ubuntu, and compiling the latest source was pretty easy (the 
+instructions are pretty good).&lt;/p&gt;
+
+&lt;p&gt;I ran into a few problems. My CPU usage is a little on the high side. My laptop 
+being an ageing MacBook, so it&amp;rsquo;s prone to run hot, and unnecessary CPU usage = unnecessary 
+fan noise. Getting Suspend and Wake-on-Lan to work reliably was also tricky.&lt;/p&gt;
+
+&lt;h2 id=&quot;cpu-usage&quot;&gt;CPU Usage&lt;/h2&gt;
+
+&lt;p&gt;The first thing to do is enable 
+&lt;a href=&quot;http://wiki.xbmc.org/index.php?title=Dirty_regions&quot;&gt;Dirty Regions&lt;/a&gt;. Trial and error will 
+tell you which of the available algorithms gives you the best results on you hardware. For
+my Macbook (which has an Intel GMA 950 graphics chipset) I found mode 2 worked best, but
+YMMV.&lt;/p&gt;
+
+&lt;p&gt;I also recommend disabling RSS feeds on the home screen, and trying a few different skins.
+Aeon skins tend to be heavy CPU eaters, although I found Aeon Nox to be better than the
+default Confluence skin.&lt;/p&gt;
+
+&lt;h2 id=&quot;suspend-and-wol&quot;&gt;Suspend and WoL&lt;/h2&gt;
+
+&lt;p&gt;I was having an issue with suspend, whether I triggered it from within XBMC or from the 
+Unity panel: the computer would enter suspend and then immediately wake itself. 
+It never did this if I just closed the lid and left it.&lt;/p&gt;
+
+&lt;p&gt;The solution was to tweak a setting in grub.cfg. Find the line which sets &lt;code&gt;GRUB_CMDLINE_LINUX_DEFAULT&lt;/code&gt;
+and add &lt;code&gt;usbcore.autosuspend=-1&lt;/code&gt; to it. So it might read&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet splash usbcore.autosuspend=-1&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;or something similar.&lt;/p&gt;
+
+&lt;p&gt;To enable Wake-on-LAN you need to first enable it in the BIOS, if applicable. I didn&amp;rsquo;t have
+to - by some quirk of Apple&amp;rsquo;s EFI implementation it seems to be supported anyway.&lt;/p&gt;
+
+&lt;p&gt;I installed ethtool, and enabled WoL on the NIC using the command&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo ethtool -s et0 wol g
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This is all documented on the (Ubuntu Community Docs)[https://help.ubuntu.com/community/WakeOnLan].
+The only trouble is, you have to do this every time the network interface comes up.&lt;/p&gt;
+
+&lt;p&gt;Now, there are all sorts of issues around integration of ethtool and NetworkManager, which
+Ubuntu uses by default. I found that the best thing to do was to create a script in 
+&lt;code&gt;/etc/NetworkManager/dispatcher.d&lt;/code&gt; to trigger ethtool. &lt;/p&gt;
+
+&lt;p&gt;The dispatcher.d directory contains scripts which are executed every time an interface 
+changes state in NetworkManager. I simply created a file called &lt;code&gt;99wol&lt;/code&gt; and put this in it.&lt;/p&gt;
+
+&lt;div&gt;&lt;div class=&quot;CodeRay&quot;&gt;
+  &lt;div class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n1&quot; name=&quot;n1&quot;&gt;1&lt;/a&gt;&lt;/span&gt;&lt;span class=&quot;directive&quot;&gt;#!/bin/sh&lt;/span&gt;
+&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n2&quot; name=&quot;n2&quot;&gt;2&lt;/a&gt;&lt;/span&gt;
+&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n3&quot; name=&quot;n3&quot;&gt;3&lt;/a&gt;&lt;/span&gt;&lt;span class=&quot;instance-variable&quot;&gt;IF&lt;/span&gt;=&lt;span class=&quot;predefined-constant&quot;&gt;$1&lt;/span&gt;
+&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n4&quot; name=&quot;n4&quot;&gt;4&lt;/a&gt;&lt;/span&gt;&lt;span class=&quot;instance-variable&quot;&gt;STATUS&lt;/span&gt;=&lt;span class=&quot;predefined-constant&quot;&gt;$2&lt;/span&gt;
+&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n5&quot; name=&quot;n5&quot;&gt;5&lt;/a&gt;&lt;/span&gt;
+&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n6&quot; name=&quot;n6&quot;&gt;6&lt;/a&gt;&lt;/span&gt;&lt;span class=&quot;reserved&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;reserved&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;instance-variable&quot;&gt;$IF&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;eth0&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;reserved&quot;&gt;]&lt;/span&gt; &amp;amp;&amp;amp; &lt;span class=&quot;reserved&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;instance-variable&quot;&gt;$STATUS&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt; = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;up&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;reserved&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;reserved&quot;&gt;then&lt;/span&gt;
+&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n7&quot; name=&quot;n7&quot;&gt;7&lt;/a&gt;&lt;/span&gt;
+&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n8&quot; name=&quot;n8&quot;&gt;8&lt;/a&gt;&lt;/span&gt;    ethtool -s eth0 wol g
+&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n9&quot; name=&quot;n9&quot;&gt;9&lt;/a&gt;&lt;/span&gt;
+&lt;span class=&quot;line-numbers&quot;&gt;&lt;strong&gt;&lt;a href=&quot;#n10&quot; name=&quot;n10&quot;&gt;10&lt;/a&gt;&lt;/strong&gt;&lt;/span&gt;&lt;span class=&quot;reserved&quot;&gt;fi&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;There is almost certainly some more sophisticated logic one could employ, but it does the
+job I need.&lt;/p&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <id>http://twrl.github.com/2012/08/microdata-vs-rdfa/</id>
+    <link type="text/html" rel="alternate" href="http://twrl.github.com/2012/08/microdata-vs-rdfa/"/>
+    <title>Microdata vs RDFa</title>
+    <published>2012-08-13T00:00:00+01:00</published>
+    <updated>2012-08-13T00:00:00+01:00</updated>
+    <author>
+      <name>Tom Robbins</name>
+    </author>
+    <content type="html">&lt;p&gt;To my shame, I&amp;rsquo;ve largely ignored the development of microdata until very recently. I&amp;rsquo;ve 
+been aware of it going on in the background, but I&amp;rsquo;ve been far more concerned with RDFa
+and JSON-LD when it comes to semantics.&lt;/p&gt;
+
+&lt;p&gt;Google told me that they were favouring microdata for semantic markup, so I looked
+into it. At first, I was rather taken by it&amp;rsquo;s simplicity. There is much less mucking about
+with CURIEs and namespaces than in RDFa.&lt;/p&gt;
+
+&lt;p&gt;Once the novelty wore off however, I started to see the cracks. Microdata is designed very
+much to be accessible to designers. RDFa is a more complicated embedding of RDF into HTML,
+which means it can encode more complex parts of the graph more succinctly. It also 
+lacks many of the ambiguities that microdata can introduce around dereferencing terms.&lt;/p&gt;
+
+&lt;p&gt;Which is not to say that microdata is without it&amp;rsquo;s merits - far from it. Microdata is
+a simpler embedding of RDF into HTML, which means it can encode simpler parts of the RDF
+graph more succinctly than RDFa can. It&amp;rsquo;s more human-writable, and somewhat simpler to 
+parse. &lt;/p&gt;
+
+&lt;p&gt;Both are equally as expressive.&lt;/p&gt;
+
+&lt;p&gt;The new RDFa 1.1 recommendation has absorbed a lot of lessons both from it&amp;rsquo;s predecessor,
+and from the development of microdata. RDFa began life as one module in the XHTML2 
+development effort, and now stands apart from the development of HTML and XHTML as a 
+separate-but-related entity. So there is plenty of room to revise and update RDFa as
+technologies and practices change.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m going to stick with RDFa. The reason is simple - I don&amp;rsquo;t want to simply annotate a
+few properties here and there, I want to converge semantic, structural and presentational
+data. RDFa, which more closely reflects the underlying RDF graph, meshes more easily for
+me with other ways of expressing RDF - like RDF/XML and JSON-LD.&lt;/p&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <id>http://twrl.github.com/2012/08/copyright/</id>
+    <link type="text/html" rel="alternate" href="http://twrl.github.com/2012/08/copyright/"/>
+    <title>Copyright</title>
+    <published>2012-08-05T00:00:00+01:00</published>
+    <updated>2012-08-05T00:00:00+01:00</updated>
+    <author>
+      <name>Tom Robbins</name>
+    </author>
+    <content type="html">&lt;p&gt;For the last several months I&amp;rsquo;ve been trying to move away from iTunes as my media library.
+Alas, this is a pipe dream, because I have made the mistake in the past of buying movies 
+and TV shows through the iTunes store.&lt;/p&gt;
+
+&lt;p&gt;Several years ago, Apple abandoned their ironically named FairPlay DRM software for music
+and music videos, however it it still used for movies and TV shows bought through the 
+iTunes store. This presents a quandary, because from Apple&amp;rsquo;s point of view they have sold 
+me a copyright license to this content, and by doing so through the iTunes store have 
+taken steps to ensure I can benefit from this license. However, from my point of view I 
+have been sold a good, or at a pinch a service, which has not been consistently rendered -
+I am unable to consume media which I have legitimately paid for in the manner that I would
+wish.&lt;/p&gt;
+
+&lt;p&gt;Now, I&amp;rsquo;m sure that somewhere in the terms of use of the iTunes store that I clicked
+through without reading, I agreed to use iTunes in perpetuity for all my media viewing 
+needs, and thus it&amp;rsquo;s my own fault. There is probably some clever legalese in there which
+gets around this kind of vendor lock-in being illegal in most jurisdictions of the world
+too.&lt;/p&gt;
+
+&lt;p&gt;The fact is that Apple have taken my money and failed to provide in exchange the media for
+which it was given in a format acceptable to me. I&amp;rsquo;m sure no actual liability would attach
+to Apple for this; legally they should be able to afford to cover their own backsides 
+adequately, and anyway they are beholden to the studios and others who license this 
+content to them for distribution.&lt;/p&gt;
+
+&lt;p&gt;The immediate lesson for people is: &lt;strong&gt;DO NOT BUY STUFF FROM THE iTunes STORE&lt;/strong&gt;, but I&amp;rsquo;m
+sure that&amp;rsquo;s obvious. It does however point to a whole slew of issues to do with the
+inadequacies of how we deal with digital content.&lt;/p&gt;
+
+&lt;p&gt;The trouble is that when we purchase some digital content, whether it&amp;rsquo;s music or a video 
+or a game or anything else, it exists in a sort of limbo. From the point of view of the 
+vendor, it&amp;rsquo;s inevitably seen as a copyright license to be defended. From the point of 
+view of the consumer, it&amp;rsquo;s seen as a good to be used.&lt;/p&gt;
+
+&lt;p&gt;If I were a corporation, I could license come intellectual property under contract and be 
+held to that contract. However, in the normal course of things I would not expect hourly 
+audits, monitoring of my day to day activities, cryptographic measures to prevent me 
+viewing the licensed property, or punitive enforcement measures. That we do expect these 
+things suggests that we are far outside the scope of normal copyright license agreements. &lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s stop pretending that digital goods are the same as copyright licenses, and equally
+let&amp;rsquo;s not pretend that they&amp;rsquo;re the same as something you might pick off a shelf. We have
+to admit that digital artefacts are a unique species of thing, and that attempts to 
+control them under the old systems are failing. As it stands, there is a strengthening
+argument for the total abolition of copyright, and that argument is predicated on the 
+excesses of copyright law used to protect digital property. &lt;/p&gt;
+
+&lt;p&gt;There are four major forms of intellectual property rights: copyright, patents, trade
+marks, and trade secrets. Each of these, in principle, serves a purpose as sound now as
+when Queen Anne enacted the very first copyright statute 300 years ago. When somebody
+creates something of worth, in exchange for sharing it with society they gain a temporary
+monopoly on making any profit from it.&lt;/p&gt;
+
+&lt;p&gt;And in exchange for buying something, a consumer should gain the right to enjoy it at
+their leisure.&lt;/p&gt;
+
+&lt;p&gt;Now, one can argue that copyrights on the order of a century or more are not what anyone
+originally had in mind. Perhaps more importantly, one can argue that nobody intended for 
+it to become illegal to know &lt;a href=&quot;http://en.wikipedia.org/wiki/Illegal_prime&quot;&gt;certain integers&lt;/a&gt;.
+But it&amp;rsquo;s difficult to believe that licensees were supposed to be limited in their
+enjoyment of the content that they license. Gutenberg could have made a fortune if he 
+had been able to charge extra for the right to read his bibles on Tuesday, or with brown
+eyes instead of blue.&lt;/p&gt;
+
+&lt;p&gt;Equally, ownership of a good does not limit what you do with it because you cannot 
+duplicate it at negligible cost like you can with computer data. I can&amp;rsquo;t press a button 
+and turn one hammer into two, and my friends can&amp;rsquo;t take a look at my hammer and 
+automatically gain one of their own. There is a reason why the sale of goods is an 
+inadequate model for the sale of digital artefacts, just as copyright licensing is.&lt;/p&gt;
+
+&lt;p&gt;For digital goods copyright laws are not equitable to consumers, and sale of goods laws
+are not equitable to vendors. But for too long now copyright vendors have been benefiting
+from the excesses that the prevailing copyright model allows them, and it&amp;rsquo;s beginning to
+crumble. Unless a new model can be found for digital content, then we can expect copyright
+to become hateful and worthless in spite of it&amp;rsquo;s merits.&lt;/p&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <id>http://twrl.github.com/2012/07/is-the-public-key-infrastructure-collapsing/</id>
+    <link type="text/html" rel="alternate" href="http://twrl.github.com/2012/07/is-the-public-key-infrastructure-collapsing/"/>
+    <title>Is the Public Key Infrastructure Collapsing?</title>
+    <published>2012-07-17T00:00:00+01:00</published>
+    <updated>2012-07-17T00:00:00+01:00</updated>
+    <author>
+      <name>Tom Robbins</name>
+    </author>
+    <content type="html">&lt;p&gt;Back in February, TrustWave hit the news with tales of selling intermediate CA certificates
+for use in Man-in-the-Middle traffic interception. TrustWave were redeemed somewhat by
+having already revoked the offending certificate before voluntarily disclosing what they
+had done.&lt;/p&gt;
+
+&lt;p&gt;For most users, security hinges on SSL/TLS to provide an encrypted connection, and X.509
+PKI to provide certificates all the way up to a small number of trusted roots. A large
+number will be aware of the terms SSL and certificate from their web browser, but may
+not understand what they mean or how they work.&lt;/p&gt;
+
+&lt;p&gt;The TrustWave incident has been a reminder of just how much trust we place in the root CAs.
+In theory we have assurances in the form of CSPs and independent audits against those
+policies. But it seems that WebTrust, who audit for TrustWave, were not aware of the 
+offending intermediate CA certificate. TrustWave have implied strongly that they are not
+the only ones to have sold intermediate certificates either. It&amp;rsquo;s difficult to have faith
+in the public key infrastructure under such circumstances.&lt;/p&gt;
+
+&lt;p&gt;But add to that, we have the looming 
+&lt;a href=&quot;http://wiki.openrightsgroup.org/wiki/Communications_Data_Bill&quot;&gt;Communications Data Bill&lt;/a&gt;
+which, amongst other unsavoury things, can be used to mandate Man-in-the-Middle attacks on
+TLS sessions - and presumably similar interception of VPN, Tor and other encrypted traffic.
+This brings the whole concept of centralised hierarchical trust, which underlies PKI, into 
+question. We have no assurance that the entities at the top of the hierarchy are 
+trustworthy - in fact, we have good reason to suspect that they may not be.&lt;/p&gt;
+
+&lt;p&gt;The alternative model to PKI is the Web of Trust. This is best known for it&amp;rsquo;s use in PGP.
+The main problem with the web of trust is accumulating sufficient endorsement for one&amp;rsquo;s 
+certificate to be trusted everywhere. This makes it very difficult to use web of trust for
+infrastructure applications. &lt;/p&gt;
+
+&lt;p&gt;In 1992, when Phil Zimmermann first put forward the web of trust as the central concept for
+PGP&amp;rsquo;s key management, we didn&amp;rsquo;t have social networks like we do now. The concept of a 
+Friend-to-Friend network was very much a niche one. Average Joe user would not be carrying
+around the necessary data, and would not know or have remote access to it, to create the
+necessary links. Now however, in the day of home servers, smartphones, and web interfaces,
+there is no reason why the web of trust should not be reinvigorated as part of the 
+distributed social graph. &lt;/p&gt;
+
+&lt;p&gt;Another advantage of this is that it moves the trust policy decision back to the user. As
+it stands, the majority of Firefox users trust whomever Mozilla have decided to trust, the
+majority of IE users trust whomever Microsoft have decided to trust, and so on. 
+Decentralising trust will allow users to make their own decisions about trust metrics,
+transitivity, and so on. This entails some user education, but user interaction has come on
+a long way in recent years and the concept of implicit and explicit trust shouldn&amp;rsquo;t be too
+difficult to grasp, even if the technical details are more tricky.&lt;/p&gt;
+
+&lt;p&gt;Like IPv6 migration, we will likely remain with the existing infrastructure until it 
+becomes untenable. Personally, I am no longer comfortable with the centralised nature of 
+it, but keeping PKI is better than giving up TLS. &lt;/p&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <id>http://twrl.github.com/2012/07/the-new-setup/</id>
+    <link type="text/html" rel="alternate" href="http://twrl.github.com/2012/07/the-new-setup/"/>
+    <title>About This New Setup</title>
+    <published>2012-07-16T00:00:00+01:00</published>
+    <updated>2012-07-16T00:00:00+01:00</updated>
+    <author>
+      <name>Tom Robbins</name>
+    </author>
+    <content type="html">&lt;p&gt;So, this new setup is more or less as I want it. I somewhat prematurely put it live on 
+Github pages on Saturday, even though I&amp;rsquo;m continuing to tinker with it.&lt;/p&gt;
+
+&lt;p&gt;I started off using &lt;a href=&quot;http://jekyllbootstrap.com/&quot;&gt;Jekyll-Bootstrap&lt;/a&gt;. This was a massive
+timesaver. I&amp;rsquo;ve used Liquid before, so the Jekyll learning curve was very easy for me, but 
+if you haven&amp;rsquo;t then I recommend Jekyll-Bootstrap as a way of easing the transition. The 
+templates and includes that Jade has in there are fairly adaptable, and you can learn 
+quite a bit just from examining them.&lt;/p&gt;
+
+&lt;p&gt;Following the advice in &lt;a href=&quot;http://charliepark.org/jekyll-with-plugins/&quot;&gt;Charlie Park&amp;rsquo;s blog&lt;/a&gt;
+I&amp;rsquo;ve got Jekyll running locally, and I&amp;rsquo;m pushing the compiled static site onto Github.
+This gives me a free hand to have plugins, non-Github-supported configuration options,
+and otherwise be tampering with Jekyll. &lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m using &lt;a href=&quot;http://kramdown.rubyforge.org/&quot;&gt;Kramdown&lt;/a&gt; and 
+&lt;a href=&quot;http://coderay.rubychan.de/&quot;&gt;Coderay&lt;/a&gt; for rendering. Getting Pygments to work reliably on 
+my Mac was just too much of a headache, plus I like Kramdown&amp;rsquo;s language extensions anyway. 
+At least on my Mac, I had to set Kramdown&amp;rsquo;s entity_output to symbolic, otherwise it was 
+garbling apostrophes and other entities. No other problems there though.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m using Jekyll&amp;rsquo;s latent semantic indexing to generate the related posts list, but I&amp;rsquo;m 
+not convinced about it. I really don&amp;rsquo;t want to maintain the list manually if I can avoid 
+it, so next on the agenda is to investigate other options for that. I also plan to 
+refactor the templates to improve the quality of the semantics in them, and because I&amp;rsquo;ve ended 
+up with a small mess of css files.&lt;/p&gt;
+
+&lt;p&gt;My only grumble is Liquid&amp;rsquo;s inability to sort an array before iterating over it. So far 
+I&amp;rsquo;ve managed to work around it, but it is a nuisance. &lt;/p&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <id>http://twrl.github.com/2012/07/the-new-edition/</id>
+    <link type="text/html" rel="alternate" href="http://twrl.github.com/2012/07/the-new-edition/"/>
+    <title>The New Edition</title>
+    <published>2012-07-14T00:00:00+01:00</published>
+    <updated>2012-07-14T00:00:00+01:00</updated>
+    <author>
+      <name>Tom Robbins</name>
+    </author>
+    <content type="html">&lt;p&gt;The long-awaited redo of this blog is at hand.&lt;/p&gt;
+
+&lt;p&gt;After a brief bout of insanity brought on by spending too much time with Blogger&amp;rsquo;s excuse 
+for a template system, I realised: I don&amp;rsquo;t need all that complexity. Browsing around for 
+something with which to replace Blogger, and preferably not add too much to the vast
+number of accounts I&amp;rsquo;m dragging around with me, I stumbled onto Jekyll. And so, here we
+are.&lt;/p&gt;
+
+&lt;p&gt;Now, it&amp;rsquo;s been some time since I last sunk my teeth into a new language, and learning Ruby
+has been on my to-do list for a while. So not only am I using Jekyll to maintain my blog, 
+I&amp;rsquo;m progressively tampering with it in an effort to learn Ruby. &lt;/p&gt;
+
+&lt;p&gt;Oh, and thanks to &lt;a href=&quot;http://charliepark.org/jekyll-with-plugins/&quot;&gt;Charlie Park&lt;/a&gt; for his
+amazingly useful article on how to cope with Github Pages not supporting Jekyll plugins.&lt;/p&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <id>http://twrl.github.com/2012/06/views-dynamic-and-otherwise/</id>
+    <link type="text/html" rel="alternate" href="http://twrl.github.com/2012/06/views-dynamic-and-otherwise/"/>
+    <title>Views, dynamic and otherwise</title>
+    <published>2012-06-14T00:00:00+01:00</published>
+    <updated>2012-06-14T00:00:00+01:00</updated>
+    <author>
+      <name>Tom Robbins</name>
+    </author>
+    <content type="html">&lt;p&gt;I&amp;rsquo;ve changed theme on this blog. I was using Dynamic Views, and now I&amp;rsquo;m using a generic Awesome Inc. theme.&lt;/p&gt;
+
+&lt;p&gt;I love the way Dynamic Views looks. It&amp;rsquo;s very sleek, but it&amp;rsquo;s impossible to adapt. After a dozen attempts I gave up getting &lt;a href=&quot;http://alexgorbatchev.com/SyntaxHighlighter/&quot;&gt;Alex Gorbatchev&amp;rsquo;s SyntaxHighlighter&lt;/a&gt; to work with it, and a brief experiment with altering the CSS ended very badly indeed - it looked like a clown.&lt;/p&gt;
+
+&lt;p&gt;So to solve the first of those two problems I have switched to an old-style theme temporarily, while I write my own. This is not how I&amp;rsquo;d planned on spending the rest of my day, but I suppose my CSS skills could benefit from some practice. So look out for some new shiny, coming soon to a blog near you&amp;hellip;&lt;/p&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <id>http://twrl.github.com/2012/06/iconiser/</id>
+    <link type="text/html" rel="alternate" href="http://twrl.github.com/2012/06/iconiser/"/>
+    <title>Iconiser</title>
+    <published>2012-06-14T00:00:00+01:00</published>
+    <updated>2012-06-14T00:00:00+01:00</updated>
+    <author>
+      <name>Tom Robbins</name>
+    </author>
+    <content type="html">&lt;p&gt;This is a useful titbit for anyone who is working with blogger templates or other things that severely limit your ability to host and serve lots of little files. I just hacked it together now to implement the new theme I&amp;rsquo;m writing for this blog.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m using quite a few icons in the new theme and I wanted to embed them as data: URIs. The trouble is, I&amp;rsquo;m using the same icon in several places which means duplication, and having great blocks of base64 embedded in the code is making it all unreadable. So I&amp;rsquo;ve written a tiny jQuery plugin to maintain a catalogue of named icons, and then replace the shorthand URIs that I&amp;rsquo;m using with the full one.&lt;/p&gt;
+
+&lt;p&gt;Here&amp;rsquo;s the code:&lt;/p&gt;
+
+&lt;div&gt;&lt;div class=&quot;CodeRay&quot;&gt;
+  &lt;div class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n1&quot; name=&quot;n1&quot;&gt;1&lt;/a&gt;&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; (&lt;span class=&quot;predefined&quot;&gt;$&lt;/span&gt;) {
+&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n2&quot; name=&quot;n2&quot;&gt;2&lt;/a&gt;&lt;/span&gt;
+&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n3&quot; name=&quot;n3&quot;&gt;3&lt;/a&gt;&lt;/span&gt;    &lt;span class=&quot;predefined&quot;&gt;$&lt;/span&gt;.&lt;span class=&quot;function&quot;&gt;iconise&lt;/span&gt; = &lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; (name, data) {
+&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n4&quot; name=&quot;n4&quot;&gt;4&lt;/a&gt;&lt;/span&gt;        &lt;span class=&quot;predefined&quot;&gt;$&lt;/span&gt;.iconise.data[name] = data;
+&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n5&quot; name=&quot;n5&quot;&gt;5&lt;/a&gt;&lt;/span&gt;    }
+&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n6&quot; name=&quot;n6&quot;&gt;6&lt;/a&gt;&lt;/span&gt;
+&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n7&quot; name=&quot;n7&quot;&gt;7&lt;/a&gt;&lt;/span&gt;    &lt;span class=&quot;predefined&quot;&gt;$&lt;/span&gt;.iconise.data = {};
+&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n8&quot; name=&quot;n8&quot;&gt;8&lt;/a&gt;&lt;/span&gt;
+&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n9&quot; name=&quot;n9&quot;&gt;9&lt;/a&gt;&lt;/span&gt;    &lt;span class=&quot;predefined&quot;&gt;$&lt;/span&gt;.fn.&lt;span class=&quot;function&quot;&gt;iconise&lt;/span&gt; = &lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; () {
+&lt;span class=&quot;line-numbers&quot;&gt;&lt;strong&gt;&lt;a href=&quot;#n10&quot; name=&quot;n10&quot;&gt;10&lt;/a&gt;&lt;/strong&gt;&lt;/span&gt;        &lt;span class=&quot;predefined&quot;&gt;$&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;img&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;local-variable&quot;&gt;this&lt;/span&gt;).each(&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; () {
+&lt;span class=&quot;line-numbers&quot;&gt;&lt;a href=&quot;#n11&quot; name=&quot;n11&quot;&gt;11&lt;/a&gt;&lt;/span&gt;            &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; src = &lt;span class=&quot;predefined&quot;&gt;$&lt;/span&gt;(&lt;span class=&quot;local-variable&quot;&gt;this&lt;/span&gt;).attr(src);
+&lt;span class=&quot;line-numbers&quot;&gt;&lt;a href=&quot;#n12&quot; name=&quot;n12&quot;&gt;12&lt;/a&gt;&lt;/span&gt;            &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (src.indexOf(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;iconise:&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;) == &lt;span class=&quot;integer&quot;&gt;0&lt;/span&gt;) {
+&lt;span class=&quot;line-numbers&quot;&gt;&lt;a href=&quot;#n13&quot; name=&quot;n13&quot;&gt;13&lt;/a&gt;&lt;/span&gt;                &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; icon = src.substring(&lt;span class=&quot;integer&quot;&gt;8&lt;/span&gt;);
+&lt;span class=&quot;line-numbers&quot;&gt;&lt;a href=&quot;#n14&quot; name=&quot;n14&quot;&gt;14&lt;/a&gt;&lt;/span&gt;                &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (&lt;span class=&quot;predefined&quot;&gt;$&lt;/span&gt;.iconise.data[icon] !== &lt;span class=&quot;predefined-constant&quot;&gt;undefined&lt;/span&gt;) {
+&lt;span class=&quot;line-numbers&quot;&gt;&lt;a href=&quot;#n15&quot; name=&quot;n15&quot;&gt;15&lt;/a&gt;&lt;/span&gt;                    &lt;span class=&quot;predefined&quot;&gt;$&lt;/span&gt;(&lt;span class=&quot;local-variable&quot;&gt;this&lt;/span&gt;).attr(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;predefined&quot;&gt;$&lt;/span&gt;.iconise.data[icon]);
+&lt;span class=&quot;line-numbers&quot;&gt;&lt;a href=&quot;#n16&quot; name=&quot;n16&quot;&gt;16&lt;/a&gt;&lt;/span&gt;                }
+&lt;span class=&quot;line-numbers&quot;&gt;&lt;a href=&quot;#n17&quot; name=&quot;n17&quot;&gt;17&lt;/a&gt;&lt;/span&gt;            }
+&lt;span class=&quot;line-numbers&quot;&gt;&lt;a href=&quot;#n18&quot; name=&quot;n18&quot;&gt;18&lt;/a&gt;&lt;/span&gt;        })
+&lt;span class=&quot;line-numbers&quot;&gt;&lt;a href=&quot;#n19&quot; name=&quot;n19&quot;&gt;19&lt;/a&gt;&lt;/span&gt;    };
+&lt;span class=&quot;line-numbers&quot;&gt;&lt;strong&gt;&lt;a href=&quot;#n20&quot; name=&quot;n20&quot;&gt;20&lt;/a&gt;&lt;/strong&gt;&lt;/span&gt;
+&lt;span class=&quot;line-numbers&quot;&gt;&lt;a href=&quot;#n21&quot; name=&quot;n21&quot;&gt;21&lt;/a&gt;&lt;/span&gt;})(jQuery);
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Then to use it you need to build a database of icons. You simply call the iconise function to associate a name to a data: uri&lt;/p&gt;
+
+&lt;div&gt;&lt;div class=&quot;CodeRay&quot;&gt;
+  &lt;div class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line-numbers&quot;&gt;&lt;a href=&quot;#n1&quot; name=&quot;n1&quot;&gt;1&lt;/a&gt;&lt;/span&gt;&lt;span class=&quot;predefined&quot;&gt;$&lt;/span&gt;.iconise(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;myIcon&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;data:image/png;base64,/*...base64 encoded image...*/&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;);
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;And finally, you can reference your icon like this&lt;/p&gt;
+
+&lt;div&gt;&lt;div class=&quot;CodeRay&quot;&gt;
+  &lt;div class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line-numbers&quot;&gt;&lt;a href=&quot;#n1&quot; name=&quot;n1&quot;&gt;1&lt;/a&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;img&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;iconise:myIcon&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;tag&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This is a bit of a quick and dirty hack, and it will certainly not degrade gracefully. But it might come in handy.&lt;/p&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <id>http://twrl.github.com/2012/06/javascript-alternatives/</id>
+    <link type="text/html" rel="alternate" href="http://twrl.github.com/2012/06/javascript-alternatives/"/>
+    <title>Javascript Alternatives</title>
+    <published>2012-06-11T00:00:00+01:00</published>
+    <updated>2012-06-11T00:00:00+01:00</updated>
+    <author>
+      <name>Tom Robbins</name>
+    </author>
+    <content type="html">&lt;p&gt;Over the last four weeks I&amp;rsquo;ve been rather busy with exams, but now that&amp;rsquo;s over I&amp;rsquo;m thinking computer again.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve been looking at some of the alternatives to JavaScript. In many ways JavaScript is a lovely little language, it&amp;rsquo;s incredibly flexible. But, the same dynamic type system that makes it so flexible also makes certain things very difficult (like writing or consuming modular APIs), and the prototype-based object system obscures many of the benefits of object-oriented programming. For some purposes these are strengths, because JavaScript can glue so many different things together without casting and without wrestling with common OO patterns like adapter or facade. Modularisation and componentisation are difficult, because with such weak typing it&amp;rsquo;s very difficult to check that interfaces are compatible.&lt;/p&gt;
+
+&lt;p&gt;There are many alternatives out there, the big ones of the moment being Opa, Google Dart, and CoffeeScript. VBScript is also out there if you know you&amp;rsquo;re dealing with purely Internet Explorer clients, but the less said about VBScript the better.&lt;/p&gt;
+
+&lt;p&gt;I do not particularly like CoffeeScript. It has some very neat design ideas, but I personally find it less readable than regular JavaScript. I&amp;rsquo;m a curly bracket language boy, I like my start and end delimiters and consider indenting to be a style and readability thing. So while I can&amp;rsquo;t actually find anything to complain about with CoffeeScript, it just doesn&amp;rsquo;t suit my coding style.&lt;/p&gt;
+
+&lt;p&gt;On to Dart. Syntactically, it&amp;rsquo;s like a hybrid of C# and JavaScript, with a pinch of PHP. Which is fine, I have no objection to any of that. However, there are several things about Dart which make me rather uncomfortable. For a start I don&amp;rsquo;t agree with Google&amp;rsquo;s design decisions about the Dart VM, although that&amp;rsquo;s minor. Dart is designed to operate in the client, with a Dart-to-JavaScript transpiler as a transition measure, but I don&amp;rsquo;t expect to see a Dart VM implemented in anything but Google Chrome any time soon. It&amp;rsquo;s also far from clear how Dart interoperates with JavaScript - especially when the JavaScript comes packaged in AMD or CommonJS modules.&lt;/p&gt;
+
+&lt;p&gt;Which brings me to Opa. It&amp;rsquo;s rather neat, I was impressed. There are so many clever things in Opa, not least of which is the way it hides the details of communication between client and server. However, I&amp;rsquo;m not so keen on the way the markup tends to become fragments embedded in the program rather than the other way around - ASP.Net and PHP have done that pattern to death - and Opa leaves me feeling like I&amp;rsquo;m not entirely in control of the code that I&amp;rsquo;m writing. The point of Opa is to hide tricky details, especially of middleware, but it&amp;rsquo;s actually too good at what it does for comfort.&lt;/p&gt;
+
+&lt;p&gt;Which brings me back to JavaScript, but then I&amp;rsquo;m still stuck with the clunkyness of JavaScript for certain applications. Still, while it might not always be elegant, it does work. So for the time being, I&amp;rsquo;ll stick with JavaScript.&lt;/p&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <id>http://twrl.github.com/2012/05/social-networking/</id>
+    <link type="text/html" rel="alternate" href="http://twrl.github.com/2012/05/social-networking/"/>
+    <title>Social Networking</title>
+    <published>2012-05-18T00:00:00+01:00</published>
+    <updated>2012-05-18T00:00:00+01:00</updated>
+    <author>
+      <name>Tom Robbins</name>
+    </author>
+    <content type="html">&lt;p&gt;I like Google+. There&amp;rsquo;s a very good reason for this: integration.&lt;/p&gt;
+
+&lt;p&gt;I use Google Reader, Google Search, Google Drive, Google Calendar, Google Mail, Google Play, Google Chrome and Blogger. I use these things because Google is becoming the Unix of the web - a large set of simple, single-purpose tools that play nicely together.&lt;/p&gt;
+
+&lt;p&gt;So it&amp;rsquo;s only natural that I also want to use Google+ too. It would be so very convenient.&lt;/p&gt;
+
+&lt;p&gt;There are two problems. First off, I&amp;rsquo;ve become too used to clicking &amp;ldquo;Log on with Facebook&amp;rdquo;. For a lot of services that I use, I&amp;rsquo;ve never actually created an account. This is not an insurmountable problem, I&amp;rsquo;ll live with more passwords in my life.&lt;/p&gt;
+
+&lt;p&gt;The second is more substantial: I have around 350 Facebook friends. I have six friends who use Google+.   The update streams, photos, and so on I can work around or live without - but realtime interaction? I communicate a lot through facebook messages.&lt;/p&gt;
+
+&lt;p&gt;Since Facebook exposes it&amp;rsquo;s chat services through XMPP and social graph as a RESTful JSON service, you would think something could be done about this. But no, Facebook isn&amp;rsquo;t willing to play this game because they don&amp;rsquo;t want to lose users.&lt;/p&gt;
+
+&lt;p&gt;Which brings me back to the idea of Data Portability. Why can&amp;rsquo;t I keep my own little corner of the social graph, and Facebook and Google just provide services on top of it? In spite of the technical difficulties this is not such a crazy idea - there are plenty of solutions for distributed data storage and aggregation.&lt;/p&gt;
+
+&lt;p&gt;Part of the necessary technology already exists in the Diaspora project. Diaspora is distributed, but it still requires servers. It isn&amp;rsquo;t peer-to-peer in the way that we more usually associate with file sharing. You don&amp;rsquo;t run a Diaspora application on your PC when you want to access it - you have to run a well-connected server all the time.&lt;/p&gt;
+
+&lt;p&gt;There are schemes which could overcome the always-connected architecture for distributing social graph data, but doing the same thing for realtime interaction is more difficult. Keeping track of my chat and realtime messaging activities when I have hundreds of friends is much easier when there is a single, co-ordinating hub. It becomes next to impossible when there is no server and I&amp;rsquo;m using multiple clients on multiple devices.&lt;/p&gt;
+
+&lt;p&gt;So that&amp;rsquo;s the challenge - can you keep distributed, continuously updated realtime data without some form of server infrastructure?&lt;/p&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <id>http://twrl.github.com/2012/05/who-am-i-standing-up-to-again/</id>
+    <link type="text/html" rel="alternate" href="http://twrl.github.com/2012/05/who-am-i-standing-up-to-again/"/>
+    <title>Who am I standing up to again?</title>
+    <published>2012-05-16T00:00:00+01:00</published>
+    <updated>2012-05-16T00:00:00+01:00</updated>
+    <author>
+      <name>Tom Robbins</name>
+    </author>
+    <content type="html">&lt;p&gt;There was an article today on the Huffington Post by Max Wind-Cowie called &amp;ldquo;&lt;a href=&quot;http://www.huffingtonpost.co.uk/max-windcowie/gay-marriage-who-will-stand-up-to-the-hetero-phobes_b_1514024.html?ref=uk-politics&quot;&gt;Who Will Stand Up to the Hetero-Phobes?&lt;/a&gt;&amp;rdquo; - and it&amp;rsquo;s really got me seething. So much that I feel I have to rebut it. Here goes:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A little while ago I wrote a piece for ConservativeHome about how the attacks and smears of the pro gay marriage campaign had shaken my belief in the cause to its foundations. The impulse to cry &amp;lsquo;paedo&amp;rsquo; every time a Catholic spoke of their discomfort over same sex marriage, the howls of &amp;lsquo;bigot&amp;rsquo; accompanying even the most gentle warning about potential implications - these are the characteristics of a movement that no longer believes it can win an argument and has instead decided to rely on ad hominem and vitriol. It is intolerant and it is ugly.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;There are three things here - first of all if your belief in a cause is so shaken by the actions of said cause&amp;rsquo;s supporters, that&amp;rsquo;s deeply concerning. Your belief was presumably not terribly strong, or &lt;em&gt;tu quoque&lt;/em&gt; would not be an issue. I don&amp;rsquo;t have to like what Israel gets up to in the middle east to oppose anti-semitism.&lt;/p&gt;
+
+&lt;p&gt;I haven&amp;rsquo;t actually seen cries of &amp;lsquo;paedo&amp;rsquo; every time a Catholic speaks of sex, same-sex marriage, or the Roman church&amp;rsquo;s dogma regarding the subject - perhaps I&amp;rsquo;m looking in the wrong places. I have seen the pedophile priest debacle used to put pay to Catholic figures attempting to take the moral high ground on sexual ethics, especially when making &amp;ldquo;won&amp;rsquo;t somebody please think of the children&amp;rdquo; style arguments. While I&amp;rsquo;ll grant this is a rather crude tactic, it&amp;rsquo;s not a wholly inappropriate response to Catholic bishops claiming to be in a position of inviolable moral authority, in contrast to the evil homosexual agenda to turn everyone&amp;rsquo;s children.&lt;/p&gt;
+
+&lt;p&gt;And then there is the term bigot. I&amp;rsquo;m surprised that this needs explaining, but a bigot is by definition a prejudiced and intolerant person. So when somebody provides an objection to same-sex marriage which is not born of prejudice and intolerance, but instead comes from a balanced and rational appreciation of the relevant facts, then I shall refrain from calling them a bigot. When somebody provides an objection which is born of ignorance, stupidity, or centuries of institutionalised hatred and scapegoating, then I shall call them a bigot with impunity.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Over the last week we have seen further examples of the extent to which the gay rights militia has abandoned any moral authority and now seeks, apparently unashamedly, not to win through debate but to rob others of their right to speak.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This is clearly misleading. To start with, the validity of the argument for same-sex marriage is not challenged by what Wind-Cowie perceives as heterophobia. I don&amp;rsquo;t feel I have some great &amp;lsquo;moral authority&amp;rsquo; to abandon - the LGBT movement is fighting for it&amp;rsquo;s rights, not for some moral ideal - we&amp;rsquo;re more like Mandelas than Ghandis. Neither is what follows a detriment to others&amp;rsquo; right to free speec, or it wouldn&amp;rsquo;t be if it had been reported accurately:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;First came the Advertising Standards Authority&amp;rsquo;s demand that the blogger &amp;lsquo;Archbishop Cranmer&amp;rsquo; answer for the adverts he had run on behalf of the Coalition for Marriage campaign. These ads - which showed heterosexual couples celebrating their nuptials and implored viewers to sign the coalition&amp;rsquo;s petition - apparently caused &amp;lsquo;hurt and offence&amp;rsquo; to some gay people. The only way in which one could possibly be &amp;lsquo;hurt&amp;rsquo; by the ad would be if one were somehow offended by the image of straight couples doing what straight couples have done for thousands of years - marrying one another. This isn&amp;rsquo;t a reaction against &amp;lsquo;hate speech&amp;rsquo; folks, it&amp;rsquo;s outright hetero-phobia.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;These readers responded to their &amp;lsquo;hurt&amp;rsquo; not by engaging in debate or navigating away from the page but by submitting complaints to the ASA - who have followed up in aggressive style and have frightened the man behind the avatar into hiring in the lawyers.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;According to the ASA, &lt;a href=&quot;http://www.pinknews.co.uk/2012/05/16/asa-responds-to-claim-it-persecuted-religious-blog-in-investigating-anti-gay-marriage-ad/&quot;&gt;the relevant complaints refer to the advert itself&lt;/a&gt; and in particular the (potentially) misleading 70% statistic from the ComRes/Catholic Voices poll. It is the advert which is under investigation, not the blogger who was contacted as part of said investigation. This appears to be the witness/suspect distinction gone awry.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Next came the extraordinary decision by the Law Society to withdraw permission for an event on the role of heterosexual marriage in a good and just society. Cristina Odone (who was due to speak at the event alongside my friend Phillip Blond) has written for the Telegraph that the decision was taken on the basis that a discussion of heterosexual marriage contravened the esteemed society&amp;rsquo;s &amp;lsquo;diversity policy&amp;rsquo;. Apparently diversity - for the Law Society at least - stretches only one way in the discussion of public policy.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The event in question was a colloquium held by the &lt;a href=&quot;http://www.worldcongress.org/&quot;&gt;World Congress of Families&lt;/a&gt;, a religiously motivated, US-led, conservative organisation whose stated principles include such gems as &amp;ldquo;Marriage between a man and a woman forms the sole moral context for natural sexual union. Whether through pornography, promiscuity, incest or homosexuality, deviations from these created sexual norms cannot truly satisfy the human spirit.&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;I sincerely doubt that what they had in mind was a balanced debate - apparently the Law Society agrees, although they have not to my knowledge publicly commented. Would it be appropriate for the Law Society to host a well-rounded debate on a contentious issue of public policy: eminently. Would it be appropriate for the Law Society to host a group of people, most if not all of whom are already in broad agreement, ranting at each other about how LGBT people are seeking to undermine society: absolutely not.&lt;/p&gt;
+
+&lt;p&gt;The rights of Christina Odone and others to free expression are not compromised by the Law Society refusing to be their soapbox. One person&amp;rsquo;s right to free speech does not give somebody else an obligation to be their platform.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;And this is the problem. I too believe in diversity. I&amp;rsquo;m a gay man (who, as it happens, believes that gay marriage is the right way forward for our society) who has benefited from our tradition of allowing a plurality of views and for the open discussion of what is good and right and what is bad and wrong. Were it not for Britain&amp;rsquo;s tolerance of dissent who would have been brave, or foolish, enough to argue that people like me ought not be imprisoned for our sexual desires?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;On this at least we are in agreement. However, I see the matter of diversity, equality and fairness rather differently - perhaps more pessimistically.&lt;/p&gt;
+
+&lt;p&gt;It is a sad truth that in our society people can&amp;rsquo;t simply expect to be treated fairly, instead we must have and use the law to enforce &amp;lsquo;fairness&amp;rsquo;. As a society we have determined that who you love is a characteristic that leads to people being treated unfairly, and is worthy of being so protected. We have not determined that who you hate is a characteristic worthy of the same consideration.&lt;/p&gt;
+
+&lt;p&gt;But people&amp;rsquo;s fundamental rights continue unabridged. Refusing to indulge anti-gay groups publicity stunts, or asking awkward questions of fundamentalist bloggers, is not comparable with the criminalisation of homosexuality. Sixty years ago both Wind-Cowie and myself would either have been imprisoned or chemically castrated - that Christina Odone had to air her views on the website of the Telegraph instead of the floor of the Law Society is minutiae by comparison. Last week, as happens alarmingly often the world over, &lt;a href=&quot;http://www.huffingtonpost.com/2012/05/11/jay-corey-jones-gay-minnesota-teen-suicide_n_1510001.html&quot;&gt;it was widely reported that a teenager committed suicide after a campaign of homophobic bullying&lt;/a&gt; - not an event which is analogous to a badly worded letter from the ASA bruising somebody&amp;rsquo;s feelings.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Yet that very word, &amp;lsquo;diversity&amp;rsquo;, has now come to represent not plurality but homogeneity, not dissent but repression. Hiding behind it, secularists and the ayatollahs of social liberalism are able to strip public discourse of the bits they don&amp;rsquo;t like - faith, orthodoxy, skepticism about change. They have been able to use the frame of diversity as a weapon against its very purpose; to shut out and shut up those with whom they disagree.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;It&amp;rsquo;s time for those gay men and women who genuinely prize freedom to take a stand against those who act against it in our name. It is up to us to continue winning the argument for the freedoms our society permits us - not to preserve those freedoms at the expense of others&amp;rsquo; consciences or right to speak. &lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Faith has no place in the machinery of state. If the law must reflect the Catholic religious view that I should not marry, why should it not reflect the hardline Islamic view that I deserve to be stoned to death? Or the pastafarian view that everybody eat spaghetti and meatballs once a week? Regardless of my personal views on religion, it has no place in the state - otherwise where do you draw the line. The price of religious freedom is freedom from religion.&lt;/p&gt;
+
+&lt;p&gt;The argument for same-sex marriage is already won.&lt;/p&gt;
+
+&lt;p&gt;The fight now is social - it&amp;rsquo;s holding teachers accountable for the fact that homophobia is not just &amp;lsquo;playground banter&amp;rsquo;, it pointing out the demeaning and devaluing implications of &amp;ldquo;love the sinner, hate the sin&amp;rdquo;, and so on. If that&amp;rsquo;s what people wish to believe or profess then so be it, but their right to believe these things and profess these things does not prevent me from arguing with them, nor from shaming them.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;If my society gives me the right to marry I want that right to have sprung from a collective judgment, not from the authoritarian zeal of those acting, supposedly, on my behalf. Let&amp;rsquo;s leave the hetero-phobia at the door and get on with the business of political and moral debate. For goodness sake gays, stop whinging about people who disagree with you - argue with them.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The collective judgement seems to agree with us right now, but anyone foolish enough to believe that the will of the majority can guarantee peoples rights has an alarmingly short memory. If collective judgement were the only force for change, maybe we would be imprisoned after all.&lt;/p&gt;
+
+&lt;p&gt;This whole style of thought, putting principle before practice; think tanks, rhetorical style and Westminster politics before suicide rates, homophobic crime and homelessness; this moral high ground, the concept that we must protect the freedom of the people who hate us; this is the biggest challenge which we now face in advancing the cause of LGBT equality - it&amp;rsquo;s within ourselves.&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s our instinct: be normal, take the moral high ground, articulate your complaints, reason with the unreasonable, conform, integrate, assimilate, play the game. This is how we earn our place at the table: &amp;ldquo;He&amp;rsquo;s gay but he&amp;rsquo;s a nice chap,&amp;rdquo; and &amp;ldquo;Isn&amp;rsquo;t she pretty, she used to be a man don&amp;rsquo;tchaknow.&amp;rdquo; That&amp;rsquo;s not a table I want to sit at - we can carve out other places in society.&lt;/p&gt;
+
+&lt;p&gt;Equality before the law is but a stones throw away - an equal place in society is shaping up to be a much longer and more bitter fight, and greatest opponents may yet prove to be each other.&lt;/p&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <id>http://twrl.github.com/2012/05/wheres-my-data/</id>
+    <link type="text/html" rel="alternate" href="http://twrl.github.com/2012/05/wheres-my-data/"/>
+    <title>Where's my Data!</title>
+    <published>2012-05-15T00:00:00+01:00</published>
+    <updated>2012-05-15T00:00:00+01:00</updated>
+    <author>
+      <name>Tom Robbins</name>
+    </author>
+    <content type="html">&lt;p&gt;I have Facebook. I have Google+, Google Docs, Google Play, GMail, Blogger, Picasa and various other Google products. I have a Live@edu email account. I have a github account, a SourceForge account, a cloud9 account, and a Hojoki account. I have an account with Ocado and another with Tesco, and one with Amazon. I have at least two OpenIDs, and a dozen more services which I routinely use by federated logon to one of the above.&lt;/p&gt;
+
+&lt;p&gt;I have accounts with online services that I don&amp;rsquo;t even remember exist.&lt;/p&gt;
+
+&lt;p&gt;My online identity is no longer a discrete thing. It&amp;rsquo;s a big ball of fuzz, at best. And because of the overload of accounts none of them use any sort of particularly strong credentials. I choose decent passwords, but that&amp;rsquo;s a good as it gets.&lt;/p&gt;
+
+&lt;p&gt;The problem is data. I&amp;rsquo;ve recently become acutely aware of how spread out my data is across so many different services. My contacts experience five-way synchronisation between Google, Live, Facebook, my Laptop and my Phone - and I have this sneaking suspicion that I&amp;rsquo;ve missed some. I don&amp;rsquo;t even know where my data is any more, I can&amp;rsquo;t use half of it when I want it because even if I do remember where it is, access is only ensured by the stored passwords and cookies in my web browser.&lt;/p&gt;
+
+&lt;p&gt;We have an architectural problem. I want my data! It&amp;rsquo;s mine! I want to use your services to work with my data - I don&amp;rsquo;t want to use your services to work with your copy of a subset of my data.&lt;/p&gt;
+
+&lt;p&gt;Oh, and it would be nice if it were all transparent. If I could chop and change services, just like I can now but without the hassle of exporting and re-importing all my data.&lt;/p&gt;
+
+&lt;p&gt;Technologically speaking this is pretty easy. A triplestore in the cloud, augmented by some sort of bulk storage. OAuth to control access by different service providers, data synchronisation so that I can keep my data (or subsets of it) available offline. OpenID to federate your login to everything, and X.509 certificates, or even a hardware token, to authenticate to your identity provider.&lt;/p&gt;
+
+&lt;p&gt;None of this actually requires any new breakthrough - but &amp;lsquo;the cloud&amp;rsquo; is primarily an infrastructure for service providers, rather than one for users. The money is in selling multiply-redundant block storage by the trillions of bytes, or processor-hours by the hundred thousand a month. It&amp;rsquo;s not in providing semi-structured storage (with the overheads that entails) for a steady 300-500GB of my accumulated junk.&lt;/p&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <id>http://twrl.github.com/2012/03/initialising-web-workers/</id>
+    <link type="text/html" rel="alternate" href="http://twrl.github.com/2012/03/initialising-web-workers/"/>
+    <title>Initialising Web Workers</title>
+    <published>2012-03-28T00:00:00+01:00</published>
+    <updated>2012-03-28T00:00:00+01:00</updated>
+    <author>
+      <name>Tom Robbins</name>
+    </author>
+    <content type="html">&lt;p&gt;I&amp;apos;ve had tonsillitis over the last 5 days or so, so I&amp;apos;ve spent most of the last few days in a bit of a daze, idly tinkering with random things to pass the time. As with much idle tinkering, it&amp;apos;s all a bit rough and ready, but here is one snippet which might prove useful.&lt;/p&gt;
+
+&lt;p&gt;I was tinkering with Web Workers and I wanted to be able to load up Require.js in a worker and then pass it the name of a main module. So I wrote this stub, lets call it w.js, which goes in the same directory as require.js (which will be Require&amp;rsquo;s baseDir - told you it was a bit rough). You can then create your worker by doing&lt;/p&gt;
+
+&lt;div&gt;&lt;div class=&quot;CodeRay&quot;&gt;
+  &lt;div class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line-numbers&quot;&gt;&lt;a href=&quot;#n1&quot; name=&quot;n1&quot;&gt;1&lt;/a&gt;&lt;/span&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; worker = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Worker(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;scripts/w.js?main=myapp/main&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;);
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;and Require.js will be loaded into your module, which will in turn load your main. As a fringe benefit you get a nice global object called query which contains all parameters passed in the query string.&lt;/p&gt;
+
+&lt;div&gt;&lt;div class=&quot;CodeRay&quot;&gt;
+  &lt;div class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n1&quot; name=&quot;n1&quot;&gt;1&lt;/a&gt;&lt;/span&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; params = self.location.search.substring(&lt;span class=&quot;integer&quot;&gt;1&lt;/span&gt;).split(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;), query = {};
+&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n2&quot; name=&quot;n2&quot;&gt;2&lt;/a&gt;&lt;/span&gt; 
+&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n3&quot; name=&quot;n3&quot;&gt;3&lt;/a&gt;&lt;/span&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt; (&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; i &lt;span class=&quot;keyword&quot;&gt;in&lt;/span&gt; params) {
+&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n4&quot; name=&quot;n4&quot;&gt;4&lt;/a&gt;&lt;/span&gt;    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; sp = params[i].split(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;),
+&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n5&quot; name=&quot;n5&quot;&gt;5&lt;/a&gt;&lt;/span&gt;        n = sp[&lt;span class=&quot;integer&quot;&gt;0&lt;/span&gt;],
+&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n6&quot; name=&quot;n6&quot;&gt;6&lt;/a&gt;&lt;/span&gt;        v = unescape(sp[&lt;span class=&quot;integer&quot;&gt;1&lt;/span&gt;]);
+&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n7&quot; name=&quot;n7&quot;&gt;7&lt;/a&gt;&lt;/span&gt;    query[n] = v;
+&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n8&quot; name=&quot;n8&quot;&gt;8&lt;/a&gt;&lt;/span&gt;}
+&lt;span class=&quot;line-numbers&quot;&gt; &lt;a href=&quot;#n9&quot; name=&quot;n9&quot;&gt;9&lt;/a&gt;&lt;/span&gt; 
+&lt;span class=&quot;line-numbers&quot;&gt;&lt;strong&gt;&lt;a href=&quot;#n10&quot; name=&quot;n10&quot;&gt;10&lt;/a&gt;&lt;/strong&gt;&lt;/span&gt;&lt;span class=&quot;keyword&quot;&gt;delete&lt;/span&gt; params;
+&lt;span class=&quot;line-numbers&quot;&gt;&lt;a href=&quot;#n11&quot; name=&quot;n11&quot;&gt;11&lt;/a&gt;&lt;/span&gt; 
+&lt;span class=&quot;line-numbers&quot;&gt;&lt;a href=&quot;#n12&quot; name=&quot;n12&quot;&gt;12&lt;/a&gt;&lt;/span&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; require = { &lt;span class=&quot;key&quot;&gt;deps&lt;/span&gt; : [ query.main ] };
+&lt;span class=&quot;line-numbers&quot;&gt;&lt;a href=&quot;#n13&quot; name=&quot;n13&quot;&gt;13&lt;/a&gt;&lt;/span&gt; 
+&lt;span class=&quot;line-numbers&quot;&gt;&lt;a href=&quot;#n14&quot; name=&quot;n14&quot;&gt;14&lt;/a&gt;&lt;/span&gt;importScripts(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;require.js&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;);
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Now I know this is not terribly exciting - parsing a query string is pretty basic stuff in Javascript - but when I first tried this I was looking at a one-off message handler to initialise the global context in the worker. Because workers share so few API&amp;rsquo;s with an ordinary web page, it&amp;rsquo;s easy to forget the few that they have in common, and one of them is location.&lt;/p&gt;
+
+&lt;p&gt;For some more advanced cases the message handler might still be the best way forward, but to get a few name-value pairs in this is a lovely little trick.&lt;/p&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <id>http://twrl.github.com/2012/03/ajax-and-file-uris/</id>
+    <link type="text/html" rel="alternate" href="http://twrl.github.com/2012/03/ajax-and-file-uris/"/>
+    <title>Ajax and file&#58;// URIs</title>
+    <published>2012-03-28T00:00:00+01:00</published>
+    <updated>2012-03-28T00:00:00+01:00</updated>
+    <author>
+      <name>Tom Robbins</name>
+    </author>
+    <content type="html">&lt;p&gt;Ajax is becoming the dominant method, if it isn&amp;rsquo;t already, of getting data in and out of a web application. But Ajax is built on top of XMLHttpRequest, which as the name suggests is only really well defined if the underlying protocol is HTTP.&lt;/p&gt;
+
+&lt;p&gt;So what about local files? The new Filesystem API&amp;rsquo;s are coming, but they sandbox us heavily. At least for the time being, if we want to muck about with self-modifying code or local file-based data sources we have to hack it, which means using any one of half a dozen browser and/or os specific methods.&lt;/p&gt;
+
+&lt;p&gt;I quite like having a consistent API to work with, which you can&amp;rsquo;t easily have under these circumstances. Fortunately, the lovely folks at TiddlyWiki have provided &lt;a href=&quot;http://jquery.tiddlywiki.org/twFile.html&quot;&gt;a jQuery plugin&lt;/a&gt; which abstracts their general purpose file load and save functionality, so you have a load and a save function exposed and how those are best implemented is determined for you automatically.&lt;/p&gt;
+
+&lt;p&gt;However, it&amp;rsquo;s still not a single consistent API for getting data in and out. Having load and save methods for the local filesystem is lovely if all I want to do is load and save from the local filesystem, but what if I want to use a resource which may or may not be local. I would like to treat a directory full of JSON files on the local system the same as a REST interface on a remote server, and the only thing I want to change is the base URI.&lt;/p&gt;
+
+&lt;p&gt;jQuery now supports the &lt;code&gt;$.ajaxTransport&lt;/code&gt; method, which allows us to define custom ways in which jQuery&amp;rsquo;s &lt;code&gt;$.ajax&lt;/code&gt; method is implemented for different circumstances. It&amp;rsquo;s relatively easy to use this to intercept Ajax queries to file:// URIs, and translate them into load and save calls based on whether they&amp;rsquo;re GET or PUT. I&amp;rsquo;ve hacked together a &lt;a href=&quot;https://github.com/twrl/tinker/blob/master/js/jquery/localJax.js&quot;&gt;jQuery plugin&lt;/a&gt; to do just that, remapping Ajax queries on local files to the equivalent calls on TiddlyWiki&amp;rsquo;s twFile plugin.&lt;/p&gt;
+
+&lt;p&gt;As cool as this is, it&amp;rsquo;s only half the story. We don&amp;rsquo;t just use Ajax to GET and PUT to RESTful data, we use it for all sorts of other things. It makes no sense to define a behaviour for a POST to local files in general. However, Web Workers potentially change that. An Ajax post to a local javascript could be interpreted as a command to load that javascript as a web worker, and then pass the query data into the worker as a message and wait for a response. Or it could not. The scenario is rather complicated, but certainly worth thinking about.&lt;/p&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <id>http://twrl.github.com/2012/03/rehashing-xml/</id>
+    <link type="text/html" rel="alternate" href="http://twrl.github.com/2012/03/rehashing-xml/"/>
+    <title>Rehashing Xml</title>
+    <published>2012-03-23T00:00:00+00:00</published>
+    <updated>2012-03-23T00:00:00+00:00</updated>
+    <author>
+      <name>Tom Robbins</name>
+    </author>
+    <content type="html">&lt;p&gt;I find it interesting sometimes to consider, if I were starting over and designing &lt;em&gt;xyz-thing&lt;/em&gt; from scratch, what would I do differently to what we already have. Recently I&amp;rsquo;ve been considering this with XML.&lt;/p&gt;
+
+&lt;p&gt;The trouble with XML is that it&amp;rsquo;s a vast stack of standards. In some ways this is a good thing, because at least in theory it adds a lot of flexibility for different use cases. But it does result in duplication and redundancy, because document authors never know exactly which editions of which specs are being used by which processors and vice versa. How often do we see patterns like the common one for the language attribute on the HTML tag:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;&amp;lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang=&quot;en&quot; xml:lang=&quot;en&quot;&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The common &lt;code&gt;id&lt;/code&gt; attribute is the same. It sounds like a trivial niggle, but actually it&amp;rsquo;s a design flaw in how these applications (XHTML and XML in this case) are layered one on top of the other.&lt;/p&gt;
+
+&lt;p&gt;Then we have the DOM, the XML Infoset, EXI, Canonical XML, XML Namespaces, XML Schema and so on. It&amp;rsquo;s a dizzying array of specs, each with complex demands, which is partly why WHATWG have moved away from the idea of XHTML and put their efforts into HTML5&amp;rsquo;s SGML derived syntax instead. Complying with the existing stack of XML specifications is too onerous, and the specs themselves are not always neatly joined up.&lt;/p&gt;
+
+&lt;p&gt;Throw in stuff from the edges of the XML world - the development of IRIs, XRIs and CURIEs, the semantic models of RDF, the multipart MIME types and the data: URI scheme, and so on - and it&amp;rsquo;s a recipe for migraines and sleepless nights.&lt;/p&gt;
+
+&lt;p&gt;For all it&amp;rsquo;s flaws however, XML has a whole host of benefits too. There is a very good reason why it&amp;rsquo;s so widely adopted, it&amp;rsquo;s is very flexible and it is human readable, it is (relatively) easy to parse, validate and transform. There various stable and well understood means to map programmatic objects into XML serialisations and back, enabling everything from RPC to Active Record to be done using it.&lt;/p&gt;
+
+&lt;p&gt;So if I was going to redesign XML from scratch, what would I do? Well, here are my main thoughts:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Scrap DTDs, completely. I&amp;rsquo;m sure there&amp;rsquo;s been other occasions, but the last time that I can think of when I saw a DTD used seriously was when XHTML 1.1 was published, and XML Schema wasn&amp;rsquo;t considered &amp;lsquo;mature&amp;rsquo; at the point.&lt;/li&gt;
+  &lt;li&gt;Design the Infoset first. Infoset is supposed to represent the logical model of a document, which XML serialises and DOM provides programmatic access to. Standard XML syntax need not be the only serialisation of an XML Infoset, and the DOM can be made to converge more closely with the underlying model.&lt;/li&gt;
+  &lt;li&gt;Take a cue from Architecture of the World Wide Web, and consider information items in your infoset as akin to resources. That means that an element might be considered to have a set of zero or more Descriptions, Identifiers, and Representations. Identifiers can be XPath expressions, IDs or any other unique reference to an element. Descriptions are any old metadata, and Representations correspond to different serialisations.&lt;/li&gt;
+  &lt;li&gt;Design a processing model to go with the infoset. XML Schema defines the PSVI, XSLT defines the post transformation infoset, XML Encryption defines post encryption/decryption infosets. A general model for the transformation of one infoset into the next, and pipelining those transformations, would be very useful.&lt;/li&gt;
+  &lt;li&gt;Consider all element and attribute names as URIs. Instead of QName we can use URIorCURIE as the type of all namespace qualified names.&lt;/li&gt;
+  &lt;li&gt;Use processing instructions for instructions to the processor. That means rather than xmlns:foo=&amp;rdquo;&amp;hellip;&amp;rdquo; on an element we insert a processing instruction &lt;?namespace foo=&quot;...&quot;?&gt;. If qualified names are now URIs, then we are telling the processor how to expand any CURIEs that we are using. We might also have processing instructions for associating schemas, transforms, even linkbases. Processing instructions can be used to set up the document-specific processing pipeline described above, linking together various flavours of infoset transformation as well as controlling how the infoset is generated from the serialised document. Anything which alters the processing of the document when viewed as a series of parser events. Using attributes for this sort of thing should be limited strictly to when we are giving an element specific instruction.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;One day I might do a skunk works and draft something along these lines, until then I can but rant.&lt;/p&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <id>http://twrl.github.com/2012/03/whatever-happened-to-osid/</id>
+    <link type="text/html" rel="alternate" href="http://twrl.github.com/2012/03/whatever-happened-to-osid/"/>
+    <title>Whatever Happened To Osid</title>
+    <published>2012-03-22T00:00:00+00:00</published>
+    <updated>2012-03-22T00:00:00+00:00</updated>
+    <author>
+      <name>Tom Robbins</name>
+    </author>
+    <content type="html">&lt;p&gt;Five years ago, or so, we had a wonderful suite of open, abstract API&amp;rsquo;s developed by a group led out of MIT and calling themselves the Open Knowledge Initiative. These API&amp;rsquo;s were the Open Service Interface Definitions, and although they had a definite flavour of Java about them, the specs were deliberately designed to be platform neutral.&lt;/p&gt;
+
+&lt;p&gt;OKI now appears to be defunct, but a lot of what they produced is still &lt;a href=&quot;http://sourceforge.net/projects/okiproject&quot;&gt;sitting there on SourceForge&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Now a lot of this was useless nonsense, at least, outside of certain specialist applications. I know there are people that do, but I personally have no wish to keep track of who is enrolled on which course. Application specific is not general purpose. However, there are some very good general purpose abstractions in there.&lt;/p&gt;
+
+&lt;p&gt;Filing, for example, provides a highly abstracted representation of any filing system (which is anything which consists of trees of containers and byte-streams). Hierarchy is not dissimilar, abstracting anything which is hierarchical.&lt;/p&gt;
+
+&lt;h3 id=&quot;and-your-point-is&quot;&gt;And your point is&amp;hellip;&lt;/h3&gt;
+
+&lt;p&gt;Javascript. My point is Javascript.&lt;/p&gt;
+
+&lt;p&gt;Until relatively recently, Javascript was a domain specific language. It was used for scripting, in particular in the context of web browsers. Suddenly, Javascript is seeing general purpose use - largely due to the introduction of Node and Rhino. Equally, we&amp;rsquo;re seeing the boundary between web and desktop applications blurring, courtesy of HTML5 amongst others. The use cases for Javascript have exploded, they&amp;rsquo;re vast, they&amp;rsquo;re everywhere.&lt;/p&gt;
+
+&lt;p&gt;And the only fully standardised API we have is DOM, and nobody fully complies with that.&lt;/p&gt;
+
+&lt;p&gt;I have a soft spot for OSID, because it was in vogue a the time when I was teaching myself concepts like middleware and n-tier architecture. However, clean, pure and platform neutral abstractions like those which make up a large part of the OSID specs are a perfect starting point if we&amp;rsquo;re going to build up standard APIs for Javascript. CommonJS is achieving great things, but CommonJS is more concerned with the concept of a module than the content of a module.&lt;/p&gt;
+
+&lt;p&gt;The hint of Java in OSID only adds to the attraction, because Javascript is so frequently sandboxed. A Java-like API has an advantage getting around this, because most sandboxing environments support some kind of Java liveconnect or equivalent, allowing us to use Java to implement any privileged elements (with associated benefits of code signing and code security policies being built into the JVM). As TiddlyWiki was forced to do, we can implement things like low-level filesystem access as a Java applet.&lt;/p&gt;
+
+&lt;h3 id=&quot;but&quot;&gt;But&amp;hellip;&lt;/h3&gt;
+
+&lt;p&gt;Javascript&amp;rsquo;s type system is prototype-based, not class-based. This means that there is no native concept of an interface, nor can types be attributed in a standard way like they can in environments such as CLI. So defining a load of interfaces and implementations of those interfaces is not something which makes sense in the context of Javascript.&lt;/p&gt;
+
+&lt;p&gt;Alas, there is no standard API in Javascript for emulating these things either. Various projects like Joose provide a metaobject framework, but there isn&amp;rsquo;t a common (or even a bunch of broadly similar) API for it in Javascript. So our interfaces are effectively just exercises in duck-typing.&lt;/p&gt;
+
+&lt;p&gt;So that&amp;rsquo;s where we start. In the first instance, our interfaces aren&amp;rsquo;t interfaces at all but a set of functions which test that an object conforms to the specification we&amp;rsquo;ve given.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;ve begun sketching this out as &lt;a href=&quot;http://github.com/twrl/osid.js&quot;&gt;a set of AMD modules on Github&lt;/a&gt;, but for the time being it&amp;rsquo;s all very basic.&lt;/p&gt;
+</content>
+  </entry>
+  
+  <entry>
+    <id>http://twrl.github.com/2012/03/im-fed-up-with-same--sex-marriage/</id>
+    <link type="text/html" rel="alternate" href="http://twrl.github.com/2012/03/im-fed-up-with-same--sex-marriage/"/>
+    <title>I'm Fed Up With Same-sex Marriage</title>
+    <published>2012-03-21T00:00:00+00:00</published>
+    <updated>2012-03-21T00:00:00+00:00</updated>
+    <author>
+      <name>Tom Robbins</name>
+    </author>
+    <content type="html">&lt;p&gt;It&amp;rsquo;s been a week and a half since the government launched the Equal Marriage Consultation, which means it&amp;rsquo;s been about twelve hours less than that since I responded and about a decade longer than that since it became a pressing social question.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m bored with it already. The consultation period goes on until some time in mid June. Why do we need a twelve week consultation for something which the government has (a) already asked every official body which has an opinion about, and (b) the government has already decided to do and told everybody as much repeatedly?&lt;/p&gt;
+
+&lt;p&gt;I suspect it&amp;rsquo;s a diversionary tactic. It keeps people like the bishops from looking too closely at the budget, and even if they do any unfortunate revelations about how it will have adverse effects on charities or people on lower incomes won&amp;rsquo;t be reported because some &lt;del&gt;old fool&lt;/del&gt; bishop or &lt;del&gt;drooling troglodyte&lt;/del&gt; tabloid journalist is far to busy getting over excited about &amp;ldquo;the gays want to marry, next thing they&amp;rsquo;ll want us to decriminalise sex!&amp;rdquo; or some such nonsense. It&amp;rsquo;s like fox hunting all over again - Tony Blair managed to drag that out for years, and whenever it looked like a political crisis was looming there&amp;rsquo;d be another debate on the Hunting Act.&lt;/p&gt;
+
+&lt;p&gt;However, in the spirit of the debate, here are the key points for me: in our culture, marriage is considered to be a recognition of a long term romantic relationship, and it has specific cultural connotations about fidelity, interdependence and so on. Religious, as opposed to civil, marriage has further religious connotations. Civil partnerships, being a relatively new innovation, have much the same practical legal effect but much less of the cultural baggage.&lt;/p&gt;
+
+&lt;p&gt;Now since we&amp;rsquo;re recognising that there are a wide range of possible relationship styles and structures, none of which are intrinsically more or less valid than any other, it follows that there needs to be different styles of recognition to match. In addition to the legalisation of same-sex civil marriage, it&amp;rsquo;s therefore necessary to legalise mixed-sex civil partnerships and same-sex religious marriage.&lt;/p&gt;
+
+&lt;p&gt;As far as religious marriage goes, I think it&amp;rsquo;s important not to confuse legalising something with mandating it - a distinction which many religious leaders, along with totalitarian dictators, seem not to grasp. Requiring religious groups to do something would have unpleasant religious freedom implications, but equally prohibiting them from doing something has many of the same problems.&lt;/p&gt;
+
+&lt;p&gt;Anyway, by giving all couples all three options, we give them the freedom to have their relationship recognised in the most appropriate way to them. Unrealistic expectations are a killer for relationships, even expectations of third parties, and branding a relationship as a &amp;ldquo;marriage&amp;rdquo; when those involved are much more comfortable with the label and connotation of a civil partnership is not going to help matters.&lt;/p&gt;
+</content>
+  </entry>
+  
+ 
+</feed>
