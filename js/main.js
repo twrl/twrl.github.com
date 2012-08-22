@@ -4,9 +4,6 @@ require.config({
     shim: {
         'http://www.google-analytics.com/ga.js': {
             exports: '_gaq'
-            },
-        'jquery/colorbox': {
-            deps: ['jquery']
             }
         },
     config: {
