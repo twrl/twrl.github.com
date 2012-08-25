@@ -4,7 +4,7 @@
   <title>twrl</title>
   <link href="http://twrl.github.com"/>
   <link type="application/atom+xml" rel="self" href="http://twrl.github.com/atom.xml"/>
-  <updated>2012-08-22T01:43:56+01:00</updated>
+  <updated>2012-08-25T16:41:16+01:00</updated>
   <id>http://twrl.github.com</id>
   <author>
     <name>Tom Robbins</name>
@@ -62,7 +62,7 @@ to - by some quirk of Apple&amp;rsquo;s EFI implementation it seems to be suppor
 &lt;pre&gt;&lt;code&gt;sudo ethtool -s et0 wol g
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;This is all documented on the (Ubuntu Community Docs)[https://help.ubuntu.com/community/WakeOnLan].
+&lt;p&gt;This is all documented on the &lt;a href=&quot;https://help.ubuntu.com/community/WakeOnLan&quot;&gt;Ubuntu Community Docs&lt;/a&gt;.
 The only trouble is, you have to do this every time the network interface comes up.&lt;/p&gt;
 
 &lt;p&gt;Now, there are all sorts of issues around integration of ethtool and NetworkManager, which

@@ -1,14 +1,26 @@
 // This module defines the behaviours of the Expanding Navigation Panel and it's controls
-define(['jquery'], function ($) {
+define(['jquery', 'domReady!'], function ($) {
 
-	$(function () {
-        $('#l-advnavctl').click(function (e) {
-            e.stopImmedatePropagation();
+        $('#l-advnav').hide();
         
-            $('#l-advnav').slideToggle();
-            $('#advnavctl-show, #advnavctl-hide').toggle();
-        
+        $('#advnavctl-show').click(function (e) {
+            
+            e.stopPropagation();
+            
+            $('#l-advnav').slideDown();
+            $('#advnavctl-show').hide();
+            $('#advnavctl-hide').show();
+            
+        });
+    
+        $('#advnavctl-hide').click(function (e) {
+            
+            e.stopPropagation();
+            
+            $('#l-advnav').slideUp();
+            $('#advnavctl-hide').hide();
+            $('#advnavctl-show').show();
+            
         })
-    });
     
 });
