@@ -4,7 +4,7 @@
   <title>twrl</title>
   <link href="http://twrl.github.com"/>
   <link type="application/atom+xml" rel="self" href="http://twrl.github.com/atom.xml"/>
-  <updated>2012-08-25T19:50:41+01:00</updated>
+  <updated>2012-08-25T21:57:46+01:00</updated>
   <id>http://twrl.github.com</id>
   <author>
     <name>Tom Robbins</name>
@@ -20,7 +20,8 @@
     <author>
       <name>Tom Robbins</name>
     </author>
-    <content type="html">&lt;p&gt;I had an entertaining time at the weekend setting up &lt;a href=&quot;http://xbmc.org&quot;&gt;XBMC&lt;/a&gt; on my laptop.
+    <content type="html">
+&lt;p&gt;I had an entertaining time at the weekend setting up &lt;a href=&quot;http://xbmc.org&quot;&gt;XBMC&lt;/a&gt; on my laptop.
 It runs well enough on Ubuntu, and compiling the latest source was pretty easy (the 
 instructions are pretty good).&lt;/p&gt;
 
