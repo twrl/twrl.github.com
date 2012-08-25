@@ -2,6 +2,7 @@
 define(['jquery', 'domReady!'], function ($) {
 
         $('#l-advnav').hide();
+        $('#l-advnavctl').show();
         
         $('#advnavctl-show').click(function (e) {
             
