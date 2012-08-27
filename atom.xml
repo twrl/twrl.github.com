@@ -4,12 +4,67 @@
   <title>twrl</title>
   <link href="http://twrl.github.com"/>
   <link type="application/atom+xml" rel="self" href="http://twrl.github.com/atom.xml"/>
-  <updated>2012-08-27T17:15:25+01:00</updated>
+  <updated>2012-08-27T18:19:16+01:00</updated>
   <id>http://twrl.github.com</id>
   <author>
     <name>Tom Robbins</name>
   </author>
 
+  
+  <entry>
+    <id>http://twrl.github.com/2012/08/static-site-generators/</id>
+    <link type="text/html" rel="alternate" href="http://twrl.github.com/2012/08/static-site-generators/"/>
+    <title>Static Site Generators</title>
+    <published>2012-08-26T00:00:00+01:00</published>
+    <updated>2012-08-26T00:00:00+01:00</updated>
+    <author>
+      <name>Tom Robbins</name>
+    </author>
+    <content type="html">&lt;p&gt;I&amp;rsquo;m using Jekyll to maintain this site. I first started doing so because it was convenient
+to serve from Github pages, but now I run Jekyll locally in order to support customisation
+and plugins which I can&amp;rsquo;t have if I run it on Github.&lt;/p&gt;
+
+&lt;p&gt;Jekyll itself is fine. There are a few things which niggle at me, but that would be true
+for anything. The joy of using open source software is that you can modify and adapt your
+way around anything that you don&amp;rsquo;t like.&lt;/p&gt;
+
+&lt;p&gt;There is an argument that &lt;a href=&quot;http://www.jeremyscheff.com/2011/08/jekyll-and-other-static-site-generators-are-currently-harmful-to-the-free-open-source-software-movement/&quot;&gt;static site generators are harmful&lt;/a&gt; to FOSS. The 
+reasoning is that we expect a certain level of dynamic and interactive content - 
+commenting, sharing, and so forth - and by using a static generator to maintain a website 
+we&amp;rsquo;re also tying ourselves in to third parties and their proprietary infrastructures. For
+example, if you scroll down this page, you&amp;rsquo;ll see a Disqus comments box at the bottom.&lt;/p&gt;
+
+&lt;p&gt;I don&amp;rsquo;t particularly care about that though. I don&amp;rsquo;t share &lt;a href=&quot;http://www.gnu.org/philosophy/who-does-that-server-really-serve.html&quot;&gt;RMS&amp;rsquo;s aversion to SaaS&lt;/a&gt;. But I do care about the functionality that I can build on top of the
+platform that I&amp;rsquo;m using.&lt;/p&gt;
+
+&lt;p&gt;Jekyll limits me somewhat because it&amp;rsquo;s written in Ruby, which I don&amp;rsquo;t know very well 
+(having only started learning it recently) and don&amp;rsquo;t especially like (no curly brackets).
+I&amp;rsquo;m sure I&amp;rsquo;ll get used to it, but for the time being I can&amp;rsquo;t easily knock something
+together and play with it. I&amp;rsquo;m still at the stage where making quite simple tweaks is a
+fairly involved process with lots of to-ing and fro-ing with language guides and API docs.
+I may or may not stick with Jekyll in the long run.&lt;/p&gt;
+
+&lt;p&gt;But I&amp;rsquo;ve definitely seen the light when it comes to static site generators. Static content
+is easy to host and easy to serve. Yes, I would like to integrate my own dynamic elements
+too, but that&amp;rsquo;s a fair way down my list of priorities. What I want is to be able to take 
+my data, and churn out a website. And although there&amp;rsquo;s functionality which I can&amp;rsquo;t
+implement with Jekyll, that&amp;rsquo;s as much down to my limitations as Jekyll&amp;rsquo;s.&lt;/p&gt;
+
+&lt;p&gt;As client side development has become more and more powerful, the need for server-side
+dynamics has diminished. We&amp;rsquo;ve reached a point where only a very small number of services
+have to be on a server, and most of those are some kind of database endpoint or security
+system. I don&amp;rsquo;t actually need PHP or Node or ASP.Net to generate my pages if I want to host
+my own comments - I can do the presentation work on the client - I just need a RESTful 
+JSON store with some basic anti-spamming logic.&lt;/p&gt;
+
+&lt;p&gt;Somewhat circuitously, this brings me back to data portability and distributed social
+networking. If I can have my RESTful data buckets, I can take responsibility for exposing
+their content (or not). I can set aside a bucket or two for the dynamic elements of my
+website. &lt;/p&gt;
+
+&lt;p&gt;That&amp;rsquo;s what Jekyll has shown me - I don&amp;rsquo;t need to be dynamic on the server.&lt;/p&gt;
+</content>
+  </entry>
   
   <entry>
     <id>http://twrl.github.com/2012/08/XBMC/</id>

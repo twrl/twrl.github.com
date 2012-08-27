@@ -6,6 +6,56 @@
 		<link>http://twrl.github.com</link>
 		
 			<item>
+				<title>Static Site Generators</title>
+				<description>&lt;p&gt;I&amp;rsquo;m using Jekyll to maintain this site. I first started doing so because it was convenient
+to serve from Github pages, but now I run Jekyll locally in order to support customisation
+and plugins which I can&amp;rsquo;t have if I run it on Github.&lt;/p&gt;
+
+&lt;p&gt;Jekyll itself is fine. There are a few things which niggle at me, but that would be true
+for anything. The joy of using open source software is that you can modify and adapt your
+way around anything that you don&amp;rsquo;t like.&lt;/p&gt;
+
+&lt;p&gt;There is an argument that &lt;a href=&quot;http://www.jeremyscheff.com/2011/08/jekyll-and-other-static-site-generators-are-currently-harmful-to-the-free-open-source-software-movement/&quot;&gt;static site generators are harmful&lt;/a&gt; to FOSS. The 
+reasoning is that we expect a certain level of dynamic and interactive content - 
+commenting, sharing, and so forth - and by using a static generator to maintain a website 
+we&amp;rsquo;re also tying ourselves in to third parties and their proprietary infrastructures. For
+example, if you scroll down this page, you&amp;rsquo;ll see a Disqus comments box at the bottom.&lt;/p&gt;
+
+&lt;p&gt;I don&amp;rsquo;t particularly care about that though. I don&amp;rsquo;t share &lt;a href=&quot;http://www.gnu.org/philosophy/who-does-that-server-really-serve.html&quot;&gt;RMS&amp;rsquo;s aversion to SaaS&lt;/a&gt;. But I do care about the functionality that I can build on top of the
+platform that I&amp;rsquo;m using.&lt;/p&gt;
+
+&lt;p&gt;Jekyll limits me somewhat because it&amp;rsquo;s written in Ruby, which I don&amp;rsquo;t know very well 
+(having only started learning it recently) and don&amp;rsquo;t especially like (no curly brackets).
+I&amp;rsquo;m sure I&amp;rsquo;ll get used to it, but for the time being I can&amp;rsquo;t easily knock something
+together and play with it. I&amp;rsquo;m still at the stage where making quite simple tweaks is a
+fairly involved process with lots of to-ing and fro-ing with language guides and API docs.
+I may or may not stick with Jekyll in the long run.&lt;/p&gt;
+
+&lt;p&gt;But I&amp;rsquo;ve definitely seen the light when it comes to static site generators. Static content
+is easy to host and easy to serve. Yes, I would like to integrate my own dynamic elements
+too, but that&amp;rsquo;s a fair way down my list of priorities. What I want is to be able to take 
+my data, and churn out a website. And although there&amp;rsquo;s functionality which I can&amp;rsquo;t
+implement with Jekyll, that&amp;rsquo;s as much down to my limitations as Jekyll&amp;rsquo;s.&lt;/p&gt;
+
+&lt;p&gt;As client side development has become more and more powerful, the need for server-side
+dynamics has diminished. We&amp;rsquo;ve reached a point where only a very small number of services
+have to be on a server, and most of those are some kind of database endpoint or security
+system. I don&amp;rsquo;t actually need PHP or Node or ASP.Net to generate my pages if I want to host
+my own comments - I can do the presentation work on the client - I just need a RESTful 
+JSON store with some basic anti-spamming logic.&lt;/p&gt;
+
+&lt;p&gt;Somewhat circuitously, this brings me back to data portability and distributed social
+networking. If I can have my RESTful data buckets, I can take responsibility for exposing
+their content (or not). I can set aside a bucket or two for the dynamic elements of my
+website. &lt;/p&gt;
+
+&lt;p&gt;That&amp;rsquo;s what Jekyll has shown me - I don&amp;rsquo;t need to be dynamic on the server.&lt;/p&gt;
+</description>
+				<published>2012-08-26 00:00:00 +0100</published>
+				<link>http://twrl.github.com/2012/08/static-site-generators/</link>
+			</item>
+		
+			<item>
 				<title>Media Centre</title>
 				<description>
 &lt;p&gt;I had an entertaining time at the weekend setting up &lt;a href=&quot;http://xbmc.org&quot;&gt;XBMC&lt;/a&gt; on my laptop.
@@ -399,32 +449,6 @@ amazingly useful article on how to cope with Github Pages not supporting Jekyll 
 </description>
 				<published>2012-06-11 00:00:00 +0100</published>
 				<link>http://twrl.github.com/2012/06/javascript-alternatives/</link>
-			</item>
-		
-			<item>
-				<title>Social Networking</title>
-				<description>&lt;p&gt;I like Google+. There&amp;rsquo;s a very good reason for this: integration.&lt;/p&gt;
-
-&lt;p&gt;I use Google Reader, Google Search, Google Drive, Google Calendar, Google Mail, Google Play, Google Chrome and Blogger. I use these things because Google is becoming the Unix of the web - a large set of simple, single-purpose tools that play nicely together.&lt;/p&gt;
-
-&lt;p&gt;So it&amp;rsquo;s only natural that I also want to use Google+ too. It would be so very convenient.&lt;/p&gt;
-
-&lt;p&gt;There are two problems. First off, I&amp;rsquo;ve become too used to clicking &amp;ldquo;Log on with Facebook&amp;rdquo;. For a lot of services that I use, I&amp;rsquo;ve never actually created an account. This is not an insurmountable problem, I&amp;rsquo;ll live with more passwords in my life.&lt;/p&gt;
-
-&lt;p&gt;The second is more substantial: I have around 350 Facebook friends. I have six friends who use Google+.   The update streams, photos, and so on I can work around or live without - but realtime interaction? I communicate a lot through facebook messages.&lt;/p&gt;
-
-&lt;p&gt;Since Facebook exposes it&amp;rsquo;s chat services through XMPP and social graph as a RESTful JSON service, you would think something could be done about this. But no, Facebook isn&amp;rsquo;t willing to play this game because they don&amp;rsquo;t want to lose users.&lt;/p&gt;
-
-&lt;p&gt;Which brings me back to the idea of Data Portability. Why can&amp;rsquo;t I keep my own little corner of the social graph, and Facebook and Google just provide services on top of it? In spite of the technical difficulties this is not such a crazy idea - there are plenty of solutions for distributed data storage and aggregation.&lt;/p&gt;
-
-&lt;p&gt;Part of the necessary technology already exists in the Diaspora project. Diaspora is distributed, but it still requires servers. It isn&amp;rsquo;t peer-to-peer in the way that we more usually associate with file sharing. You don&amp;rsquo;t run a Diaspora application on your PC when you want to access it - you have to run a well-connected server all the time.&lt;/p&gt;
-
-&lt;p&gt;There are schemes which could overcome the always-connected architecture for distributing social graph data, but doing the same thing for realtime interaction is more difficult. Keeping track of my chat and realtime messaging activities when I have hundreds of friends is much easier when there is a single, co-ordinating hub. It becomes next to impossible when there is no server and I&amp;rsquo;m using multiple clients on multiple devices.&lt;/p&gt;
-
-&lt;p&gt;So that&amp;rsquo;s the challenge - can you keep distributed, continuously updated realtime data without some form of server infrastructure?&lt;/p&gt;
-</description>
-				<published>2012-05-18 00:00:00 +0100</published>
-				<link>http://twrl.github.com/2012/05/social-networking/</link>
 			</item>
 		
 	</channel>
