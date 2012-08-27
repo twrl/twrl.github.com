@@ -37,7 +37,7 @@
 
         /* * * DON'T EDIT BELOW THIS LINE * * */
         (function () {
-            var s = document.createElement('script'); s.async = true;
+            var s = document.createElement('script'); s.defer = true;
             s.type = 'text/javascript';
             s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
             (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
@@ -106,35 +106,43 @@
     
         
     
-        <article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting" itemid="/2012/03/initialising-web-workers/" class="cf layout-row odd">
+    
+                <article prefix="s: http://schema.org/ foaf: http://xmlns.com/foaf/0.1/ ct: http://commontag.org/ns# dc: http://purl.org/dc/terms/" typeof="s:BlogPosting foaf:Document" about="http://twrl.github.com/2012/03/initialising-web-workers/" class="cf layout-row odd">
             <header class="cf layout-cell-l2">
-                <h2 itemprop="headline">Initialising Web Workers</h2>
-                <p><time pubdate itemprop="datePublished" datetime="2012-03-28">Wednesday 28 March, 2012</time> <img src="/images/icons/12.png" class="icon" alt="Publication date - "/></p>
+                <h2 property="dc:title">Initialising Web Workers</h2>
+                <p><img src="/images/icons/12.png" class="cf rlicon" alt="Publication date - "/> <time pubdate property="s:datePublished" datetime="2012-03-28">Wednesday 28 March, 2012</time></p>
                 
-                <p><a itemprop="keywords" href="/tags/amd">AMD</a>, <a itemprop="keywords" href="/tags/javascript">Javascript</a>, <a itemprop="keywords" href="/tags/web-standards">Web Standards</a>, <a itemprop="keywords" href="/tags/web-workers">Web Workers</a> <img src="/images/icons/20.png" class="icon" alt="Tags - AMD, Javascript, Web Standards, Web Workers"/></p>
+                <p><img src="/images/icons/20.png" class="cf rlicon" alt="Tags"/> <a property="s:keywords" href="http://twrl.github.com/tags/amd">AMD</a>, <a rel="ct:tagged" href="http://twrl.github.com/tags/javascript">Javascript</a>, <a rel="ct:tagged" href="http://twrl.github.com/tags/web-standards">Web&nbsp;Standards</a>, <a rel="ct:tagged" href="http://twrl.github.com/tags/web-workers">Web&nbsp;Workers</a>
+                <p><img src="/images/icons/46.png" class="cf rlicon" alt="Comments"/> <a href="http://twrl.github.com/2012/03/initialising-web-workers/#disqus_thread">Comments</a></p>
             </header>
             <div class="cf layout-cell-l3 content">
-                <p>{% excerpt %}I've had tonsillitis over the last 5 days or so, so I've spent most of the last few days in a bit of a daze, idly tinkering with random things to pass the time. As with much idle tinkering, it's all a bit rough and ready, but here is one snippet which might prove useful.
+                {% excerpt %}I've had tonsillitis over the last 5 days or so, so I've spent most of the last few days in a bit of a daze, idly tinkering with random things to pass the time. As with much idle tinkering, it's all a bit rough and ready, but here is one snippet which might prove useful.
 
-I was tinkering with Web Workers and I wanted to be able to load up Require.js in a worker and then pass it the name of a main module. So I wrote this stub, lets call it w.js, which goes in the same directory as re</p>
-                <p><a href="/2012/03/initialising-web-workers/">Read more...</a></p>
+I was tinkering with Web Workers and I wanted to be able to load up Require.js in a worker and then pass it the name of a main module. So I wrote this stub, lets call it w.js, which goes in the same directory as re
+                
+                <p><a rel="dc:hasFormat" href="http://twrl.github.com/2012/03/initialising-web-workers/index.html">Read more...</a></p>
             </div>
         </article>
+
         
-        <article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting" itemid="/2012/03/ajax-and-file-uris/" class="cf layout-row even">
+    
+                <article prefix="s: http://schema.org/ foaf: http://xmlns.com/foaf/0.1/ ct: http://commontag.org/ns# dc: http://purl.org/dc/terms/" typeof="s:BlogPosting foaf:Document" about="http://twrl.github.com/2012/03/ajax-and-file-uris/" class="cf layout-row even">
             <header class="cf layout-cell-l2">
-                <h2 itemprop="headline">Ajax and file&#58;// URIs</h2>
-                <p><time pubdate itemprop="datePublished" datetime="2012-03-28">Wednesday 28 March, 2012</time> <img src="/images/icons/12.png" class="icon" alt="Publication date - "/></p>
+                <h2 property="dc:title">Ajax and file&#58;// URIs</h2>
+                <p><img src="/images/icons/12.png" class="cf rlicon" alt="Publication date - "/> <time pubdate property="s:datePublished" datetime="2012-03-28">Wednesday 28 March, 2012</time></p>
                 
-                <p><a itemprop="keywords" href="/tags/ajax">Ajax</a>, <a itemprop="keywords" href="/tags/javascript">Javascript</a>, <a itemprop="keywords" href="/tags/jquery">jQuery</a>, <a itemprop="keywords" href="/tags/programming">Programming</a> <img src="/images/icons/20.png" class="icon" alt="Tags - Ajax, Javascript, jQuery, Programming"/></p>
+                <p><img src="/images/icons/20.png" class="cf rlicon" alt="Tags"/> <a rel="ct:tagged" href="http://twrl.github.com/tags/ajax">Ajax</a>, <a rel="ct:tagged" href="http://twrl.github.com/tags/javascript">Javascript</a>, <a rel="ct:tagged" href="http://twrl.github.com/tags/jquery">jQuery</a>, <a rel="ct:tagged" href="http://twrl.github.com/tags/programming">Programming</a>
+                <p><img src="/images/icons/46.png" class="cf rlicon" alt="Comments"/> <a href="http://twrl.github.com/2012/03/ajax-and-file-uris/#disqus_thread">Comments</a></p>
             </header>
             <div class="cf layout-cell-l3 content">
-                <p>{% excerpt %}Ajax is becoming the dominant method, if it isn't already, of getting data in and out of a web application. But Ajax is built on top of XMLHttpRequest, which as the name suggests is only really well defined if the underlying protocol is HTTP.
+                {% excerpt %}Ajax is becoming the dominant method, if it isn't already, of getting data in and out of a web application. But Ajax is built on top of XMLHttpRequest, which as the name suggests is only really well defined if the underlying protocol is HTTP.
 
-So what about local files? The new Filesystem API's are coming, but they sandbox us heavily. At least for the time being, if we want to muck about with self-modifying code or local file-based data sources we have to hack it, which means using </p>
-                <p><a href="/2012/03/ajax-and-file-uris/">Read more...</a></p>
+So what about local files? The new Filesystem API's are coming, but they sandbox us heavily. At least for the time being, if we want to muck about with self-modifying code or local file-based data sources we have to hack it, which means using 
+                
+                <p><a rel="dc:hasFormat" href="http://twrl.github.com/2012/03/ajax-and-file-uris/index.html">Read more...</a></p>
             </div>
         </article>
+
         
         
     
@@ -146,54 +154,66 @@ So what about local files? The new Filesystem API's are coming, but they sandbox
     
         
     
-        <article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting" itemid="/2012/03/rehashing-xml/" class="cf layout-row odd">
+    
+                <article prefix="s: http://schema.org/ foaf: http://xmlns.com/foaf/0.1/ ct: http://commontag.org/ns# dc: http://purl.org/dc/terms/" typeof="s:BlogPosting foaf:Document" about="http://twrl.github.com/2012/03/rehashing-xml/" class="cf layout-row odd">
             <header class="cf layout-cell-l2">
-                <h2 itemprop="headline">Rehashing Xml</h2>
-                <p><time pubdate itemprop="datePublished" datetime="2012-03-23">Friday 23 March, 2012</time> <img src="/images/icons/12.png" class="icon" alt="Publication date - "/></p>
+                <h2 property="dc:title">Rehashing Xml</h2>
+                <p><img src="/images/icons/12.png" class="cf rlicon" alt="Publication date - "/> <time pubdate property="s:datePublished" datetime="2012-03-23">Friday 23 March, 2012</time></p>
                 
-                <p><a itemprop="keywords" href="/tags/web-standards">Web Standards</a>, <a itemprop="keywords" href="/tags/xml">XML</a> <img src="/images/icons/20.png" class="icon" alt="Tags - Web Standards, XML"/></p>
+                <p><img src="/images/icons/20.png" class="cf rlicon" alt="Tags"/> <a rel="ct:tagged" href="http://twrl.github.com/tags/web-standards">Web&nbsp;Standards</a>, <a rel="ct:tagged" href="http://twrl.github.com/tags/xml">XML</a>
+                <p><img src="/images/icons/46.png" class="cf rlicon" alt="Comments"/> <a href="http://twrl.github.com/2012/03/rehashing-xml/#disqus_thread">Comments</a></p>
             </header>
             <div class="cf layout-cell-l3 content">
-                <p>{% excerpt %}I find it interesting sometimes to consider, if I were starting over and designing *xyz-thing* from scratch, what would I do differently to what we already have. Recently I've been considering this with XML.
+                {% excerpt %}I find it interesting sometimes to consider, if I were starting over and designing *xyz-thing* from scratch, what would I do differently to what we already have. Recently I've been considering this with XML.
 
-The trouble with XML is that it's a vast stack of standards. In some ways this is a good thing, because at least in theory it adds a lot of flexibility for different use cases. But it does result in duplication and redundancy, because document authors never know exactly which e</p>
-                <p><a href="/2012/03/rehashing-xml/">Read more...</a></p>
+The trouble with XML is that it's a vast stack of standards. In some ways this is a good thing, because at least in theory it adds a lot of flexibility for different use cases. But it does result in duplication and redundancy, because document authors never know exactly which e
+                
+                <p><a rel="dc:hasFormat" href="http://twrl.github.com/2012/03/rehashing-xml/index.html">Read more...</a></p>
             </div>
         </article>
+
         
         
     
-        <article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting" itemid="/2012/03/whatever-happened-to-osid/" class="cf layout-row even">
+    
+                <article prefix="s: http://schema.org/ foaf: http://xmlns.com/foaf/0.1/ ct: http://commontag.org/ns# dc: http://purl.org/dc/terms/" typeof="s:BlogPosting foaf:Document" about="http://twrl.github.com/2012/03/whatever-happened-to-osid/" class="cf layout-row even">
             <header class="cf layout-cell-l2">
-                <h2 itemprop="headline">Whatever Happened To Osid</h2>
-                <p><time pubdate itemprop="datePublished" datetime="2012-03-22">Thursday 22 March, 2012</time> <img src="/images/icons/12.png" class="icon" alt="Publication date - "/></p>
+                <h2 property="dc:title">Whatever Happened To Osid</h2>
+                <p><img src="/images/icons/12.png" class="cf rlicon" alt="Publication date - "/> <time pubdate property="s:datePublished" datetime="2012-03-22">Thursday 22 March, 2012</time></p>
                 
-                <p><a itemprop="keywords" href="/tags/commonjs">CommonJS</a>, <a itemprop="keywords" href="/tags/javascript">Javascript</a>, <a itemprop="keywords" href="/tags/osid">OSID</a>, <a itemprop="keywords" href="/tags/programming">Programming</a> <img src="/images/icons/20.png" class="icon" alt="Tags - CommonJS, Javascript, OSID, Programming"/></p>
+                <p><img src="/images/icons/20.png" class="cf rlicon" alt="Tags"/> <a property="s:keywords" href="http://twrl.github.com/tags/commonjs">CommonJS</a>, <a rel="ct:tagged" href="http://twrl.github.com/tags/javascript">Javascript</a>, <a property="s:keywords" href="http://twrl.github.com/tags/osid">OSID</a>, <a rel="ct:tagged" href="http://twrl.github.com/tags/programming">Programming</a>
+                <p><img src="/images/icons/46.png" class="cf rlicon" alt="Comments"/> <a href="http://twrl.github.com/2012/03/whatever-happened-to-osid/#disqus_thread">Comments</a></p>
             </header>
             <div class="cf layout-cell-l3 content">
-                <p>{% excerpt %}Five years ago, or so, we had a wonderful suite of open, abstract API's developed by a group led out of MIT and calling themselves the Open Knowledge Initiative. These API's were the Open Service Interface Definitions, and although they had a definite flavour of Java about them, the specs were deliberately designed to be platform neutral.
+                {% excerpt %}Five years ago, or so, we had a wonderful suite of open, abstract API's developed by a group led out of MIT and calling themselves the Open Knowledge Initiative. These API's were the Open Service Interface Definitions, and although they had a definite flavour of Java about them, the specs were deliberately designed to be platform neutral.
 
-OKI now appears to be defunct, but a lot of what they produced is still [sitting there on SourceForge](http://sourceforge.net/projects/okiproject</p>
-                <p><a href="/2012/03/whatever-happened-to-osid/">Read more...</a></p>
+OKI now appears to be defunct, but a lot of what they produced is still [sitting there on SourceForge](http://sourceforge.net/projects/okiproject
+                
+                <p><a rel="dc:hasFormat" href="http://twrl.github.com/2012/03/whatever-happened-to-osid/index.html">Read more...</a></p>
             </div>
         </article>
+
         
         
     
-        <article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting" itemid="/2012/03/im-fed-up-with-same--sex-marriage/" class="cf layout-row odd">
+    
+                <article prefix="s: http://schema.org/ foaf: http://xmlns.com/foaf/0.1/ ct: http://commontag.org/ns# dc: http://purl.org/dc/terms/" typeof="s:BlogPosting foaf:Document" about="http://twrl.github.com/2012/03/im-fed-up-with-same--sex-marriage/" class="cf layout-row odd">
             <header class="cf layout-cell-l2">
-                <h2 itemprop="headline">I'm Fed Up With Same-sex Marriage</h2>
-                <p><time pubdate itemprop="datePublished" datetime="2012-03-21">Wednesday 21 March, 2012</time> <img src="/images/icons/12.png" class="icon" alt="Publication date - "/></p>
+                <h2 property="dc:title">I'm Fed Up With Same-sex Marriage</h2>
+                <p><img src="/images/icons/12.png" class="cf rlicon" alt="Publication date - "/> <time pubdate property="s:datePublished" datetime="2012-03-21">Wednesday 21 March, 2012</time></p>
                 
-                <p><a itemprop="keywords" href="/tags/civil-partnership">Civil Partnership</a>, <a itemprop="keywords" href="/tags/lgbt">LGBT</a>, <a itemprop="keywords" href="/tags/same-sex-marriage">Same-sex Marriage</a>, <a itemprop="keywords" href="/tags/society">Society</a> <img src="/images/icons/20.png" class="icon" alt="Tags - Civil Partnership, LGBT, Same-sex Marriage, Society"/></p>
+                <p><img src="/images/icons/20.png" class="cf rlicon" alt="Tags"/> <a rel="ct:tagged" href="http://twrl.github.com/tags/civil-partnership">Civil&nbsp;Partnership</a>, <a rel="ct:tagged" href="http://twrl.github.com/tags/lgbt">LGBT</a>, <a rel="ct:tagged" href="http://twrl.github.com/tags/same-sex-marriage">Same-sex&nbsp;Marriage</a>, <a property="s:keywords" href="http://twrl.github.com/tags/society">Society</a>
+                <p><img src="/images/icons/46.png" class="cf rlicon" alt="Comments"/> <a href="http://twrl.github.com/2012/03/im-fed-up-with-same--sex-marriage/#disqus_thread">Comments</a></p>
             </header>
             <div class="cf layout-cell-l3 content">
-                <p>{% excerpt %}It's been a week and a half since the government launched the Equal Marriage Consultation, which means it's been about twelve hours less than that since I responded and about a decade longer than that since it became a pressing social question.
+                {% excerpt %}It's been a week and a half since the government launched the Equal Marriage Consultation, which means it's been about twelve hours less than that since I responded and about a decade longer than that since it became a pressing social question.
 
-I'm bored with it already. The consultation period goes on until some time in mid June. Why do we need a twelve week consultation for something which the government has (a) already asked every official body which has an opinion about, and (b</p>
-                <p><a href="/2012/03/im-fed-up-with-same--sex-marriage/">Read more...</a></p>
+I'm bored with it already. The consultation period goes on until some time in mid June. Why do we need a twelve week consultation for something which the government has (a) already asked every official body which has an opinion about, and (b
+                
+                <p><a rel="dc:hasFormat" href="http://twrl.github.com/2012/03/im-fed-up-with-same--sex-marriage/index.html">Read more...</a></p>
             </div>
         </article>
+
         
         
     

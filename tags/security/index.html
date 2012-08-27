@@ -37,7 +37,7 @@
 
         /* * * DON'T EDIT BELOW THIS LINE * * */
         (function () {
-            var s = document.createElement('script'); s.async = true;
+            var s = document.createElement('script'); s.defer = true;
             s.type = 'text/javascript';
             s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
             (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
@@ -99,17 +99,25 @@
             </header>
         </div>
         
-                <article vocab="http://schema.org/" typeof="BlogPosting" about="http://twrl.github.com/2012/07/is-the-public-key-infrastructure-collapsing/" class="cf layout-row odd">
+                <article prefix="s: http://schema.org/ foaf: http://xmlns.com/foaf/0.1/ ct: http://commontag.org/ns# dc: http://purl.org/dc/terms/" typeof="s:BlogPosting foaf:Document" about="http://twrl.github.com/2012/07/is-the-public-key-infrastructure-collapsing/" class="cf layout-row odd">
             <header class="cf layout-cell-l2">
-                <h2 property="headline">Is the Public Key Infrastructure Collapsing?</h2>
-                <p><img src="/images/icons/12.png" class="cf rlicon" alt="Publication date - "/> <time pubdate property="datePublished" datetime="2012-07-17">Tuesday 17 July, 2012</time></p>
+                <h2 property="dc:title">Is the Public Key Infrastructure Collapsing?</h2>
+                <p><img src="/images/icons/12.png" class="cf rlicon" alt="Publication date - "/> <time pubdate property="s:datePublished" datetime="2012-07-17">Tuesday 17 July, 2012</time></p>
                 
-                <p><img src="/images/icons/20.png" class="cf rlicon"/> <a property="keywords" href="http://twrl.github.com/tags/security">Security</a>, <a rel="http://commontag.org/ns#tagged" href="http://twrl.github.com/tags/pki">PKI</a>, <a property="keywords" href="http://twrl.github.com/tags/web-architecture">Web&nbsp;Architecture</a>
-                <p><img src="/images/icons/46.png" class="cf rlicon"/> <a href="http://twrl.github.com/2012/07/is-the-public-key-infrastructure-collapsing/#disqus_thread">Comments</a></p>
+                <p><img src="/images/icons/20.png" class="cf rlicon" alt="Tags"/> <a property="s:keywords" href="http://twrl.github.com/tags/security">Security</a>, <a rel="ct:tagged" href="http://twrl.github.com/tags/pki">PKI</a>, <a property="s:keywords" href="http://twrl.github.com/tags/web-architecture">Web&nbsp;Architecture</a>
+                <p><img src="/images/icons/46.png" class="cf rlicon" alt="Comments"/> <a href="http://twrl.github.com/2012/07/is-the-public-key-infrastructure-collapsing/#disqus_thread">Comments</a></p>
             </header>
             <div class="cf layout-cell-l3 content">
-                <p></p>
-                <p><a rel="http://purl.org/dc/terms/hasFormat" href="http://twrl.github.com/2012/07/is-the-public-key-infrastructure-collapsing/index.html">Read more...</a></p>
+                {% excerpt %}Back in February, TrustWave hit the news with tales of selling intermediate CA certificates
+for use in Man-in-the-Middle traffic interception. TrustWave were redeemed somewhat by
+having already revoked the offending certificate before voluntarily disclosing what they
+had done.
+
+For most users, security hinges on SSL/TLS to provide an encrypted connection, and X.509
+PKI to provide certificates all the way up to a small number of trusted roots. A large
+number will be aware of the term
+                
+                <p><a rel="dc:hasFormat" href="http://twrl.github.com/2012/07/is-the-public-key-infrastructure-collapsing/index.html">Read more...</a></p>
             </div>
         </article>
 

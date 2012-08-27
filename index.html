@@ -37,7 +37,7 @@
 
         /* * * DON'T EDIT BELOW THIS LINE * * */
         (function () {
-            var s = document.createElement('script'); s.async = true;
+            var s = document.createElement('script'); s.defer = true;
             s.type = 'text/javascript';
             s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
             (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
@@ -120,16 +120,16 @@
         
     
                 
-                    <article vocab="http://schema.org/" typeof="BlogPosting" about="http://twrl.github.com/2012/08/XBMC/" class="cf layout-row odd">
+                    <article prefix="s: http://schema.org/ foaf: http://xmlns.com/foaf/0.1/ ct: http://commontag.org/ns# dc: http://purl.org/dc/terms/" typeof="s:BlogPosting foaf:Document" about="http://twrl.github.com/2012/08/XBMC/" class="cf layout-row odd">
             <header class="cf layout-cell-l2">
-                <h2 property="headline">Media Centre</h2>
-                <p><img src="/images/icons/12.png" class="cf rlicon" alt="Publication date - "/> <time pubdate property="datePublished" datetime="2012-08-14">Tuesday 14 August, 2012</time></p>
+                <h2 property="dc:title">Media Centre</h2>
+                <p><img src="/images/icons/12.png" class="cf rlicon" alt="Publication date - "/> <time pubdate property="s:datePublished" datetime="2012-08-14">Tuesday 14 August, 2012</time></p>
                 
-                <p><img src="/images/icons/20.png" class="cf rlicon"/> <a property="keywords" href="http://twrl.github.com/tags/media">Media</a>, <a property="keywords" href="http://twrl.github.com/tags/xmbc">XMBC</a>
-                <p><img src="/images/icons/46.png" class="cf rlicon"/> <a href="http://twrl.github.com/2012/08/XBMC/#disqus_thread">Comments</a></p>
+                <p><img src="/images/icons/20.png" class="cf rlicon" alt="Tags"/> <a property="s:keywords" href="http://twrl.github.com/tags/media">Media</a>, <a property="s:keywords" href="http://twrl.github.com/tags/xmbc">XMBC</a>
+                <p><img src="/images/icons/46.png" class="cf rlicon" alt="Comments"/> <a href="http://twrl.github.com/2012/08/XBMC/#disqus_thread">Comments</a></p>
             </header>
             <div class="cf layout-cell-l3 content">
-                <p>
+                
 I had an entertaining time at the weekend setting up [XBMC](http://xbmc.org) on my laptop.
 It runs well enough on Ubuntu, and compiling the latest source was pretty easy (the 
 instructions are pretty good).
@@ -137,64 +137,67 @@ instructions are pretty good).
 I ran into a few problems. My CPU usage is a little on the high side. My laptop 
 being an ageing MacBook, so it's prone to run hot, and unnecessary CPU usage = unnecessary 
 fan noise. Getting Suspend and Wake-on-Lan to work reliably was also tricky.
-</p>
-                <p><a rel="http://purl.org/dc/terms/hasFormat" href="http://twrl.github.com/2012/08/XBMC/index.html">Read more...</a></p>
+
+                
+                <p><a rel="dc:hasFormat" href="http://twrl.github.com/2012/08/XBMC/index.html">Read more...</a></p>
             </div>
         </article>
 
         
-                    <article vocab="http://schema.org/" typeof="BlogPosting" about="http://twrl.github.com/2012/08/microdata-vs-rdfa/" class="cf layout-row even">
+                    <article prefix="s: http://schema.org/ foaf: http://xmlns.com/foaf/0.1/ ct: http://commontag.org/ns# dc: http://purl.org/dc/terms/" typeof="s:BlogPosting foaf:Document" about="http://twrl.github.com/2012/08/microdata-vs-rdfa/" class="cf layout-row even">
             <header class="cf layout-cell-l2">
-                <h2 property="headline">Microdata vs RDFa</h2>
-                <p><img src="/images/icons/12.png" class="cf rlicon" alt="Publication date - "/> <time pubdate property="datePublished" datetime="2012-08-13">Monday 13 August, 2012</time></p>
+                <h2 property="dc:title">Microdata vs RDFa</h2>
+                <p><img src="/images/icons/12.png" class="cf rlicon" alt="Publication date - "/> <time pubdate property="s:datePublished" datetime="2012-08-13">Monday 13 August, 2012</time></p>
                 
-                <p><img src="/images/icons/20.png" class="cf rlicon"/> <a rel="http://commontag.org/ns#tagged" href="http://twrl.github.com/tags/rdfa">RDFa</a>, <a rel="http://commontag.org/ns#tagged" href="http://twrl.github.com/tags/microdata">Microdata</a>, <a rel="http://commontag.org/ns#tagged" href="http://twrl.github.com/tags/semantic-web">Semantic&nbsp;Web</a>
-                <p><img src="/images/icons/46.png" class="cf rlicon"/> <a href="http://twrl.github.com/2012/08/microdata-vs-rdfa/#disqus_thread">Comments</a></p>
+                <p><img src="/images/icons/20.png" class="cf rlicon" alt="Tags"/> <a rel="ct:tagged" href="http://twrl.github.com/tags/rdfa">RDFa</a>, <a rel="ct:tagged" href="http://twrl.github.com/tags/microdata">Microdata</a>, <a rel="ct:tagged" href="http://twrl.github.com/tags/semantic-web">Semantic&nbsp;Web</a>
+                <p><img src="/images/icons/46.png" class="cf rlicon" alt="Comments"/> <a href="http://twrl.github.com/2012/08/microdata-vs-rdfa/#disqus_thread">Comments</a></p>
             </header>
             <div class="cf layout-cell-l3 content">
-                <p>To my shame, I've largely ignored the development of microdata until very recently. I've 
+                To my shame, I've largely ignored the development of microdata until very recently. I've 
 been aware of it going on in the background, but I've been far more concerned with RDFa
 and JSON-LD when it comes to semantics.
 
 Google told me that they were favouring microdata for semantic markup, so I looked
 into it. At first, I was rather taken by it's simplicity. There is much less mucking about
-with CURIEs and namespaces than in RDFa.</p>
-                <p><a rel="http://purl.org/dc/terms/hasFormat" href="http://twrl.github.com/2012/08/microdata-vs-rdfa/index.html">Read more...</a></p>
+with CURIEs and namespaces than in RDFa.
+                
+                <p><a rel="dc:hasFormat" href="http://twrl.github.com/2012/08/microdata-vs-rdfa/index.html">Read more...</a></p>
             </div>
         </article>
 
         
-                    <article vocab="http://schema.org/" typeof="BlogPosting" about="http://twrl.github.com/2012/08/copyright/" class="cf layout-row odd">
+                    <article prefix="s: http://schema.org/ foaf: http://xmlns.com/foaf/0.1/ ct: http://commontag.org/ns# dc: http://purl.org/dc/terms/" typeof="s:BlogPosting foaf:Document" about="http://twrl.github.com/2012/08/copyright/" class="cf layout-row odd">
             <header class="cf layout-cell-l2">
-                <h2 property="headline">Copyright</h2>
-                <p><img src="/images/icons/12.png" class="cf rlicon" alt="Publication date - "/> <time pubdate property="datePublished" datetime="2012-08-05">Sunday 05 August, 2012</time></p>
+                <h2 property="dc:title">Copyright</h2>
+                <p><img src="/images/icons/12.png" class="cf rlicon" alt="Publication date - "/> <time pubdate property="s:datePublished" datetime="2012-08-05">Sunday 05 August, 2012</time></p>
                 
-                <p><img src="/images/icons/20.png" class="cf rlicon"/> <a rel="http://commontag.org/ns#tagged" href="http://twrl.github.com/tags/itunes">iTunes</a>, <a rel="http://commontag.org/ns#tagged" href="http://twrl.github.com/tags/drm">DRM</a>, <a rel="http://commontag.org/ns#tagged" href="http://twrl.github.com/tags/copyright">Copyright</a>, <a property="keywords" href="http://twrl.github.com/tags/intellectual-property">Intellectual&nbsp;Property</a>, <a property="keywords" href="http://twrl.github.com/tags/digital-content">Digital&nbsp;Content</a>
-                <p><img src="/images/icons/46.png" class="cf rlicon"/> <a href="http://twrl.github.com/2012/08/copyright/#disqus_thread">Comments</a></p>
+                <p><img src="/images/icons/20.png" class="cf rlicon" alt="Tags"/> <a rel="ct:tagged" href="http://twrl.github.com/tags/itunes">iTunes</a>, <a rel="ct:tagged" href="http://twrl.github.com/tags/drm">DRM</a>, <a rel="ct:tagged" href="http://twrl.github.com/tags/copyright">Copyright</a>, <a property="s:keywords" href="http://twrl.github.com/tags/intellectual-property">Intellectual&nbsp;Property</a>, <a property="s:keywords" href="http://twrl.github.com/tags/digital-content">Digital&nbsp;Content</a>
+                <p><img src="/images/icons/46.png" class="cf rlicon" alt="Comments"/> <a href="http://twrl.github.com/2012/08/copyright/#disqus_thread">Comments</a></p>
             </header>
             <div class="cf layout-cell-l3 content">
-                <p>For the last several months I've been trying to move away from iTunes as my media library.
+                For the last several months I've been trying to move away from iTunes as my media library.
 Alas, this is a pipe dream, because I have made the mistake in the past of buying movies 
 and TV shows through the iTunes store.
 
 Several years ago, Apple abandoned their ironically named FairPlay DRM software for music
 and music videos, however it it still used for movies and TV shows bought through the 
-iTunes store. </p>
-                <p><a rel="http://purl.org/dc/terms/hasFormat" href="http://twrl.github.com/2012/08/copyright/index.html">Read more...</a></p>
+iTunes store. 
+                
+                <p><a rel="dc:hasFormat" href="http://twrl.github.com/2012/08/copyright/index.html">Read more...</a></p>
             </div>
         </article>
 
         
-                    <article vocab="http://schema.org/" typeof="BlogPosting" about="http://twrl.github.com/2012/07/is-the-public-key-infrastructure-collapsing/" class="cf layout-row even">
+                    <article prefix="s: http://schema.org/ foaf: http://xmlns.com/foaf/0.1/ ct: http://commontag.org/ns# dc: http://purl.org/dc/terms/" typeof="s:BlogPosting foaf:Document" about="http://twrl.github.com/2012/07/is-the-public-key-infrastructure-collapsing/" class="cf layout-row even">
             <header class="cf layout-cell-l2">
-                <h2 property="headline">Is the Public Key Infrastructure Collapsing?</h2>
-                <p><img src="/images/icons/12.png" class="cf rlicon" alt="Publication date - "/> <time pubdate property="datePublished" datetime="2012-07-17">Tuesday 17 July, 2012</time></p>
+                <h2 property="dc:title">Is the Public Key Infrastructure Collapsing?</h2>
+                <p><img src="/images/icons/12.png" class="cf rlicon" alt="Publication date - "/> <time pubdate property="s:datePublished" datetime="2012-07-17">Tuesday 17 July, 2012</time></p>
                 
-                <p><img src="/images/icons/20.png" class="cf rlicon"/> <a property="keywords" href="http://twrl.github.com/tags/security">Security</a>, <a rel="http://commontag.org/ns#tagged" href="http://twrl.github.com/tags/pki">PKI</a>, <a property="keywords" href="http://twrl.github.com/tags/web-architecture">Web&nbsp;Architecture</a>
-                <p><img src="/images/icons/46.png" class="cf rlicon"/> <a href="http://twrl.github.com/2012/07/is-the-public-key-infrastructure-collapsing/#disqus_thread">Comments</a></p>
+                <p><img src="/images/icons/20.png" class="cf rlicon" alt="Tags"/> <a property="s:keywords" href="http://twrl.github.com/tags/security">Security</a>, <a rel="ct:tagged" href="http://twrl.github.com/tags/pki">PKI</a>, <a property="s:keywords" href="http://twrl.github.com/tags/web-architecture">Web&nbsp;Architecture</a>
+                <p><img src="/images/icons/46.png" class="cf rlicon" alt="Comments"/> <a href="http://twrl.github.com/2012/07/is-the-public-key-infrastructure-collapsing/#disqus_thread">Comments</a></p>
             </header>
             <div class="cf layout-cell-l3 content">
-                <p>Back in February, TrustWave hit the news with tales of selling intermediate CA certificates
+                Back in February, TrustWave hit the news with tales of selling intermediate CA certificates
 for use in Man-in-the-Middle traffic interception. TrustWave were redeemed somewhat by
 having already revoked the offending certificate before voluntarily disclosing what they
 had done.
@@ -202,83 +205,88 @@ had done.
 For most users, security hinges on SSL/TLS to provide an encrypted connection, and X.509
 PKI to provide certificates all the way up to a small number of trusted roots. A large
 number will be aware of the terms SSL and certificate from their web browser, but may
-not understand what they mean or how they work.</p>
-                <p><a rel="http://purl.org/dc/terms/hasFormat" href="http://twrl.github.com/2012/07/is-the-public-key-infrastructure-collapsing/index.html">Read more...</a></p>
+not understand what they mean or how they work.
+                
+                <p><a rel="dc:hasFormat" href="http://twrl.github.com/2012/07/is-the-public-key-infrastructure-collapsing/index.html">Read more...</a></p>
             </div>
         </article>
 
         
-                    <article vocab="http://schema.org/" typeof="BlogPosting" about="http://twrl.github.com/2012/07/the-new-setup/" class="cf layout-row odd">
+                    <article prefix="s: http://schema.org/ foaf: http://xmlns.com/foaf/0.1/ ct: http://commontag.org/ns# dc: http://purl.org/dc/terms/" typeof="s:BlogPosting foaf:Document" about="http://twrl.github.com/2012/07/the-new-setup/" class="cf layout-row odd">
             <header class="cf layout-cell-l2">
-                <h2 property="headline">About This New Setup</h2>
-                <p><img src="/images/icons/12.png" class="cf rlicon" alt="Publication date - "/> <time pubdate property="datePublished" datetime="2012-07-16">Monday 16 July, 2012</time></p>
+                <h2 property="dc:title">About This New Setup</h2>
+                <p><img src="/images/icons/12.png" class="cf rlicon" alt="Publication date - "/> <time pubdate property="s:datePublished" datetime="2012-07-16">Monday 16 July, 2012</time></p>
                 
-                <p><img src="/images/icons/20.png" class="cf rlicon"/> <a rel="http://commontag.org/ns#tagged" href="http://twrl.github.com/tags/blog">Blog</a>, <a property="keywords" href="http://twrl.github.com/tags/jekyll">Jekyll</a>
-                <p><img src="/images/icons/46.png" class="cf rlicon"/> <a href="http://twrl.github.com/2012/07/the-new-setup/#disqus_thread">Comments</a></p>
+                <p><img src="/images/icons/20.png" class="cf rlicon" alt="Tags"/> <a rel="ct:tagged" href="http://twrl.github.com/tags/blog">Blog</a>, <a property="s:keywords" href="http://twrl.github.com/tags/jekyll">Jekyll</a>
+                <p><img src="/images/icons/46.png" class="cf rlicon" alt="Comments"/> <a href="http://twrl.github.com/2012/07/the-new-setup/#disqus_thread">Comments</a></p>
             </header>
             <div class="cf layout-cell-l3 content">
-                <p>So, this new setup is more or less as I want it. I somewhat prematurely put it live on 
+                So, this new setup is more or less as I want it. I somewhat prematurely put it live on 
 Github pages on Saturday, even though I'm continuing to tinker with it.
 
 I started off using [Jekyll-Bootstrap](http://jekyllbootstrap.com/). This was a massive
 timesaver. I've used Liquid before, so the Jekyll learning curve was very easy for me, but 
 if you haven't then I recommend Jekyll-Bootstrap as a way of easing the transition. The 
 templates and includes that Jade has in there are fairly adaptable, and you can learn 
-quite a bit just from examining them.</p>
-                <p><a rel="http://purl.org/dc/terms/hasFormat" href="http://twrl.github.com/2012/07/the-new-setup/index.html">Read more...</a></p>
+quite a bit just from examining them.
+                
+                <p><a rel="dc:hasFormat" href="http://twrl.github.com/2012/07/the-new-setup/index.html">Read more...</a></p>
             </div>
         </article>
 
         
-                    <article vocab="http://schema.org/" typeof="BlogPosting" about="http://twrl.github.com/2012/07/the-new-edition/" class="cf layout-row even">
+                    <article prefix="s: http://schema.org/ foaf: http://xmlns.com/foaf/0.1/ ct: http://commontag.org/ns# dc: http://purl.org/dc/terms/" typeof="s:BlogPosting foaf:Document" about="http://twrl.github.com/2012/07/the-new-edition/" class="cf layout-row even">
             <header class="cf layout-cell-l2">
-                <h2 property="headline">The New Edition</h2>
-                <p><img src="/images/icons/12.png" class="cf rlicon" alt="Publication date - "/> <time pubdate property="datePublished" datetime="2012-07-14">Saturday 14 July, 2012</time></p>
+                <h2 property="dc:title">The New Edition</h2>
+                <p><img src="/images/icons/12.png" class="cf rlicon" alt="Publication date - "/> <time pubdate property="s:datePublished" datetime="2012-07-14">Saturday 14 July, 2012</time></p>
                 
-                <p><img src="/images/icons/20.png" class="cf rlicon"/> <a property="keywords" href="http://twrl.github.com/tags/jekyll">Jekyll</a>, <a rel="http://commontag.org/ns#tagged" href="http://twrl.github.com/tags/blog">Blog</a>
-                <p><img src="/images/icons/46.png" class="cf rlicon"/> <a href="http://twrl.github.com/2012/07/the-new-edition/#disqus_thread">Comments</a></p>
+                <p><img src="/images/icons/20.png" class="cf rlicon" alt="Tags"/> <a property="s:keywords" href="http://twrl.github.com/tags/jekyll">Jekyll</a>, <a rel="ct:tagged" href="http://twrl.github.com/tags/blog">Blog</a>
+                <p><img src="/images/icons/46.png" class="cf rlicon" alt="Comments"/> <a href="http://twrl.github.com/2012/07/the-new-edition/#disqus_thread">Comments</a></p>
             </header>
             <div class="cf layout-cell-l3 content">
-                <p>The long-awaited redo of this blog is at hand.
+                The long-awaited redo of this blog is at hand.
 
 After a brief bout of insanity brought on by spending too much time with Blogger's excuse 
 for a template system, I realised: I don't need all that complexity. Browsing around for 
 something with which to replace Blogger, and preferably not add too much to the vast
 number of accounts I'm dragging around with me, I stumbled onto Jekyll. And so, here we
-are.</p>
-                <p><a rel="http://purl.org/dc/terms/hasFormat" href="http://twrl.github.com/2012/07/the-new-edition/index.html">Read more...</a></p>
+are.
+                
+                <p><a rel="dc:hasFormat" href="http://twrl.github.com/2012/07/the-new-edition/index.html">Read more...</a></p>
             </div>
         </article>
 
         
-                    <article vocab="http://schema.org/" typeof="BlogPosting" about="http://twrl.github.com/2012/06/views-dynamic-and-otherwise/" class="cf layout-row odd">
+                    <article prefix="s: http://schema.org/ foaf: http://xmlns.com/foaf/0.1/ ct: http://commontag.org/ns# dc: http://purl.org/dc/terms/" typeof="s:BlogPosting foaf:Document" about="http://twrl.github.com/2012/06/views-dynamic-and-otherwise/" class="cf layout-row odd">
             <header class="cf layout-cell-l2">
-                <h2 property="headline">Views, dynamic and otherwise</h2>
-                <p><img src="/images/icons/12.png" class="cf rlicon" alt="Publication date - "/> <time pubdate property="datePublished" datetime="2012-06-14">Thursday 14 June, 2012</time></p>
+                <h2 property="dc:title">Views, dynamic and otherwise</h2>
+                <p><img src="/images/icons/12.png" class="cf rlicon" alt="Publication date - "/> <time pubdate property="s:datePublished" datetime="2012-06-14">Thursday 14 June, 2012</time></p>
                 
-                <p><img src="/images/icons/20.png" class="cf rlicon"/> <a rel="http://commontag.org/ns#tagged" href="http://twrl.github.com/tags/blog">Blog</a>, <a rel="http://commontag.org/ns#tagged" href="http://twrl.github.com/tags/blogger">Blogger</a>, <a property="keywords" href="http://twrl.github.com/tags/dynamic-views">Dynamic&nbsp;Views</a>
-                <p><img src="/images/icons/46.png" class="cf rlicon"/> <a href="http://twrl.github.com/2012/06/views-dynamic-and-otherwise/#disqus_thread">Comments</a></p>
+                <p><img src="/images/icons/20.png" class="cf rlicon" alt="Tags"/> <a rel="ct:tagged" href="http://twrl.github.com/tags/blog">Blog</a>, <a rel="ct:tagged" href="http://twrl.github.com/tags/blogger">Blogger</a>, <a property="s:keywords" href="http://twrl.github.com/tags/dynamic-views">Dynamic&nbsp;Views</a>
+                <p><img src="/images/icons/46.png" class="cf rlicon" alt="Comments"/> <a href="http://twrl.github.com/2012/06/views-dynamic-and-otherwise/#disqus_thread">Comments</a></p>
             </header>
             <div class="cf layout-cell-l3 content">
-                <p>I've changed theme on this blog. I was using Dynamic Views, and now I'm using a generic Awesome Inc. theme.</p>
-                <p><a rel="http://purl.org/dc/terms/hasFormat" href="http://twrl.github.com/2012/06/views-dynamic-and-otherwise/index.html">Read more...</a></p>
+                I've changed theme on this blog. I was using Dynamic Views, and now I'm using a generic Awesome Inc. theme.
+                
+                <p><a rel="dc:hasFormat" href="http://twrl.github.com/2012/06/views-dynamic-and-otherwise/index.html">Read more...</a></p>
             </div>
         </article>
 
         
-                    <article vocab="http://schema.org/" typeof="BlogPosting" about="http://twrl.github.com/2012/06/iconiser/" class="cf layout-row even">
+                    <article prefix="s: http://schema.org/ foaf: http://xmlns.com/foaf/0.1/ ct: http://commontag.org/ns# dc: http://purl.org/dc/terms/" typeof="s:BlogPosting foaf:Document" about="http://twrl.github.com/2012/06/iconiser/" class="cf layout-row even">
             <header class="cf layout-cell-l2">
-                <h2 property="headline">Iconiser</h2>
-                <p><img src="/images/icons/12.png" class="cf rlicon" alt="Publication date - "/> <time pubdate property="datePublished" datetime="2012-06-14">Thursday 14 June, 2012</time></p>
+                <h2 property="dc:title">Iconiser</h2>
+                <p><img src="/images/icons/12.png" class="cf rlicon" alt="Publication date - "/> <time pubdate property="s:datePublished" datetime="2012-06-14">Thursday 14 June, 2012</time></p>
                 
-                <p><img src="/images/icons/20.png" class="cf rlicon"/> <a rel="http://commontag.org/ns#tagged" href="http://twrl.github.com/tags/javascript">Javascript</a>, <a rel="http://commontag.org/ns#tagged" href="http://twrl.github.com/tags/jquery">jQuery</a>
-                <p><img src="/images/icons/46.png" class="cf rlicon"/> <a href="http://twrl.github.com/2012/06/iconiser/#disqus_thread">Comments</a></p>
+                <p><img src="/images/icons/20.png" class="cf rlicon" alt="Tags"/> <a rel="ct:tagged" href="http://twrl.github.com/tags/javascript">Javascript</a>, <a rel="ct:tagged" href="http://twrl.github.com/tags/jquery">jQuery</a>
+                <p><img src="/images/icons/46.png" class="cf rlicon" alt="Comments"/> <a href="http://twrl.github.com/2012/06/iconiser/#disqus_thread">Comments</a></p>
             </header>
             <div class="cf layout-cell-l3 content">
-                <p>This is a useful titbit for anyone who is working with blogger templates or other things that severely limit your ability to host and serve lots of little files. I just hacked it together now to implement the new theme I'm writing for this blog.
+                This is a useful titbit for anyone who is working with blogger templates or other things that severely limit your ability to host and serve lots of little files. I just hacked it together now to implement the new theme I'm writing for this blog.
 
-I'm using quite a few icons in the new theme and I wanted to embed them as data: URIs. The trouble is, I'm using the same icon in several places which means duplication, and having great blocks of base64 embedded in the code is making it all unreadable. So I've written a tiny jQuery plugin to maintain a catalogue of named icons, and then replace the shorthand URIs that I'm using with the full one.</p>
-                <p><a rel="http://purl.org/dc/terms/hasFormat" href="http://twrl.github.com/2012/06/iconiser/index.html">Read more...</a></p>
+I'm using quite a few icons in the new theme and I wanted to embed them as data: URIs. The trouble is, I'm using the same icon in several places which means duplication, and having great blocks of base64 embedded in the code is making it all unreadable. So I've written a tiny jQuery plugin to maintain a catalogue of named icons, and then replace the shorthand URIs that I'm using with the full one.
+                
+                <p><a rel="dc:hasFormat" href="http://twrl.github.com/2012/06/iconiser/index.html">Read more...</a></p>
             </div>
         </article>
 

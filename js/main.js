@@ -10,7 +10,8 @@ require.config({
         'site/ga': {
             account:        'UA-33400896-1'
             }
-        }
+        },
+    waitSeconds:    15
 });
 
 require(['site/ga'], function (ga) {

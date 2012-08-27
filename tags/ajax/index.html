@@ -37,7 +37,7 @@
 
         /* * * DON'T EDIT BELOW THIS LINE * * */
         (function () {
-            var s = document.createElement('script'); s.async = true;
+            var s = document.createElement('script'); s.defer = true;
             s.type = 'text/javascript';
             s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
             (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
@@ -99,17 +99,20 @@
             </header>
         </div>
         
-                <article vocab="http://schema.org/" typeof="BlogPosting" about="http://twrl.github.com/2012/03/ajax-and-file-uris/" class="cf layout-row odd">
+                <article prefix="s: http://schema.org/ foaf: http://xmlns.com/foaf/0.1/ ct: http://commontag.org/ns# dc: http://purl.org/dc/terms/" typeof="s:BlogPosting foaf:Document" about="http://twrl.github.com/2012/03/ajax-and-file-uris/" class="cf layout-row odd">
             <header class="cf layout-cell-l2">
-                <h2 property="headline">Ajax and file&#58;// URIs</h2>
-                <p><img src="/images/icons/12.png" class="cf rlicon" alt="Publication date - "/> <time pubdate property="datePublished" datetime="2012-03-28">Wednesday 28 March, 2012</time></p>
+                <h2 property="dc:title">Ajax and file&#58;// URIs</h2>
+                <p><img src="/images/icons/12.png" class="cf rlicon" alt="Publication date - "/> <time pubdate property="s:datePublished" datetime="2012-03-28">Wednesday 28 March, 2012</time></p>
                 
-                <p><img src="/images/icons/20.png" class="cf rlicon"/> <a rel="http://commontag.org/ns#tagged" href="http://twrl.github.com/tags/ajax">Ajax</a>, <a rel="http://commontag.org/ns#tagged" href="http://twrl.github.com/tags/javascript">Javascript</a>, <a rel="http://commontag.org/ns#tagged" href="http://twrl.github.com/tags/jquery">jQuery</a>, <a rel="http://commontag.org/ns#tagged" href="http://twrl.github.com/tags/programming">Programming</a>
-                <p><img src="/images/icons/46.png" class="cf rlicon"/> <a href="http://twrl.github.com/2012/03/ajax-and-file-uris/#disqus_thread">Comments</a></p>
+                <p><img src="/images/icons/20.png" class="cf rlicon" alt="Tags"/> <a rel="ct:tagged" href="http://twrl.github.com/tags/ajax">Ajax</a>, <a rel="ct:tagged" href="http://twrl.github.com/tags/javascript">Javascript</a>, <a rel="ct:tagged" href="http://twrl.github.com/tags/jquery">jQuery</a>, <a rel="ct:tagged" href="http://twrl.github.com/tags/programming">Programming</a>
+                <p><img src="/images/icons/46.png" class="cf rlicon" alt="Comments"/> <a href="http://twrl.github.com/2012/03/ajax-and-file-uris/#disqus_thread">Comments</a></p>
             </header>
             <div class="cf layout-cell-l3 content">
-                <p></p>
-                <p><a rel="http://purl.org/dc/terms/hasFormat" href="http://twrl.github.com/2012/03/ajax-and-file-uris/index.html">Read more...</a></p>
+                {% excerpt %}Ajax is becoming the dominant method, if it isn't already, of getting data in and out of a web application. But Ajax is built on top of XMLHttpRequest, which as the name suggests is only really well defined if the underlying protocol is HTTP.
+
+So what about local files? The new Filesystem API's are coming, but they sandbox us heavily. At least for the time being, if we want to muck about with self-modifying code or local file-based data sources we have to hack it, which means using 
+                
+                <p><a rel="dc:hasFormat" href="http://twrl.github.com/2012/03/ajax-and-file-uris/index.html">Read more...</a></p>
             </div>
         </article>
 

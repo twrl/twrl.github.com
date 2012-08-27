@@ -37,7 +37,7 @@
 
         /* * * DON'T EDIT BELOW THIS LINE * * */
         (function () {
-            var s = document.createElement('script'); s.async = true;
+            var s = document.createElement('script'); s.defer = true;
             s.type = 'text/javascript';
             s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
             (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
@@ -99,17 +99,24 @@
             </header>
         </div>
         
-                <article vocab="http://schema.org/" typeof="BlogPosting" about="http://twrl.github.com/2012/08/copyright/" class="cf layout-row odd">
+                <article prefix="s: http://schema.org/ foaf: http://xmlns.com/foaf/0.1/ ct: http://commontag.org/ns# dc: http://purl.org/dc/terms/" typeof="s:BlogPosting foaf:Document" about="http://twrl.github.com/2012/08/copyright/" class="cf layout-row odd">
             <header class="cf layout-cell-l2">
-                <h2 property="headline">Copyright</h2>
-                <p><img src="/images/icons/12.png" class="cf rlicon" alt="Publication date - "/> <time pubdate property="datePublished" datetime="2012-08-05">Sunday 05 August, 2012</time></p>
+                <h2 property="dc:title">Copyright</h2>
+                <p><img src="/images/icons/12.png" class="cf rlicon" alt="Publication date - "/> <time pubdate property="s:datePublished" datetime="2012-08-05">Sunday 05 August, 2012</time></p>
                 
-                <p><img src="/images/icons/20.png" class="cf rlicon"/> <a rel="http://commontag.org/ns#tagged" href="http://twrl.github.com/tags/itunes">iTunes</a>, <a rel="http://commontag.org/ns#tagged" href="http://twrl.github.com/tags/drm">DRM</a>, <a rel="http://commontag.org/ns#tagged" href="http://twrl.github.com/tags/copyright">Copyright</a>, <a property="keywords" href="http://twrl.github.com/tags/intellectual-property">Intellectual&nbsp;Property</a>, <a property="keywords" href="http://twrl.github.com/tags/digital-content">Digital&nbsp;Content</a>
-                <p><img src="/images/icons/46.png" class="cf rlicon"/> <a href="http://twrl.github.com/2012/08/copyright/#disqus_thread">Comments</a></p>
+                <p><img src="/images/icons/20.png" class="cf rlicon" alt="Tags"/> <a rel="ct:tagged" href="http://twrl.github.com/tags/itunes">iTunes</a>, <a rel="ct:tagged" href="http://twrl.github.com/tags/drm">DRM</a>, <a rel="ct:tagged" href="http://twrl.github.com/tags/copyright">Copyright</a>, <a property="s:keywords" href="http://twrl.github.com/tags/intellectual-property">Intellectual&nbsp;Property</a>, <a property="s:keywords" href="http://twrl.github.com/tags/digital-content">Digital&nbsp;Content</a>
+                <p><img src="/images/icons/46.png" class="cf rlicon" alt="Comments"/> <a href="http://twrl.github.com/2012/08/copyright/#disqus_thread">Comments</a></p>
             </header>
             <div class="cf layout-cell-l3 content">
-                <p></p>
-                <p><a rel="http://purl.org/dc/terms/hasFormat" href="http://twrl.github.com/2012/08/copyright/index.html">Read more...</a></p>
+                {% excerpt %}For the last several months I've been trying to move away from iTunes as my media library.
+Alas, this is a pipe dream, because I have made the mistake in the past of buying movies 
+and TV shows through the iTunes store.
+
+Several years ago, Apple abandoned their ironically named FairPlay DRM software for music
+and music videos, however it it still used for movies and TV shows bought through the 
+iTunes store. {% endexcerpt %}This presents a quandary, because from Apple's point of vie
+                
+                <p><a rel="dc:hasFormat" href="http://twrl.github.com/2012/08/copyright/index.html">Read more...</a></p>
             </div>
         </article>
 
