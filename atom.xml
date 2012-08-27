@@ -4,7 +4,7 @@
   <title>twrl</title>
   <link href="http://twrl.github.com"/>
   <link type="application/atom+xml" rel="self" href="http://twrl.github.com/atom.xml"/>
-  <updated>2012-08-27T18:19:16+01:00</updated>
+  <updated>2012-08-27T18:56:30+01:00</updated>
   <id>http://twrl.github.com</id>
   <author>
     <name>Tom Robbins</name>
@@ -34,7 +34,7 @@ commenting, sharing, and so forth - and by using a static generator to maintain 
 we&amp;rsquo;re also tying ourselves in to third parties and their proprietary infrastructures. For
 example, if you scroll down this page, you&amp;rsquo;ll see a Disqus comments box at the bottom.&lt;/p&gt;
 
-&lt;p&gt;I don&amp;rsquo;t particularly care about that though. I don&amp;rsquo;t share &lt;a href=&quot;http://www.gnu.org/philosophy/who-does-that-server-really-serve.html&quot;&gt;RMS&amp;rsquo;s aversion to SaaS&lt;/a&gt;. But I do care about the functionality that I can build on top of the
+&lt;p&gt;I don&amp;rsquo;t particularly care about that though. I don&amp;rsquo;t share &lt;a href=&quot;http://www.gnu.org/philosophy/who-does-that-server-really-serve.html&quot;&gt;RMS&amp;rsquo; aversion to SaaS&lt;/a&gt;. But I do care about the functionality that I can build on top of the
 platform that I&amp;rsquo;m using.&lt;/p&gt;
 
 &lt;p&gt;Jekyll limits me somewhat because it&amp;rsquo;s written in Ruby, which I don&amp;rsquo;t know very well 
