@@ -33,6 +33,13 @@
     float: right;
     }
 
+.llicon {
+    width: 16px;
+    height: 16px;
+    margin: 0 1ex;
+    float: left;
+}
+
 h3 {
     font-size: 120%;
     }

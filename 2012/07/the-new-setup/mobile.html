@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+	<title>twrl - About This New Setup</title>
+
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+	<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+	<link rel="stylesheet" href="/css/mobile.css" />
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.1/jquery.mobile.structure-1.1.1.min.css" />
+	<link rel="stylesheet" href="/css/code.css" />
+	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
+
+</head>
+<body>
+
+		<div data-role="page" data-add-back-btn="true" data-theme="f">
+		<div data-role="header">
+			<h1>About This New Setup</h1>
+		</div>
+		<div data-role="content">
+
+			<p>So, this new setup is more or less as I want it. I somewhat prematurely put it live on 
+Github pages on Saturday, even though I&rsquo;m continuing to tinker with it.</p>
+
+<p>I started off using <a href="http://jekyllbootstrap.com/">Jekyll-Bootstrap</a>. This was a massive
+timesaver. I&rsquo;ve used Liquid before, so the Jekyll learning curve was very easy for me, but 
+if you haven&rsquo;t then I recommend Jekyll-Bootstrap as a way of easing the transition. The 
+templates and includes that Jade has in there are fairly adaptable, and you can learn 
+quite a bit just from examining them.</p>
+
+<p>Following the advice in <a href="http://charliepark.org/jekyll-with-plugins/">Charlie Park&rsquo;s blog</a>
+I&rsquo;ve got Jekyll running locally, and I&rsquo;m pushing the compiled static site onto Github.
+This gives me a free hand to have plugins, non-Github-supported configuration options,
+and otherwise be tampering with Jekyll. </p>
+
+<p>I&rsquo;m using <a href="http://kramdown.rubyforge.org/">Kramdown</a> and 
+<a href="http://coderay.rubychan.de/">Coderay</a> for rendering. Getting Pygments to work reliably on 
+my Mac was just too much of a headache, plus I like Kramdown&rsquo;s language extensions anyway. 
+At least on my Mac, I had to set Kramdown&rsquo;s entity_output to symbolic, otherwise it was 
+garbling apostrophes and other entities. No other problems there though.</p>
+
+<p>I&rsquo;m using Jekyll&rsquo;s latent semantic indexing to generate the related posts list, but I&rsquo;m 
+not convinced about it. I really don&rsquo;t want to maintain the list manually if I can avoid 
+it, so next on the agenda is to investigate other options for that. I also plan to 
+refactor the templates to improve the quality of the semantics in them, and because I&rsquo;ve ended 
+up with a small mess of css files.</p>
+
+<p>My only grumble is Liquid&rsquo;s inability to sort an array before iterating over it. So far 
+I&rsquo;ve managed to work around it, but it is a nuisance. </p>
+
+
+			<div data-role="collapsible" data-inset="true" data-content-theme="g">
+				<h3>About this post</h3>
+
+				<p>Published on <time pubdate>16 July, 2012</time></p>
+				<p>Tags: <a href="/tags/blog/mobile.html">Blog</a>, <a href="/tags/jekyll/mobile.html">Jekyll</a></p>
+
+				<p><a href="/2012/07/the-new-setup//index.html">Desktop view</a></p>
+			</div> 
+			<div data-role="collapsible" data-inset="true" data-content-theme="g">
+				<h3>Comments</h3>
+
+				<script type="text/javascript">
+		    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+		    var disqus_shortname = 'twrl'; // required: replace example with your forum shortname
+			var disqus_identifier = '/2012/07/the-new-setup/';
+
+		    /* * * DON'T EDIT BELOW THIS LINE * * */
+		    (function() {
+		        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+		        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		    })();
+		</script>
+		<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>

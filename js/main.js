@@ -27,7 +27,7 @@ require(['jquery', 'site/advnav', 'domReady!'], function ($) {
         
         var widgetModule = $(this).attr('data-widget');
         
-        require(['cache!' + widgetModule]);
+        require([widgetModule]);
         
     });
     

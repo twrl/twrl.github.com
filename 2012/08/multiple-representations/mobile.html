@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+	<title>twrl - Multiple Representations</title>
+
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+	<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+	<link rel="stylesheet" href="/css/mobile.css" />
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.1/jquery.mobile.structure-1.1.1.min.css" />
+	<link rel="stylesheet" href="/css/code.css" />
+	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
+
+</head>
+<body>
+
+		<div data-role="page" data-add-back-btn="true" data-theme="f">
+		<div data-role="header">
+			<h1>Multiple Representations</h1>
+		</div>
+		<div data-role="content">
+
+			<p>Well, I now have an arrangement which provides multiple views of the pages of 
+this website. Believe me, that was difficult to achieve.</p>
+
+<p>I&rsquo;d investigated quite a few different Jekyll plugins, and when I couldn&rsquo;t find
+one to do what I wanted I investigated quite a few different approaches to
+writing Jekyll plugins. But then I realised, I can do what I need far more
+simply.</p>
+
+<p>I&rsquo;ve been thinking about the relationship between resources and their
+representations. I wrote recently about the difference an <code>/index.html</code> makes.
+So I just wrote another theme, because I&rsquo;m using a fork of [Cimino]
+(https://github.com/josegonzalez/cimino) and themes are pretty easy, and I merge
+files in each view of the site with the command</p>
+
+<pre><code>rename s/index/mobile/ `find _site -name *.html`
+</code></pre>
+
+<p>before merging the two file trees together. It&rsquo;s perhaps not the most elegant 
+solution, but it works surprisingly well.</p>
+
+
+			<div data-role="collapsible" data-inset="true" data-content-theme="g">
+				<h3>About this post</h3>
+
+				<p>Published on <time pubdate>31 August, 2012</time></p>
+				<p>Tags: <a href="/tags/jekyll/mobile.html">Jekyll</a>, <a href="/tags/blog/mobile.html">Blog</a></p>
+
+				<p><a href="/2012/08/multiple-representations//index.html">Desktop view</a></p>
+			</div> 
+			<div data-role="collapsible" data-inset="true" data-content-theme="g">
+				<h3>Comments</h3>
+
+				<script type="text/javascript">
+		    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+		    var disqus_shortname = 'twrl'; // required: replace example with your forum shortname
+			var disqus_identifier = '/2012/08/multiple-representations/';
+
+		    /* * * DON'T EDIT BELOW THIS LINE * * */
+		    (function() {
+		        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+		        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		    })();
+		</script>
+		<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>

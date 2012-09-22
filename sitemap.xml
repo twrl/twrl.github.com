@@ -2,6 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
+      <loc>http://twrl.github.com/2012/09/processor-of-my-dreams/</loc>
+      <lastmod>2012-09-21</lastmod>
+  </url>
+
+  <url>
+      <loc>http://twrl.github.com/2012/09/operating-system-development/</loc>
+      <lastmod>2012-09-12</lastmod>
+  </url>
+
+  <url>
+      <loc>http://twrl.github.com/2012/08/multiple-representations/</loc>
+      <lastmod>2012-08-31</lastmod>
+  </url>
+
+  <url>
+      <loc>http://twrl.github.com/2012/08/httprange-14-and-the-dark-resource/</loc>
+      <lastmod>2012-08-29</lastmod>
+  </url>
+
+  <url>
       <loc>http://twrl.github.com/2012/08/static-site-generators/</loc>
       <lastmod>2012-08-26</lastmod>
   </url>

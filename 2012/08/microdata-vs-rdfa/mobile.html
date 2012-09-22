@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+	<title>twrl - Microdata vs RDFa</title>
+
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+	<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+	<link rel="stylesheet" href="/css/mobile.css" />
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.1/jquery.mobile.structure-1.1.1.min.css" />
+	<link rel="stylesheet" href="/css/code.css" />
+	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
+
+</head>
+<body>
+
+		<div data-role="page" data-add-back-btn="true" data-theme="f">
+		<div data-role="header">
+			<h1>Microdata vs RDFa</h1>
+		</div>
+		<div data-role="content">
+
+			<p>To my shame, I&rsquo;ve largely ignored the development of microdata until very recently. I&rsquo;ve 
+been aware of it going on in the background, but I&rsquo;ve been far more concerned with RDFa
+and JSON-LD when it comes to semantics.</p>
+
+<p>Google told me that they were favouring microdata for semantic markup, so I looked
+into it. At first, I was rather taken by it&rsquo;s simplicity. There is much less mucking about
+with CURIEs and namespaces than in RDFa.</p>
+
+<p>Once the novelty wore off however, I started to see the cracks. Microdata is designed very
+much to be accessible to designers. RDFa is a more complicated embedding of RDF into HTML,
+which means it can encode more complex parts of the graph more succinctly. It also 
+lacks many of the ambiguities that microdata can introduce around dereferencing terms.</p>
+
+<p>Which is not to say that microdata is without it&rsquo;s merits - far from it. Microdata is
+a simpler embedding of RDF into HTML, which means it can encode simpler parts of the RDF
+graph more succinctly than RDFa can. It&rsquo;s more human-writable, and somewhat simpler to 
+parse. </p>
+
+<p>Both are equally as expressive.</p>
+
+<p>The new RDFa 1.1 recommendation has absorbed a lot of lessons both from it&rsquo;s predecessor,
+and from the development of microdata. RDFa began life as one module in the XHTML2 
+development effort, and now stands apart from the development of HTML and XHTML as a 
+separate-but-related entity. So there is plenty of room to revise and update RDFa as
+technologies and practices change.</p>
+
+<p>I&rsquo;m going to stick with RDFa. The reason is simple - I don&rsquo;t want to simply annotate a
+few properties here and there, I want to converge semantic, structural and presentational
+data. RDFa, which more closely reflects the underlying RDF graph, meshes more easily for
+me with other ways of expressing RDF - like RDF/XML and JSON-LD.</p>
+
+
+			<div data-role="collapsible" data-inset="true" data-content-theme="g">
+				<h3>About this post</h3>
+
+				<p>Published on <time pubdate>13 August, 2012</time></p>
+				<p>Tags: <a href="/tags/rdfa/mobile.html">RDFa</a>, <a href="/tags/microdata/mobile.html">Microdata</a>, <a href="/tags/semantic-web/mobile.html">Semantic Web</a></p>
+
+				<p><a href="/2012/08/microdata-vs-rdfa//index.html">Desktop view</a></p>
+			</div> 
+			<div data-role="collapsible" data-inset="true" data-content-theme="g">
+				<h3>Comments</h3>
+
+				<script type="text/javascript">
+		    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+		    var disqus_shortname = 'twrl'; // required: replace example with your forum shortname
+			var disqus_identifier = '/2012/08/microdata-vs-rdfa/';
+
+		    /* * * DON'T EDIT BELOW THIS LINE * * */
+		    (function() {
+		        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+		        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		    })();
+		</script>
+		<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>

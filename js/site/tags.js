@@ -10,8 +10,11 @@ define(['jquery', 'domReady!'], function ($) {
     }).each(function () {
         
         var pc = Number($(this).attr('data-tagcount')) - 1,
-            rel = ((pc / max) + 1)*100;
+            rel = ((pc / max));
             
+	rel *= rel;
+	rel = (rel + 1)*100;
+
         $(this).css("fontSize", rel + "%");
         
     });

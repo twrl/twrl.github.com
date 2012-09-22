@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>twrl - httpRange-14 and the Dark Resource</title>
+        
+        <meta charset="UTF-8"/>
+        <meta name="google-site-verification" content="m1FBHjRwb73L9re4eVRIILTFytDvEedTsaAHvlQKYi0" />
+        
+        <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+        
+        <link href="/css/layout.css" rel="stylesheet" type="text/css"/>
+        <link href="/css/colour.css" rel="stylesheet" type="text/css"/>
+        <link href="/css/code.css" rel="stylesheet" type="text/css"/>
+        <link href="/css/typecue.css" rel="stylesheet" type="text/css"/>
+        
+        <link href="/atom.xml" rel="alternate" type="application/atom+xml"/>
+        <link href="/index.rss" rel="alternate" type="application/rss+xml"/>
+        
+        
+        
+        <!-- typography -->
+        <style type="text/css">
+        body {
+            font-family: "Droid Sans", sans-serif;
+        }
+        pre {
+            font-family: "Droid Sans Mono", monospace;
+        }
+        </style>
+        
+        
+        <script type="application/javascript" src="/js/require.js" data-main="/js/main"></script>
+        
+        
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'twrl'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script'); s.defer = true;
+            s.type = 'text/javascript';
+            s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+        </script>
+        
+        
+    </head>
+    <body>
+    
+        <div id="l-head" class="cf layout-row c-dark">
+            <header id="l-head-title" class="cf layout-cell-l2">
+                <h1>twrl</h1>
+            </header>
+            <nav id="l-head-nav" class="cf layout-cell-l3">
+            
+                
+                <p><a href="/">Home</a></p>
+                
+                
+                
+            
+                
+                <p><a href="/archive/">Archive</a></p>
+                
+                
+                
+            
+            </nav>
+        </div>
+        
+        <div class="cf layout-row c-dark" id="l-advnav">
+                        <nav id="l-advnav-tags" class="cf layout-cell-l1" data-widget="site/tags">
+                <h4><img src="/images/icons/20.png" class="icon"/> Tags</h4>
+                <p><span class="tag" data-tagcount="5"><a href="/tags/blog">Blog</a></span> <span class="tag" data-tagcount="5"><a href="/tags/javascript">Javascript</a></span> <span class="tag" data-tagcount="4"><a href="/tags/jekyll">Jekyll</a></span> <span class="tag" data-tagcount="5"><a href="/tags/programming">Programming</a></span> <span class="tag" data-tagcount="2"><a href="/tags/same-sex-marriage">Same-sex&nbsp;Marriage</a></span> <span class="tag" data-tagcount="3"><a href="/tags/semantic-web">Semantic&nbsp;Web</a></span> <span class="tag" data-tagcount="2"><a href="/tags/society">Society</a></span> <span class="tag" data-tagcount="2"><a href="/tags/the-cloud">The&nbsp;Cloud</a></span> <span class="tag" data-tagcount="5"><a href="/tags/web-architecture">Web&nbsp;Architecture</a></span> <span class="tag" data-tagcount="2"><a href="/tags/web-standards">Web&nbsp;Standards</a></span> <span class="tag" data-tagcount="2"><a href="/tags/jquery">jQuery</a></span> 
+                <p><a href="/tags">See all tags</a></p>
+            </nav>
+
+            
+            <nav class="cf layout-cell-l1">
+                <h4><img src="/images/icons/10.png" class="icon"/>Related Posts</h4>
+                <ul>
+                
+                    <li><a href="/2012/05/who-am-i-standing-up-to-again/">Who am I standing up to again?</a></li>
+                
+                    <li><a href="/2012/03/rehashing-xml/">Rehashing Xml</a></li>
+                
+                    <li><a href="/2012/03/ajax-and-file-uris/">Ajax and file&#58;// URIs</a></li>
+                
+                    <li><a href="/2012/08/copyright/">Copyright</a></li>
+                
+                    <li><a href="/2012/08/static-site-generators/">Static Site Generators</a></li>
+                
+                    <li><a href="/2012/03/whatever-happened-to-osid/">Whatever Happened To Osid</a></li>
+                
+                    <li><a href="/2012/07/is-the-public-key-infrastructure-collapsing/">Is the Public Key Infrastructure Collapsing?</a></li>
+                
+                    <li><a href="/2012/03/im-fed-up-with-same--sex-marriage/">I'm Fed Up With Same-sex Marriage</a></li>
+                
+                </ul>
+            </nav>
+            
+
+            <nav class="cf layout-cell-l1">
+                <h4><img src="/images/icons/12.png" class="icon"/>Recent Posts</h4>
+                <ul>
+                
+                    <li><a href="/2012/09/processor-of-my-dreams/">The Processor of my Dreams</a></li>
+                
+                    <li><a href="/2012/09/operating-system-development/">Operating System Development</a></li>
+                
+                    <li><a href="/2012/08/multiple-representations/">Multiple Representations</a></li>
+                
+                    <li><a href="/2012/08/httprange-14-and-the-dark-resource/">httpRange-14 and the Dark Resource</a></li>
+                
+                    <li><a href="/2012/08/static-site-generators/">Static Site Generators</a></li>
+                
+                    <li><a href="/2012/08/XBMC/">Media Centre</a></li>
+                
+                    <li><a href="/2012/08/microdata-vs-rdfa/">Microdata vs RDFa</a></li>
+                
+                    <li><a href="/2012/08/copyright/">Copyright</a></li>
+                
+                </ul>
+            </nav>
+
+            <div class="cf layout-cell-r2">
+                <h4><img src="/images/icons/46.png" class="icon"/>About me</h4>
+                <img src="//lh4.googleusercontent.com/-sThPEpky3Eg/AAAAAAAAAAI/AAAAAAAAACg/Ncrk_nbS_5k/s512-c/photo.jpg" style="float: left; max-width: 80px; max-height: 80px; margin: 4px;"/>
+                <p style="float:right;"><a href="//plus.google.com/114540468191182808437?prsrc=3" rel="publisher" style="text-decoration:none;">
+            <img src="//ssl.gstatic.com/images/icons/gplus-32.png" alt="Google+" style="border:0;width:32px;height:32px;"/></a></p>
+                <p>I used to write code for a living, but since discovered that being a full time student is much more fun. Now studying for a masters in Mathematics, I fill my spare time with tinkering with computers and occasionally getting angry at the news - and write about both of those things here.</p>
+                
+            </div>
+
+        </div>
+        <div class="cf layout-row c-dark" id="l-advnavctl" data-widget="site/advnav" style="display: none;">
+            <div class="cf layout-cell-l3" id="l-advnavctl-ctrl">
+                <p id="advnavctl-show"><img src="/images/icons/24.png" class="cf llicon"/> Show me more things...</p>
+                <p id="advnavctl-hide" style="display:none"><img src="/images/icons/19.png" class="cf llicon"/> Hide this clutter</p>
+            </div>
+            <div class="cf layout-cell-r2" style="text-align: right" data-widget="site/expand">
+                <p><a href="mobile.html" title="Mobile view"><span class="expanding">Mobile view</span><img src="/images/icons/122.png" alt="Mobile view" class="cf rlicon expander"/></a></p>
+            </div>
+        </div>
+        
+    
+                <article vocab="http://schema.org/" typeof="http://schema.org/BlogPosting" about="">
+        <section class="cf layout-row odd">
+            <header class="cf layout-cell-l2">
+                <h1 property="headline" style="margin-bottom: 0;">httpRange-14 and the Dark Resource</h1>
+                
+                <p style="margin-bottom: 32px;"><span typeof="Breadcrumb"><a href="/archive">Blog</a> &#187; <span rel="child"><span typeof="Breadcrumb"><a href="/2012">2012</a> &#187; <span rel="child"><span typeof="Breadcrumb"><a href="/2012/08">August</a></span></span></span></span></span></p>
+                
+                <p><img src="/images/icons/12.png" class="cf rlicon" alt="Publication date - Wednesday 29 August, 2012"/> <time datetime="2012-08-29" property="datePublished">Wednesday 29 August, 2012</time></p>
+                
+                <p><img src="/images/icons/20.png" class="cf rlicon"/> <a property="keywords" href="http://twrl.github.com/tags/web-architecture">Web&nbsp;Architecture</a>, <a rel="http://commontag.org/ns#tagged" href="http://twrl.github.com/tags/semantic-web">Semantic&nbsp;Web</a>
+                <p><img src="/images/icons/46.png" class="cf rlicon"/> <a href="http://twrl.github.com/2012/08/httprange-14-and-the-dark-resource/#disqus_thread">Comments</a></p>
+                
+                
+                <div id="share-widget">
+
+    <!-- AddThis Button BEGIN -->
+        <div class="addthis_toolbox addthis_default_style">
+        <a class="addthis_button_google_plusone_share"><img src="/images/icons/social/google_plus.png"/></a>
+        <a class="addthis_button_facebook"><img src="/images/icons/social/facebook.png"/></a>
+        <a class="addthis_button_linkedin"><img src="/images/icons/social/linkedin.png"/></a>
+        <a class="addthis_button_twitter"><img src="/images/icons/social/twitter.png"/></a>
+        <a class="addthis_button_email"><img src="/images/icons/social/email.png"/></a>
+        <a class="addthis_button"><img src="/images/icons/112.png" style="width: 32px; height: 32px;"/></a>
+        <!--a class="addthis_counter addthis_bubble_style"></a-->
+        </div>
+        <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+        <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-5002f6cf1dbb4c0f"></script>
+        <!-- AddThis Button END -->
+
+</div>
+                
+            </header>
+            <div property="articleBody" class="cf layout-cell-l3 content">
+                <p>In web parlance, a resource is any identifiable thing. A resource need not have a digital representation, and the representation of a resource may also be a distinct resource in it&rsquo;s own right. There is a whole gamut of issues about resources, possibly the best known is <a href="http://www.w3.org/2001/tag/issues.html#httpRange-14">httpRange-14</a>. </p>
+
+<p>A lot of these questions only become important when you start getting involved with Semantic Web technology. For example, is this properly described as a web page or as a blog post?</p>
+
+<p>I hold to the convention that <code>http://twrl.github.com/2012/08/httprange-14-and-the-dark-resource/</code> is distinct from <code>http://twrl.github.com/2012/08/httprange-14-and-the-dark-resource/index.html</code>. They&rsquo;re related, very much so, but distinct. In particular</p>
+
+<pre><code>@base &lt;http://twrl.github.com/&gt;
+@prefix schema: &lt;http://schema.org/&gt;
+@prefix dc: &lt;http://purl.org/dc/terms/&gt;
+
+&lt;/2012/08/httprange-14-and-the-dark-resource&gt; a schema:BlogPost;
+	dc:hasFormat &lt;/2012/08/httprange-14-and-the-dark-resource/index.html&gt;.
+
+&lt;/2012/08/httprange-14-and-the-dark-resource/index.html&gt; a schema:WebPage.
+</code></pre>
+
+<p>From this point of view, there are a lot of &ldquo;missing&rdquo; resources out there - ones which are not described. Taking the view that the abstract resource and it&rsquo;s representation are distinct, people mostly seem to describe only one of the two.</p>
+
+<p>But why does this matter, you may say. Well, what a person wants to access is the abstract, logical resource. But what they need is it&rsquo;s representation, and given the variety of media through which we can access the web - smartphones, tablets, TVs, etc - they need the right representation. Having the correct semantics makes it possible to identify the best of many possible representations, as well as allowing better indexes.</p>
+
+            </div>
+        </section>
+        <section class="cf layout-row even">
+            <header class="cf layout-cell-l2">
+                <h2>Comments</h2>
+            </header>
+            <div class="cf layout-cell-l3">
+                        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'twrl'; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+            </div>
+        </section>
+        </article>
+        
+        <div id="l-colophon" class="cf layout-row">
+            <footer class="cf layout-cell-l5">
+                <p><a rel="license" href="http://creativecommons.org/licenses/by/2.0/uk/deed.en_GB"><img alt="Creative Commons Licence" style="border-width:0" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" /></a></p>
+                <p>Theme and content by <a xmlns:cc="http://creativecommons.org/ns#" href="http://twrl.github.com" property="cc:attributionName" rel="cc:attributionURL">Tom Robbins</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/2.0/uk/deed.en_GB">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a>.</p>
+        		<p>Icons are <a href="http://min.frexy.com/articles/category/milky/">Milky Icons by Frexy</a></p>
+        	</footer>
+        </div>
+    
+    </body>
+</html>

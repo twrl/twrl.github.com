@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+	<title>twrl - Media Centre</title>
+
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+	<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+
+	<link rel="stylesheet" href="/css/mobile.css" />
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.1/jquery.mobile.structure-1.1.1.min.css" />
+	<link rel="stylesheet" href="/css/code.css" />
+	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
+
+</head>
+<body>
+
+		<div data-role="page" data-add-back-btn="true" data-theme="f">
+		<div data-role="header">
+			<h1>Media Centre</h1>
+		</div>
+		<div data-role="content">
+
+			
+<p>I had an entertaining time at the weekend setting up <a href="http://xbmc.org">XBMC</a> on my laptop.
+It runs well enough on Ubuntu, and compiling the latest source was pretty easy (the 
+instructions are pretty good).</p>
+
+<p>I ran into a few problems. My CPU usage is a little on the high side. My laptop 
+being an ageing MacBook, so it&rsquo;s prone to run hot, and unnecessary CPU usage = unnecessary 
+fan noise. Getting Suspend and Wake-on-Lan to work reliably was also tricky.</p>
+
+<h2 id="cpu-usage">CPU Usage</h2>
+
+<p>The first thing to do is enable 
+<a href="http://wiki.xbmc.org/index.php?title=Dirty_regions">Dirty Regions</a>. Trial and error will 
+tell you which of the available algorithms gives you the best results on you hardware. For
+my Macbook (which has an Intel GMA 950 graphics chipset) I found mode 2 worked best, but
+YMMV.</p>
+
+<p>I also recommend disabling RSS feeds on the home screen, and trying a few different skins.
+Aeon skins tend to be heavy CPU eaters, although I found Aeon Nox to be better than the
+default Confluence skin.</p>
+
+<h2 id="suspend-and-wol">Suspend and WoL</h2>
+
+<p>I was having an issue with suspend, whether I triggered it from within XBMC or from the 
+Unity panel: the computer would enter suspend and then immediately wake itself. 
+It never did this if I just closed the lid and left it.</p>
+
+<p>The solution was to tweak a setting in grub.cfg. Find the line which sets <code>GRUB_CMDLINE_LINUX_DEFAULT</code>
+and add <code>usbcore.autosuspend=-1</code> to it. So it might read</p>
+
+<pre><code>GRUB_CMDLINE_LINUX_DEFAULT="quiet splash usbcore.autosuspend=-1"
+</code></pre>
+
+<p>or something similar.</p>
+
+<p>To enable Wake-on-LAN you need to first enable it in the BIOS, if applicable. I didn&rsquo;t have
+to - by some quirk of Apple&rsquo;s EFI implementation it seems to be supported anyway.</p>
+
+<p>I installed ethtool, and enabled WoL on the NIC using the command</p>
+
+<pre><code>sudo ethtool -s et0 wol g
+</code></pre>
+
+<p>This is all documented on the <a href="https://help.ubuntu.com/community/WakeOnLan">Ubuntu Community Docs</a>.
+The only trouble is, you have to do this every time the network interface comes up.</p>
+
+<p>Now, there are all sorts of issues around integration of ethtool and NetworkManager, which
+Ubuntu uses by default. I found that the best thing to do was to create a script in 
+<code>/etc/NetworkManager/dispatcher.d</code> to trigger ethtool. </p>
+
+<p>The dispatcher.d directory contains scripts which are executed every time an interface 
+changes state in NetworkManager. I simply created a file called <code>99wol</code> and put this in it.</p>
+
+<div><div class="CodeRay">
+  <div class="code"><pre><span class="line-numbers"> <a href="#n1" name="n1">1</a></span><span class="directive">#!/bin/sh</span>
+<span class="line-numbers"> <a href="#n2" name="n2">2</a></span>
+<span class="line-numbers"> <a href="#n3" name="n3">3</a></span><span class="instance-variable">IF</span>=<span class="predefined-constant">$1</span>
+<span class="line-numbers"> <a href="#n4" name="n4">4</a></span><span class="instance-variable">STATUS</span>=<span class="predefined-constant">$2</span>
+<span class="line-numbers"> <a href="#n5" name="n5">5</a></span>
+<span class="line-numbers"> <a href="#n6" name="n6">6</a></span><span class="reserved">if</span> <span class="reserved">[</span> <span class="string"><span class="delimiter">&quot;</span><span class="instance-variable">$IF</span><span class="delimiter">&quot;</span></span> = <span class="string"><span class="delimiter">&quot;</span><span class="content">eth0</span><span class="delimiter">&quot;</span></span> <span class="reserved">]</span> &amp;&amp; <span class="reserved">[</span> <span class="string"><span class="delimiter">&quot;</span><span class="instance-variable">$STATUS</span><span class="delimiter">&quot;</span></span> = <span class="string"><span class="delimiter">&quot;</span><span class="content">up</span><span class="delimiter">&quot;</span></span><span class="reserved">]</span><span class="delimiter">;</span> <span class="reserved">then</span>
+<span class="line-numbers"> <a href="#n7" name="n7">7</a></span>
+<span class="line-numbers"> <a href="#n8" name="n8">8</a></span>    ethtool -s eth0 wol g
+<span class="line-numbers"> <a href="#n9" name="n9">9</a></span>
+<span class="line-numbers"><strong><a href="#n10" name="n10">10</a></strong></span><span class="reserved">fi</span>
+</pre></div>
+</div>
+</div>
+
+<p>There is almost certainly some more sophisticated logic one could employ, but it does the
+job I need.</p>
+
+
+			<div data-role="collapsible" data-inset="true" data-content-theme="g">
+				<h3>About this post</h3>
+
+				<p>Published on <time pubdate>14 August, 2012</time></p>
+				<p>Tags: <a href="/tags/media/mobile.html">Media</a>, <a href="/tags/xmbc/mobile.html">XMBC</a></p>
+
+				<p><a href="/2012/08/XBMC//index.html">Desktop view</a></p>
+			</div> 
+			<div data-role="collapsible" data-inset="true" data-content-theme="g">
+				<h3>Comments</h3>
+
+				<script type="text/javascript">
+		    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+		    var disqus_shortname = 'twrl'; // required: replace example with your forum shortname
+			var disqus_identifier = '/2012/08/XBMC/';
+
+		    /* * * DON'T EDIT BELOW THIS LINE * * */
+		    (function() {
+		        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+		        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		    })();
+		</script>
+		<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+		<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>
