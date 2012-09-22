@@ -4,6 +4,9 @@ require.config({
     shim: {
         'http://www.google-analytics.com/ga.js': {
             exports: '_gaq'
+            },
+        'modernizr': {
+            exports: 'Modernizr'
             }
         },
     config: {
@@ -13,6 +16,8 @@ require.config({
         },
     waitSeconds:    15
 });
+
+// require(['view'], function () {});
 
 require(['site/ga'], function (ga) {
     

@@ -12,12 +12,19 @@
         <link href="/css/colour.css" rel="stylesheet" type="text/css"/>
         <link href="/css/code.css" rel="stylesheet" type="text/css"/>
         <link href="/css/typecue.css" rel="stylesheet" type="text/css"/>
+	<link href="/css/colorbox.css" rel="stylesheet" type="text/css"/>
         
         <link href="/atom.xml" rel="alternate" type="application/atom+xml"/>
         <link href="/index.rss" rel="alternate" type="application/rss+xml"/>
+
+	<link rel="alternate" href="./index.html" id="desktop" media="only screen"/>
+        <link rel="alternate" href="./mobile.html" id="phone" media="only screen and (max-device-width: 640px)"/>
+	<link rel="canonical" href="http://twrl.github.com/tags/microdata/index.html"/>
+
         
         
-        
+	<meta name="viewport" content="width=device-width"/>
+
         <!-- typography -->
         <style type="text/css">
         body {
@@ -64,6 +71,8 @@
                 
                 <p><a href="/archive/">Archive</a></p>
                 
+
+		<p data-widget="site/expand" style="float:right; text-align: right"><a href="mobile.html" title="Mobile view"><span class="expanding">Mobile</span><img src="/images/icons/mobile.png" alt="Mobile view" class="cf rlicon expander" style="height: 20px; max-width: 20px;"/></a></p>
                 
                 
             
@@ -88,12 +97,9 @@
 
         </div>
         <div class="cf layout-row c-dark" id="l-advnavctl" data-widget="site/advnav" style="display: none;">
-            <div class="cf layout-cell-l3" id="l-advnavctl-ctrl">
+            <div class="cf layout-cell-l5" id="l-advnavctl-ctrl">
                 <p id="advnavctl-show"><img src="/images/icons/24.png" class="cf llicon"/> Show me more things...</p>
                 <p id="advnavctl-hide" style="display:none"><img src="/images/icons/19.png" class="cf llicon"/> Hide this clutter</p>
-            </div>
-            <div class="cf layout-cell-r2" style="text-align: right" data-widget="site/expand">
-                <p><a href="mobile.html" title="Mobile view"><span class="expanding">Mobile view</span><img src="/images/icons/122.png" alt="Mobile view" class="cf rlicon expander"/></a></p>
             </div>
         </div>
         

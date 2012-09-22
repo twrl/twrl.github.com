@@ -4,7 +4,7 @@
   <title>twrl</title>
   <link href="http://twrl.github.com"/>
   <link type="application/atom+xml" rel="self" href="http://twrl.github.com/atom.xml"/>
-  <updated>2012-09-22T15:27:51+01:00</updated>
+  <updated>2012-09-22T20:37:58+01:00</updated>
   <id>http://twrl.github.com</id>
   <author>
     <name>Tom Robbins</name>
@@ -146,8 +146,8 @@ simply.&lt;/p&gt;
 
 &lt;p&gt;I&amp;rsquo;ve been thinking about the relationship between resources and their
 representations. I wrote recently about the difference an &lt;code&gt;/index.html&lt;/code&gt; makes.
-So I just wrote another theme, because I&amp;rsquo;m using a fork of [Cimino]
-(https://github.com/josegonzalez/cimino) and themes are pretty easy, and I merge
+So I just wrote another theme, because I&amp;rsquo;m using a fork of &lt;a href=&quot;https://github.com/josegonzalez/cimino&quot;&gt;Cimino&lt;/a&gt;
+and themes are pretty easy, and I merge
 files in each view of the site with the command&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;rename s/index/mobile/ `find _site -name *.html`

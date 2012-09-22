@@ -1,3 +1,16 @@
+/* Smartphones ----------- */
+@media only screen and (max-width: 760px) {
+  #mobihinter { display: none; }
+}
+
+#mobihinter {
+	position: absolute;
+	bottom: 0;
+	height: 1px;
+	width: 100%;
+	background-color: #404040;
+}
+
 .cf::before { 
     content: ""; 
     display: table; 
@@ -21,20 +34,20 @@
 
 
 .icon {
-    width: 16px;
+    max-width: 16px;
     height: 16px;
     margin: 0 1ex;
 }
 
 .rlicon {
-    width: 16px;
+    max-width: 16px;
     height: 16px;
     margin: 0 1ex;
     float: right;
     }
 
 .llicon {
-    width: 16px;
+    max-width: 16px;
     height: 16px;
     margin: 0 1ex;
     float: left;
