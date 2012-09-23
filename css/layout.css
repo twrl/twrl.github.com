@@ -146,6 +146,16 @@ article .addthis_toolbox {
     min-width: 156px;
     }
 
+#l-article-toc {
+    float: right;
+    text-align: left;
+}
+
+article > header > p span.info {
+    float: right;
+    display: block;
+    max-width: 90%;
+}
 
 body {
     margin: 0;

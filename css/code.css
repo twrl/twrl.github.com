@@ -1,9 +1,9 @@
 .CodeRay {
-  background-color: #FFF;
+  background-color: #202020;
   border: 1px solid #CCC;
   font-family: 'Droid Sans Mono', Monaco, "Courier New", monospace;
   font-size: 9pt;
-  color: #000;
+  color: #ffffff;
   padding: 1em 0px 1em 1em;
 }
 
@@ -11,7 +11,11 @@
   margin: 0px;
 }
 
-div.CodeRay { }
+div.CodeRay { 
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
 span.CodeRay { white-space: pre; border: 0px; padding: 2px }
 
 table.CodeRay { border-collapse: collapse; width: 100%; padding: 2px }
@@ -21,13 +25,15 @@ table.CodeRay td {
 }
 
 .CodeRay .line-numbers, .CodeRay .no {
-  background-color: #ECECEC;
-  color: #AAA;
+  background-color: #202020;
+  color: #C0C0C0;
+  border-right: 1px solid #404040;
+  margin-right: 0.5em;
   text-align: right;
 }
 
 .CodeRay .line-numbers a {
-  color: #AAA;
+  color: #cococo;
 }
 
 .CodeRay .line-numbers tt { font-weight: bold }
@@ -50,7 +56,7 @@ ol.CodeRay li { white-space: pre }
 .CodeRay .char { color:#04D }
 .CodeRay .char .content { color:#04D }
 .CodeRay .char .delimiter { color:#039 }
-.CodeRay .class { color:#458; font-weight:bold }
+.CodeRay .class { color:lawngreen; font-weight:bold }
 .CodeRay .complex { color:#A08; font-weight:bold }
 .CodeRay .constant { color:teal; }
 .CodeRay .color { color:#0A0 }
@@ -68,9 +74,9 @@ ol.CodeRay li { white-space: pre }
 .CodeRay .exception { color:#C00; font-weight:bold }
 .CodeRay .filename { color:#099; }
 .CodeRay .function { color:#900; font-weight:bold }
-.CodeRay .global-variable { color:teal; font-weight:bold }
-.CodeRay .hex { color:#058; font-weight:bold }
-.CodeRay .integer  { color:#099; }
+.CodeRay .global-variable { color:#963 ; font-weight:bold }
+.CodeRay .hex { color:mediumorchid; }
+.CodeRay .integer  { color:mediumorchid; }
 .CodeRay .include { color:#B44; font-weight:bold }
 .CodeRay .inline { color: black }
 .CodeRay .inline .inline { background: #ccc }
@@ -82,14 +88,14 @@ ol.CodeRay li { white-space: pre }
 .CodeRay .instance-variable { color:teal }
 .CodeRay .label { color:#970; font-weight:bold }
 .CodeRay .local-variable { color:#963 }
-.CodeRay .octal { color:#40E; font-weight:bold }
+.CodeRay .octal { color:mediumorchid; font-weight:bold }
 .CodeRay .operator { }
 .CodeRay .predefined-constant {  font-weight:bold }
-.CodeRay .predefined { color:#369; font-weight:bold }
+.CodeRay .predefined { color:#963 ; font-weight:bold }
 .CodeRay .preprocessor { color:#579; }
-.CodeRay .pseudo-class { color:#00C; font-weight:bold }
+.CodeRay .pseudo-class { color:lawngreen; font-weight:bold }
 .CodeRay .predefined-type { color:#074; font-weight:bold }
-.CodeRay .reserved, .keyword  { color:#000; font-weight:bold }
+.CodeRay .reserved, .keyword  { color:dodgerblue; font-weight:bold }
 
 .CodeRay .key { color: #808; }
 .CodeRay .key .delimiter { color: #606; }
