@@ -12,14 +12,14 @@
         <link href="/css/colour.css" rel="stylesheet" type="text/css"/>
         <link href="/css/code.css" rel="stylesheet" type="text/css"/>
         <link href="/css/typecue.css" rel="stylesheet" type="text/css"/>
-	<link href="/css/colorbox.css" rel="stylesheet" type="text/css"/>
+	    <link href="/css/colorbox.css" rel="stylesheet" type="text/css"/>
         
         <link href="/atom.xml" rel="alternate" type="application/atom+xml"/>
         <link href="/index.rss" rel="alternate" type="application/rss+xml"/>
 
-	<link rel="alternate" href="./index.html" id="desktop" media="only screen"/>
+	    <link rel="alternate" href="./index.html" id="desktop" media="only screen"/>
         <link rel="alternate" href="./mobile.html" id="phone" media="only screen and (max-device-width: 640px)"/>
-	<link rel="canonical" href="http://twrl.github.com/tags/commonjs/index.html"/>
+	    <link rel="canonical" href="http://twrl.github.com/tags/commonjs/index.html"/>
 
         
         
@@ -51,11 +51,22 @@
             (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
         }());
         </script>
-        
+
+        <script>
+          (function() {
+            var cx = '011691644366972436714:mfxko1ksw0i';
+            var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true;
+            gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                '//www.google.com/cse/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s);
+          })();
+        </script>
         
     </head>
     <body>
     
+        <div class="cf layout-row c-dark" id="l-fauxhead">&nbsp;</div>
+
         <div id="l-head" class="cf layout-row c-dark">
             <header id="l-head-title" class="cf layout-cell-l2">
                 <h1>twrl</h1>
@@ -72,12 +83,15 @@
                 <p><a href="/archive/">Archive</a></p>
                 
 
-		<p data-widget="site/expand" style="float:right; text-align: right"><a href="mobile.html" title="Mobile view"><span class="expanding">Mobile</span><img src="/images/icons/mobile.png" alt="Mobile view" class="cf rlicon expander" style="height: 20px; max-width: 20px;"/></a></p>
+                <p data-widget="site/expand" style="float:right; text-align: right"><a href="mobile.html" title="Mobile view"><span class="expanding">Mobile</span><img src="/images/icons/mobile.png" alt="Mobile view" class="cf rlicon expander" style="height: 20px; max-width: 20px;"/></a></p>
                 
                 
             
             </nav>
         </div>
+
+
+
         
         <div class="cf layout-row c-dark" id="l-advnav">
                         <nav id="l-advnav-tags" class="cf layout-cell-l1" data-widget="site/tags">
@@ -88,10 +102,15 @@
 
             <div class="cf layout-cell-r2">
                 <h4><img src="/images/icons/46.png" class="icon"/>About me</h4>
-                <img src="//lh4.googleusercontent.com/-sThPEpky3Eg/AAAAAAAAAAI/AAAAAAAAACg/Ncrk_nbS_5k/s512-c/photo.jpg" style="float: left; max-width: 80px; max-height: 80px; margin: 4px;"/>
-                <p style="float:right;"><a href="//plus.google.com/114540468191182808437?prsrc=3" rel="publisher" style="text-decoration:none;">
-            <img src="//ssl.gstatic.com/images/icons/gplus-32.png" alt="Google+" style="border:0;width:32px;height:32px;"/></a></p>
+                <img src="//lh4.googleusercontent.com/-sThPEpky3Eg/AAAAAAAAAAI/AAAAAAAAACg/Ncrk_nbS_5k/s512-c/photo.jpg" style="float: right; max-width: 80px; max-height: 80px; margin: 1ex 1em;"/>
                 <p>I used to write code for a living, but since discovered that being a full time student is much more fun. Now studying for a masters in Mathematics, I fill my spare time with tinkering with computers and occasionally getting angry at the news - and write about both of those things here.</p>
+
+                <h4><img src="/images/icons/16.png" class="icon"/>Search</h4>
+                <!--form method="get" action="/search.html">
+                    <input type="text" name="q"/>
+                    <input type="submit" value="Search"/>
+                </form-->
+                <gcse:searchbox-only></gcse:searchbox-only>
                 
             </div>
 
