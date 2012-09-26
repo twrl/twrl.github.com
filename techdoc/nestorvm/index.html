@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>twrl - Nestor VM</title>
+        
+        <meta charset="UTF-8"/>
+        <meta name="google-site-verification" content="m1FBHjRwb73L9re4eVRIILTFytDvEedTsaAHvlQKYi0" />
+        
+        <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Droid+Sans+Mono' rel='stylesheet' type='text/css'/>
+        
+        <link href="/css/layout.css" rel="stylesheet" type="text/css"/>
+        <link href="/css/colour.css" rel="stylesheet" type="text/css"/>
+        <link href="/css/code.css" rel="stylesheet" type="text/css"/>
+        <link href="/css/typecue.css" rel="stylesheet" type="text/css"/>
+	    <link href="/css/colorbox.css" rel="stylesheet" type="text/css"/>
+        
+        <link href="/atom.xml" rel="alternate" type="application/atom+xml"/>
+        <link href="/index.rss" rel="alternate" type="application/rss+xml"/>
+
+	    <link rel="alternate" href="./index.html" id="desktop" media="only screen"/>
+        <link rel="alternate" href="./mobile.html" id="phone" media="only screen and (max-device-width: 640px)"/>
+	    <link rel="canonical" href="http://twrl.github.com/techdoc/nestorvm/index.html"/>
+
+        
+        
+	<meta name="viewport" content="width=640px"/>
+
+        <!-- typography -->
+        <style type="text/css">
+        body {
+            font-family: "Droid Sans", sans-serif;
+        }
+        pre {
+            font-family: "Droid Sans Mono", monospace;
+        }
+        </style>
+        
+        
+        <script type="application/javascript" src="/js/require.js" data-main="/js/main"></script>
+        
+        
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'twrl'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script'); s.defer = true;
+            s.type = 'text/javascript';
+            s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+        </script>
+
+        <script>
+          (function() {
+            var cx = '011691644366972436714:mfxko1ksw0i';
+            var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true;
+            gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                '//www.google.com/cse/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s);
+          })();
+        </script>
+        
+    </head>
+    <body>
+
+        <div id="l-head" class="cf layout-row c-dark">
+            <header id="l-head-title" class="cf layout-cell-l2">
+                <h1>twrl</h1>
+            </header>
+            <nav id="l-head-nav" class="cf layout-cell-l3">
+            
+                
+                <p><a href="/">Home</a></p>
+                
+                
+                
+                <p><a href="/about/">About</a></p>
+                
+
+                
+            
+                
+                <p><a href="/archive/">Archive</a></p>
+                
+
+                <p data-widget="site/expand" style="float:right; text-align: right"><a href="mobile.html" title="Mobile view"><span class="expanding">Mobile</span><img src="/images/icons/mobile.png" alt="Mobile view" class="cf rlicon expander" style="height: 20px; max-width: 20px;"/></a></p>
+                
+                
+            
+            </nav>
+        </div>
+
+	<div id="viewport">
+
+        
+        <div class="cf layout-row c-dark" id="l-advnav">
+                        <div class="cf layout-cell-r2">
+                <h4><img src="/images/icons/46.png" class="icon"/>About me</h4>
+                <img src="//lh4.googleusercontent.com/-sThPEpky3Eg/AAAAAAAAAAI/AAAAAAAAACg/Ncrk_nbS_5k/s512-c/photo.jpg" style="float: right; max-width: 80px; max-height: 80px; margin: 1ex 1em;"/>
+                <p>I used to write code for a living, but since discovered that being a full time student is much more fun. Now studying for a masters in Mathematics, I fill my spare time with tinkering with computers and occasionally getting angry at the news - and write about both of those things here.</p>
+
+                <h4><img src="/images/icons/16.png" class="icon"/>Search</h4>
+                <gcse:searchbox-only></gcse:searchbox-only>
+                
+            </div>
+
+
+        </div>
+        <div class="cf layout-row c-dark" id="l-advnavctl" data-widget="site/advnav" style="display: none;">
+            <div class="cf layout-cell-l5" id="l-advnavctl-ctrl">
+                <p id="advnavctl-show"><img src="/images/icons/24.png" class="cf llicon"/> Show me more things...</p>
+                <p id="advnavctl-hide" style="display:none"><img src="/images/icons/19.png" class="cf llicon"/> Hide this clutter</p>
+            </div>
+        </div>
+        
+    
+                <article about="/techdoc/nestorvm/index.html">
+        <section class="cf layout-row odd">
+            <header class="cf layout-cell-l2">
+                <h1>Nestor VM</h1>
+
+                <p style="margin-bottom: 32px;"><span typeof="Breadcrumb"><a href="/techdoc">Technical Documents</a></span></p>
+
+                <p>Describes the virtual machines for Nestor.</p>
+
+                
+                <nav id="l-article-toc" data-widget="site/toc"></nav>
+
+                <div id="share-widget">
+
+    <!-- AddThis Button BEGIN -->
+        <div class="addthis_toolbox addthis_default_style">
+        <a class="addthis_button_google_plusone_share"><img src="/images/icons/social/google_plus.png"/></a>
+        <a class="addthis_button_facebook"><img src="/images/icons/social/facebook.png"/></a>
+        <a class="addthis_button_linkedin"><img src="/images/icons/social/linkedin.png"/></a>
+        <a class="addthis_button_twitter"><img src="/images/icons/social/twitter.png"/></a>
+        <a class="addthis_button_email"><img src="/images/icons/social/email.png"/></a>
+        <a class="addthis_button"><img src="/images/icons/112.png"/></a>
+        <!--a class="addthis_counter addthis_bubble_style"></a-->
+        </div>
+        <script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script>
+        <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-5002f6cf1dbb4c0f"></script>
+        <!-- AddThis Button END -->
+
+</div>
+
+            </header>
+            <div class="cf layout-cell-l3 content">
+                <ul id="markdown-toc">
+  <li><a href="#introduction">Introduction</a></li>
+  <li><a href="#file-format">File format</a>    <ul>
+      <li><a href="#images-for-use-with-an-external-runtime">Images for use with an external runtime</a></li>
+      <li><a href="#freestanding-images">Freestanding images</a></li>
+    </ul>
+  </li>
+  <li><a href="#metadata">Metadata</a></li>
+  <li><a href="#bytecode-reference">Bytecode Reference</a>    <ul>
+      <li><a href="#operands">Operands</a></li>
+      <li><a href="#arithemetic-addition">Arithemetic Addition</a></li>
+      <li><a href="#arithmetic-subtract">Arithmetic Subtract</a></li>
+      <li><a href="#arithmetic-multiply">Arithmetic Multiply</a></li>
+      <li><a href="#arithmetic-divide">Arithmetic Divide</a></li>
+      <li><a href="#arithmetic-modulo">Arithmetic Modulo</a></li>
+      <li><a href="#bitwise-operations">Bitwise Operations</a></li>
+      <li><a href="#transactional-memory-access">Transactional Memory Access</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>This document describes the virtual machine target for Nestor.</p>
+
+<h2 id="file-format">File format</h2>
+
+<p>Nestor virtual machine images may be stored in any executable format which
+supports custom sections. The ELF64 format is assumed in this specification. 
+Implementations should support loading from ELF64 in addition to any other
+executable format, such as PE or COFF. Bytecode is stored in a section named 
+<code>.nestext</code>, metadata in <code>.nesmeta</code>, and managed data in <code>.nesdata</code>.</p>
+
+<p>The <code>.nestext</code> and <code>.nesmeta</code> sections should set the flags 
+<code>progbits alloc noexec nowrite</code> or equivalent. The <code>.nesdata</code> section should set 
+the flags <code>progbits alloc noexec write</code> or equivalent.</p>
+
+<h3 id="images-for-use-with-an-external-runtime">Images for use with an external runtime</h3>
+
+<p>Images intended for use with an external runtime should specify that runtime in
+the <code>.interp</code> section. The <code>.text</code> section should be empty, or contain a 
+suitable implementation-defined stub.</p>
+
+<h3 id="freestanding-images">Freestanding images</h3>
+
+<p>Freestanding images should embed their runtime components in the <code>.text</code> section
+as normal. The contents of the <code>.interp</code> and other sections are defined by the
+runtime implementation and host platform (if any).</p>
+
+<h2 id="metadata">Metadata</h2>
+
+<p>Nestor stores metadata in the <code>.nesmeta</code> section of an executable image.</p>
+
+<h2 id="bytecode-reference">Bytecode Reference</h2>
+
+<h3 id="operands">Operands</h3>
+
+<p>Operands, both on stack and inline, are represented by the following codes.
+These codes by be suffixed, where appropariate with a size in bits (i.e. u32 
+for 32-bit unsigned integer).</p>
+
+<p>All operands are physically stored in a 128-bit little-endian representation. 
+Shorter operands are zero extended.</p>
+
+<dl>
+  <dt><em>i</em></dt>
+  <dd>128-bit twos-complement signed integer</dd>
+  <dt><em>u</em></dt>
+  <dd>128-bit unsigned integer</dd>
+  <dt><em>f</em></dt>
+  <dd>128-bit IEEE 754 quadruple precision floating point number</dd>
+  <dt><em>x</em></dt>
+  <dd>Any primitive value</dd>
+  <dt><em>t</em></dt>
+  <dd>Transactional handle</dd>
+  <dt><em>r</em></dt>
+  <dd>Managed reference</dd>
+  <dt><em>v</em></dt>
+  <dd>Local variable</dd>
+  <dt><em>s</em></dt>
+  <dd>Stringtable reference</dd>
+  <dt><em>g</em></dt>
+  <dd>UUID</dd>
+</dl>
+
+<table>
+  <tbody>
+    <tr>
+      <td>nop</td>
+      <td>Nop</td>
+      <td>10</td>
+      <td>.. -&gt; ..</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <td>push</td>
+      <td>Push immediate</td>
+      <td>11 <em>x</em></td>
+      <td>.. -&gt; x</td>
+    </tr>
+    <tr>
+      <td>pop</td>
+      <td>Pop (discard)</td>
+      <td>12</td>
+      <td>x -&gt; ..</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="arithemetic-addition">Arithemetic Addition</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: right">Mnemonic</th>
+      <th style="text-align: left">Description</th>
+      <th style="text-align: left">Bytecode</th>
+      <th style="text-align: left">Stack</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: right">add.i</td>
+      <td style="text-align: left">Sigend integer add</td>
+      <td style="text-align: left">18</td>
+      <td style="text-align: left">i, i -&gt; i</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">add.ib</td>
+      <td style="text-align: left">Bound signed integer add</td>
+      <td style="text-align: left">19 <em>i</em></td>
+      <td style="text-align: left">i -&gt; i</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">add.f</td>
+      <td style="text-align: left">Floating-point Add</td>
+      <td style="text-align: left">1A</td>
+      <td style="text-align: left">f, f -&gt; f</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">add.fb</td>
+      <td style="text-align: left">Bound floating-point add</td>
+      <td style="text-align: left">1B <em>f</em></td>
+      <td style="text-align: left">f -&gt; f</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">add.u</td>
+      <td style="text-align: left">Unsigned integer add</td>
+      <td style="text-align: left">1C</td>
+      <td style="text-align: left">u, u -&gt; u</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">add.ub</td>
+      <td style="text-align: left">Bound unsigned integer add</td>
+      <td style="text-align: left">1D <em>u</em></td>
+      <td style="text-align: left">u -&gt; u</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Signed, unsigned or floating point arithmetic addition. The bound variants of 
+each opcode take one immediate operand and one from the stack.</p>
+
+<h3 id="arithmetic-subtract">Arithmetic Subtract</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: right">Mnemonic</th>
+      <th style="text-align: left">Description</th>
+      <th style="text-align: left">Bytecode</th>
+      <th style="text-align: left">Stack</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: right">sub.i</td>
+      <td style="text-align: left">Signed integer subtract</td>
+      <td style="text-align: left">20</td>
+      <td style="text-align: left">i, i -&gt; i</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">sub.ib</td>
+      <td style="text-align: left">Bound signed integer subtract</td>
+      <td style="text-align: left">21 <em>i</em></td>
+      <td style="text-align: left">i -&gt; i</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">sub.f</td>
+      <td style="text-align: left">Floating-point subtract</td>
+      <td style="text-align: left">22</td>
+      <td style="text-align: left">f, f -&gt; f</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">sub.fb</td>
+      <td style="text-align: left">Bound floating-point subtract</td>
+      <td style="text-align: left">23 <em>f</em></td>
+      <td style="text-align: left">f -&gt; f</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">sub.u</td>
+      <td style="text-align: left">Unsigned integer subtract</td>
+      <td style="text-align: left">24</td>
+      <td style="text-align: left">u, u -&gt; u</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">sub.ub</td>
+      <td style="text-align: left">Bound unsigned integer subtract</td>
+      <td style="text-align: left">25 <em>u</em></td>
+      <td style="text-align: left">u -&gt; u</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Signed, unsigned or floating point arithmetic subtraction. The bound variants of 
+each opcode take the immediate operand as the subtrahend and the stack operand 
+as minuend.</p>
+
+<h3 id="arithmetic-multiply">Arithmetic Multiply</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: right">Mnemonic</th>
+      <th style="text-align: left">Description</th>
+      <th style="text-align: left">Bytecode</th>
+      <th style="text-align: left">Stack</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: right">mul.i</td>
+      <td style="text-align: left">Signed integer multiply</td>
+      <td style="text-align: left">28</td>
+      <td style="text-align: left">i, i -&gt; i</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">mul.ib</td>
+      <td style="text-align: left">Bound signed integer multiply</td>
+      <td style="text-align: left">29 <em>i</em></td>
+      <td style="text-align: left">i -&gt; i</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">mul.f</td>
+      <td style="text-align: left">Floating-point multiply</td>
+      <td style="text-align: left">2A</td>
+      <td style="text-align: left">f, f -&gt; f</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">mul.fb</td>
+      <td style="text-align: left">Bound floating-point multiply</td>
+      <td style="text-align: left">2B <em>f</em></td>
+      <td style="text-align: left">f -&gt; f</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">mul.u</td>
+      <td style="text-align: left">Unsigned integer multiply</td>
+      <td style="text-align: left">2C</td>
+      <td style="text-align: left">u, u -&gt; u</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">mul.ub</td>
+      <td style="text-align: left">Bound unsigned integer multiply</td>
+      <td style="text-align: left">2D <em>u</em></td>
+      <td style="text-align: left">u -&gt; u</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Signed, unsigned or floating point arithmetic multiplication. The bound variants 
+of each opcode take one immediate operand and one from the stack.</p>
+
+<h3 id="arithmetic-divide">Arithmetic Divide</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: right">Mnemonic</th>
+      <th style="text-align: left">Description</th>
+      <th style="text-align: left">Bytecode</th>
+      <th style="text-align: left">Stack</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: right">div.i</td>
+      <td style="text-align: left">Signed integer divide</td>
+      <td style="text-align: left">30</td>
+      <td style="text-align: left">i, i -&gt; i</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">div.ib</td>
+      <td style="text-align: left">Bound signed integer divide</td>
+      <td style="text-align: left">31 <em>i</em></td>
+      <td style="text-align: left">i -&gt; i</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">div.f</td>
+      <td style="text-align: left">Floating-point divide</td>
+      <td style="text-align: left">32</td>
+      <td style="text-align: left">f, f -&gt; f</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">div.fb</td>
+      <td style="text-align: left">Bound floating-point divide</td>
+      <td style="text-align: left">33 <em>f</em></td>
+      <td style="text-align: left">f -&gt; f</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">div.u</td>
+      <td style="text-align: left">Unsigned integer divide</td>
+      <td style="text-align: left">34</td>
+      <td style="text-align: left">u, u -&gt; u</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">div.ub</td>
+      <td style="text-align: left">Bound unsigned integer divide</td>
+      <td style="text-align: left">35 <em>u</em></td>
+      <td style="text-align: left">u -&gt; u</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">div.if</td>
+      <td style="text-align: left">Signed integer to float divide</td>
+      <td style="text-align: left">36</td>
+      <td style="text-align: left">i, i -&gt; f</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Signed, unsigned or floating point arithmetic division. The bound variants of 
+each opcode take the immediate operand as the divisor and the stack operand as 
+dividend.</p>
+
+<p>The div.i, div.ib, div.u, and div.ub instructions truncate their result.</p>
+
+<h3 id="arithmetic-modulo">Arithmetic Modulo</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: right">Mnemonic</th>
+      <th style="text-align: left">Description</th>
+      <th style="text-align: left">Bytecode</th>
+      <th style="text-align: left">Stack</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: right">mod.i</td>
+      <td style="text-align: left">Signed integer modulo</td>
+      <td style="text-align: left">38</td>
+      <td style="text-align: left">i, i -&gt; i</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">mod.ib</td>
+      <td style="text-align: left">Bound signed integer modulo</td>
+      <td style="text-align: left">39 <em>i</em></td>
+      <td style="text-align: left">i -&gt; i</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">mod.f</td>
+      <td style="text-align: left">Floating-point modulo</td>
+      <td style="text-align: left">3A</td>
+      <td style="text-align: left">f, f -&gt; f</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">mod.fb</td>
+      <td style="text-align: left">Bound floating-point modulo</td>
+      <td style="text-align: left">3B <em>f</em></td>
+      <td style="text-align: left">f -&gt; f</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">mod.u</td>
+      <td style="text-align: left">Unsigned integer modulo</td>
+      <td style="text-align: left">3C</td>
+      <td style="text-align: left">u, u -&gt; u</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">mod.ub</td>
+      <td style="text-align: left">Bound unsigned integer modulo</td>
+      <td style="text-align: left">3D <em>u</em></td>
+      <td style="text-align: left">u -&gt; u</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Signed, unsigned or floating point arithemtic remainder. The bound variants of 
+each opcode take the immediate operand as the divisor and the stack operand as 
+dividend.</p>
+
+<h3 id="bitwise-operations">Bitwise Operations</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: right">Mnemonic</th>
+      <th style="text-align: left">Description</th>
+      <th style="text-align: left">Bytecode</th>
+      <th style="text-align: left">Stack</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: right">sh</td>
+      <td style="text-align: left">Left shift</td>
+      <td style="text-align: left">40</td>
+      <td style="text-align: left">x, i -&gt; x</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">sh.b</td>
+      <td style="text-align: left">Bound left shift</td>
+      <td style="text-align: left">41 <em>i</em></td>
+      <td style="text-align: left">x -&gt; x</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">and</td>
+      <td style="text-align: left">Bitwise AND</td>
+      <td style="text-align: left">42</td>
+      <td style="text-align: left">x, x -&gt; x</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">or</td>
+      <td style="text-align: left">Bitwise OR</td>
+      <td style="text-align: left">43</td>
+      <td style="text-align: left">x, x -&gt; x</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">xor</td>
+      <td style="text-align: left">Bitwise XOR</td>
+      <td style="text-align: left">44</td>
+      <td style="text-align: left">x, x -&gt; x</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">not</td>
+      <td style="text-align: left">Bitwise NOT</td>
+      <td style="text-align: left">45</td>
+      <td style="text-align: left">x -&gt; x</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">setbit</td>
+      <td style="text-align: left">Set bit</td>
+      <td style="text-align: left">46 <em>u</em></td>
+      <td style="text-align: left">x -&gt; x</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">unsetbit</td>
+      <td style="text-align: left">Unset bit</td>
+      <td style="text-align: left">47 <em>u</em></td>
+      <td style="text-align: left">x -&gt; x</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="transactional-memory-access">Transactional Memory Access</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: right">Mnemonic</th>
+      <th style="text-align: left">Description</th>
+      <th style="text-align: left">Bytecode</th>
+      <th style="text-align: left">Stack</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: right">tbegin</td>
+      <td style="text-align: left">Begin memory transaction</td>
+      <td style="text-align: left">A0 <em>u</em></td>
+      <td style="text-align: left">u -&gt; t</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">tcommit</td>
+      <td style="text-align: left">Commit memory transactional</td>
+      <td style="text-align: left">A1</td>
+      <td style="text-align: left">t -&gt; s</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">tabort</td>
+      <td style="text-align: left">Abort memory transaction</td>
+      <td style="text-align: left">A2</td>
+      <td style="text-align: left">t -&gt; s</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">tcompose</td>
+      <td style="text-align: left">Compose memory transactions</td>
+      <td style="text-align: left">A3</td>
+      <td style="text-align: left">t, t -&gt; t</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">tput8</td>
+      <td style="text-align: left">Store byte</td>
+      <td style="text-align: left">A8 <em>u</em></td>
+      <td style="text-align: left">t, x -&gt; t</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">tput16</td>
+      <td style="text-align: left">Store word</td>
+      <td style="text-align: left">A9 <em>u</em></td>
+      <td style="text-align: left">t, x -&gt; t</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">tput32</td>
+      <td style="text-align: left">Store dword</td>
+      <td style="text-align: left">AA <em>u</em></td>
+      <td style="text-align: left">t, x -&gt; t</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">tput64</td>
+      <td style="text-align: left">Store qword</td>
+      <td style="text-align: left">AB <em>u</em></td>
+      <td style="text-align: left">t, x -&gt; t</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">tget8</td>
+      <td style="text-align: left">Load byte</td>
+      <td style="text-align: left">AC <em>v</em></td>
+      <td style="text-align: left">t, u -&gt; t</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">tget16</td>
+      <td style="text-align: left">Load word</td>
+      <td style="text-align: left">AD <em>v</em></td>
+      <td style="text-align: left">t, u -&gt; t</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">tget32</td>
+      <td style="text-align: left">Load dword</td>
+      <td style="text-align: left">AE <em>v</em></td>
+      <td style="text-align: left">t, u -&gt; t</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">tget64</td>
+      <td style="text-align: left">Load qword</td>
+      <td style="text-align: left">AF <em>v</em></td>
+      <td style="text-align: left">t, u -&gt; t</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Transactional access to unmanaged memory.</p>
+
+<p>The <code>tbegin</code> instruction pushes a transactional smart pointer with base
+given by the stack operand and extent given inline. The transaction is built up 
+using tput and tget instructions. </p>
+
+<p>Example: print the characters &ldquo;:)&rdquo; to EGA buffer</p>
+
+<pre><code>	push 0B8000h
+	tbegin 0FA0h
+	push 3Ah // ':'
+	tput8 0
+	push 07h
+	tput8 1
+	push 29h // ')'
+	tput8 2
+	push 07h
+	tput8 3
+	tcommit
+</code></pre>
+
+
+            </div>
+        </section>
+        <section class="cf layout-row even">
+            <header class="cf layout-cell-l2">
+                <h2>Comments</h2>
+            </header>
+            <div class="cf layout-cell-l3">
+                        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'twrl'; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+            </div>
+        </section>
+        </article>
+        
+        <div id="l-colophon" class="cf layout-row">
+            <footer class="cf layout-cell-l5">
+                <p><a rel="license" href="http://creativecommons.org/licenses/by/2.0/uk/deed.en_GB"><img alt="Creative Commons Licence" style="border-width:0" src="http://i.creativecommons.org/l/by/2.0/uk/80x15.png" /></a></p>
+                <p>Theme and content by <a xmlns:cc="http://creativecommons.org/ns#" href="http://twrl.github.com" property="cc:attributionName" rel="cc:attributionURL">Tom Robbins</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/2.0/uk/deed.en_GB">Creative Commons Attribution 2.0 UK: England &amp; Wales License</a>.</p>
+        		<p>Icons are <a href="http://min.frexy.com/articles/category/milky/">Milky Icons by Frexy</a></p>
+        	</footer>
+        </div>
+
+	</div>
+    
+	<div id="scrollbar" data-widget="site/scroll"><div id="s-track"><div id="s-thumb"></div></div></div>
+
+    </body>
+</html>

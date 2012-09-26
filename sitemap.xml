@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
+      <loc>http://twrl.github.com/2012/09/the-fsf-have-my-goat/</loc>
+      <lastmod>2012-09-26</lastmod>
+  </url>
+
+  <url>
       <loc>http://twrl.github.com/2012/09/processor-of-my-dreams/</loc>
       <lastmod>2012-09-21</lastmod>
   </url>
@@ -157,6 +162,10 @@
   </url>
 
   <url>
+  	<loc>http://twrl.github.com/tags/fsf/</loc>
+  </url>
+
+  <url>
   	<loc>http://twrl.github.com/tags/facebook/</loc>
   </url>
 
@@ -217,6 +226,10 @@
   </url>
 
   <url>
+  	<loc>http://twrl.github.com/tags/secure-boot/</loc>
+  </url>
+
+  <url>
   	<loc>http://twrl.github.com/tags/security/</loc>
   </url>
 
@@ -234,6 +247,10 @@
 
   <url>
   	<loc>http://twrl.github.com/tags/the-cloud/</loc>
+  </url>
+
+  <url>
+  	<loc>http://twrl.github.com/tags/uefi/</loc>
   </url>
 
   <url>

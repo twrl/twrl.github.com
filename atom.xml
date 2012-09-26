@@ -4,12 +4,74 @@
   <title>twrl</title>
   <link href="http://twrl.github.com"/>
   <link type="application/atom+xml" rel="self" href="http://twrl.github.com/atom.xml"/>
-  <updated>2012-09-24T11:34:42+01:00</updated>
+  <updated>2012-09-26T18:03:41+01:00</updated>
   <id>http://twrl.github.com</id>
   <author>
     <name>Tom Robbins</name>
   </author>
 
+  
+  <entry>
+    <id>http://twrl.github.com/2012/09/the-fsf-have-my-goat/</id>
+    <link type="text/html" rel="alternate" href="http://twrl.github.com/2012/09/the-fsf-have-my-goat/"/>
+    <title>The FSF have my goat!</title>
+    <published>2012-09-26T00:00:00+01:00</published>
+    <updated>2012-09-26T00:00:00+01:00</updated>
+    <author>
+      <name>Tom Robbins</name>
+    </author>
+    <content type="html">&lt;p&gt;I&amp;rsquo;ve never made a secret of my mixed feelings about the FSF and what they do. &lt;/p&gt;
+
+&lt;p&gt;For anyone who isn&amp;rsquo;t aware, the UEFI forum have devised a standard called
+Secure Boot. Secure Boot requires the firmware to cryptographically verify
+operating system images at load time, using public keys stored in NVRAM. The
+standard doesn&amp;rsquo;t require it explicitly, but in practice this means using the 
+secure keystore and trusted boot path functions of a Trusted Platform Module.&lt;/p&gt;
+
+&lt;p&gt;Microsoft have stated that for hardware manufacturers to recieve Windows 8 logo
+certification they must meet certain requirements regarding Secure Boot. Amongst
+other things Secure Boot must be fully implemented the user must be able to 
+disable Secure Boot on x86 and x86-64 based systems. Meaning that as well as the
+UEFI mandated software API for disabling and overriding the behaviour of Secure
+Boot, Microsoft have mandated that there must be a user interface. &lt;/p&gt;
+
+&lt;p&gt;The computer, and the vast majority of the world&amp;rsquo;s computers are sold 
+preinstalled with Microsoft Windows, must be able to verify that the core of the
+operating system is untampered with at boot-time. And the user must be able to
+disable this function. These requirements seem thoroughly reasonable, and 
+address the spectre of UEFI and Hypervisor malwares.&lt;/p&gt;
+
+&lt;p&gt;So why does the front page of the &lt;a href=&quot;http://www.fsf.org&quot;&gt;FSF website&lt;/a&gt; look like
+this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img style=&quot;width: 100%&quot; src=&quot;/attachments/2012-09-26-fsf.org-screenshot.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The only explanation I can think of is that the FSF are so invested in the idea
+of every development being a Microsoft led conspiracy against freedom that they
+can&amp;rsquo;t not spin things like this any more. In fact, anyone who does comply with
+Microsofts certification requirements has already met the demands stated in the
+FSF petition.&lt;/p&gt;
+
+&lt;p&gt;There are plenty of very legitimate grievances against Microsoft, but this not 
+one of them. For the time being, at least, Microsoft&amp;rsquo;s policy seems quite 
+reasonable and quite responsible. &lt;/p&gt;
+
+&lt;p&gt;Microsoft has the clout to get it&amp;rsquo;s public keys included in practially every 
+firmware, and the corporate world will have no compunction about getting their
+certificates signed by Microsoft. Red Hat have announced their intention to do
+just that for the Fedora Linux distribution. &lt;/p&gt;
+
+&lt;p&gt;But never in a million years will the FSF let Microsoft sign their certificates,
+for ideological reasons. They have already condemned Red Hat for doing so.
+The FSF&amp;rsquo;s intentions may be pure, but they&amp;rsquo;re politically very divisive. If the
+whole Open Source and Free Software communities were to unite behind the FSF, 
+then their keys could well be in every firmware just like Microsoft&amp;rsquo;s. But that
+will never happen.&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s time to consider the role of the FSF, and whether they now do more harm 
+than good for the movement that they once nurtured.&lt;/p&gt;
+</content>
+  </entry>
   
   <entry>
     <id>http://twrl.github.com/2012/09/processor-of-my-dreams/</id>

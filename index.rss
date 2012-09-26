@@ -6,6 +6,63 @@
 		<link>http://twrl.github.com</link>
 		
 			<item>
+				<title>The FSF have my goat!</title>
+				<description>&lt;p&gt;I&amp;rsquo;ve never made a secret of my mixed feelings about the FSF and what they do. &lt;/p&gt;
+
+&lt;p&gt;For anyone who isn&amp;rsquo;t aware, the UEFI forum have devised a standard called
+Secure Boot. Secure Boot requires the firmware to cryptographically verify
+operating system images at load time, using public keys stored in NVRAM. The
+standard doesn&amp;rsquo;t require it explicitly, but in practice this means using the 
+secure keystore and trusted boot path functions of a Trusted Platform Module.&lt;/p&gt;
+
+&lt;p&gt;Microsoft have stated that for hardware manufacturers to recieve Windows 8 logo
+certification they must meet certain requirements regarding Secure Boot. Amongst
+other things Secure Boot must be fully implemented the user must be able to 
+disable Secure Boot on x86 and x86-64 based systems. Meaning that as well as the
+UEFI mandated software API for disabling and overriding the behaviour of Secure
+Boot, Microsoft have mandated that there must be a user interface. &lt;/p&gt;
+
+&lt;p&gt;The computer, and the vast majority of the world&amp;rsquo;s computers are sold 
+preinstalled with Microsoft Windows, must be able to verify that the core of the
+operating system is untampered with at boot-time. And the user must be able to
+disable this function. These requirements seem thoroughly reasonable, and 
+address the spectre of UEFI and Hypervisor malwares.&lt;/p&gt;
+
+&lt;p&gt;So why does the front page of the &lt;a href=&quot;http://www.fsf.org&quot;&gt;FSF website&lt;/a&gt; look like
+this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img style=&quot;width: 100%&quot; src=&quot;/attachments/2012-09-26-fsf.org-screenshot.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The only explanation I can think of is that the FSF are so invested in the idea
+of every development being a Microsoft led conspiracy against freedom that they
+can&amp;rsquo;t not spin things like this any more. In fact, anyone who does comply with
+Microsofts certification requirements has already met the demands stated in the
+FSF petition.&lt;/p&gt;
+
+&lt;p&gt;There are plenty of very legitimate grievances against Microsoft, but this not 
+one of them. For the time being, at least, Microsoft&amp;rsquo;s policy seems quite 
+reasonable and quite responsible. &lt;/p&gt;
+
+&lt;p&gt;Microsoft has the clout to get it&amp;rsquo;s public keys included in practially every 
+firmware, and the corporate world will have no compunction about getting their
+certificates signed by Microsoft. Red Hat have announced their intention to do
+just that for the Fedora Linux distribution. &lt;/p&gt;
+
+&lt;p&gt;But never in a million years will the FSF let Microsoft sign their certificates,
+for ideological reasons. They have already condemned Red Hat for doing so.
+The FSF&amp;rsquo;s intentions may be pure, but they&amp;rsquo;re politically very divisive. If the
+whole Open Source and Free Software communities were to unite behind the FSF, 
+then their keys could well be in every firmware just like Microsoft&amp;rsquo;s. But that
+will never happen.&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s time to consider the role of the FSF, and whether they now do more harm 
+than good for the movement that they once nurtured.&lt;/p&gt;
+</description>
+				<published>2012-09-26 00:00:00 +0100</published>
+				<link>http://twrl.github.com/2012/09/the-fsf-have-my-goat/</link>
+			</item>
+		
+			<item>
 				<title>The Processor of my Dreams</title>
 				<description>&lt;p&gt;My recent forays into Operating System Development have made me more aware of 
 the pros and cons of the x86 processor. It&amp;rsquo;s not all bad.&lt;/p&gt;
@@ -463,41 +520,6 @@ it, but keeping PKI is better than giving up TLS. &lt;/p&gt;
 </description>
 				<published>2012-07-17 00:00:00 +0100</published>
 				<link>http://twrl.github.com/2012/07/is-the-public-key-infrastructure-collapsing/</link>
-			</item>
-		
-			<item>
-				<title>About This New Setup</title>
-				<description>&lt;p&gt;So, this new setup is more or less as I want it. I somewhat prematurely put it live on 
-Github pages on Saturday, even though I&amp;rsquo;m continuing to tinker with it.&lt;/p&gt;
-
-&lt;p&gt;I started off using &lt;a href=&quot;http://jekyllbootstrap.com/&quot;&gt;Jekyll-Bootstrap&lt;/a&gt;. This was a massive
-timesaver. I&amp;rsquo;ve used Liquid before, so the Jekyll learning curve was very easy for me, but 
-if you haven&amp;rsquo;t then I recommend Jekyll-Bootstrap as a way of easing the transition. The 
-templates and includes that Jade has in there are fairly adaptable, and you can learn 
-quite a bit just from examining them.&lt;/p&gt;
-
-&lt;p&gt;Following the advice in &lt;a href=&quot;http://charliepark.org/jekyll-with-plugins/&quot;&gt;Charlie Park&amp;rsquo;s blog&lt;/a&gt;
-I&amp;rsquo;ve got Jekyll running locally, and I&amp;rsquo;m pushing the compiled static site onto Github.
-This gives me a free hand to have plugins, non-Github-supported configuration options,
-and otherwise be tampering with Jekyll. &lt;/p&gt;
-
-&lt;p&gt;I&amp;rsquo;m using &lt;a href=&quot;http://kramdown.rubyforge.org/&quot;&gt;Kramdown&lt;/a&gt; and 
-&lt;a href=&quot;http://coderay.rubychan.de/&quot;&gt;Coderay&lt;/a&gt; for rendering. Getting Pygments to work reliably on 
-my Mac was just too much of a headache, plus I like Kramdown&amp;rsquo;s language extensions anyway. 
-At least on my Mac, I had to set Kramdown&amp;rsquo;s entity_output to symbolic, otherwise it was 
-garbling apostrophes and other entities. No other problems there though.&lt;/p&gt;
-
-&lt;p&gt;I&amp;rsquo;m using Jekyll&amp;rsquo;s latent semantic indexing to generate the related posts list, but I&amp;rsquo;m 
-not convinced about it. I really don&amp;rsquo;t want to maintain the list manually if I can avoid 
-it, so next on the agenda is to investigate other options for that. I also plan to 
-refactor the templates to improve the quality of the semantics in them, and because I&amp;rsquo;ve ended 
-up with a small mess of css files.&lt;/p&gt;
-
-&lt;p&gt;My only grumble is Liquid&amp;rsquo;s inability to sort an array before iterating over it. So far 
-I&amp;rsquo;ve managed to work around it, but it is a nuisance. &lt;/p&gt;
-</description>
-				<published>2012-07-16 00:00:00 +0100</published>
-				<link>http://twrl.github.com/2012/07/the-new-setup/</link>
 			</item>
 		
 	</channel>

@@ -28,6 +28,31 @@
     text-align: right;
 }
 
+article table {
+    border: 1px solid #202020;
+    border-collapse: collapse;
+
+    width: 100%;
+}
+
+
+
+
+
+article table td {
+    border-right: 1px dotted silver;
+}
+
+article table td, article table th {
+    padding: 1ex 1em;
+}
+
+article table th {
+    border: 1px solid #202020;
+    background-color: #202020;
+    color: white;
+}
+
 .cf::before { 
     content: ""; 
     display: table; 
@@ -99,10 +124,51 @@ h1 {
     left: 0;
     right: 0;
     height: 86px;
+    z-index: 100;
 }
 
-#l-fauxhead {
-    height: 86px;
+#viewport {
+    position: fixed;
+    left:0;
+    right: 0;
+    top: 86px;
+    bottom: 0;
+    /*overflow-y: scroll;*/
+}
+
+#scrollbar {
+    position: fixed;
+    right: 0;
+    top: 90px;
+    bottom: 4px;
+    width: 12px;
+}
+
+#s-track {
+    position: relative;
+    height: 100%;
+    width: 6px;
+    right: 3px;
+    background-color: #606060;
+}
+
+#s-thumb {
+    position: relative;
+    border-radius: 3px;
+    top: 0;
+    right: 1px;
+    width: 8px;
+    height: 30px;
+    background-color: #404040;
+}
+
+.noSelect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 #l-head-title > * {
@@ -176,7 +242,10 @@ article .addthis_toolbox {
 #l-article-toc {
     float: right;
     text-align: left;
+    font-size: 10pt;
 }
+
+
 
 article > header > p span.info {
     float: right;
