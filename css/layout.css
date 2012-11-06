@@ -133,10 +133,12 @@ h1 {
     right: 0;
     top: 86px;
     bottom: 0;
-    /*overflow-y: scroll;*/
+    overflow-y: scroll;
 }
 
 #scrollbar {
+    display: none;
+
     position: fixed;
     right: 0;
     top: 90px;
