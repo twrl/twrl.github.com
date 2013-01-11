@@ -127,14 +127,13 @@ h1 {
     z-index: 100;
 }
 
+
 #viewport {
-    position: fixed;
-    left:0;
-    right: 0;
+    position: relative;
     top: 86px;
-    bottom: 0;
-    /*overflow-y: scroll;*/
+
 }
+
 
 #scrollbar {
     position: fixed;
@@ -171,18 +170,22 @@ h1 {
     user-select: none;
 }
 
+.footnotes {
+    font-size: 9pt;
+}
+
 #l-head-title > * {
-			display: inline-block;
-		}
-		#l-head-title h1 {
-			margin: 5px 16px;
-		}
-		#l-head-nav > p {
-			display: inline-block;
-		}
-		#l-head p {
-			vertical-align: top;
-		}
+	display: inline-block;
+}
+#l-head-title h1 {
+	margin: 5px 16px;
+}
+#l-head-nav > p {
+	display: inline-block;
+}
+#l-head p {
+	vertical-align: top;
+}
 		
 #l-head-nav p {
     margin: 16px 8px;

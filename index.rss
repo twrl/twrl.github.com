@@ -6,6 +6,67 @@
 		<link>http://twrl.github.com</link>
 		
 			<item>
+				<title>The Passage of Time</title>
+				<description>&lt;p&gt;Well, it&amp;rsquo;s been a rather fraught few months, to put it mildly. Lots has happened
+in the world - not to mention in my life - and although I&amp;rsquo;ve accumulated a lot
+of skeletons of posts since October, I&amp;rsquo;ve published none.&lt;/p&gt;
+
+&lt;p&gt;So, here&amp;rsquo;s the highlights&amp;hellip;&lt;/p&gt;
+
+&lt;h2 id=&quot;october&quot;&gt;October&lt;/h2&gt;
+
+&lt;p&gt;Term started again in October, and we had the now-notorious 
+&lt;a href=&quot;http://www.huffingtonpost.co.uk/2012/10/04/reading-university-atheist-society-thrown-out-blasphemous-mohammed-pineapple_n_1939317.html&quot;&gt;Pineapple Incident&lt;/a&gt;. 
+I&amp;rsquo;m in the Reading University Atheist society, although I wasn&amp;rsquo;t there for this 
+and wasn&amp;rsquo;t directly involved. looking at some of the discussion afterwards 
+however, I think two things became pretty clear: most of RAHS really did not
+(and still don&amp;rsquo;t) understand what the original problem was, myself included; and
+RUSU couldn&amp;rsquo;t have handled the incident or it&amp;rsquo;s aftermath worse if they&amp;rsquo;d tried,
+rather than deal with it constructively and move on they&amp;rsquo;ve opened this huge can
+of proverbial worms about democracy, transparency, and free expression. I may 
+yet recycle the stuff I&amp;rsquo;d started writing about the balance between prohibiting 
+hate speech (which is harmful), and permitting critical speech (which may 
+sometimes be offensive, but is not harmful).&lt;/p&gt;
+
+&lt;p&gt;Otherwise, in terms of things to talk about, October was a pretty quiet month. 
+there was the usual start-of-the-academic-year celebrating, and and whole great 
+swathes of new mathematics to learn, but nothing terribly noteworthy.&lt;/p&gt;
+
+&lt;h2 id=&quot;november&quot;&gt;November&lt;/h2&gt;
+
+&lt;p&gt;November started abysmally, with me and the boyfriend parting company. After a 
+few days of staying in my room, listening to excessively loud music and living 
+on vodka and granola bars I did start to pull myself together and carry on with
+life. &lt;/p&gt;
+
+&lt;p&gt;Only to fall ill a couple of weeks later. A trip to the hospital, a dozen trips
+to the GP, and and more vacutainers of blood than I can possibly count later, 
+the solution turns out to be to wait it out (with the help of a lot of tramadol)
+and then do all sorts of lifestyle improving stuff to stop it happening again.&lt;/p&gt;
+
+&lt;p&gt;So, between wallowing in self-pity and wallowing in a pain-and-opiate mediated 
+stupor, I missed most of November.&lt;/p&gt;
+
+&lt;h2 id=&quot;december&quot;&gt;December&lt;/h2&gt;
+
+&lt;p&gt;December started as November had finished: blurrily. I did manage to get on to
+campus - attend a few lectures, meetings, and so on - but too often putting in a
+few hours would leave me crippled for the following few days. &lt;/p&gt;
+
+&lt;p&gt;Mid-month, we had the government&amp;rsquo;s latest interation of it&amp;rsquo;s proposals for 
+same-sex marriage. The Church of England had a hissy fit because they were 
+outwitted on the issue, and the Pope decided to use World Peace Day to 
+(re-)declare war.&lt;/p&gt;
+
+&lt;p&gt;Term ended, I went to stay with my parents over the vacation, and subsequently
+endured the eternal chaotic grind of my family at Christmas. We&amp;rsquo;re all still 
+speaking, so it can&amp;rsquo;t be that bad really.&lt;/p&gt;
+</description>
+				<published>2013-01-11 00:00:00 +0000</published>
+				<link>http://twrl.github.com/2013/01/the-passage-of-time/</link>
+			</item>
+		
+			<item>
 				<title>The FSF have my goat!</title>
 				<description>&lt;p&gt;I&amp;rsquo;ve never made a secret of my mixed feelings about the FSF and what they do. &lt;/p&gt;
 
@@ -464,62 +525,6 @@ to become hateful and worthless in spite of it&amp;rsquo;s merits.&lt;/p&gt;
 </description>
 				<published>2012-08-05 00:00:00 +0100</published>
 				<link>http://twrl.github.com/2012/08/copyright/</link>
-			</item>
-		
-			<item>
-				<title>Is the Public Key Infrastructure Collapsing?</title>
-				<description>&lt;p&gt;Back in February, TrustWave hit the news with tales of selling intermediate CA certificates
-for use in Man-in-the-Middle traffic interception. TrustWave were redeemed somewhat by
-having already revoked the offending certificate before voluntarily disclosing what they
-had done.&lt;/p&gt;
-
-&lt;p&gt;For most users, security hinges on SSL/TLS to provide an encrypted connection, and X.509
-PKI to provide certificates all the way up to a small number of trusted roots. A large
-number will be aware of the terms SSL and certificate from their web browser, but may
-not understand what they mean or how they work.&lt;/p&gt;
-
-&lt;p&gt;The TrustWave incident has been a reminder of just how much trust we place in the root CAs.
-In theory we have assurances in the form of CSPs and independent audits against those
-policies. But it seems that WebTrust, who audit for TrustWave, were not aware of the 
-offending intermediate CA certificate. TrustWave have implied strongly that they are not
-the only ones to have sold intermediate certificates either. It&amp;rsquo;s difficult to have faith
-in the public key infrastructure under such circumstances.&lt;/p&gt;
-
-&lt;p&gt;But add to that, we have the looming 
-&lt;a href=&quot;http://wiki.openrightsgroup.org/wiki/Communications_Data_Bill&quot;&gt;Communications Data Bill&lt;/a&gt;
-which, amongst other unsavoury things, can be used to mandate Man-in-the-Middle attacks on
-TLS sessions - and presumably similar interception of VPN, Tor and other encrypted traffic.
-This brings the whole concept of centralised hierarchical trust, which underlies PKI, into 
-question. We have no assurance that the entities at the top of the hierarchy are 
-trustworthy - in fact, we have good reason to suspect that they may not be.&lt;/p&gt;
-
-&lt;p&gt;The alternative model to PKI is the Web of Trust. This is best known for it&amp;rsquo;s use in PGP.
-The main problem with the web of trust is accumulating sufficient endorsement for one&amp;rsquo;s 
-certificate to be trusted everywhere. This makes it very difficult to use web of trust for
-infrastructure applications. &lt;/p&gt;
-
-&lt;p&gt;In 1992, when Phil Zimmermann first put forward the web of trust as the central concept for
-PGP&amp;rsquo;s key management, we didn&amp;rsquo;t have social networks like we do now. The concept of a 
-Friend-to-Friend network was very much a niche one. Average Joe user would not be carrying
-around the necessary data, and would not know or have remote access to it, to create the
-necessary links. Now however, in the day of home servers, smartphones, and web interfaces,
-there is no reason why the web of trust should not be reinvigorated as part of the 
-distributed social graph. &lt;/p&gt;
-
-&lt;p&gt;Another advantage of this is that it moves the trust policy decision back to the user. As
-it stands, the majority of Firefox users trust whomever Mozilla have decided to trust, the
-majority of IE users trust whomever Microsoft have decided to trust, and so on. 
-Decentralising trust will allow users to make their own decisions about trust metrics,
-transitivity, and so on. This entails some user education, but user interaction has come on
-a long way in recent years and the concept of implicit and explicit trust shouldn&amp;rsquo;t be too
-difficult to grasp, even if the technical details are more tricky.&lt;/p&gt;
-
-&lt;p&gt;Like IPv6 migration, we will likely remain with the existing infrastructure until it 
-becomes untenable. Personally, I am no longer comfortable with the centralised nature of 
-it, but keeping PKI is better than giving up TLS. &lt;/p&gt;
-</description>
-				<published>2012-07-17 00:00:00 +0100</published>
-				<link>http://twrl.github.com/2012/07/is-the-public-key-infrastructure-collapsing/</link>
 			</item>
 		
 	</channel>
